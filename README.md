@@ -11,5 +11,5 @@ Fintools Project MFIN
 ## Find Me on :
 
  - [linkedIn](https://www.linkedin.com/in/yudhistira-yoga-0872a6184)
- - [Yudhistiray198@gmail.com](https://gmail.com)
+ - [Email](mailto:Yudhistiray198@gmail.com)
  - [Github](https://github.com/Suzaku10)
