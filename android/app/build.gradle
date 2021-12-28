@@ -32,8 +32,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    flavorDimensions 'flavor-type'
-
     defaultConfig {
         applicationId "szk.mfin.fintools.fintools"
         minSdkVersion flutter.minSdkVersion
@@ -49,6 +47,8 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions 'flavor-type'
 
     productFlavors {
         dev {

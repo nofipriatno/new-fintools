@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 645),
       builder: () => MaterialApp(
+        debugShowCheckedModeBanner: AppEnvironment.env == 'dev',
         localizationsDelegates: const [
           I10n.delegate,
           GlobalMaterialLocalizations.delegate,
