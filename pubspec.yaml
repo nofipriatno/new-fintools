@@ -10,13 +10,62 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  bloc: ^8.0.1
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  drift: ^1.1.1
+  dio: ^4.0.4
+  flutter_bloc: ^8.0.0
+  flutter_easyloading: ^3.0.3
+  flutter_screenutil: ^5.0.2
+  flutter_svg: ^1.0.0
+  freezed: ^1.1.0
+  get_it: ^7.2.0
+  google_fonts: ^2.1.1
+  injectable: ^1.5.0
+  intl: ^0.17.0
+  json_annotation: ^4.4.0
+  onesignal_flutter: ^3.2.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  build_runner: ^2.1.7
+  drift_dev: ^1.1.1
+  flutter_launcher_icons: ^0.9.2
   flutter_lints: ^1.0.0
+  flutter_native_splash: ^1.3.2
+  freezed_annotation: ^1.1.0
+  injectable_generator: ^1.5.2
+  json_serializable: ^6.1.3
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icon/
+    - assets/images/
+    - assets/images/svg/
+    - assets/launcher/
+
+flutter_intl:
+  generate: true
+  enabled: true
+  class_name: I10n
+  arb_dir: lib/utilities/i10n
+  output_dir: lib/utilities/i10n
+
+flutter_native_splash:
+  color: "#42a5f5"
+  image: assets/images/images_splashscreen.png
+  android: true
+  ios: true
+  android_gravity : fill
+  ios_content_mode: scaleAspectFill
+
+flutter_icons:
+  android: true
+  image_path: "assets/launcher/icon_launcher.png"
