@@ -14,7 +14,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  flutter_screenutil: ^5.0.2
   intl: ^0.17.0
+  google_fonts: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +26,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icon/
+    - assets/images/
+
 
 flutter_intl:
   generate: true
