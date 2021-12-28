@@ -1,7 +1,21 @@
+import 'package:fintools/infrastructure/core/app_env.dart';
+import 'package:fintools/injection.dart';
+import 'package:fintools/simple_bloc_observer.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+Future<void> mainProgram() async {
+  await configureInjection(AppEnvironment.env);
+  BlocOverrides.runZoned(
+    () {
+      runApp(const MyApp());
+    },
+    blocObserver: getIt<SimpleBlocObserver>(),
+  );
+}
 
 void main() {
   runApp(const MyApp());
@@ -14,23 +28,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(360, 645),
-      builder: () =>
-          MaterialApp(
-            localizationsDelegates: const [
-              I10n.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('en', ''),
-              Locale('id', ''),
-            ],
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            home: const MyHomePage(title: 'Flutter Demo Home Page'),
-          ),);
+      builder: () => MaterialApp(
+        localizationsDelegates: const [
+          I10n.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', ''),
+          Locale('id', ''),
+        ],
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      ),
+    );
   }
 }
 
@@ -70,10 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(I10n.current.lang),
             Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline4,
+              style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
