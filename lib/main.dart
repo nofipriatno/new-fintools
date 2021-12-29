@@ -1,5 +1,6 @@
 import 'package:fintools/infrastructure/core/app_env.dart';
 import 'package:fintools/injection.dart';
+import 'package:fintools/presentation/on_boarding/on_boarding_page.dart';
 import 'package:fintools/simple_bloc_observer.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: const OnBoardingPage(),
       ),
     );
   }
