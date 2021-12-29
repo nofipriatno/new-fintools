@@ -510,6 +510,12 @@ class _$OnBoardingStateTearOff {
   _OnSettingTapSuccess onSettingTapSuccess() {
     return const _OnSettingTapSuccess();
   }
+
+  _OnProductSelect onProductSelect(String product) {
+    return _OnProductSelect(
+      product,
+    );
+  }
 }
 
 /// @nodoc
@@ -522,6 +528,7 @@ mixin _$OnBoardingState {
     required TResult Function() initial,
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
+    required TResult Function(String product) onProductSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -529,6 +536,7 @@ mixin _$OnBoardingState {
     TResult Function()? initial,
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -536,6 +544,7 @@ mixin _$OnBoardingState {
     TResult Function()? initial,
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -545,6 +554,7 @@ mixin _$OnBoardingState {
     required TResult Function(_ChangeActiveIndexSuccess value)
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
+    required TResult Function(_OnProductSelect value) onProductSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -552,6 +562,7 @@ mixin _$OnBoardingState {
     TResult Function(_Initial value)? initial,
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -559,6 +570,7 @@ mixin _$OnBoardingState {
     TResult Function(_Initial value)? initial,
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -622,6 +634,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
+    required TResult Function(String product) onProductSelect,
   }) {
     return initial();
   }
@@ -632,6 +645,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
   }) {
     return initial?.call();
   }
@@ -642,6 +656,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -657,6 +672,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_ChangeActiveIndexSuccess value)
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
+    required TResult Function(_OnProductSelect value) onProductSelect,
   }) {
     return initial(this);
   }
@@ -667,6 +683,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
   }) {
     return initial?.call(this);
   }
@@ -677,6 +694,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -760,6 +778,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     required TResult Function() initial,
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
+    required TResult Function(String product) onProductSelect,
   }) {
     return changeActiveIndexSuccess(index);
   }
@@ -770,6 +789,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     TResult Function()? initial,
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
   }) {
     return changeActiveIndexSuccess?.call(index);
   }
@@ -780,6 +800,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     TResult Function()? initial,
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
     required TResult orElse(),
   }) {
     if (changeActiveIndexSuccess != null) {
@@ -795,6 +816,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     required TResult Function(_ChangeActiveIndexSuccess value)
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
+    required TResult Function(_OnProductSelect value) onProductSelect,
   }) {
     return changeActiveIndexSuccess(this);
   }
@@ -805,6 +827,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
   }) {
     return changeActiveIndexSuccess?.call(this);
   }
@@ -815,6 +838,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
     required TResult orElse(),
   }) {
     if (changeActiveIndexSuccess != null) {
@@ -878,6 +902,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     required TResult Function() initial,
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
+    required TResult Function(String product) onProductSelect,
   }) {
     return onSettingTapSuccess();
   }
@@ -888,6 +913,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     TResult Function()? initial,
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
   }) {
     return onSettingTapSuccess?.call();
   }
@@ -898,6 +924,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     TResult Function()? initial,
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
     required TResult orElse(),
   }) {
     if (onSettingTapSuccess != null) {
@@ -913,6 +940,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     required TResult Function(_ChangeActiveIndexSuccess value)
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
+    required TResult Function(_OnProductSelect value) onProductSelect,
   }) {
     return onSettingTapSuccess(this);
   }
@@ -923,6 +951,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
   }) {
     return onSettingTapSuccess?.call(this);
   }
@@ -933,6 +962,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
     required TResult orElse(),
   }) {
     if (onSettingTapSuccess != null) {
@@ -944,4 +974,151 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
 
 abstract class _OnSettingTapSuccess implements OnBoardingState {
   const factory _OnSettingTapSuccess() = _$_OnSettingTapSuccess;
+}
+
+/// @nodoc
+abstract class _$OnProductSelectCopyWith<$Res> {
+  factory _$OnProductSelectCopyWith(
+          _OnProductSelect value, $Res Function(_OnProductSelect) then) =
+      __$OnProductSelectCopyWithImpl<$Res>;
+  $Res call({String product});
+}
+
+/// @nodoc
+class __$OnProductSelectCopyWithImpl<$Res>
+    extends _$OnBoardingStateCopyWithImpl<$Res>
+    implements _$OnProductSelectCopyWith<$Res> {
+  __$OnProductSelectCopyWithImpl(
+      _OnProductSelect _value, $Res Function(_OnProductSelect) _then)
+      : super(_value, (v) => _then(v as _OnProductSelect));
+
+  @override
+  _OnProductSelect get _value => super._value as _OnProductSelect;
+
+  @override
+  $Res call({
+    Object? product = freezed,
+  }) {
+    return _then(_OnProductSelect(
+      product == freezed
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnProductSelect implements _OnProductSelect {
+  const _$_OnProductSelect(this.product);
+
+  @override
+  final String product;
+
+  @override
+  String toString() {
+    return 'OnBoardingState.onProductSelect(product: $product)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OnProductSelect &&
+            const DeepCollectionEquality().equals(other.product, product));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(product));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnProductSelectCopyWith<_OnProductSelect> get copyWith =>
+      __$OnProductSelectCopyWithImpl<_OnProductSelect>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index) changeActiveIndexSuccess,
+    required TResult Function() onSettingTapSuccess,
+    required TResult Function(String product) onProductSelect,
+  }) {
+    return onProductSelect(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? changeActiveIndexSuccess,
+    TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
+  }) {
+    return onProductSelect?.call(product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? changeActiveIndexSuccess,
+    TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
+    required TResult orElse(),
+  }) {
+    if (onProductSelect != null) {
+      return onProductSelect(product);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ChangeActiveIndexSuccess value)
+        changeActiveIndexSuccess,
+    required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
+    required TResult Function(_OnProductSelect value) onProductSelect,
+  }) {
+    return onProductSelect(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
+    TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
+  }) {
+    return onProductSelect?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
+    TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
+    required TResult orElse(),
+  }) {
+    if (onProductSelect != null) {
+      return onProductSelect(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnProductSelect implements OnBoardingState {
+  const factory _OnProductSelect(String product) = _$_OnProductSelect;
+
+  String get product;
+  @JsonKey(ignore: true)
+  _$OnProductSelectCopyWith<_OnProductSelect> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -37,7 +37,7 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
               _product = I10n.current.product_key_3;
               break;
           }
-          print('print => $_product');
+          emit(_OnProductSelect(_product));
         },
       );
     });

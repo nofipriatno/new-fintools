@@ -6,6 +6,7 @@ import 'package:fintools/domain/core/constant/app_font.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/button/custom_button.dart';
 import 'package:fintools/presentation/component/dialog/custom_dialog.dart';
+import 'package:fintools/presentation/interceptor/interceptor_page.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,7 +101,17 @@ class OnBoardingPage extends HookWidget {
                   var result = await CustomDialog.input(
                       context, I10n.current.description_prove);
                 },
-                initial: (e) {});
+                initial: (e) {},
+                onProductSelect: (e) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => InterceptorPage(
+                        (e.product),
+                      ),
+                    ),
+                  );
+                });
           }),
         ),
       ),

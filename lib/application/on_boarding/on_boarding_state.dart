@@ -8,4 +8,5 @@ class OnBoardingState with _$OnBoardingState {
       _ChangeActiveIndexSuccess;
 
   const factory OnBoardingState.onSettingTapSuccess() = _OnSettingTapSuccess;
+  const factory OnBoardingState.onProductSelect(String product) = _OnProductSelect;
 }
