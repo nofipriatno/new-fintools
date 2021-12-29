@@ -59,6 +59,76 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I-Prove`
+  String get product_prove {
+    return Intl.message(
+      'I-Prove',
+      name: 'product_prove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collection`
+  String get product_collect {
+    return Intl.message(
+      'Collection',
+      name: 'product_collect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Survey`
+  String get product_survey {
+    return Intl.message(
+      'Survey',
+      name: 'product_survey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+  String get description_prove {
+    return Intl.message(
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      name: 'description_prove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+  String get description_collection {
+    return Intl.message(
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      name: 'description_collection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
+  String get description_survey {
+    return Intl.message(
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      name: 'description_survey',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

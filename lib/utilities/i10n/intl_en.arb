@@ -1,3 +1,10 @@
 {
-  "lang" : "en"
+  "lang": "en",
+  "login": "Login",
+  "product_prove": "I-Prove",
+  "product_collect": "Collection",
+  "product_survey": "Survey",
+  "description_prove": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "description_collection": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "description_survey": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 }
