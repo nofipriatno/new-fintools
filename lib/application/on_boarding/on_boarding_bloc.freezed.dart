@@ -27,8 +27,10 @@ class _$OnBoardingEventTearOff {
     return const _OnIconSettingTap();
   }
 
-  _OnLoginTap onLoginTap() {
-    return const _OnLoginTap();
+  _OnLoginTap onLoginTap(int index) {
+    return _OnLoginTap(
+      index,
+    );
   }
 }
 
@@ -41,21 +43,21 @@ mixin _$OnBoardingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(int index) onSweepImage,
     required TResult Function() onIconSettingTap,
-    required TResult Function() onLoginTap,
+    required TResult Function(int index) onLoginTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
-    TResult Function()? onLoginTap,
+    TResult Function(int index)? onLoginTap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
-    TResult Function()? onLoginTap,
+    TResult Function(int index)? onLoginTap,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -167,7 +169,7 @@ class _$_OnSweepImage implements _OnSweepImage {
   TResult when<TResult extends Object?>({
     required TResult Function(int index) onSweepImage,
     required TResult Function() onIconSettingTap,
-    required TResult Function() onLoginTap,
+    required TResult Function(int index) onLoginTap,
   }) {
     return onSweepImage(index);
   }
@@ -177,7 +179,7 @@ class _$_OnSweepImage implements _OnSweepImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
-    TResult Function()? onLoginTap,
+    TResult Function(int index)? onLoginTap,
   }) {
     return onSweepImage?.call(index);
   }
@@ -187,7 +189,7 @@ class _$_OnSweepImage implements _OnSweepImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
-    TResult Function()? onLoginTap,
+    TResult Function(int index)? onLoginTap,
     required TResult orElse(),
   }) {
     if (onSweepImage != null) {
@@ -283,7 +285,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
   TResult when<TResult extends Object?>({
     required TResult Function(int index) onSweepImage,
     required TResult Function() onIconSettingTap,
-    required TResult Function() onLoginTap,
+    required TResult Function(int index) onLoginTap,
   }) {
     return onIconSettingTap();
   }
@@ -293,7 +295,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
-    TResult Function()? onLoginTap,
+    TResult Function(int index)? onLoginTap,
   }) {
     return onIconSettingTap?.call();
   }
@@ -303,7 +305,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
-    TResult Function()? onLoginTap,
+    TResult Function(int index)? onLoginTap,
     required TResult orElse(),
   }) {
     if (onIconSettingTap != null) {
@@ -356,6 +358,7 @@ abstract class _$OnLoginTapCopyWith<$Res> {
   factory _$OnLoginTapCopyWith(
           _OnLoginTap value, $Res Function(_OnLoginTap) then) =
       __$OnLoginTapCopyWithImpl<$Res>;
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -368,35 +371,58 @@ class __$OnLoginTapCopyWithImpl<$Res>
 
   @override
   _OnLoginTap get _value => super._value as _OnLoginTap;
+
+  @override
+  $Res call({
+    Object? index = freezed,
+  }) {
+    return _then(_OnLoginTap(
+      index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_OnLoginTap implements _OnLoginTap {
-  const _$_OnLoginTap();
+  const _$_OnLoginTap(this.index);
+
+  @override
+  final int index;
 
   @override
   String toString() {
-    return 'OnBoardingEvent.onLoginTap()';
+    return 'OnBoardingEvent.onLoginTap(index: $index)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _OnLoginTap);
+        (other.runtimeType == runtimeType &&
+            other is _OnLoginTap &&
+            const DeepCollectionEquality().equals(other.index, index));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(index));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnLoginTapCopyWith<_OnLoginTap> get copyWith =>
+      __$OnLoginTapCopyWithImpl<_OnLoginTap>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) onSweepImage,
     required TResult Function() onIconSettingTap,
-    required TResult Function() onLoginTap,
+    required TResult Function(int index) onLoginTap,
   }) {
-    return onLoginTap();
+    return onLoginTap(index);
   }
 
   @override
@@ -404,9 +430,9 @@ class _$_OnLoginTap implements _OnLoginTap {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
-    TResult Function()? onLoginTap,
+    TResult Function(int index)? onLoginTap,
   }) {
-    return onLoginTap?.call();
+    return onLoginTap?.call(index);
   }
 
   @override
@@ -414,11 +440,11 @@ class _$_OnLoginTap implements _OnLoginTap {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
-    TResult Function()? onLoginTap,
+    TResult Function(int index)? onLoginTap,
     required TResult orElse(),
   }) {
     if (onLoginTap != null) {
-      return onLoginTap();
+      return onLoginTap(index);
     }
     return orElse();
   }
@@ -459,7 +485,12 @@ class _$_OnLoginTap implements _OnLoginTap {
 }
 
 abstract class _OnLoginTap implements OnBoardingEvent {
-  const factory _OnLoginTap() = _$_OnLoginTap;
+  const factory _OnLoginTap(int index) = _$_OnLoginTap;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$OnLoginTapCopyWith<_OnLoginTap> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

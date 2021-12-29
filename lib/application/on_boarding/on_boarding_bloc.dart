@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:injectable/injectable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -23,7 +24,20 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
           emit(const _OnSettingTapSuccess());
         },
         onLoginTap: (e) async {
-          print('print => onLoginTap');
+          emit(const _Initial());
+          late String _product;
+          switch (e.index) {
+            case 0:
+              _product = I10n.current.product_key_2;
+              break;
+            case 1:
+              _product = I10n.current.product_key_1;
+              break;
+            case 2:
+              _product = I10n.current.product_key_3;
+              break;
+          }
+          print('print => $_product');
         },
       );
     });

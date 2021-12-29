@@ -47,7 +47,7 @@ class OnBoardingPage extends HookWidget {
                       child: CustomButton.normalButton(I10n.current.login, () {
                         context
                             .read<OnBoardingBloc>()
-                            .add(const OnBoardingEvent.onLoginTap());
+                            .add(OnBoardingEvent.onLoginTap(_activeIndex));
                       }),
                     ),
                     Padding(

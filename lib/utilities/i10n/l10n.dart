@@ -70,6 +70,36 @@ class I10n {
     );
   }
 
+  /// `iprove`
+  String get product_key_1 {
+    return Intl.message(
+      'iprove',
+      name: 'product_key_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `collection`
+  String get product_key_2 {
+    return Intl.message(
+      'collection',
+      name: 'product_key_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `survey`
+  String get product_key_3 {
+    return Intl.message(
+      'survey',
+      name: 'product_key_3',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `I-Prove`
   String get product_prove {
     return Intl.message(

@@ -1,6 +1,9 @@
 {
   "lang": "en",
   "login": "Login",
+  "product_key_1" : "iprove",
+  "product_key_2" : "collection",
+  "product_key_3" : "survey",
   "product_prove": "I-Prove",
   "product_collect": "Collection",
   "product_survey": "Survey",
