@@ -15,16 +15,15 @@ class NetworkService implements INetworkService {
   final IStorage baseStorage;
   final Env _env;
 
-  NetworkService(
-      this._dio, this.baseStorage, this._connectivity, this._env);
+  NetworkService(this._dio, this.baseStorage, this._connectivity, this._env);
 
   @override
   Future<dynamic> getHttp(
       {required String path,
-        String? parameter,
-        Map<String, dynamic>? queryParameter,
-        Map<String, dynamic>? header,
-        bool useAuth = true}) async {
+      String? parameter,
+      Map<String, dynamic>? queryParameter,
+      Map<String, dynamic>? header,
+      bool useAuth = true}) async {
     final connectivityResult = await _connectivity.checkConnectivity();
     if (connectivityResult != ConnectivityResult.none) {
       try {
@@ -60,7 +59,7 @@ class NetworkService implements INetworkService {
         final Response response = await _dio.get(
             '$baseUrl$path${parameter ?? ""}',
             queryParameters: queryParameter);
-        final responseCode = response.data['status'] as String;
+        final responseCode = response.data['status'].toString();
         if (responseCode == '200') {
           return response.data;
         } else {
@@ -135,7 +134,7 @@ class NetworkService implements INetworkService {
           queryParameters: queryParameter,
           data: content,
         );
-        final responseCode = response.data['status'] as String;
+        final responseCode = response.data['status'].toString();
         if (responseCode == '200') {
           return response.data;
         } else {
@@ -211,7 +210,7 @@ class NetworkService implements INetworkService {
           queryParameters: queryParameter,
           data: content,
         );
-        final responseCode = response.data['status'] as String;
+        final responseCode = response.data['status'].toString();
         if (responseCode == '200') {
           return response.data;
         } else {
@@ -247,10 +246,10 @@ class NetworkService implements INetworkService {
   @override
   Future<dynamic> download(
       {required String url,
-        required String downloadPath,
-        Map<String, dynamic>? queryParameter,
-        Map<String, dynamic>? header,
-        bool useAuth = true}) async {
+      required String downloadPath,
+      Map<String, dynamic>? queryParameter,
+      Map<String, dynamic>? header,
+      bool useAuth = true}) async {
     final connectivityResult = await _connectivity.checkConnectivity();
     if (connectivityResult != ConnectivityResult.none) {
       try {
@@ -278,7 +277,7 @@ class NetworkService implements INetworkService {
         }
         _dio.options.headers = headers;
         final Response response = await _dio.download(url, downloadPath);
-        final responseCode = response.data['status'] as String;
+        final responseCode = response.data['status'].toString();
         if (responseCode == '200') {
           return response.data;
         } else {

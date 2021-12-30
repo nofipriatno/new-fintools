@@ -6,6 +6,7 @@ import 'package:fintools/simple_bloc_observer.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: OnBoardingPage(),
+        builder: EasyLoading.init(),
       ),
     );
   }

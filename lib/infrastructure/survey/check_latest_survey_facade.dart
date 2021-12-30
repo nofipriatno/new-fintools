@@ -1,9 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:fintools/domain/core/constant/app_endpoint.dart';
+import 'package:fintools/domain/core/exceptions/exceptions.dart';
 import 'package:fintools/domain/core/failure/generic_failure.dart';
 import 'package:fintools/domain/core/interface/i_network_service.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_check_latest_survey.dart';
 import 'package:fintools/domain/survey/response/check_latest_survey_response/check_latest_survey_response.dart';
+import 'package:fintools/utilities/app_data.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: ICheckLatestSurveyFacade)
@@ -14,7 +17,28 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
   CheckLatestSurveyFacade(this._networkService, this._storage);
 
   @override
-  Future<Either<GenericFailure, CheckLatestSurveyResponse>> getLatest() {
-    throw UnimplementedError();
+  Future<Either<GenericFailure, CheckLatestSurveyResponse>> getLatest() async {
+    try {
+      String apiUrl = AppEndpoint.surveyCheckingFormProcess;
+      final apiResult = await _networkService.getHttp(path: apiUrl);
+      CheckLatestSurveyResponse response =
+          CheckLatestSurveyResponse.fromJson(apiResult);
+      AppData(storage: _storage).saveSurveyLatestMaster(response);
+      return Right(response);
+    } on FailureException catch (_) {
+      return const Left(GenericFailure.unknownError());
+    } on NetworkException catch (_) {
+      return const Left(GenericFailure.unknownError());
+    } on ServerException catch (_) {
+      return const Left(GenericFailure.serverError());
+    } on AuthException catch (_) {
+      return const Left(GenericFailure.sessionExpired());
+    } on NoInternetException catch (_) {
+      return const Left(GenericFailure.noInternet());
+    } on TimeOutException catch (_) {
+      return const Left(GenericFailure.generalError());
+    } catch (e) {
+      return const Left(GenericFailure.unknownError());
+    }
   }
 }
