@@ -31,6 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "lang": MessageLookupByLibrary.simpleMessage("en"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "product_collect": MessageLookupByLibrary.simpleMessage("Collection"),
+        "product_key_1": MessageLookupByLibrary.simpleMessage("iprove"),
+        "product_key_2": MessageLookupByLibrary.simpleMessage("collection"),
+        "product_key_3": MessageLookupByLibrary.simpleMessage("survey"),
         "product_prove": MessageLookupByLibrary.simpleMessage("I-Prove"),
         "product_survey": MessageLookupByLibrary.simpleMessage("Survey")
       };
