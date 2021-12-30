@@ -29,11 +29,11 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
           final _box = await _storage.openBox(StorageConstants.locale);
           String? appProduct =
               _storage.getString(_box, key: AppString.appProduct);
-          _storage.close(_box);
           if (appProduct == I10n.current.product_key_3) {
             final latest = await _surveyFacade.getLatest();
             final data = latest.fold((l) => null, (data) => data);
-            _checkLocalData(data);
+            await _checkLocalData(data);
+            await _storage.close(_box);
             emit(_FetchSuccess(appProduct!));
           } else {
             emit(_FetchSuccess(appProduct!));
@@ -44,10 +44,9 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
   }
 
   Future<void> _checkLocalData(CheckLatestSurveyResponse? data) async {
-    if (AppUtils.isAfter(
-        data?.formUpdate,
-        AppUtils.convertStringToDate(
-            await AppData(storage: _storage).surveyFormUpload))) {
+    var a = await AppData(storage: _storage).surveyFormUpload;
+    if (AppUtils.isAfter(AppUtils.normalizeDateTime(data?.formUpdate),
+        AppUtils.convertStringToDate(a))) {
       _surveyFacade.getFormUpload();
     }
   }

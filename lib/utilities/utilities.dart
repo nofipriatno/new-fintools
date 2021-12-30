@@ -10,9 +10,28 @@ class AppUtils {
     if (EasyLoading.isShow) EasyLoading.dismiss();
   }
 
-  static DateTime? convertStringToDate(String? date) {
+  static String? formatDate(DateTime? date,
+      {String format = 'yyyy-MM-dd HH:mm:ss'}) {
     if (date == null) return null;
-    return DateFormat().parse(date);
+    final result = DateFormat(format).format(date);
+    return result;
+  }
+
+  static DateTime? normalizeDateTime(DateTime? date) {
+    final formatted = formatDate(date);
+    final result = convertStringToDate(formatted);
+    return result;
+  }
+
+  static DateTime? convertStringToDate(String? date,
+      {String format = 'yyyy-MM-dd HH:mm:ss'}) {
+    if (date == null) return null;
+    try {
+      final result = DateFormat(format).parse(date);
+      return result;
+    } catch (e) {
+      return null;
+    }
   }
 
   static bool isAfter(DateTime? first, DateTime? second) {
