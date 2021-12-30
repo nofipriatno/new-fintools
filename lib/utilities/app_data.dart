@@ -4,6 +4,7 @@ import 'package:fintools/domain/survey/response/check_latest_survey_response/che
 
 class AppData {
   final IStorage? storage;
+
   AppData({this.storage});
 
   void saveSurveyLatestMaster(CheckLatestSurveyResponse data) async {
@@ -39,5 +40,13 @@ class AppData {
     }
 
     storage?.close(_box!);
+  }
+
+  Future<String?> get surveyFormUpload async {
+    final _box = await storage?.openBox(StorageConstants.locale);
+    String? value =
+        storage?.getString(_box!, key: AppString.surveyFormLatestKey);
+    storage?.close(_box!);
+    return Future.value(value);
   }
 }
