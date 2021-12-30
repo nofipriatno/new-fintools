@@ -39,6 +39,10 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
               _product = I10n.current.product_key_3;
               break;
           }
+          final _box = await _storage.openBox(StorageConstants.locale);
+          await _storage.putString(_box,
+              key: AppString.appProduct, value: _product);
+          _storage.close(_box);
           emit(_OnProductSelect(_product));
         },
         onSaveUrl: (e) async {

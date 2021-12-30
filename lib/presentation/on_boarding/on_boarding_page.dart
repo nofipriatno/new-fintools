@@ -112,9 +112,7 @@ class OnBoardingPage extends HookWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => InterceptorPage(
-                        (e.product),
-                      ),
+                      builder: (_) => const InterceptorPage(),
                     ),
                   );
                 },

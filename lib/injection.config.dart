@@ -35,7 +35,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.factory<_i4.Env>(() => _i4.EnvProd(), registerFor: {_prod});
   gh.lazySingleton<_i5.HiveInterface>(() => registerModule.hive);
   gh.lazySingleton<_i6.IStorage>(() => _i7.Storage(get<_i8.HiveInterface>()));
-  gh.factory<_i9.InterceptorBloc>(() => _i9.InterceptorBloc());
+  gh.factory<_i9.InterceptorBloc>(
+      () => _i9.InterceptorBloc(get<_i6.IStorage>()));
   gh.factory<_i10.OnBoardingBloc>(
       () => _i10.OnBoardingBloc(get<_i6.IStorage>()));
   gh.lazySingleton<_i11.OneSignal>(() => registerModule.oneSignal);
