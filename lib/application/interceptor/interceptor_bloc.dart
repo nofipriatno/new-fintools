@@ -26,9 +26,9 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
               _storage.getString(_box, key: AppString.appProduct);
           _storage.close(_box);
           if (appProduct == I10n.current.product_key_3) {
-
+            emit(_FetchSuccess(appProduct!));
           } else {
-            emit(const _FetchSuccess());
+            emit(_FetchSuccess(appProduct!));
           }
         },
       );
