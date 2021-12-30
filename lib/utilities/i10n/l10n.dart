@@ -60,6 +60,16 @@ class I10n {
     );
   }
 
+  /// `Fintools`
+  String get app_name {
+    return Intl.message(
+      'Fintools',
+      name: 'app_name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Login`
   String get login {
     return Intl.message(
@@ -155,6 +165,46 @@ class I10n {
     return Intl.message(
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
       name: 'description_survey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input Your Office Domain Address`
+  String get input_corp_domain {
+    return Intl.message(
+      'Input Your Office Domain Address',
+      name: 'input_corp_domain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get button_ok {
+    return Intl.message(
+      'OK',
+      name: 'button_ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get button_cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'button_cancel',
       desc: '',
       args: [],
     );

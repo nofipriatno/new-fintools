@@ -1,9 +1,6 @@
 import 'package:hive/hive.dart';
 
 enum StorageConstants {
-  base,
-  security,
-  cache,
   locale,
 }
 

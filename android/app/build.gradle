@@ -34,10 +34,11 @@ android {
 
     defaultConfig {
         applicationId "szk.mfin.fintools.fintools"
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 18
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -70,4 +71,8 @@ android {
 
 flutter {
     source '../..'
+}
+
+dependencies {
+    implementation "androidx.multidex:multidex:2.0.1"
 }

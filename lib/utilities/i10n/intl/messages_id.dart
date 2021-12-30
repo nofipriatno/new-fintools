@@ -22,12 +22,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "app_name": MessageLookupByLibrary.simpleMessage("Fintools"),
+        "button_cancel": MessageLookupByLibrary.simpleMessage("Batal"),
+        "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_prove": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+        "input_corp_domain":
+            MessageLookupByLibrary.simpleMessage("Masukkan Domain Perusahaan"),
         "lang": MessageLookupByLibrary.simpleMessage("id"),
         "login": MessageLookupByLibrary.simpleMessage("Masuk"),
         "product_collect": MessageLookupByLibrary.simpleMessage("Collection"),
@@ -35,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_key_2": MessageLookupByLibrary.simpleMessage("collection"),
         "product_key_3": MessageLookupByLibrary.simpleMessage("survey"),
         "product_prove": MessageLookupByLibrary.simpleMessage("I-Prove"),
-        "product_survey": MessageLookupByLibrary.simpleMessage("Survey")
+        "product_survey": MessageLookupByLibrary.simpleMessage("Survey"),
+        "save": MessageLookupByLibrary.simpleMessage("Simpan")
       };
 }

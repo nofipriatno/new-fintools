@@ -1,5 +1,6 @@
 {
   "lang": "en",
+  "app_name" : "Fintools",
   "login": "Login",
   "product_key_1" : "iprove",
   "product_key_2" : "collection",
@@ -9,5 +10,9 @@
   "product_survey": "Survey",
   "description_prove": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
   "description_collection": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  "description_survey": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  "description_survey": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "input_corp_domain" : "Input Your Office Domain Address",
+  "save" : "Save",
+  "button_ok": "OK",
+  "button_cancel" : "Cancel"
 }

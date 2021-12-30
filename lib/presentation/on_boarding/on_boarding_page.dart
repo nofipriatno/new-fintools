@@ -29,7 +29,7 @@ class OnBoardingPage extends HookWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: BlocProvider<OnBoardingBloc>(
-          create: (_) => getIt.get<OnBoardingBloc>(),
+          create: (_) => getIt<OnBoardingBloc>(),
           child: BlocConsumer<OnBoardingBloc, OnBoardingState>(
               builder: (context, state) {
             return Stack(
@@ -98,8 +98,14 @@ class OnBoardingPage extends HookWidget {
                   }
                 },
                 onSettingTapSuccess: (e) async {
-                  var result = await CustomDialog.input(
-                      context, I10n.current.description_prove);
+                  var result = await CustomDialog.input(context,
+                      title: I10n.current.input_corp_domain,
+                      buttonText: I10n.current.save);
+                  if (result != null) {
+                    context
+                        .read<OnBoardingBloc>()
+                        .add(OnBoardingEvent.onSaveUrl(result));
+                  }
                 },
                 initial: (e) {},
                 onProductSelect: (e) {
@@ -111,6 +117,11 @@ class OnBoardingPage extends HookWidget {
                       ),
                     ),
                   );
+                },
+                onSavedUrlSuccess: (url) {
+                  CustomDialog.info(context,
+                      title: I10n.current.app_name,
+                      message: 'Success To Change Domain to ${url.url}');
                 });
           }),
         ),

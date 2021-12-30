@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IStorage)

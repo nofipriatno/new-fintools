@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:fintools/domain/core/constant/app_string.dart';
+import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:injectable/injectable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,16 +13,16 @@ part 'on_boarding_state.dart';
 
 @injectable
 class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
-  OnBoardingBloc() : super(const _Initial()) {
-    on<OnBoardingEvent>((event, emit) {
-      event.map(
+  final IStorage _storage;
+
+  OnBoardingBloc(this._storage) : super(const _Initial()) {
+    on<OnBoardingEvent>((event, emit) async {
+      await event.map(
         onSweepImage: (e) async {
-          print('print => onSweepImage');
           emit(_ChangeActiveIndexSuccess(e.index));
         },
         onIconSettingTap: (e) async {
           emit(const _Initial());
-          print('print => hello');
           emit(const _OnSettingTapSuccess());
         },
         onLoginTap: (e) async {
@@ -38,6 +40,13 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
               break;
           }
           emit(_OnProductSelect(_product));
+        },
+        onSaveUrl: (e) async {
+          emit(const _Initial());
+          final _box = await _storage.openBox(StorageConstants.locale);
+          await _storage.putString(_box, key: AppString.appUrl, value: e.url);
+          _storage.close(_box);
+          emit(_OnSavedUrlSuccess(e.url));
         },
       );
     });

@@ -9,7 +9,6 @@ import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: INetworkService)
-
 class NetworkService implements INetworkService {
   final Dio _dio;
   final Connectivity _connectivity;

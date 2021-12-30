@@ -1,3 +1,4 @@
+import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/infrastructure/core/app_env.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/on_boarding/on_boarding_page.dart';
@@ -7,8 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> mainProgram() async {
+  await Hive.initFlutter();
   await configureInjection(AppEnvironment.env);
   BlocOverrides.runZoned(
     () {
@@ -19,7 +23,7 @@ Future<void> mainProgram() async {
 }
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 645),
       builder: () => MaterialApp(
-        debugShowCheckedModeBanner: AppEnvironment.env == 'dev',
+        debugShowCheckedModeBanner: AppEnvironment.env == AppString.appDev,
         localizationsDelegates: const [
           I10n.delegate,
           GlobalMaterialLocalizations.delegate,

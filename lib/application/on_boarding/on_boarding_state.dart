@@ -9,4 +9,5 @@ class OnBoardingState with _$OnBoardingState {
 
   const factory OnBoardingState.onSettingTapSuccess() = _OnSettingTapSuccess;
   const factory OnBoardingState.onProductSelect(String product) = _OnProductSelect;
+  const factory OnBoardingState.onSavedUrlSuccess(String url) = _OnSavedUrlSuccess;
 }

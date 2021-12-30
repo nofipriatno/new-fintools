@@ -32,6 +32,12 @@ class _$OnBoardingEventTearOff {
       index,
     );
   }
+
+  _OnSaveUrl onSaveUrl(String url) {
+    return _OnSaveUrl(
+      url,
+    );
+  }
 }
 
 /// @nodoc
@@ -44,6 +50,7 @@ mixin _$OnBoardingEvent {
     required TResult Function(int index) onSweepImage,
     required TResult Function() onIconSettingTap,
     required TResult Function(int index) onLoginTap,
+    required TResult Function(String url) onSaveUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +58,7 @@ mixin _$OnBoardingEvent {
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
     TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +66,7 @@ mixin _$OnBoardingEvent {
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
     TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +75,7 @@ mixin _$OnBoardingEvent {
     required TResult Function(_OnSweepImage value) onSweepImage,
     required TResult Function(_OnIconSettingTap value) onIconSettingTap,
     required TResult Function(_OnLoginTap value) onLoginTap,
+    required TResult Function(_OnSaveUrl value) onSaveUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +83,7 @@ mixin _$OnBoardingEvent {
     TResult Function(_OnSweepImage value)? onSweepImage,
     TResult Function(_OnIconSettingTap value)? onIconSettingTap,
     TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +91,7 @@ mixin _$OnBoardingEvent {
     TResult Function(_OnSweepImage value)? onSweepImage,
     TResult Function(_OnIconSettingTap value)? onIconSettingTap,
     TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -170,6 +182,7 @@ class _$_OnSweepImage implements _OnSweepImage {
     required TResult Function(int index) onSweepImage,
     required TResult Function() onIconSettingTap,
     required TResult Function(int index) onLoginTap,
+    required TResult Function(String url) onSaveUrl,
   }) {
     return onSweepImage(index);
   }
@@ -180,6 +193,7 @@ class _$_OnSweepImage implements _OnSweepImage {
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
     TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
   }) {
     return onSweepImage?.call(index);
   }
@@ -190,6 +204,7 @@ class _$_OnSweepImage implements _OnSweepImage {
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
     TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
     required TResult orElse(),
   }) {
     if (onSweepImage != null) {
@@ -204,6 +219,7 @@ class _$_OnSweepImage implements _OnSweepImage {
     required TResult Function(_OnSweepImage value) onSweepImage,
     required TResult Function(_OnIconSettingTap value) onIconSettingTap,
     required TResult Function(_OnLoginTap value) onLoginTap,
+    required TResult Function(_OnSaveUrl value) onSaveUrl,
   }) {
     return onSweepImage(this);
   }
@@ -214,6 +230,7 @@ class _$_OnSweepImage implements _OnSweepImage {
     TResult Function(_OnSweepImage value)? onSweepImage,
     TResult Function(_OnIconSettingTap value)? onIconSettingTap,
     TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
   }) {
     return onSweepImage?.call(this);
   }
@@ -224,6 +241,7 @@ class _$_OnSweepImage implements _OnSweepImage {
     TResult Function(_OnSweepImage value)? onSweepImage,
     TResult Function(_OnIconSettingTap value)? onIconSettingTap,
     TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
     required TResult orElse(),
   }) {
     if (onSweepImage != null) {
@@ -286,6 +304,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
     required TResult Function(int index) onSweepImage,
     required TResult Function() onIconSettingTap,
     required TResult Function(int index) onLoginTap,
+    required TResult Function(String url) onSaveUrl,
   }) {
     return onIconSettingTap();
   }
@@ -296,6 +315,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
     TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
   }) {
     return onIconSettingTap?.call();
   }
@@ -306,6 +326,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
     TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
     required TResult orElse(),
   }) {
     if (onIconSettingTap != null) {
@@ -320,6 +341,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
     required TResult Function(_OnSweepImage value) onSweepImage,
     required TResult Function(_OnIconSettingTap value) onIconSettingTap,
     required TResult Function(_OnLoginTap value) onLoginTap,
+    required TResult Function(_OnSaveUrl value) onSaveUrl,
   }) {
     return onIconSettingTap(this);
   }
@@ -330,6 +352,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
     TResult Function(_OnSweepImage value)? onSweepImage,
     TResult Function(_OnIconSettingTap value)? onIconSettingTap,
     TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
   }) {
     return onIconSettingTap?.call(this);
   }
@@ -340,6 +363,7 @@ class _$_OnIconSettingTap implements _OnIconSettingTap {
     TResult Function(_OnSweepImage value)? onSweepImage,
     TResult Function(_OnIconSettingTap value)? onIconSettingTap,
     TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
     required TResult orElse(),
   }) {
     if (onIconSettingTap != null) {
@@ -421,6 +445,7 @@ class _$_OnLoginTap implements _OnLoginTap {
     required TResult Function(int index) onSweepImage,
     required TResult Function() onIconSettingTap,
     required TResult Function(int index) onLoginTap,
+    required TResult Function(String url) onSaveUrl,
   }) {
     return onLoginTap(index);
   }
@@ -431,6 +456,7 @@ class _$_OnLoginTap implements _OnLoginTap {
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
     TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
   }) {
     return onLoginTap?.call(index);
   }
@@ -441,6 +467,7 @@ class _$_OnLoginTap implements _OnLoginTap {
     TResult Function(int index)? onSweepImage,
     TResult Function()? onIconSettingTap,
     TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
     required TResult orElse(),
   }) {
     if (onLoginTap != null) {
@@ -455,6 +482,7 @@ class _$_OnLoginTap implements _OnLoginTap {
     required TResult Function(_OnSweepImage value) onSweepImage,
     required TResult Function(_OnIconSettingTap value) onIconSettingTap,
     required TResult Function(_OnLoginTap value) onLoginTap,
+    required TResult Function(_OnSaveUrl value) onSaveUrl,
   }) {
     return onLoginTap(this);
   }
@@ -465,6 +493,7 @@ class _$_OnLoginTap implements _OnLoginTap {
     TResult Function(_OnSweepImage value)? onSweepImage,
     TResult Function(_OnIconSettingTap value)? onIconSettingTap,
     TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
   }) {
     return onLoginTap?.call(this);
   }
@@ -475,6 +504,7 @@ class _$_OnLoginTap implements _OnLoginTap {
     TResult Function(_OnSweepImage value)? onSweepImage,
     TResult Function(_OnIconSettingTap value)? onIconSettingTap,
     TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
     required TResult orElse(),
   }) {
     if (onLoginTap != null) {
@@ -490,6 +520,150 @@ abstract class _OnLoginTap implements OnBoardingEvent {
   int get index;
   @JsonKey(ignore: true)
   _$OnLoginTapCopyWith<_OnLoginTap> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnSaveUrlCopyWith<$Res> {
+  factory _$OnSaveUrlCopyWith(
+          _OnSaveUrl value, $Res Function(_OnSaveUrl) then) =
+      __$OnSaveUrlCopyWithImpl<$Res>;
+  $Res call({String url});
+}
+
+/// @nodoc
+class __$OnSaveUrlCopyWithImpl<$Res> extends _$OnBoardingEventCopyWithImpl<$Res>
+    implements _$OnSaveUrlCopyWith<$Res> {
+  __$OnSaveUrlCopyWithImpl(_OnSaveUrl _value, $Res Function(_OnSaveUrl) _then)
+      : super(_value, (v) => _then(v as _OnSaveUrl));
+
+  @override
+  _OnSaveUrl get _value => super._value as _OnSaveUrl;
+
+  @override
+  $Res call({
+    Object? url = freezed,
+  }) {
+    return _then(_OnSaveUrl(
+      url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnSaveUrl implements _OnSaveUrl {
+  const _$_OnSaveUrl(this.url);
+
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'OnBoardingEvent.onSaveUrl(url: $url)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OnSaveUrl &&
+            const DeepCollectionEquality().equals(other.url, url));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(url));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnSaveUrlCopyWith<_OnSaveUrl> get copyWith =>
+      __$OnSaveUrlCopyWithImpl<_OnSaveUrl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index) onSweepImage,
+    required TResult Function() onIconSettingTap,
+    required TResult Function(int index) onLoginTap,
+    required TResult Function(String url) onSaveUrl,
+  }) {
+    return onSaveUrl(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int index)? onSweepImage,
+    TResult Function()? onIconSettingTap,
+    TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
+  }) {
+    return onSaveUrl?.call(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index)? onSweepImage,
+    TResult Function()? onIconSettingTap,
+    TResult Function(int index)? onLoginTap,
+    TResult Function(String url)? onSaveUrl,
+    required TResult orElse(),
+  }) {
+    if (onSaveUrl != null) {
+      return onSaveUrl(url);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnSweepImage value) onSweepImage,
+    required TResult Function(_OnIconSettingTap value) onIconSettingTap,
+    required TResult Function(_OnLoginTap value) onLoginTap,
+    required TResult Function(_OnSaveUrl value) onSaveUrl,
+  }) {
+    return onSaveUrl(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_OnSweepImage value)? onSweepImage,
+    TResult Function(_OnIconSettingTap value)? onIconSettingTap,
+    TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
+  }) {
+    return onSaveUrl?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnSweepImage value)? onSweepImage,
+    TResult Function(_OnIconSettingTap value)? onIconSettingTap,
+    TResult Function(_OnLoginTap value)? onLoginTap,
+    TResult Function(_OnSaveUrl value)? onSaveUrl,
+    required TResult orElse(),
+  }) {
+    if (onSaveUrl != null) {
+      return onSaveUrl(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSaveUrl implements OnBoardingEvent {
+  const factory _OnSaveUrl(String url) = _$_OnSaveUrl;
+
+  String get url;
+  @JsonKey(ignore: true)
+  _$OnSaveUrlCopyWith<_OnSaveUrl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -516,6 +690,12 @@ class _$OnBoardingStateTearOff {
       product,
     );
   }
+
+  _OnSavedUrlSuccess onSavedUrlSuccess(String url) {
+    return _OnSavedUrlSuccess(
+      url,
+    );
+  }
 }
 
 /// @nodoc
@@ -529,6 +709,7 @@ mixin _$OnBoardingState {
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
     required TResult Function(String product) onProductSelect,
+    required TResult Function(String url) onSavedUrlSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -537,6 +718,7 @@ mixin _$OnBoardingState {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -545,6 +727,7 @@ mixin _$OnBoardingState {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -555,6 +738,7 @@ mixin _$OnBoardingState {
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
     required TResult Function(_OnProductSelect value) onProductSelect,
+    required TResult Function(_OnSavedUrlSuccess value) onSavedUrlSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -563,6 +747,7 @@ mixin _$OnBoardingState {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -571,6 +756,7 @@ mixin _$OnBoardingState {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -635,6 +821,7 @@ class _$_Initial implements _Initial {
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
     required TResult Function(String product) onProductSelect,
+    required TResult Function(String url) onSavedUrlSuccess,
   }) {
     return initial();
   }
@@ -646,6 +833,7 @@ class _$_Initial implements _Initial {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
   }) {
     return initial?.call();
   }
@@ -657,6 +845,7 @@ class _$_Initial implements _Initial {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -673,6 +862,7 @@ class _$_Initial implements _Initial {
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
     required TResult Function(_OnProductSelect value) onProductSelect,
+    required TResult Function(_OnSavedUrlSuccess value) onSavedUrlSuccess,
   }) {
     return initial(this);
   }
@@ -684,6 +874,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
   }) {
     return initial?.call(this);
   }
@@ -695,6 +886,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -779,6 +971,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
     required TResult Function(String product) onProductSelect,
+    required TResult Function(String url) onSavedUrlSuccess,
   }) {
     return changeActiveIndexSuccess(index);
   }
@@ -790,6 +983,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
   }) {
     return changeActiveIndexSuccess?.call(index);
   }
@@ -801,6 +995,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
     required TResult orElse(),
   }) {
     if (changeActiveIndexSuccess != null) {
@@ -817,6 +1012,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
     required TResult Function(_OnProductSelect value) onProductSelect,
+    required TResult Function(_OnSavedUrlSuccess value) onSavedUrlSuccess,
   }) {
     return changeActiveIndexSuccess(this);
   }
@@ -828,6 +1024,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
   }) {
     return changeActiveIndexSuccess?.call(this);
   }
@@ -839,6 +1036,7 @@ class _$_ChangeActiveIndexSuccess implements _ChangeActiveIndexSuccess {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
     required TResult orElse(),
   }) {
     if (changeActiveIndexSuccess != null) {
@@ -903,6 +1101,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
     required TResult Function(String product) onProductSelect,
+    required TResult Function(String url) onSavedUrlSuccess,
   }) {
     return onSettingTapSuccess();
   }
@@ -914,6 +1113,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
   }) {
     return onSettingTapSuccess?.call();
   }
@@ -925,6 +1125,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
     required TResult orElse(),
   }) {
     if (onSettingTapSuccess != null) {
@@ -941,6 +1142,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
     required TResult Function(_OnProductSelect value) onProductSelect,
+    required TResult Function(_OnSavedUrlSuccess value) onSavedUrlSuccess,
   }) {
     return onSettingTapSuccess(this);
   }
@@ -952,6 +1154,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
   }) {
     return onSettingTapSuccess?.call(this);
   }
@@ -963,6 +1166,7 @@ class _$_OnSettingTapSuccess implements _OnSettingTapSuccess {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
     required TResult orElse(),
   }) {
     if (onSettingTapSuccess != null) {
@@ -1045,6 +1249,7 @@ class _$_OnProductSelect implements _OnProductSelect {
     required TResult Function(int index) changeActiveIndexSuccess,
     required TResult Function() onSettingTapSuccess,
     required TResult Function(String product) onProductSelect,
+    required TResult Function(String url) onSavedUrlSuccess,
   }) {
     return onProductSelect(product);
   }
@@ -1056,6 +1261,7 @@ class _$_OnProductSelect implements _OnProductSelect {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
   }) {
     return onProductSelect?.call(product);
   }
@@ -1067,6 +1273,7 @@ class _$_OnProductSelect implements _OnProductSelect {
     TResult Function(int index)? changeActiveIndexSuccess,
     TResult Function()? onSettingTapSuccess,
     TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
     required TResult orElse(),
   }) {
     if (onProductSelect != null) {
@@ -1083,6 +1290,7 @@ class _$_OnProductSelect implements _OnProductSelect {
         changeActiveIndexSuccess,
     required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
     required TResult Function(_OnProductSelect value) onProductSelect,
+    required TResult Function(_OnSavedUrlSuccess value) onSavedUrlSuccess,
   }) {
     return onProductSelect(this);
   }
@@ -1094,6 +1302,7 @@ class _$_OnProductSelect implements _OnProductSelect {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
   }) {
     return onProductSelect?.call(this);
   }
@@ -1105,6 +1314,7 @@ class _$_OnProductSelect implements _OnProductSelect {
     TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
     TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
     TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
     required TResult orElse(),
   }) {
     if (onProductSelect != null) {
@@ -1120,5 +1330,158 @@ abstract class _OnProductSelect implements OnBoardingState {
   String get product;
   @JsonKey(ignore: true)
   _$OnProductSelectCopyWith<_OnProductSelect> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnSavedUrlSuccessCopyWith<$Res> {
+  factory _$OnSavedUrlSuccessCopyWith(
+          _OnSavedUrlSuccess value, $Res Function(_OnSavedUrlSuccess) then) =
+      __$OnSavedUrlSuccessCopyWithImpl<$Res>;
+  $Res call({String url});
+}
+
+/// @nodoc
+class __$OnSavedUrlSuccessCopyWithImpl<$Res>
+    extends _$OnBoardingStateCopyWithImpl<$Res>
+    implements _$OnSavedUrlSuccessCopyWith<$Res> {
+  __$OnSavedUrlSuccessCopyWithImpl(
+      _OnSavedUrlSuccess _value, $Res Function(_OnSavedUrlSuccess) _then)
+      : super(_value, (v) => _then(v as _OnSavedUrlSuccess));
+
+  @override
+  _OnSavedUrlSuccess get _value => super._value as _OnSavedUrlSuccess;
+
+  @override
+  $Res call({
+    Object? url = freezed,
+  }) {
+    return _then(_OnSavedUrlSuccess(
+      url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnSavedUrlSuccess implements _OnSavedUrlSuccess {
+  const _$_OnSavedUrlSuccess(this.url);
+
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'OnBoardingState.onSavedUrlSuccess(url: $url)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OnSavedUrlSuccess &&
+            const DeepCollectionEquality().equals(other.url, url));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(url));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnSavedUrlSuccessCopyWith<_OnSavedUrlSuccess> get copyWith =>
+      __$OnSavedUrlSuccessCopyWithImpl<_OnSavedUrlSuccess>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index) changeActiveIndexSuccess,
+    required TResult Function() onSettingTapSuccess,
+    required TResult Function(String product) onProductSelect,
+    required TResult Function(String url) onSavedUrlSuccess,
+  }) {
+    return onSavedUrlSuccess(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? changeActiveIndexSuccess,
+    TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
+  }) {
+    return onSavedUrlSuccess?.call(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? changeActiveIndexSuccess,
+    TResult Function()? onSettingTapSuccess,
+    TResult Function(String product)? onProductSelect,
+    TResult Function(String url)? onSavedUrlSuccess,
+    required TResult orElse(),
+  }) {
+    if (onSavedUrlSuccess != null) {
+      return onSavedUrlSuccess(url);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ChangeActiveIndexSuccess value)
+        changeActiveIndexSuccess,
+    required TResult Function(_OnSettingTapSuccess value) onSettingTapSuccess,
+    required TResult Function(_OnProductSelect value) onProductSelect,
+    required TResult Function(_OnSavedUrlSuccess value) onSavedUrlSuccess,
+  }) {
+    return onSavedUrlSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
+    TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
+  }) {
+    return onSavedUrlSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ChangeActiveIndexSuccess value)? changeActiveIndexSuccess,
+    TResult Function(_OnSettingTapSuccess value)? onSettingTapSuccess,
+    TResult Function(_OnProductSelect value)? onProductSelect,
+    TResult Function(_OnSavedUrlSuccess value)? onSavedUrlSuccess,
+    required TResult orElse(),
+  }) {
+    if (onSavedUrlSuccess != null) {
+      return onSavedUrlSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSavedUrlSuccess implements OnBoardingState {
+  const factory _OnSavedUrlSuccess(String url) = _$_OnSavedUrlSuccess;
+
+  String get url;
+  @JsonKey(ignore: true)
+  _$OnSavedUrlSuccessCopyWith<_OnSavedUrlSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
