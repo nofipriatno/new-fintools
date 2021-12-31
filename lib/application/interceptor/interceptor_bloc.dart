@@ -3,6 +3,9 @@ import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_check_latest_survey.dart';
 import 'package:fintools/domain/survey/response/check_latest_survey_response/check_latest_survey_response.dart';
+import 'package:fintools/domain/survey/response/master_response/survey_form_quisioner_master_response.dart';
+import 'package:fintools/domain/survey/response/master_response/survey_form_upload_master_response.dart';
+import 'package:fintools/domain/survey/response/master_response/survey_zipcode_master_response.dart';
 import 'package:fintools/utilities/app_data.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:fintools/utilities/utilities.dart';
@@ -53,26 +56,33 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
     var localZipcode = await appData.surveyZipcode;
 
     if (_dateValidation(data?.formUpdate, localFormUpload)) {
-      await _surveyFacade.getFormUpload();
+      var result = await _surveyFacade.getFormUpload();
+      if (result.isRight()) {
+        AppData(storage: _storage).saveSingleFormLatestMaster(data!);
+      }
     }
 
-    if(_dateValidation(data?.formDetailUpdate, localFormDetail)){
+    if (_dateValidation(data?.formDetailUpdate, localFormDetail)) {
       /// TODO : belum ada API nya
     }
 
-    if(_dateValidation(data?.quisionerUpdate, localQuisioner)) {
-      await _surveyFacade.getFormQuisioner();
+    if (_dateValidation(data?.quisionerUpdate, localQuisioner)) {
+      var result = await _surveyFacade.getFormQuisioner();
+      if (result.isRight()) {
+        AppData(storage: _storage).saveSingleQuisionerLatestMaster(data!);
+      }
     }
 
-    if(_dateValidation(data?.quisionerDetailUpdate, localQuisionerDetail)){
+    if (_dateValidation(data?.quisionerDetailUpdate, localQuisionerDetail)) {
       /// TODO : belum ada API nya
     }
 
-    if(_dateValidation(data?.zipcodeUpdate, localZipcode)){
-
+    if (_dateValidation(data?.zipcodeUpdate, localZipcode)) {
+      var result = await _surveyFacade.getZipcode();
+      if (result.isRight()) {
+        AppData(storage: _storage).saveSingleZipcodeLatestMaster(data!);
+      }
     }
-
-    AppData(storage: _storage).saveSurveyLatestMaster(data!);
   }
 
   bool _dateValidation(DateTime? first, String? second) {

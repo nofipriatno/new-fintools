@@ -4,9 +4,11 @@ import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:fintools/domain/core/database/form_quisioner_database.dart';
 import 'package:fintools/domain/core/database/form_upload_database.dart';
+import 'package:fintools/domain/core/database/zipcode_database.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_quisioner_master_response.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_upload_master_response.dart';
+import 'package:fintools/domain/survey/response/master_response/survey_zipcode_master_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
@@ -14,7 +16,7 @@ import 'package:path/path.dart' as p;
 part 'database.g.dart';
 
 @LazySingleton(as: IDatabase)
-@DriftDatabase(tables: [FormUpload, FormQuisioner])
+@DriftDatabase(tables: [FormUpload, FormQuisioner, Zipcode])
 class AppDatabase extends _$AppDatabase implements IDatabase {
   AppDatabase() : super(_openConnection());
 
@@ -91,6 +93,41 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
             creBy: item?.creBy ?? '',
             modDate: item?.modDate ?? DateTime.now(),
             modBy: item?.modBy ?? ''));
+      }
+      return Future.value(true);
+    } catch (e) {
+      return Future.value(false);
+    }
+  }
+
+  @override
+  Future<bool> deleteSavedSurveyZipcode() async {
+    try {
+      delete(zipcode).go();
+      return Future.value(true);
+    } catch (e) {
+      return Future.value(false);
+    }
+  }
+
+  @override
+  Future<List<ZipcodeData>> getSurveyZipcode() async {
+    return await select(zipcode).get();
+  }
+
+  @override
+  Future<bool> saveSurveyZipcode(List<SurveyZipcodeItem?> items) async {
+    try {
+      for (SurveyZipcodeItem? item in items) {
+        into(zipcode).insert(
+          ZipcodeData(
+              id: item?.id ?? 0,
+              city: item?.city ?? '',
+              subDistrict: item?.subDistrict ?? '',
+              district: item?.district ?? '',
+              postCode: item?.postCode ?? '',
+              billArea: item?.billArea ?? ''),
+        );
       }
       return Future.value(true);
     } catch (e) {

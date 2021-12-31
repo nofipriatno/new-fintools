@@ -961,13 +961,335 @@ class $FormQuisionerTable extends FormQuisioner
   }
 }
 
+class ZipcodeData extends DataClass implements Insertable<ZipcodeData> {
+  final int id;
+  final String city;
+  final String subDistrict;
+  final String district;
+  final String postCode;
+  final String billArea;
+  ZipcodeData(
+      {required this.id,
+      required this.city,
+      required this.subDistrict,
+      required this.district,
+      required this.postCode,
+      required this.billArea});
+  factory ZipcodeData.fromData(Map<String, dynamic> data, {String? prefix}) {
+    final effectivePrefix = prefix ?? '';
+    return ZipcodeData(
+      id: const IntType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
+      city: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}city'])!,
+      subDistrict: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}sub_district'])!,
+      district: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}district'])!,
+      postCode: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}post_code'])!,
+      billArea: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}bill_area'])!,
+    );
+  }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['city'] = Variable<String>(city);
+    map['sub_district'] = Variable<String>(subDistrict);
+    map['district'] = Variable<String>(district);
+    map['post_code'] = Variable<String>(postCode);
+    map['bill_area'] = Variable<String>(billArea);
+    return map;
+  }
+
+  ZipcodeCompanion toCompanion(bool nullToAbsent) {
+    return ZipcodeCompanion(
+      id: Value(id),
+      city: Value(city),
+      subDistrict: Value(subDistrict),
+      district: Value(district),
+      postCode: Value(postCode),
+      billArea: Value(billArea),
+    );
+  }
+
+  factory ZipcodeData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ZipcodeData(
+      id: serializer.fromJson<int>(json['id']),
+      city: serializer.fromJson<String>(json['city']),
+      subDistrict: serializer.fromJson<String>(json['subDistrict']),
+      district: serializer.fromJson<String>(json['district']),
+      postCode: serializer.fromJson<String>(json['postCode']),
+      billArea: serializer.fromJson<String>(json['billArea']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'city': serializer.toJson<String>(city),
+      'subDistrict': serializer.toJson<String>(subDistrict),
+      'district': serializer.toJson<String>(district),
+      'postCode': serializer.toJson<String>(postCode),
+      'billArea': serializer.toJson<String>(billArea),
+    };
+  }
+
+  ZipcodeData copyWith(
+          {int? id,
+          String? city,
+          String? subDistrict,
+          String? district,
+          String? postCode,
+          String? billArea}) =>
+      ZipcodeData(
+        id: id ?? this.id,
+        city: city ?? this.city,
+        subDistrict: subDistrict ?? this.subDistrict,
+        district: district ?? this.district,
+        postCode: postCode ?? this.postCode,
+        billArea: billArea ?? this.billArea,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('ZipcodeData(')
+          ..write('id: $id, ')
+          ..write('city: $city, ')
+          ..write('subDistrict: $subDistrict, ')
+          ..write('district: $district, ')
+          ..write('postCode: $postCode, ')
+          ..write('billArea: $billArea')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, city, subDistrict, district, postCode, billArea);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ZipcodeData &&
+          other.id == this.id &&
+          other.city == this.city &&
+          other.subDistrict == this.subDistrict &&
+          other.district == this.district &&
+          other.postCode == this.postCode &&
+          other.billArea == this.billArea);
+}
+
+class ZipcodeCompanion extends UpdateCompanion<ZipcodeData> {
+  final Value<int> id;
+  final Value<String> city;
+  final Value<String> subDistrict;
+  final Value<String> district;
+  final Value<String> postCode;
+  final Value<String> billArea;
+  const ZipcodeCompanion({
+    this.id = const Value.absent(),
+    this.city = const Value.absent(),
+    this.subDistrict = const Value.absent(),
+    this.district = const Value.absent(),
+    this.postCode = const Value.absent(),
+    this.billArea = const Value.absent(),
+  });
+  ZipcodeCompanion.insert({
+    this.id = const Value.absent(),
+    required String city,
+    required String subDistrict,
+    required String district,
+    required String postCode,
+    required String billArea,
+  })  : city = Value(city),
+        subDistrict = Value(subDistrict),
+        district = Value(district),
+        postCode = Value(postCode),
+        billArea = Value(billArea);
+  static Insertable<ZipcodeData> custom({
+    Expression<int>? id,
+    Expression<String>? city,
+    Expression<String>? subDistrict,
+    Expression<String>? district,
+    Expression<String>? postCode,
+    Expression<String>? billArea,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (city != null) 'city': city,
+      if (subDistrict != null) 'sub_district': subDistrict,
+      if (district != null) 'district': district,
+      if (postCode != null) 'post_code': postCode,
+      if (billArea != null) 'bill_area': billArea,
+    });
+  }
+
+  ZipcodeCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? city,
+      Value<String>? subDistrict,
+      Value<String>? district,
+      Value<String>? postCode,
+      Value<String>? billArea}) {
+    return ZipcodeCompanion(
+      id: id ?? this.id,
+      city: city ?? this.city,
+      subDistrict: subDistrict ?? this.subDistrict,
+      district: district ?? this.district,
+      postCode: postCode ?? this.postCode,
+      billArea: billArea ?? this.billArea,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (city.present) {
+      map['city'] = Variable<String>(city.value);
+    }
+    if (subDistrict.present) {
+      map['sub_district'] = Variable<String>(subDistrict.value);
+    }
+    if (district.present) {
+      map['district'] = Variable<String>(district.value);
+    }
+    if (postCode.present) {
+      map['post_code'] = Variable<String>(postCode.value);
+    }
+    if (billArea.present) {
+      map['bill_area'] = Variable<String>(billArea.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ZipcodeCompanion(')
+          ..write('id: $id, ')
+          ..write('city: $city, ')
+          ..write('subDistrict: $subDistrict, ')
+          ..write('district: $district, ')
+          ..write('postCode: $postCode, ')
+          ..write('billArea: $billArea')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ZipcodeTable extends Zipcode with TableInfo<$ZipcodeTable, ZipcodeData> {
+  final GeneratedDatabase _db;
+  final String? _alias;
+  $ZipcodeTable(this._db, [this._alias]);
+  final VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int?> id = GeneratedColumn<int?>(
+      'id', aliasedName, false,
+      type: const IntType(), requiredDuringInsert: false);
+  final VerificationMeta _cityMeta = const VerificationMeta('city');
+  @override
+  late final GeneratedColumn<String?> city = GeneratedColumn<String?>(
+      'city', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _subDistrictMeta =
+      const VerificationMeta('subDistrict');
+  @override
+  late final GeneratedColumn<String?> subDistrict = GeneratedColumn<String?>(
+      'sub_district', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _districtMeta = const VerificationMeta('district');
+  @override
+  late final GeneratedColumn<String?> district = GeneratedColumn<String?>(
+      'district', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _postCodeMeta = const VerificationMeta('postCode');
+  @override
+  late final GeneratedColumn<String?> postCode = GeneratedColumn<String?>(
+      'post_code', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _billAreaMeta = const VerificationMeta('billArea');
+  @override
+  late final GeneratedColumn<String?> billArea = GeneratedColumn<String?>(
+      'bill_area', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [id, city, subDistrict, district, postCode, billArea];
+  @override
+  String get aliasedName => _alias ?? 'zipcode';
+  @override
+  String get actualTableName => 'zipcode';
+  @override
+  VerificationContext validateIntegrity(Insertable<ZipcodeData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('city')) {
+      context.handle(
+          _cityMeta, city.isAcceptableOrUnknown(data['city']!, _cityMeta));
+    } else if (isInserting) {
+      context.missing(_cityMeta);
+    }
+    if (data.containsKey('sub_district')) {
+      context.handle(
+          _subDistrictMeta,
+          subDistrict.isAcceptableOrUnknown(
+              data['sub_district']!, _subDistrictMeta));
+    } else if (isInserting) {
+      context.missing(_subDistrictMeta);
+    }
+    if (data.containsKey('district')) {
+      context.handle(_districtMeta,
+          district.isAcceptableOrUnknown(data['district']!, _districtMeta));
+    } else if (isInserting) {
+      context.missing(_districtMeta);
+    }
+    if (data.containsKey('post_code')) {
+      context.handle(_postCodeMeta,
+          postCode.isAcceptableOrUnknown(data['post_code']!, _postCodeMeta));
+    } else if (isInserting) {
+      context.missing(_postCodeMeta);
+    }
+    if (data.containsKey('bill_area')) {
+      context.handle(_billAreaMeta,
+          billArea.isAcceptableOrUnknown(data['bill_area']!, _billAreaMeta));
+    } else if (isInserting) {
+      context.missing(_billAreaMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ZipcodeData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    return ZipcodeData.fromData(data,
+        prefix: tablePrefix != null ? '$tablePrefix.' : null);
+  }
+
+  @override
+  $ZipcodeTable createAlias(String alias) {
+    return $ZipcodeTable(_db, alias);
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   late final $FormUploadTable formUpload = $FormUploadTable(this);
   late final $FormQuisionerTable formQuisioner = $FormQuisionerTable(this);
+  late final $ZipcodeTable zipcode = $ZipcodeTable(this);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [formUpload, formQuisioner];
+      [formUpload, formQuisioner, zipcode];
 }

@@ -1,5 +1,6 @@
 import 'package:fintools/domain/survey/response/master_response/survey_form_quisioner_master_response.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_upload_master_response.dart';
+import 'package:fintools/domain/survey/response/master_response/survey_zipcode_master_response.dart';
 import 'package:fintools/infrastructure/core/database.dart';
 
 abstract class IDatabase {
@@ -14,4 +15,10 @@ abstract class IDatabase {
   Future<List<FormQuisionerData>> getSurveyQuisioner();
 
   Future<bool> deleteSavedSurveyQuisioner();
+
+  Future<bool> saveSurveyZipcode(List<SurveyZipcodeItem?> items);
+
+  Future<List<ZipcodeData>> getSurveyZipcode();
+
+  Future<bool> deleteSavedSurveyZipcode();
 }

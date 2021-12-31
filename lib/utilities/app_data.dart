@@ -4,6 +4,7 @@ import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/response/check_latest_survey_response/check_latest_survey_response.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_quisioner_master_response.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_upload_master_response.dart';
+import 'package:fintools/domain/survey/response/master_response/survey_zipcode_master_response.dart';
 import 'package:fintools/utilities/utilities.dart';
 
 class AppData {
@@ -44,6 +45,47 @@ class AppData {
           key: AppString.surveyQuisionerDetailLatestKey,
           value: '${AppUtils.formatDate(data.quisionerDetailUpdate)}');
     }
+  }
+
+  void saveSingleFormLatestMaster(CheckLatestSurveyResponse data) async {
+    final _box = await storage?.openBox(StorageConstants.locale);
+    AppUtils.formatDate(data.formUpdate);
+    storage?.putString(_box!,
+        key: AppString.surveyFormLatestKey,
+        value: '${AppUtils.formatDate(data.formUpdate)}');
+  }
+
+  void saveSingleFormDetailLatestMaster(CheckLatestSurveyResponse data) async {
+    final _box = await storage?.openBox(StorageConstants.locale);
+    AppUtils.formatDate(data.formUpdate);
+    storage?.putString(_box!,
+        key: AppString.surveyFormDetailLatestKey,
+        value: '${AppUtils.formatDate(data.formUpdate)}');
+  }
+
+  void saveSingleZipcodeLatestMaster(CheckLatestSurveyResponse data) async {
+    final _box = await storage?.openBox(StorageConstants.locale);
+    AppUtils.formatDate(data.formUpdate);
+    storage?.putString(_box!,
+        key: AppString.surveyZipCodeLatestKey,
+        value: '${AppUtils.formatDate(data.formUpdate)}');
+  }
+
+  void saveSingleQuisionerLatestMaster(CheckLatestSurveyResponse data) async {
+    final _box = await storage?.openBox(StorageConstants.locale);
+    AppUtils.formatDate(data.formUpdate);
+    storage?.putString(_box!,
+        key: AppString.surveyQuisionerLatestKey,
+        value: '${AppUtils.formatDate(data.formUpdate)}');
+  }
+
+  void saveSingleQuisionerDetailLatestMaster(
+      CheckLatestSurveyResponse data) async {
+    final _box = await storage?.openBox(StorageConstants.locale);
+    AppUtils.formatDate(data.formUpdate);
+    storage?.putString(_box!,
+        key: AppString.surveyQuisionerDetailLatestKey,
+        value: '${AppUtils.formatDate(data.formUpdate)}');
   }
 
   Future<String?> get surveyFormUpload async {
@@ -96,5 +138,10 @@ class AppData {
       List<SurveyFormQuisionerMasterItem?> items) async {
     await database?.deleteSavedSurveyQuisioner();
     await database?.saveSurveyQuisioner(items);
+  }
+
+  Future<void> setSurveyZipcodeToLocal(List<SurveyZipcodeItem?> items) async {
+    await database?.deleteSavedSurveyQuisioner();
+    await database?.saveSurveyZipcode(items);
   }
 }
