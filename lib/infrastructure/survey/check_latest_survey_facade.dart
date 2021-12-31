@@ -2,11 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:fintools/domain/core/constant/app_endpoint.dart';
 import 'package:fintools/domain/core/exceptions/exceptions.dart';
 import 'package:fintools/domain/core/failure/generic_failure.dart';
+import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_network_service.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_check_latest_survey.dart';
 import 'package:fintools/domain/survey/response/check_latest_survey_response/check_latest_survey_response.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_upload_master_response.dart';
+import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/utilities/app_data.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,8 +16,9 @@ import 'package:injectable/injectable.dart';
 class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
   final INetworkService _networkService;
   final IStorage _storage;
+  final IDatabase _database;
 
-  CheckLatestSurveyFacade(this._networkService, this._storage);
+  CheckLatestSurveyFacade(this._networkService, this._storage, this._database);
 
   @override
   Future<Either<GenericFailure, CheckLatestSurveyResponse>> getLatest() async {
@@ -24,7 +27,6 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
       final apiResult = await _networkService.getHttp(path: apiUrl);
       CheckLatestSurveyResponse response =
       CheckLatestSurveyResponse.fromJson(apiResult);
-      AppData(storage: _storage).saveSurveyLatestMaster(response);
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());
@@ -51,6 +53,7 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
       final apiResult = await _networkService.getHttp(path: apiUrl);
       SurveyFormUploadMasterResponse response = SurveyFormUploadMasterResponse
           .fromJson(apiResult);
+      AppData(database: _database).setSurveyFormUploadToLocal(response.data);
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());

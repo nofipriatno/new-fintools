@@ -36,6 +36,7 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
             await _storage.close(_box);
             emit(_FetchSuccess(appProduct!));
           } else {
+            await _storage.close(_box);
             emit(_FetchSuccess(appProduct!));
           }
         },
@@ -44,10 +45,38 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
   }
 
   Future<void> _checkLocalData(CheckLatestSurveyResponse? data) async {
-    var a = await AppData(storage: _storage).surveyFormUpload;
-    if (AppUtils.isAfter(AppUtils.normalizeDateTime(data?.formUpdate),
-        AppUtils.convertStringToDate(a))) {
+    AppData appData = AppData(storage: _storage);
+    var localFormUpload = await appData.surveyFormUpload;
+    var localFormDetail = await appData.surveyFormDetailUpload;
+    var localQuisioner = await appData.surveyQuisioner;
+    var localQuisionerDetail = await appData.surveyQuisionerDetail;
+    var localZipcode = await appData.surveyZipcode;
+
+    if (_dateValidation(data?.formUpdate, localFormUpload)) {
       _surveyFacade.getFormUpload();
     }
+
+    if(_dateValidation(data?.formDetailUpdate, localFormDetail)){
+
+    }
+
+    if(_dateValidation(data?.quisionerUpdate, localQuisioner)) {
+
+    }
+
+    if(_dateValidation(data?.quisionerDetailUpdate, localQuisionerDetail)){
+
+    }
+
+    if(_dateValidation(data?.zipcodeUpdate, localZipcode)){
+
+    }
+
+    AppData(storage: _storage).saveSurveyLatestMaster(data!);
+  }
+
+  bool _dateValidation(DateTime? first, String? second) {
+    return AppUtils.isAfter(AppUtils.normalizeDateTime(first),
+        AppUtils.convertStringToDate(second));
   }
 }

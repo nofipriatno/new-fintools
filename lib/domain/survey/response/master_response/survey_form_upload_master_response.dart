@@ -14,7 +14,7 @@ String surveyFormUploadMasterResponseToJson(
     json.encode(data.toJson());
 
 @freezed
-abstract class SurveyFormUploadMasterResponse
+class SurveyFormUploadMasterResponse
     with _$SurveyFormUploadMasterResponse {
   const factory SurveyFormUploadMasterResponse({
     required int? status,
@@ -27,7 +27,7 @@ abstract class SurveyFormUploadMasterResponse
 }
 
 @freezed
-abstract class SurveyFormUploadMasterItem with _$SurveyFormUploadMasterItem {
+class SurveyFormUploadMasterItem with _$SurveyFormUploadMasterItem {
   const factory SurveyFormUploadMasterItem({
     required String? id,
     @JsonKey(name: 'idform') required String? idForm,
