@@ -53,19 +53,19 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
     var localZipcode = await appData.surveyZipcode;
 
     if (_dateValidation(data?.formUpdate, localFormUpload)) {
-      _surveyFacade.getFormUpload();
+      await _surveyFacade.getFormUpload();
     }
 
     if(_dateValidation(data?.formDetailUpdate, localFormDetail)){
-
+      /// TODO : belum ada API nya
     }
 
     if(_dateValidation(data?.quisionerUpdate, localQuisioner)) {
-
+      await _surveyFacade.getFormQuisioner();
     }
 
     if(_dateValidation(data?.quisionerDetailUpdate, localQuisionerDetail)){
-
+      /// TODO : belum ada API nya
     }
 
     if(_dateValidation(data?.zipcodeUpdate, localZipcode)){

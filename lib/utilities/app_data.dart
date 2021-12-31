@@ -2,6 +2,7 @@ import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/response/check_latest_survey_response/check_latest_survey_response.dart';
+import 'package:fintools/domain/survey/response/master_response/survey_form_quisioner_master_response.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_upload_master_response.dart';
 import 'package:fintools/utilities/utilities.dart';
 
@@ -89,5 +90,11 @@ class AppData {
       List<SurveyFormUploadMasterItem?> items) async {
     await database?.deleteSavedSurveyForm();
     await database?.saveSurveyForm(items);
+  }
+
+  Future<void> setSurveyFormQuisionerToLocal(
+      List<SurveyFormQuisionerMasterItem?> items) async {
+    await database?.deleteSavedSurveyQuisioner();
+    await database?.saveSurveyQuisioner(items);
   }
 }
