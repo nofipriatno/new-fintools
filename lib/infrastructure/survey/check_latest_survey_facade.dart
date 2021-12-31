@@ -107,9 +107,7 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
       final apiResult = await _networkService.getHttp(path: apiUrl);
       SurveyZipcodeMasterResponse response =
       SurveyZipcodeMasterResponse.fromJson(apiResult);
-      print('print => hello guys ${response.data.length}');
       await AppData(database: _database).setSurveyZipcodeToLocal(response.data);
-      print('print => hello guyss ${response.data.length}');
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());

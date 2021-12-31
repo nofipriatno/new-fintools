@@ -53,7 +53,8 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
     var localFormDetail = await appData.surveyFormDetailUpload;
     var localQuisioner = await appData.surveyQuisioner;
     var localQuisionerDetail = await appData.surveyQuisionerDetail;
-    
+    var localZipcode = await appData.surveyZipcode;
+
     if (_dateValidation(data?.formUpdate, localFormUpload)) {
       var result = await _surveyFacade.getFormUpload();
       if (result.isRight()) {

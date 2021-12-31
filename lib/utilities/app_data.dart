@@ -136,7 +136,7 @@ class AppData {
   }
 
   Future<void> setSurveyZipcodeToLocal(List<SurveyZipcodeItem?> items) async {
-    await database?.deleteSavedSurveyQuisioner();
+    await database?.deleteSavedSurveyZipcode();
     await database?.saveSurveyZipcode(items);
   }
 }

@@ -26,12 +26,12 @@ Map<String, dynamic> _$$_SurveyZipcodeMasterResponseToJson(
 
 _$_SurveyZipcodeItem _$$_SurveyZipcodeItemFromJson(Map<String, dynamic> json) =>
     _$_SurveyZipcodeItem(
-      id: json['sysZipid'] as int,
-      city: json['kota'] as String,
-      subDistrict: json['kecamatan'] as String,
-      district: json['kelurahan'] as String,
-      postCode: json['kodepos'] as String,
-      billArea: json['areatagih'] as String,
+      id: json['sysZipid'] as int?,
+      city: json['kota'] as String?,
+      subDistrict: json['kecamatan'] as String?,
+      district: json['kelurahan'] as String?,
+      postCode: json['kodepos'] as String?,
+      billArea: json['areatagih'] as String?,
     );
 
 Map<String, dynamic> _$$_SurveyZipcodeItemToJson(

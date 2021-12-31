@@ -222,12 +222,12 @@ class _$SurveyZipcodeItemTearOff {
   const _$SurveyZipcodeItemTearOff();
 
   _SurveyZipcodeItem call(
-      {@JsonKey(name: 'sysZipid') required int id,
-      @JsonKey(name: 'kota') required String city,
-      @JsonKey(name: 'kecamatan') required String subDistrict,
-      @JsonKey(name: 'kelurahan') required String district,
-      @JsonKey(name: 'kodepos') required String postCode,
-      @JsonKey(name: 'areatagih') required String billArea}) {
+      {@JsonKey(name: 'sysZipid') required int? id,
+      @JsonKey(name: 'kota') required String? city,
+      @JsonKey(name: 'kecamatan') required String? subDistrict,
+      @JsonKey(name: 'kelurahan') required String? district,
+      @JsonKey(name: 'kodepos') required String? postCode,
+      @JsonKey(name: 'areatagih') required String? billArea}) {
     return _SurveyZipcodeItem(
       id: id,
       city: city,
@@ -249,17 +249,17 @@ const $SurveyZipcodeItem = _$SurveyZipcodeItemTearOff();
 /// @nodoc
 mixin _$SurveyZipcodeItem {
   @JsonKey(name: 'sysZipid')
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'kota')
-  String get city => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
   @JsonKey(name: 'kecamatan')
-  String get subDistrict => throw _privateConstructorUsedError;
+  String? get subDistrict => throw _privateConstructorUsedError;
   @JsonKey(name: 'kelurahan')
-  String get district => throw _privateConstructorUsedError;
+  String? get district => throw _privateConstructorUsedError;
   @JsonKey(name: 'kodepos')
-  String get postCode => throw _privateConstructorUsedError;
+  String? get postCode => throw _privateConstructorUsedError;
   @JsonKey(name: 'areatagih')
-  String get billArea => throw _privateConstructorUsedError;
+  String? get billArea => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -273,12 +273,12 @@ abstract class $SurveyZipcodeItemCopyWith<$Res> {
           SurveyZipcodeItem value, $Res Function(SurveyZipcodeItem) then) =
       _$SurveyZipcodeItemCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'sysZipid') int id,
-      @JsonKey(name: 'kota') String city,
-      @JsonKey(name: 'kecamatan') String subDistrict,
-      @JsonKey(name: 'kelurahan') String district,
-      @JsonKey(name: 'kodepos') String postCode,
-      @JsonKey(name: 'areatagih') String billArea});
+      {@JsonKey(name: 'sysZipid') int? id,
+      @JsonKey(name: 'kota') String? city,
+      @JsonKey(name: 'kecamatan') String? subDistrict,
+      @JsonKey(name: 'kelurahan') String? district,
+      @JsonKey(name: 'kodepos') String? postCode,
+      @JsonKey(name: 'areatagih') String? billArea});
 }
 
 /// @nodoc
@@ -303,27 +303,27 @@ class _$SurveyZipcodeItemCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       subDistrict: subDistrict == freezed
           ? _value.subDistrict
           : subDistrict // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       district: district == freezed
           ? _value.district
           : district // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       postCode: postCode == freezed
           ? _value.postCode
           : postCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       billArea: billArea == freezed
           ? _value.billArea
           : billArea // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -336,12 +336,12 @@ abstract class _$SurveyZipcodeItemCopyWith<$Res>
       __$SurveyZipcodeItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'sysZipid') int id,
-      @JsonKey(name: 'kota') String city,
-      @JsonKey(name: 'kecamatan') String subDistrict,
-      @JsonKey(name: 'kelurahan') String district,
-      @JsonKey(name: 'kodepos') String postCode,
-      @JsonKey(name: 'areatagih') String billArea});
+      {@JsonKey(name: 'sysZipid') int? id,
+      @JsonKey(name: 'kota') String? city,
+      @JsonKey(name: 'kecamatan') String? subDistrict,
+      @JsonKey(name: 'kelurahan') String? district,
+      @JsonKey(name: 'kodepos') String? postCode,
+      @JsonKey(name: 'areatagih') String? billArea});
 }
 
 /// @nodoc
@@ -368,27 +368,27 @@ class __$SurveyZipcodeItemCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       subDistrict: subDistrict == freezed
           ? _value.subDistrict
           : subDistrict // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       district: district == freezed
           ? _value.district
           : district // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       postCode: postCode == freezed
           ? _value.postCode
           : postCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       billArea: billArea == freezed
           ? _value.billArea
           : billArea // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -409,22 +409,22 @@ class _$_SurveyZipcodeItem implements _SurveyZipcodeItem {
 
   @override
   @JsonKey(name: 'sysZipid')
-  final int id;
+  final int? id;
   @override
   @JsonKey(name: 'kota')
-  final String city;
+  final String? city;
   @override
   @JsonKey(name: 'kecamatan')
-  final String subDistrict;
+  final String? subDistrict;
   @override
   @JsonKey(name: 'kelurahan')
-  final String district;
+  final String? district;
   @override
   @JsonKey(name: 'kodepos')
-  final String postCode;
+  final String? postCode;
   @override
   @JsonKey(name: 'areatagih')
-  final String billArea;
+  final String? billArea;
 
   @override
   String toString() {
@@ -468,12 +468,12 @@ class _$_SurveyZipcodeItem implements _SurveyZipcodeItem {
 
 abstract class _SurveyZipcodeItem implements SurveyZipcodeItem {
   const factory _SurveyZipcodeItem(
-          {@JsonKey(name: 'sysZipid') required int id,
-          @JsonKey(name: 'kota') required String city,
-          @JsonKey(name: 'kecamatan') required String subDistrict,
-          @JsonKey(name: 'kelurahan') required String district,
-          @JsonKey(name: 'kodepos') required String postCode,
-          @JsonKey(name: 'areatagih') required String billArea}) =
+          {@JsonKey(name: 'sysZipid') required int? id,
+          @JsonKey(name: 'kota') required String? city,
+          @JsonKey(name: 'kecamatan') required String? subDistrict,
+          @JsonKey(name: 'kelurahan') required String? district,
+          @JsonKey(name: 'kodepos') required String? postCode,
+          @JsonKey(name: 'areatagih') required String? billArea}) =
       _$_SurveyZipcodeItem;
 
   factory _SurveyZipcodeItem.fromJson(Map<String, dynamic> json) =
@@ -481,22 +481,22 @@ abstract class _SurveyZipcodeItem implements SurveyZipcodeItem {
 
   @override
   @JsonKey(name: 'sysZipid')
-  int get id;
+  int? get id;
   @override
   @JsonKey(name: 'kota')
-  String get city;
+  String? get city;
   @override
   @JsonKey(name: 'kecamatan')
-  String get subDistrict;
+  String? get subDistrict;
   @override
   @JsonKey(name: 'kelurahan')
-  String get district;
+  String? get district;
   @override
   @JsonKey(name: 'kodepos')
-  String get postCode;
+  String? get postCode;
   @override
   @JsonKey(name: 'areatagih')
-  String get billArea;
+  String? get billArea;
   @override
   @JsonKey(ignore: true)
   _$SurveyZipcodeItemCopyWith<_SurveyZipcodeItem> get copyWith =>

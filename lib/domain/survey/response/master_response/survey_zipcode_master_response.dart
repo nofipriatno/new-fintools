@@ -26,12 +26,12 @@ class SurveyZipcodeMasterResponse with _$SurveyZipcodeMasterResponse {
 @freezed
 class SurveyZipcodeItem with _$SurveyZipcodeItem {
   const factory SurveyZipcodeItem({
-    @JsonKey(name: 'sysZipid') required int id,
-    @JsonKey(name: 'kota') required String city,
-    @JsonKey(name: 'kecamatan') required String subDistrict,
-    @JsonKey(name: 'kelurahan') required String district,
-    @JsonKey(name: 'kodepos') required String postCode,
-    @JsonKey(name: 'areatagih') required String billArea,
+    @JsonKey(name: 'sysZipid') required int? id,
+    @JsonKey(name: 'kota') required String? city,
+    @JsonKey(name: 'kecamatan') required String? subDistrict,
+    @JsonKey(name: 'kelurahan') required String? district,
+    @JsonKey(name: 'kodepos') required String? postCode,
+    @JsonKey(name: 'areatagih') required String? billArea,
   }) = _SurveyZipcodeItem;
 
   factory SurveyZipcodeItem.fromJson(Map<String, dynamic> json) =>

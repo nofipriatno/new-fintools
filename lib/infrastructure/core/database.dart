@@ -26,9 +26,8 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
   @override
   Future<bool> saveSurveyForm(List<SurveyFormUploadMasterItem?> items) async {
     try {
-      for (SurveyFormUploadMasterItem? item in items) {
-        into(formUpload).insert(
-          FormUploadData(
+      final data = items
+          .map((item) => FormUploadData(
               id: item?.id ?? '',
               idForm: item?.idForm ?? '',
               code: item?.code ?? '',
@@ -39,9 +38,9 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
               creDate: item?.creDate ?? DateTime.now(),
               creBy: item?.creBy ?? 'Error',
               modDate: item?.modDate ?? DateTime.now(),
-              modBy: item?.modBy ?? 'Error'),
-        );
-      }
+              modBy: item?.modBy ?? 'Error'))
+          .toList();
+      await batch((batch) => batch.insertAll(formUpload, data));
       return Future.value(true);
     } catch (e) {
       return Future.value(false);
@@ -82,18 +81,19 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
   Future<bool> saveSurveyQuisioner(
       List<SurveyFormQuisionerMasterItem?> items) async {
     try {
-      for (SurveyFormQuisionerMasterItem? item in items) {
-        into(formQuisioner).insert(FormQuisionerData(
-            id: item?.id ?? '',
-            idQuisioner: item?.idQuisioner ?? '',
-            idQuestion: item?.idQuestion ?? '',
-            question: item?.question ?? '',
-            questionTypeFlag: item?.questionTypeFlag ?? 0,
-            creDate: item?.creDate ?? DateTime.now(),
-            creBy: item?.creBy ?? '',
-            modDate: item?.modDate ?? DateTime.now(),
-            modBy: item?.modBy ?? ''));
-      }
+      final data = items
+          .map((item) => FormQuisionerData(
+              id: item?.id ?? '',
+              idQuisioner: item?.idQuisioner ?? '',
+              idQuestion: item?.idQuestion ?? '',
+              question: item?.question ?? '',
+              questionTypeFlag: item?.questionTypeFlag ?? 0,
+              creDate: item?.creDate ?? DateTime.now(),
+              creBy: item?.creBy ?? '',
+              modDate: item?.modDate ?? DateTime.now(),
+              modBy: item?.modBy ?? ''))
+          .toList();
+      await batch((batch) => batch.insertAll(formQuisioner, data));
       return Future.value(true);
     } catch (e) {
       return Future.value(false);
@@ -118,17 +118,16 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
   @override
   Future<bool> saveSurveyZipcode(List<SurveyZipcodeItem?> items) async {
     try {
-      for (SurveyZipcodeItem? item in items) {
-        into(zipcode).insert(
-          ZipcodeData(
+      final data = items
+          .map((item) => ZipcodeData(
               id: item?.id ?? 0,
               city: item?.city ?? '',
               subDistrict: item?.subDistrict ?? '',
               district: item?.district ?? '',
               postCode: item?.postCode ?? '',
-              billArea: item?.billArea ?? ''),
-        );
-      }
+              billArea: item?.billArea ?? ''))
+          .toList();
+      await batch((batch) => batch.insertAll(zipcode, data));
       return Future.value(true);
     } catch (e) {
       return Future.value(false);
