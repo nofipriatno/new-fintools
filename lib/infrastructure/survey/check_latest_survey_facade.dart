@@ -54,7 +54,7 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
       final apiResult = await _networkService.getHttp(path: apiUrl);
       SurveyFormUploadMasterResponse response =
           SurveyFormUploadMasterResponse.fromJson(apiResult);
-      AppData(database: _database).setSurveyFormUploadToLocal(response.data);
+      await AppData(database: _database).setSurveyFormUploadToLocal(response.data);
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());
@@ -81,7 +81,7 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
       final apiResult = await _networkService.getHttp(path: apiUrl);
       SurveyFormQuisionerMasterResponse response =
       SurveyFormQuisionerMasterResponse.fromJson(apiResult);
-      AppData(database: _database).setSurveyFormQuisionerToLocal(response.data);
+      await AppData(database: _database).setSurveyFormQuisionerToLocal(response.data);
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());
@@ -107,7 +107,9 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
       final apiResult = await _networkService.getHttp(path: apiUrl);
       SurveyZipcodeMasterResponse response =
       SurveyZipcodeMasterResponse.fromJson(apiResult);
-      AppData(database: _database).setSurveyZipcodeToLocal(response.data);
+      print('print => hello guys ${response.data.length}');
+      await AppData(database: _database).setSurveyZipcodeToLocal(response.data);
+      print('print => hello guyss ${response.data.length}');
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());

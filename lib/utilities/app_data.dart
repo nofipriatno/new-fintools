@@ -49,7 +49,6 @@ class AppData {
 
   void saveSingleFormLatestMaster(CheckLatestSurveyResponse data) async {
     final _box = await storage?.openBox(StorageConstants.locale);
-    AppUtils.formatDate(data.formUpdate);
     storage?.putString(_box!,
         key: AppString.surveyFormLatestKey,
         value: '${AppUtils.formatDate(data.formUpdate)}');
@@ -57,35 +56,31 @@ class AppData {
 
   void saveSingleFormDetailLatestMaster(CheckLatestSurveyResponse data) async {
     final _box = await storage?.openBox(StorageConstants.locale);
-    AppUtils.formatDate(data.formUpdate);
     storage?.putString(_box!,
         key: AppString.surveyFormDetailLatestKey,
-        value: '${AppUtils.formatDate(data.formUpdate)}');
+        value: '${AppUtils.formatDate(data.formDetailUpdate)}');
   }
 
   void saveSingleZipcodeLatestMaster(CheckLatestSurveyResponse data) async {
     final _box = await storage?.openBox(StorageConstants.locale);
-    AppUtils.formatDate(data.formUpdate);
     storage?.putString(_box!,
         key: AppString.surveyZipCodeLatestKey,
-        value: '${AppUtils.formatDate(data.formUpdate)}');
+        value: '${AppUtils.formatDate(data.zipcodeUpdate)}');
   }
 
   void saveSingleQuisionerLatestMaster(CheckLatestSurveyResponse data) async {
     final _box = await storage?.openBox(StorageConstants.locale);
-    AppUtils.formatDate(data.formUpdate);
     storage?.putString(_box!,
         key: AppString.surveyQuisionerLatestKey,
-        value: '${AppUtils.formatDate(data.formUpdate)}');
+        value: '${AppUtils.formatDate(data.quisionerUpdate)}');
   }
 
   void saveSingleQuisionerDetailLatestMaster(
       CheckLatestSurveyResponse data) async {
     final _box = await storage?.openBox(StorageConstants.locale);
-    AppUtils.formatDate(data.formUpdate);
     storage?.putString(_box!,
         key: AppString.surveyQuisionerDetailLatestKey,
-        value: '${AppUtils.formatDate(data.formUpdate)}');
+        value: '${AppUtils.formatDate(data.quisionerDetailUpdate)}');
   }
 
   Future<String?> get surveyFormUpload async {

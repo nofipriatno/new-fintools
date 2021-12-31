@@ -63,7 +63,9 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       _i18.CheckLatestSurveyFacade(get<_i15.INetworkService>(),
           get<_i8.IStorage>(), get<_i6.IDatabase>()));
   gh.factory<_i19.InterceptorBloc>(() => _i19.InterceptorBloc(
-      get<_i8.IStorage>(), get<_i17.ICheckLatestSurveyFacade>()));
+      get<_i8.IStorage>(),
+      get<_i17.ICheckLatestSurveyFacade>(),
+      get<_i6.IDatabase>()));
   return get;
 }
 

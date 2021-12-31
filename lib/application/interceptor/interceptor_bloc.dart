@@ -1,11 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:fintools/domain/core/constant/app_string.dart';
+import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_check_latest_survey.dart';
 import 'package:fintools/domain/survey/response/check_latest_survey_response/check_latest_survey_response.dart';
-import 'package:fintools/domain/survey/response/master_response/survey_form_quisioner_master_response.dart';
-import 'package:fintools/domain/survey/response/master_response/survey_form_upload_master_response.dart';
-import 'package:fintools/domain/survey/response/master_response/survey_zipcode_master_response.dart';
 import 'package:fintools/utilities/app_data.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:fintools/utilities/utilities.dart';
@@ -22,8 +20,10 @@ part 'interceptor_state.dart';
 class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
   final ICheckLatestSurveyFacade _surveyFacade;
   final IStorage _storage;
+  final IDatabase _database;
 
-  InterceptorBloc(this._storage, this._surveyFacade) : super(const _Initial()) {
+  InterceptorBloc(this._storage, this._surveyFacade, this._database)
+      : super(const _Initial()) {
     on<InterceptorEvent>((event, emit) async {
       await event.map(
         onRetry: (e) async {},
@@ -53,8 +53,7 @@ class InterceptorBloc extends Bloc<InterceptorEvent, InterceptorState> {
     var localFormDetail = await appData.surveyFormDetailUpload;
     var localQuisioner = await appData.surveyQuisioner;
     var localQuisionerDetail = await appData.surveyQuisionerDetail;
-    var localZipcode = await appData.surveyZipcode;
-
+    
     if (_dateValidation(data?.formUpdate, localFormUpload)) {
       var result = await _surveyFacade.getFormUpload();
       if (result.isRight()) {
