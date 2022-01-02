@@ -13,18 +13,20 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:onesignal_flutter/onesignal_flutter.dart' as _i13;
 
 import 'application/app_preferences/app_preferences_bloc.dart' as _i3;
-import 'application/interceptor/interceptor_bloc.dart' as _i20;
+import 'application/interceptor/interceptor_bloc.dart' as _i22;
 import 'application/on_boarding/on_boarding_bloc.dart' as _i12;
 import 'domain/core/constant/app_env.dart' as _i5;
 import 'domain/core/interface/i_database.dart' as _i7;
 import 'domain/core/interface/i_network_service.dart' as _i16;
 import 'domain/core/interface/i_storage.dart' as _i9;
-import 'domain/survey/interface/i_check_latest_survey.dart' as _i18;
+import 'domain/survey/interface/i_check_latest_survey.dart' as _i20;
+import 'domain/survey/interface/i_user_survey.dart' as _i18;
 import 'infrastructure/core/database.dart' as _i8;
 import 'infrastructure/core/network_service.dart' as _i17;
-import 'infrastructure/core/register_module.dart' as _i21;
+import 'infrastructure/core/register_module.dart' as _i23;
 import 'infrastructure/core/storage.dart' as _i10;
-import 'infrastructure/survey/check_latest_survey_facade.dart' as _i19;
+import 'infrastructure/survey/check_latest_survey_facade.dart' as _i21;
+import 'infrastructure/survey/user_survey_repository.dart' as _i19;
 import 'simple_bloc_observer.dart' as _i14;
 
 const String _prod = 'prod';
@@ -61,14 +63,16 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i9.IStorage>(),
       get<_i4.Connectivity>(),
       get<_i5.Env>()));
-  gh.lazySingleton<_i18.ICheckLatestSurveyFacade>(() =>
-      _i19.CheckLatestSurveyFacade(get<_i16.INetworkService>(),
+  gh.lazySingleton<_i18.IUserSurvey>(() => _i19.UserSurveyRepository(
+      get<_i16.INetworkService>(), get<_i9.IStorage>()));
+  gh.lazySingleton<_i20.ICheckLatestSurveyFacade>(() =>
+      _i21.CheckLatestSurveyFacade(get<_i16.INetworkService>(),
           get<_i9.IStorage>(), get<_i7.IDatabase>()));
-  gh.factory<_i20.InterceptorBloc>(() => _i20.InterceptorBloc(
+  gh.factory<_i22.InterceptorBloc>(() => _i22.InterceptorBloc(
       get<_i9.IStorage>(),
-      get<_i18.ICheckLatestSurveyFacade>(),
+      get<_i20.ICheckLatestSurveyFacade>(),
       get<_i7.IDatabase>()));
   return get;
 }
 
-class _$RegisterModule extends _i21.RegisterModule {}
+class _$RegisterModule extends _i23.RegisterModule {}

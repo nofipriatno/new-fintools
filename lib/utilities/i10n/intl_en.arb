@@ -1,18 +1,31 @@
 {
   "lang": "en",
-  "app_name" : "Fintools",
+  "app_name": "Fintools",
   "login": "Login",
-  "product_key_1" : "iprove",
-  "product_key_2" : "collection",
-  "product_key_3" : "survey",
+  "product_key_1": "iprove",
+  "product_key_2": "collection",
+  "product_key_3": "survey",
   "product_prove": "I-Prove",
   "product_collect": "Collection",
   "product_survey": "Survey",
   "description_prove": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
   "description_collection": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
   "description_survey": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  "input_corp_domain" : "Input Your Office Domain Address",
-  "save" : "Save",
+  "input_corp_domain": "Input Your Office Domain Address",
+  "save": "Save",
   "button_ok": "OK",
-  "button_cancel" : "Cancel"
+  "button_cancel": "Cancel",
+  "home": "Home",
+  "history": "History",
+  "task": "Task",
+  "survey_greeting_user": "Welcome, {name}",
+  "@survey_greeting_user": {
+    "description": "Greeting to user login in Survey",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Yudistira Yoga"
+      }
+    }
+  }
 }

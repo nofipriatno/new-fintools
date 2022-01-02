@@ -1,3 +1,4 @@
+import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/infrastructure/core/app_env.dart';
 import 'package:fintools/injection.dart';
@@ -46,7 +47,11 @@ class MyApp extends StatelessWidget {
           Locale('id', ''),
         ],
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primaryColor: AppColor.white,
+          backgroundColor: AppColor.white,
+          scaffoldBackgroundColor: AppColor.white,
+          appBarTheme: AppBarTheme.of(context)
+              .copyWith(color: AppColor.white, elevation: 0),
         ),
         home: OnBoardingPage(),
         builder: EasyLoading.init(),

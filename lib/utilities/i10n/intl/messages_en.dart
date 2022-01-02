@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(name) => "Welcome, ${name}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_name": MessageLookupByLibrary.simpleMessage("Fintools"),
@@ -31,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+        "history": MessageLookupByLibrary.simpleMessage("History"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "input_corp_domain": MessageLookupByLibrary.simpleMessage(
             "Input Your Office Domain Address"),
         "lang": MessageLookupByLibrary.simpleMessage("en"),
@@ -41,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_key_3": MessageLookupByLibrary.simpleMessage("survey"),
         "product_prove": MessageLookupByLibrary.simpleMessage("I-Prove"),
         "product_survey": MessageLookupByLibrary.simpleMessage("Survey"),
-        "save": MessageLookupByLibrary.simpleMessage("Save")
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "survey_greeting_user": m0,
+        "task": MessageLookupByLibrary.simpleMessage("Task")
       };
 }

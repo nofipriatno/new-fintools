@@ -14,5 +14,18 @@
   "input_corp_domain" : "Masukkan Domain Perusahaan",
   "save" : "Simpan",
   "button_ok": "OK",
-  "button_cancel" : "Batal"
+  "button_cancel" : "Batal",
+  "home" : "Beranda",
+  "history" : "Riwayat",
+  "task" : "Tugas",
+  "survey_greeting_user": "Selamat Datang, {name}",
+  "@survey_greeting_user": {
+    "description": "Greeting to user login in Survey",
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "Yudistira Yoga"
+      }
+    }
+  }
 }
