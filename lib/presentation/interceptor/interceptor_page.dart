@@ -1,5 +1,6 @@
 import 'package:fintools/application/interceptor/interceptor_bloc.dart';
 import 'package:fintools/injection.dart';
+import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
 import 'package:fintools/presentation/survey/survey_login_page.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/material.dart';
@@ -11,31 +12,43 @@ class InterceptorPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: BlocProvider<InterceptorBloc>(
-          create: (_) => getIt<InterceptorBloc>()
-            ..add(
-              const InterceptorEvent.onInitialize(),
+    bool _isLoading = false;
+
+    return WillPopScope(
+        child: CustomScaffold.normal(
+          context,
+          body: BlocProvider<InterceptorBloc>(
+            create: (_) => getIt<InterceptorBloc>()
+              ..add(
+                const InterceptorEvent.onInitialize(),
+              ),
+            child: BlocConsumer<InterceptorBloc, InterceptorState>(
+              builder: (context, state) => Container(),
+              listener: (context, state) => state.maybeMap(
+                  orElse: () {},
+                  loading: (e) {
+                    _isLoading = true;
+                    AppUtils.showLoading;
+                  },
+                  retrySuccess: (e) {},
+                  fetchSuccess: (e) {
+                    _isLoading = false;
+                    AppUtils.dismissLoading;
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const SurveyLoginPage(),
+                      ),
+                    );
+                  }),
             ),
-          child: BlocConsumer<InterceptorBloc, InterceptorState>(
-            builder: (context, state) => Container(),
-            listener: (context, state) => state.maybeMap(
-                orElse: () {},
-                loading: (e) => AppUtils.showLoading,
-                retrySuccess: (e) {},
-                fetchSuccess: (e) {
-                  AppUtils.dismissLoading;
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const SurveyLoginPage(),
-                    ),
-                  );
-                }),
           ),
         ),
-      ),
-    );
+        onWillPop: () {
+          if (!_isLoading) {
+            AppUtils.dismissLoading;
+          }
+          return Future.value(!_isLoading ? true : false);
+        });
   }
 }
