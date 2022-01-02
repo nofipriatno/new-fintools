@@ -27,5 +27,8 @@
         "example": "Yudistira Yoga"
       }
     }
-  }
+  },
+  "upcoming_survey": "Upcoming Survey",
+  "today": "Today",
+  "task_completed": "Task Completed"
 }

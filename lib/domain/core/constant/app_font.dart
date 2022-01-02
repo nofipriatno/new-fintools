@@ -9,9 +9,17 @@ class AppFont {
   static TextStyle text10Bold =
       GoogleFonts.roboto(fontSize: 10.sp, fontWeight: FontWeight.bold);
 
+  static TextStyle text11Normal = GoogleFonts.roboto(fontSize: 11.sp);
+  static TextStyle text11Bold =
+      GoogleFonts.roboto(fontSize: 11.sp, fontWeight: FontWeight.bold);
+  static TextStyle text11W500 =
+      GoogleFonts.roboto(fontSize: 11.sp, fontWeight: FontWeight.w500);
+
   static TextStyle text12Normal = GoogleFonts.roboto(fontSize: 12.sp);
   static TextStyle text12Bold =
       GoogleFonts.roboto(fontSize: 12.sp, fontWeight: FontWeight.bold);
+  static TextStyle text12W900 =
+      GoogleFonts.roboto(fontSize: 12.sp, fontWeight: FontWeight.w900);
 
   static TextStyle text13Normal = GoogleFonts.roboto(fontSize: 13.sp);
   static TextStyle text13Bold =

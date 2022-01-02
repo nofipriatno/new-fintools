@@ -8,4 +8,7 @@ class AppAssets {
       'assets/images/images_on_boarding_prove.png';
   static String imagesOnBoarding3 =
       'assets/images/images_on_boarding_survey.png';
+
+  /// Survey Segment
+  static String icSurveyLocation = 'assets/icons/icon_survey_location.png';
 }

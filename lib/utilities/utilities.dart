@@ -1,3 +1,4 @@
+import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
 
@@ -13,7 +14,7 @@ class AppUtils {
   static String? formatDate(DateTime? date,
       {String format = 'yyyy-MM-dd HH:mm:ss'}) {
     if (date == null) return null;
-    final result = DateFormat(format).format(date);
+    final result = DateFormat(format, I10n.current.lang).format(date);
     return result;
   }
 
@@ -27,7 +28,7 @@ class AppUtils {
       {String format = 'yyyy-MM-dd HH:mm:ss'}) {
     if (date == null) return null;
     try {
-      final result = DateFormat(format).parse(date);
+      final result = DateFormat(format, I10n.current.lang).parse(date);
       return result;
     } catch (e) {
       return null;
@@ -48,5 +49,21 @@ class AppUtils {
   static bool isSameMomentAs(DateTime? first, DateTime? second) {
     if (first == null || second == null) return false;
     return first.isAtSameMomentAs(second);
+  }
+
+  static String convertToToday({required DateTime date}) {
+    try {
+      String result = '';
+      DateTime? now = normalizeDateTime(DateTime.now());
+      DateTime? param = normalizeDateTime(date);
+      if (isSameMomentAs(now, param)) {
+        result += '${I10n.current.today} ${formatDate(date)!}';
+      } else {
+        result += formatDate(date, format: 'EEEE dd MMM,yyyy HH:mm')!;
+      }
+      return result;
+    } catch (e) {
+      return 'Error';
+    }
   }
 }

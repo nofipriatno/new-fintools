@@ -1,6 +1,6 @@
 {
   "lang": "id",
-  "app_name" : "Fintools",
+  "app_name": "Fintools",
   "login": "Masuk",
   "product_key_1": "iprove",
   "product_key_2": "collection",
@@ -11,13 +11,13 @@
   "description_prove": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
   "description_collection": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
   "description_survey": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  "input_corp_domain" : "Masukkan Domain Perusahaan",
-  "save" : "Simpan",
+  "input_corp_domain": "Masukkan Domain Perusahaan",
+  "save": "Simpan",
   "button_ok": "OK",
-  "button_cancel" : "Batal",
-  "home" : "Beranda",
-  "history" : "Riwayat",
-  "task" : "Tugas",
+  "button_cancel": "Batal",
+  "home": "Beranda",
+  "history": "Riwayat",
+  "task": "Tugas",
   "survey_greeting_user": "Selamat Datang, {name}",
   "@survey_greeting_user": {
     "description": "Greeting to user login in Survey",
@@ -27,5 +27,8 @@
         "example": "Yudistira Yoga"
       }
     }
-  }
+  },
+  "upcoming_survey": "Survey Selanjutnya",
+  "today": "Hari ini",
+  "task_completed": "Tugas telah selasai"
 }

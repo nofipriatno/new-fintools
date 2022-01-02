@@ -249,6 +249,36 @@ class I10n {
       args: [name],
     );
   }
+
+  /// `Upcoming Survey`
+  String get upcoming_survey {
+    return Intl.message(
+      'Upcoming Survey',
+      name: 'upcoming_survey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today`
+  String get today {
+    return Intl.message(
+      'Today',
+      name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Completed`
+  String get task_completed {
+    return Intl.message(
+      'Task Completed',
+      name: 'task_completed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

@@ -47,6 +47,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_survey": MessageLookupByLibrary.simpleMessage("Survey"),
         "save": MessageLookupByLibrary.simpleMessage("Simpan"),
         "survey_greeting_user": m0,
-        "task": MessageLookupByLibrary.simpleMessage("Tugas")
+        "task": MessageLookupByLibrary.simpleMessage("Tugas"),
+        "task_completed":
+            MessageLookupByLibrary.simpleMessage("Tugas telah selasai"),
+        "today": MessageLookupByLibrary.simpleMessage("Hari ini"),
+        "upcoming_survey":
+            MessageLookupByLibrary.simpleMessage("Survey Selanjutnya")
       };
 }
