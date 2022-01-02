@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Masukkan Domain Perusahaan"),
         "lang": MessageLookupByLibrary.simpleMessage("id"),
         "login": MessageLookupByLibrary.simpleMessage("Masuk"),
+        "logout": MessageLookupByLibrary.simpleMessage("Keluar"),
         "product_collect": MessageLookupByLibrary.simpleMessage("Collection"),
         "product_key_1": MessageLookupByLibrary.simpleMessage("iprove"),
         "product_key_2": MessageLookupByLibrary.simpleMessage("collection"),

@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Input Your Office Domain Address"),
         "lang": MessageLookupByLibrary.simpleMessage("en"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "product_collect": MessageLookupByLibrary.simpleMessage("Collection"),
         "product_key_1": MessageLookupByLibrary.simpleMessage("iprove"),
         "product_key_2": MessageLookupByLibrary.simpleMessage("collection"),

@@ -30,5 +30,6 @@
   },
   "upcoming_survey": "Upcoming Survey",
   "today": "Today",
-  "task_completed": "Task Completed"
+  "task_completed": "Task Completed",
+  "logout": "Logout"
 }

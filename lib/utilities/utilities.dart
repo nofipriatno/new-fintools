@@ -57,7 +57,7 @@ class AppUtils {
       DateTime? now = normalizeDateTime(DateTime.now());
       DateTime? param = normalizeDateTime(date);
       if (isSameMomentAs(now, param)) {
-        result += '${I10n.current.today} ${formatDate(date)!}';
+        result += '${I10n.current.today} ${formatDate(date, format: 'dd MMM,yyyy HH:mm')!}';
       } else {
         result += formatDate(date, format: 'EEEE dd MMM,yyyy HH:mm')!;
       }

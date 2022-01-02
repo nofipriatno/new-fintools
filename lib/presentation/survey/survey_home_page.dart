@@ -1,8 +1,10 @@
 import 'package:fintools/domain/core/constant/app_asset.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
+import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
+import 'package:fintools/presentation/survey/survey_task_page.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/material.dart';
@@ -16,20 +18,24 @@ class SurveyHomePage extends HookWidget {
   Widget build(BuildContext context) {
     TabController controller = useTabController(initialLength: 3);
 
+    useEffect(() {
+      controller.addListener(() {
+        if (controller.indexIsChanging) {
+          if (controller.index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const SurveyTaskPage(),
+              ),
+            ).then((value) => controller.index = 0);
+          }
+        }
+      });
+    }, [controller]);
+
     return CustomScaffold.normal(
       context,
-      appBar: AppBar(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              child: const Text('AH'),
-              backgroundColor: AppColor.gold,
-              radius: 30,
-            ),
-          )
-        ],
-      ),
+      appBar: CustomAppBar.surveyAppBar(context),
       body: DefaultTabController(
         length: controller.length,
         child: Column(

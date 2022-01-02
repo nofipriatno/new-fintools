@@ -30,5 +30,6 @@
   },
   "upcoming_survey": "Survey Selanjutnya",
   "today": "Hari ini",
-  "task_completed": "Tugas telah selasai"
+  "task_completed": "Tugas telah selasai",
+  "logout": "Keluar"
 }

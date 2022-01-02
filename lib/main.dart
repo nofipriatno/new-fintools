@@ -50,6 +50,9 @@ class MyApp extends StatelessWidget {
           primaryColor: AppColor.white,
           backgroundColor: AppColor.white,
           scaffoldBackgroundColor: AppColor.white,
+          primaryIconTheme:
+              IconTheme.of(context).copyWith(color: AppColor.gold),
+          iconTheme: IconTheme.of(context).copyWith(color: AppColor.gold),
           appBarTheme: AppBarTheme.of(context)
               .copyWith(color: AppColor.white, elevation: 0),
         ),
