@@ -31,5 +31,7 @@
   "upcoming_survey": "Survey Selanjutnya",
   "today": "Hari ini",
   "task_completed": "Tugas telah selasai",
-  "logout": "Keluar"
+  "logout": "Keluar",
+  "login_greeting1": "Halo, Selamat Datang!",
+  "login_greeting2": "Senang berjumpa lagi"
 }

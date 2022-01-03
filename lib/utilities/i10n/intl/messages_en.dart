@@ -25,27 +25,36 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_name": MessageLookupByLibrary.simpleMessage("Fintools"),
+        "asset": MessageLookupByLibrary.simpleMessage("Assets"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "client": MessageLookupByLibrary.simpleMessage("Client"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_prove": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+        "document": MessageLookupByLibrary.simpleMessage("Document"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "input_corp_domain": MessageLookupByLibrary.simpleMessage(
             "Input Your Office Domain Address"),
         "lang": MessageLookupByLibrary.simpleMessage("en"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "login_greeting1":
+            MessageLookupByLibrary.simpleMessage("Hello, Welcome!"),
+        "login_greeting2":
+            MessageLookupByLibrary.simpleMessage("Nice Too Meet You Again"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "process": MessageLookupByLibrary.simpleMessage("Processs"),
         "product_collect": MessageLookupByLibrary.simpleMessage("Collection"),
         "product_key_1": MessageLookupByLibrary.simpleMessage("iprove"),
         "product_key_2": MessageLookupByLibrary.simpleMessage("collection"),
         "product_key_3": MessageLookupByLibrary.simpleMessage("survey"),
         "product_prove": MessageLookupByLibrary.simpleMessage("I-Prove"),
         "product_survey": MessageLookupByLibrary.simpleMessage("Survey"),
+        "quisioner": MessageLookupByLibrary.simpleMessage("Quisioner"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "survey_greeting_user": m0,
         "task": MessageLookupByLibrary.simpleMessage("Task"),

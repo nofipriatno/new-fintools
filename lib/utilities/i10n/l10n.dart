@@ -289,6 +289,76 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Hello, Welcome!`
+  String get login_greeting1 {
+    return Intl.message(
+      'Hello, Welcome!',
+      name: 'login_greeting1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nice Too Meet You Again`
+  String get login_greeting2 {
+    return Intl.message(
+      'Nice Too Meet You Again',
+      name: 'login_greeting2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Client`
+  String get client {
+    return Intl.message(
+      'Client',
+      name: 'client',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quisioner`
+  String get quisioner {
+    return Intl.message(
+      'Quisioner',
+      name: 'quisioner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assets`
+  String get asset {
+    return Intl.message(
+      'Assets',
+      name: 'asset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Document`
+  String get document {
+    return Intl.message(
+      'Document',
+      name: 'document',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processs`
+  String get process {
+    return Intl.message(
+      'Processs',
+      name: 'process',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

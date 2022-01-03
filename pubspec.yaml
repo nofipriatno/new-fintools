@@ -58,6 +58,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/images/svg/
     - assets/launcher/
 
 flutter_intl:
@@ -72,7 +73,7 @@ flutter_native_splash:
   image: assets/images/images_splashscreen.png
   android: true
   ios: true
-  android_gravity : fill
+  android_gravity: fill
   ios_content_mode: scaleAspectFill
 
 flutter_icons:

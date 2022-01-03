@@ -31,5 +31,12 @@
   "upcoming_survey": "Upcoming Survey",
   "today": "Today",
   "task_completed": "Task Completed",
-  "logout": "Logout"
+  "logout": "Logout",
+  "login_greeting1": "Hello, Welcome!",
+  "login_greeting2": "Nice Too Meet You Again",
+  "client": "Client",
+  "quisioner": "Quisioner",
+  "asset": "Assets",
+  "document": "Document",
+  "process": "Processs"
 }
