@@ -20,17 +20,40 @@ class SurveyLoginPage extends HookWidget {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter,
                 image: AssetImage(AppAssets.imagesLoginBackground))),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           children: [
-            Center(
-              child: CustomButton.normalButton(I10n.current.login, () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (_) => const SurveyHomePage()),
-                    (route) => false);
-              }),
+            Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.fromLTRB(40, 50, 40, 10),
+                  width: double.infinity,
+                  child: Text(
+                    I10n.current.login_greeting1,
+                    style: AppFont.text20W300.copyWith(color: AppColor.white),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.fromLTRB(40, 0, 40, 10),
+                  width: double.infinity,
+                  child: Text(
+                    I10n.current.login_greeting2,
+                    style: AppFont.text13W300.copyWith(color: AppColor.white),
+                  ),
+                ),
+              ],
+            ),
+            Expanded(
+              child: Center(
+                child: CustomButton.normalButton(I10n.current.login, () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (_) => const SurveyHomePage()),
+                      (route) => false);
+                }),
+              ),
             )
           ],
         ),

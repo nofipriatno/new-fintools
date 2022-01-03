@@ -22,6 +22,8 @@ class AppFont {
       GoogleFonts.roboto(fontSize: 12.sp, fontWeight: FontWeight.w900);
 
   static TextStyle text13Normal = GoogleFonts.roboto(fontSize: 13.sp);
+  static TextStyle text13W300 =
+      GoogleFonts.roboto(fontSize: 13.sp, fontWeight: FontWeight.w300);
   static TextStyle text13Bold =
       GoogleFonts.roboto(fontSize: 13.sp, fontWeight: FontWeight.bold);
 
@@ -29,7 +31,13 @@ class AppFont {
   static TextStyle text14Bold =
       GoogleFonts.roboto(fontSize: 14.sp, fontWeight: FontWeight.bold);
 
-  static TextStyle text18Normal = GoogleFonts.roboto(fontSize: 14.sp);
+  static TextStyle text18Normal = GoogleFonts.roboto(fontSize: 18.sp);
   static TextStyle text18Bold =
       GoogleFonts.roboto(fontSize: 18.sp, fontWeight: FontWeight.bold);
+
+  static TextStyle text20Normal = GoogleFonts.roboto(fontSize: 20.sp);
+  static TextStyle text20W300 =
+      GoogleFonts.roboto(fontSize: 20.sp, fontWeight: FontWeight.w300);
+  static TextStyle text20Bold =
+      GoogleFonts.roboto(fontSize: 20.sp, fontWeight: FontWeight.bold);
 }
