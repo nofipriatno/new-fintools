@@ -4,11 +4,12 @@ import 'package:fintools/domain/core/constant/app_font.dart';
 import 'package:fintools/presentation/component/button/custom_button.dart';
 import 'package:fintools/presentation/component/indicator/custom_shape_one.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
+import 'package:fintools/presentation/component/text_field/custom_text_field.dart';
 import 'package:fintools/presentation/survey/survey_home_page.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SurveyLoginPage extends HookWidget {
   const SurveyLoginPage({Key? key}) : super(key: key);
@@ -45,15 +46,30 @@ class SurveyLoginPage extends HookWidget {
                 ),
               ],
             ),
-            Expanded(
-              child: Center(
-                child: CustomButton.normalButton(I10n.current.login, () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (_) => const SurveyHomePage()),
-                      (route) => false);
-                }),
+            SizedBox(
+              height: ScreenUtil().screenHeight * 0.1,
+            ),
+            CustomTextField.underline(
+                controller: TextEditingController(), title: 'NIK'),
+            CustomTextField.underline(
+                controller: TextEditingController(),
+                title: 'Password',
+                obscure: true),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 70),
+              child: Text(
+                'Forgot Password?',
+                style: AppFont.text13W300.copyWith(color: AppColor.blue),
               ),
+            ),
+            Container(
+              width: ScreenUtil().screenWidth * 0.6,
+              child: CustomButton.normalButton(I10n.current.login, () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => const SurveyHomePage()),
+                    (route) => false);
+              }),
             )
           ],
         ),
