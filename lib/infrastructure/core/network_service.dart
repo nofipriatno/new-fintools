@@ -46,7 +46,7 @@ class NetworkService implements INetworkService {
             final _surveyBox =
                 await baseStorage.openBox(StorageConstants.userSurvey);
             final _surveyData = baseStorage.getJson(_surveyBox,
-                key: AppString.surveyCredential);
+                key: AppString.surveyCredentialKey);
             final credential = _surveyData == null
                 ? null
                 : SurveyLoginResponse.fromJson(_surveyData);
@@ -134,7 +134,7 @@ class NetworkService implements INetworkService {
             final _surveyBox =
                 await baseStorage.openBox(StorageConstants.userSurvey);
             final _surveyData = baseStorage.getJson(_surveyBox,
-                key: AppString.surveyCredential);
+                key: AppString.surveyCredentialKey);
             final credential = _surveyData == null
                 ? null
                 : SurveyLoginResponse.fromJson(_surveyData);
@@ -218,7 +218,7 @@ class NetworkService implements INetworkService {
             final _surveyBox =
                 await baseStorage.openBox(StorageConstants.userSurvey);
             final _surveyData = baseStorage.getJson(_surveyBox,
-                key: AppString.surveyCredential);
+                key: AppString.surveyCredentialKey);
             final credential = _surveyData == null
                 ? null
                 : SurveyLoginResponse.fromJson(_surveyData);
@@ -296,7 +296,7 @@ class NetworkService implements INetworkService {
             final _surveyBox =
                 await baseStorage.openBox(StorageConstants.userSurvey);
             final _surveyData = baseStorage.getJson(_surveyBox,
-                key: AppString.surveyCredential);
+                key: AppString.surveyCredentialKey);
             final credential = _surveyData == null
                 ? null
                 : SurveyLoginResponse.fromJson(_surveyData);

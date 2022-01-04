@@ -14,6 +14,6 @@ class AppString {
   static const String surveyQuisionerLatestKey = 'survey_quisioner_latest_key';
   static const String surveyQuisionerDetailLatestKey =
       'survey_quisioner_detail_latest_key';
-  static const String surveyIsLogin = 'survey_is_login_key';
-  static const String surveyCredential = 'survey_credential_key';
+  static const String surveyIsLoginKey = 'survey_is_login_key';
+  static const String surveyCredentialKey = 'survey_credential_key';
 }
