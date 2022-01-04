@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 enum StorageConstants {
   locale,
+  userSurvey
 }
 
 abstract class IStorage {

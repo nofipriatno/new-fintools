@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:fintools/domain/core/constant/app_endpoint.dart';
+import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/exceptions/exceptions.dart';
 import 'package:fintools/domain/core/failure/generic_failure.dart';
 import 'package:fintools/domain/core/interface/i_network_service.dart';
@@ -22,8 +23,12 @@ class UserSurveyRepository implements IUserSurvey {
       const path = AppEndpoint.surveyLogin;
       final apiResult = await _networkService.postHttp(
           path: path, content: {'nik': username, 'password': password});
-      /// TODO : save token and data, isLogin to local
       SurveyLoginResponse response = SurveyLoginResponse.fromJson(apiResult);
+      final box = await _storage.openBox(StorageConstants.userSurvey);
+      await _storage.setJson(box,
+          key: AppString.surveyCredential, object: apiResult);
+      await _storage.putBool(box, key: AppString.surveyIsLogin, value: true);
+      await _storage.close(box);
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());

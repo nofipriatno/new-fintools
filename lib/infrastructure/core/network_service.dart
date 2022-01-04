@@ -3,9 +3,12 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:fintools/domain/core/constant/app_env.dart';
+import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/exceptions/exceptions.dart';
 import 'package:fintools/domain/core/interface/i_network_service.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
+import 'package:fintools/domain/survey/response/survey_login_response/survey_login_response.dart';
+import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: INetworkService)
@@ -35,19 +38,28 @@ class NetworkService implements INetworkService {
           'accept': ContentType.json.mimeType
         });
         if (useAuth) {
-          // final _box = await baseStorage.openBox(StorageConstants.locale);
-          // final _userInStorage = await baseStorage.getData(
-          //   _box,
-          // );
-          // final _userAuth = UserAuth.fromJson(_userInStorage);
-          // final String? security = _userAuth.token;
-          // final String? security = '_userAuth.token';
-          // if (security != null) {
-          //   headers.addAll({'Authorization': 'Bearer $security'});
-          // }
-          // await baseStorage.close(
-          //   _box,
-          // );
+          final _localeBox = await baseStorage.openBox(StorageConstants.locale);
+          final _product =
+              baseStorage.getString(_localeBox, key: AppString.appProduct);
+          if (_product == I10n.current.product_key_3) {
+            //survey
+            final _surveyBox =
+                await baseStorage.openBox(StorageConstants.userSurvey);
+            final _surveyData = baseStorage.getJson(_surveyBox,
+                key: AppString.surveyCredential);
+            final credential = _surveyData == null
+                ? null
+                : SurveyLoginResponse.fromJson(_surveyData);
+            if (credential?.token != null) {
+              headers.addAll({'Authorization': 'Bearer ${credential?.token}'});
+            }
+            await baseStorage.close(_surveyBox);
+          } else if (_product == I10n.current.product_key_1) {
+            //iprove
+          } else if (_product == I10n.current.product_key_2) {
+            //collection
+          }
+          await baseStorage.close(_localeBox);
         }
 
         if (header != null) {
@@ -114,19 +126,28 @@ class NetworkService implements INetworkService {
           headers.addAll(header);
         }
         if (useAuth) {
-          // final _box = await baseStorage.openBox(StorageConstants.user);
-          //
-          // final _userInStorage = await baseStorage.getData(
-          //   _box,
-          // );
-          // final _userAuth = UserAuth.fromJson(_userInStorage);
-          // final String? security = _userAuth.token;
-          // if (security != null) {
-          //   headers.addAll({'Authorization': 'Bearer $security'});
-          // }
-          // await baseStorage.close(
-          //   _box,
-          // );
+          final _localeBox = await baseStorage.openBox(StorageConstants.locale);
+          final _product =
+              baseStorage.getString(_localeBox, key: AppString.appProduct);
+          if (_product == I10n.current.product_key_3) {
+            //survey
+            final _surveyBox =
+                await baseStorage.openBox(StorageConstants.userSurvey);
+            final _surveyData = baseStorage.getJson(_surveyBox,
+                key: AppString.surveyCredential);
+            final credential = _surveyData == null
+                ? null
+                : SurveyLoginResponse.fromJson(_surveyData);
+            if (credential?.token != null) {
+              headers.addAll({'Authorization': 'Bearer ${credential?.token}'});
+            }
+            await baseStorage.close(_surveyBox);
+          } else if (_product == I10n.current.product_key_1) {
+            //iprove
+          } else if (_product == I10n.current.product_key_2) {
+            //collection
+          }
+          await baseStorage.close(_localeBox);
         }
 
         final Response response = await _dio.post(
@@ -189,18 +210,28 @@ class NetworkService implements INetworkService {
         }
 
         if (useAuth) {
-          // final _box = await baseStorage.openBox(StorageConstants.locale);
-          // final _userInStorage = await baseStorage.getData(
-          //   _box,
-          // );
-          // // final _userAuth = UserAuth.fromJson(_userInStorage);
-          // final String? security = '_userAuth.token';
-          // if (security != null) {
-          //   headers.addAll({'Authorization': 'Bearer $security'});
-          // }
-          // await baseStorage.close(
-          //   _box,
-          // );
+          final _localeBox = await baseStorage.openBox(StorageConstants.locale);
+          final _product =
+              baseStorage.getString(_localeBox, key: AppString.appProduct);
+          if (_product == I10n.current.product_key_3) {
+            //survey
+            final _surveyBox =
+                await baseStorage.openBox(StorageConstants.userSurvey);
+            final _surveyData = baseStorage.getJson(_surveyBox,
+                key: AppString.surveyCredential);
+            final credential = _surveyData == null
+                ? null
+                : SurveyLoginResponse.fromJson(_surveyData);
+            if (credential?.token != null) {
+              headers.addAll({'Authorization': 'Bearer ${credential?.token}'});
+            }
+            await baseStorage.close(_surveyBox);
+          } else if (_product == I10n.current.product_key_1) {
+            //iprove
+          } else if (_product == I10n.current.product_key_2) {
+            //collection
+          }
+          await baseStorage.close(_localeBox);
         }
 
         _dio.options.headers = headers;
@@ -257,18 +288,28 @@ class NetworkService implements INetworkService {
           'Accept': ContentType.binary.mimeType,
         };
         if (useAuth) {
-          // final _box = await baseStorage.openBox(StorageConstants.locale);
-          // final _userInStorage = await baseStorage.getData(
-          //   _box,
-          // );
-          // // final _userAuth = UserAuth.fromJson(_userInStorage);
-          // final String? security = '_userAuth.token';
-          // if (security != null) {
-          //   headers.addAll({'Authorization': 'Bearer $security'});
-          // }
-          // await baseStorage.close(
-          //   _box,
-          // );
+          final _localeBox = await baseStorage.openBox(StorageConstants.locale);
+          final _product =
+              baseStorage.getString(_localeBox, key: AppString.appProduct);
+          if (_product == I10n.current.product_key_3) {
+            //survey
+            final _surveyBox =
+                await baseStorage.openBox(StorageConstants.userSurvey);
+            final _surveyData = baseStorage.getJson(_surveyBox,
+                key: AppString.surveyCredential);
+            final credential = _surveyData == null
+                ? null
+                : SurveyLoginResponse.fromJson(_surveyData);
+            if (credential?.token != null) {
+              headers.addAll({'Authorization': 'Bearer ${credential?.token}'});
+            }
+            await baseStorage.close(_surveyBox);
+          } else if (_product == I10n.current.product_key_1) {
+            //iprove
+          } else if (_product == I10n.current.product_key_2) {
+            //collection
+          }
+          await baseStorage.close(_localeBox);
         }
         final savedDir = Directory(downloadPath);
         final bool hasExisted = await savedDir.exists();
