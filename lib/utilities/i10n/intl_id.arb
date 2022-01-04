@@ -33,5 +33,8 @@
   "task_completed": "Tugas telah selasai",
   "logout": "Keluar",
   "login_greeting1": "Halo, Selamat Datang!",
-  "login_greeting2": "Senang berjumpa lagi"
+  "login_greeting2": "Senang berjumpa lagi",
+  "nik": "NIK",
+  "password": "Kata Sandi",
+  "forget_password_mark": "Lupa Kata Sandi?"
 }

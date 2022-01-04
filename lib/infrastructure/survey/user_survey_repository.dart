@@ -21,12 +21,8 @@ class UserSurveyRepository implements IUserSurvey {
     try {
       const path = AppEndpoint.surveyLogin;
       final apiResult = await _networkService.postHttp(
-          path: path,
-          queryParameter: {
-            'nik': username,
-            'password': password,
-            'branch': '010'
-          });
+          path: path, content: {'nik': username, 'password': password});
+      /// TODO : save token and data, isLogin to local
       SurveyLoginResponse response = SurveyLoginResponse.fromJson(apiResult);
       return Right(response);
     } on FailureException catch (_) {

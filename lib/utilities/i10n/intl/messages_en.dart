@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "document": MessageLookupByLibrary.simpleMessage("Document"),
+        "forget_password_mark":
+            MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "input_corp_domain": MessageLookupByLibrary.simpleMessage(
@@ -47,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_greeting2":
             MessageLookupByLibrary.simpleMessage("Nice Too Meet You Again"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "nik": MessageLookupByLibrary.simpleMessage("NIK"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
         "process": MessageLookupByLibrary.simpleMessage("Processs"),
         "product_collect": MessageLookupByLibrary.simpleMessage("Collection"),
         "product_key_1": MessageLookupByLibrary.simpleMessage("iprove"),

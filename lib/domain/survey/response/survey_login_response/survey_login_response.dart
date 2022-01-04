@@ -2,11 +2,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
 
 part 'survey_login_response.freezed.dart';
+
 part 'survey_login_response.g.dart';
 
-SurveyLoginResponse surveyLoginResponseFromJson(String str) => SurveyLoginResponse.fromJson(json.decode(str));
+SurveyLoginResponse surveyLoginResponseFromJson(String str) =>
+    SurveyLoginResponse.fromJson(json.decode(str));
 
-String surveyLoginResponseToJson(SurveyLoginResponse data) => json.encode(data.toJson());
+String surveyLoginResponseToJson(SurveyLoginResponse data) =>
+    json.encode(data.toJson());
 
 @freezed
 class SurveyLoginResponse with _$SurveyLoginResponse {
@@ -18,7 +21,8 @@ class SurveyLoginResponse with _$SurveyLoginResponse {
     required String? refreshToken,
   }) = _SurveyLoginResponse;
 
-  factory SurveyLoginResponse.fromJson(Map<String, dynamic> json) => _$SurveyLoginResponseFromJson(json);
+  factory SurveyLoginResponse.fromJson(Map<String, dynamic> json) =>
+      _$SurveyLoginResponseFromJson(json);
 }
 
 @freezed
@@ -26,8 +30,8 @@ class UserData with _$UserData {
   const factory UserData({
     required String? nik,
     @JsonKey(name: 'nama') required String? name,
-    @JsonKey(name: 'cCode') required String code,
   }) = _UserData;
 
-  factory UserData.fromJson(Map<String, dynamic> json) => _$UserDataFromJson(json);
+  factory UserData.fromJson(Map<String, dynamic> json) =>
+      _$UserDataFromJson(json);
 }

@@ -31,12 +31,10 @@ Map<String, dynamic> _$$_SurveyLoginResponseToJson(
 _$_UserData _$$_UserDataFromJson(Map<String, dynamic> json) => _$_UserData(
       nik: json['nik'] as String?,
       name: json['nama'] as String?,
-      code: json['cCode'] as String,
     );
 
 Map<String, dynamic> _$$_UserDataToJson(_$_UserData instance) =>
     <String, dynamic>{
       'nik': instance.nik,
       'nama': instance.name,
-      'cCode': instance.code,
     };

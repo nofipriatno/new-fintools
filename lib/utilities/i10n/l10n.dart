@@ -359,6 +359,36 @@ class I10n {
       args: [],
     );
   }
+
+  /// `NIK`
+  String get nik {
+    return Intl.message(
+      'NIK',
+      name: 'nik',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forget Password?`
+  String get forget_password_mark {
+    return Intl.message(
+      'Forget Password?',
+      name: 'forget_password_mark',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

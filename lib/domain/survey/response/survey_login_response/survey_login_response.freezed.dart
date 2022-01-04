@@ -287,13 +287,10 @@ class _$UserDataTearOff {
   const _$UserDataTearOff();
 
   _UserData call(
-      {required String? nik,
-      @JsonKey(name: 'nama') required String? name,
-      @JsonKey(name: 'cCode') required String code}) {
+      {required String? nik, @JsonKey(name: 'nama') required String? name}) {
     return _UserData(
       nik: nik,
       name: name,
-      code: code,
     );
   }
 
@@ -310,8 +307,6 @@ mixin _$UserData {
   String? get nik => throw _privateConstructorUsedError;
   @JsonKey(name: 'nama')
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'cCode')
-  String get code => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -323,10 +318,7 @@ mixin _$UserData {
 abstract class $UserDataCopyWith<$Res> {
   factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
       _$UserDataCopyWithImpl<$Res>;
-  $Res call(
-      {String? nik,
-      @JsonKey(name: 'nama') String? name,
-      @JsonKey(name: 'cCode') String code});
+  $Res call({String? nik, @JsonKey(name: 'nama') String? name});
 }
 
 /// @nodoc
@@ -341,7 +333,6 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
   $Res call({
     Object? nik = freezed,
     Object? name = freezed,
-    Object? code = freezed,
   }) {
     return _then(_value.copyWith(
       nik: nik == freezed
@@ -352,10 +343,6 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -365,10 +352,7 @@ abstract class _$UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
   factory _$UserDataCopyWith(_UserData value, $Res Function(_UserData) then) =
       __$UserDataCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String? nik,
-      @JsonKey(name: 'nama') String? name,
-      @JsonKey(name: 'cCode') String code});
+  $Res call({String? nik, @JsonKey(name: 'nama') String? name});
 }
 
 /// @nodoc
@@ -384,7 +368,6 @@ class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
   $Res call({
     Object? nik = freezed,
     Object? name = freezed,
-    Object? code = freezed,
   }) {
     return _then(_UserData(
       nik: nik == freezed
@@ -395,10 +378,6 @@ class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -407,9 +386,7 @@ class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserData implements _UserData {
   const _$_UserData(
-      {required this.nik,
-      @JsonKey(name: 'nama') required this.name,
-      @JsonKey(name: 'cCode') required this.code});
+      {required this.nik, @JsonKey(name: 'nama') required this.name});
 
   factory _$_UserData.fromJson(Map<String, dynamic> json) =>
       _$$_UserDataFromJson(json);
@@ -419,13 +396,10 @@ class _$_UserData implements _UserData {
   @override
   @JsonKey(name: 'nama')
   final String? name;
-  @override
-  @JsonKey(name: 'cCode')
-  final String code;
 
   @override
   String toString() {
-    return 'UserData(nik: $nik, name: $name, code: $code)';
+    return 'UserData(nik: $nik, name: $name)';
   }
 
   @override
@@ -434,16 +408,14 @@ class _$_UserData implements _UserData {
         (other.runtimeType == runtimeType &&
             other is _UserData &&
             const DeepCollectionEquality().equals(other.nik, nik) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.code, code));
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(nik),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(code));
+      const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -459,8 +431,7 @@ class _$_UserData implements _UserData {
 abstract class _UserData implements UserData {
   const factory _UserData(
       {required String? nik,
-      @JsonKey(name: 'nama') required String? name,
-      @JsonKey(name: 'cCode') required String code}) = _$_UserData;
+      @JsonKey(name: 'nama') required String? name}) = _$_UserData;
 
   factory _UserData.fromJson(Map<String, dynamic> json) = _$_UserData.fromJson;
 
@@ -469,9 +440,6 @@ abstract class _UserData implements UserData {
   @override
   @JsonKey(name: 'nama')
   String? get name;
-  @override
-  @JsonKey(name: 'cCode')
-  String get code;
   @override
   @JsonKey(ignore: true)
   _$UserDataCopyWith<_UserData> get copyWith =>
