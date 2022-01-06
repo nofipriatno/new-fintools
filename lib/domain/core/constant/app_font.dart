@@ -18,6 +18,8 @@ class AppFont {
   static TextStyle text12Normal = GoogleFonts.roboto(fontSize: 12.sp);
   static TextStyle text12Bold =
       GoogleFonts.roboto(fontSize: 12.sp, fontWeight: FontWeight.bold);
+  static TextStyle text12W300 =
+      GoogleFonts.roboto(fontSize: 12.sp, fontWeight: FontWeight.w300);
   static TextStyle text12W900 =
       GoogleFonts.roboto(fontSize: 12.sp, fontWeight: FontWeight.w900);
 

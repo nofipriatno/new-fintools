@@ -20,10 +20,12 @@ class _$QuestionAnswerModelTearOff {
   _QuestionAnswerModel call(
       {required String? id,
       required String? question,
+      required SearchModel? search,
       required TextEditingController? controller}) {
     return _QuestionAnswerModel(
       id: id,
       question: question,
+      search: search,
       controller: controller,
     );
   }
@@ -36,6 +38,7 @@ const $QuestionAnswerModel = _$QuestionAnswerModelTearOff();
 mixin _$QuestionAnswerModel {
   String? get id => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
+  SearchModel? get search => throw _privateConstructorUsedError;
   TextEditingController? get controller => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,7 +51,13 @@ abstract class $QuestionAnswerModelCopyWith<$Res> {
   factory $QuestionAnswerModelCopyWith(
           QuestionAnswerModel value, $Res Function(QuestionAnswerModel) then) =
       _$QuestionAnswerModelCopyWithImpl<$Res>;
-  $Res call({String? id, String? question, TextEditingController? controller});
+  $Res call(
+      {String? id,
+      String? question,
+      SearchModel? search,
+      TextEditingController? controller});
+
+  $SearchModelCopyWith<$Res>? get search;
 }
 
 /// @nodoc
@@ -64,6 +73,7 @@ class _$QuestionAnswerModelCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? question = freezed,
+    Object? search = freezed,
     Object? controller = freezed,
   }) {
     return _then(_value.copyWith(
@@ -75,11 +85,26 @@ class _$QuestionAnswerModelCopyWithImpl<$Res>
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String?,
+      search: search == freezed
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as SearchModel?,
       controller: controller == freezed
           ? _value.controller
           : controller // ignore: cast_nullable_to_non_nullable
               as TextEditingController?,
     ));
+  }
+
+  @override
+  $SearchModelCopyWith<$Res>? get search {
+    if (_value.search == null) {
+      return null;
+    }
+
+    return $SearchModelCopyWith<$Res>(_value.search!, (value) {
+      return _then(_value.copyWith(search: value));
+    });
   }
 }
 
@@ -90,7 +115,14 @@ abstract class _$QuestionAnswerModelCopyWith<$Res>
           $Res Function(_QuestionAnswerModel) then) =
       __$QuestionAnswerModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String? question, TextEditingController? controller});
+  $Res call(
+      {String? id,
+      String? question,
+      SearchModel? search,
+      TextEditingController? controller});
+
+  @override
+  $SearchModelCopyWith<$Res>? get search;
 }
 
 /// @nodoc
@@ -108,6 +140,7 @@ class __$QuestionAnswerModelCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? question = freezed,
+    Object? search = freezed,
     Object? controller = freezed,
   }) {
     return _then(_QuestionAnswerModel(
@@ -119,6 +152,10 @@ class __$QuestionAnswerModelCopyWithImpl<$Res>
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String?,
+      search: search == freezed
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as SearchModel?,
       controller: controller == freezed
           ? _value.controller
           : controller // ignore: cast_nullable_to_non_nullable
@@ -131,18 +168,23 @@ class __$QuestionAnswerModelCopyWithImpl<$Res>
 
 class _$_QuestionAnswerModel implements _QuestionAnswerModel {
   const _$_QuestionAnswerModel(
-      {required this.id, required this.question, required this.controller});
+      {required this.id,
+      required this.question,
+      required this.search,
+      required this.controller});
 
   @override
   final String? id;
   @override
   final String? question;
   @override
+  final SearchModel? search;
+  @override
   final TextEditingController? controller;
 
   @override
   String toString() {
-    return 'QuestionAnswerModel(id: $id, question: $question, controller: $controller)';
+    return 'QuestionAnswerModel(id: $id, question: $question, search: $search, controller: $controller)';
   }
 
   @override
@@ -152,6 +194,7 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
             other is _QuestionAnswerModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.question, question) &&
+            const DeepCollectionEquality().equals(other.search, search) &&
             const DeepCollectionEquality()
                 .equals(other.controller, controller));
   }
@@ -161,6 +204,7 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(question),
+      const DeepCollectionEquality().hash(search),
       const DeepCollectionEquality().hash(controller));
 
   @JsonKey(ignore: true)
@@ -174,12 +218,15 @@ abstract class _QuestionAnswerModel implements QuestionAnswerModel {
   const factory _QuestionAnswerModel(
       {required String? id,
       required String? question,
+      required SearchModel? search,
       required TextEditingController? controller}) = _$_QuestionAnswerModel;
 
   @override
   String? get id;
   @override
   String? get question;
+  @override
+  SearchModel? get search;
   @override
   TextEditingController? get controller;
   @override

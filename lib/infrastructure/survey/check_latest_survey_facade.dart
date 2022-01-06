@@ -77,7 +77,7 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
   Future<Either<GenericFailure, SurveyFormQuisionerMasterResponse>>
       getFormQuisioner() async {
     try {
-      String apiUrl = AppEndpoint.surveyFormUpload;
+      String apiUrl = AppEndpoint.surveyFormQuisioner;
       final apiResult = await _networkService.getHttp(path: apiUrl);
       SurveyFormQuisionerMasterResponse response =
       SurveyFormQuisionerMasterResponse.fromJson(apiResult);

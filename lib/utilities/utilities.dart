@@ -1,4 +1,8 @@
+import 'package:fintools/domain/survey/local/survey_question_model.dart';
+import 'package:fintools/domain/survey/local/survey_search_model.dart';
+import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
 
@@ -57,7 +61,8 @@ class AppUtils {
       DateTime? now = normalizeDateTime(DateTime.now());
       DateTime? param = normalizeDateTime(date);
       if (isSameMomentAs(now, param)) {
-        result += '${I10n.current.today} ${formatDate(date, format: 'dd MMM,yyyy HH:mm')!}';
+        result +=
+            '${I10n.current.today} ${formatDate(date, format: 'dd MMM,yyyy HH:mm')!}';
       } else {
         result += formatDate(date, format: 'EEEE dd MMM,yyyy HH:mm')!;
       }
@@ -65,5 +70,29 @@ class AppUtils {
     } catch (e) {
       return 'Error';
     }
+  }
+
+  static QuestionAnswerModel splitQuestion(FormQuisionerData item) {
+    var question = item.question.trim();
+    var newQuestion = question;
+    List<String> choices = [];
+    if (question.contains("(") && (question.endsWith(")"))) {
+      var rawQuestion = question;
+      newQuestion = rawQuestion.substring(0, rawQuestion.indexOf("("));
+      var rawChoice = rawQuestion
+          .substring(rawQuestion.indexOf("("))
+          .replaceAll("(", "")
+          .replaceAll(")", "");
+      choices = rawChoice.split('/').toList();
+    }
+
+    return QuestionAnswerModel(
+        id: item.id,
+        question: newQuestion,
+        search: SearchModel(
+            value: choices.isEmpty ? '' : choices.first,
+            items: choices,
+            title: newQuestion),
+        controller: TextEditingController());
   }
 }
