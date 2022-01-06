@@ -22,8 +22,11 @@ class SurveyHomeState with _$SurveyHomeState {
 
   const factory SurveyHomeState.fetchAllSuccess(
       {required SurveyTask? upcomingTask,
-        required UserData? user,
+      required UserData? user,
       required List<SurveyTask?> tasks}) = _FetchAllSuccess;
 
   const factory SurveyHomeState.fetchAllFailed() = _FetchAllFailed;
+
+  const factory SurveyHomeState.navigateToSelectedTask({SurveyTask? task}) =
+      _NavigateToSelectedTask;
 }

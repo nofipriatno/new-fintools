@@ -7,6 +7,7 @@ import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
+import 'package:fintools/presentation/survey/survey_task_page.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,14 @@ class SurveyHomePage extends HookWidget {
                     user = e.user?.name;
                     tasks = e.tasks;
                     task = e.upcomingTask;
+                  },
+                  navigateToSelectedTask: (e) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => SurveyTaskPage(task: e.task),
+                      ),
+                    );
                   });
             },
             builder: (context, state) => DefaultTabController(
@@ -61,7 +70,7 @@ class SurveyHomePage extends HookWidget {
                       controller: controller,
                       physics: const NeverScrollableScrollPhysics(),
                       children: [
-                        _tabOne(user: user, task: task, tasks: tasks),
+                        _tabOne(context, user: user, task: task, tasks: tasks),
                         _tabTwo()
                       ],
                     ),
@@ -73,7 +82,7 @@ class SurveyHomePage extends HookWidget {
     );
   }
 
-  Widget _tabOne(
+  Widget _tabOne(BuildContext context,
       {String? user, SurveyTask? task, required List<SurveyTask?> tasks}) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 33),
@@ -88,39 +97,45 @@ class SurveyHomePage extends HookWidget {
               style: AppFont.text18Bold.copyWith(color: AppColor.blue),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppColor.cardBackground),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: ScreenUtil().screenWidth / 3,
-                  child: Text(
-                    I10n.current.upcoming_survey,
-                    style: AppFont.text18Bold.copyWith(color: AppColor.gold),
+          InkWell(
+            onTap: () => context.read<SurveyHomeBloc>().add(
+              SurveyHomeEvent.onSelectedTask(task: task),
+            ),
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColor.cardBackground),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: ScreenUtil().screenWidth / 3,
+                    child: Text(
+                      I10n.current.upcoming_survey,
+                      style: AppFont.text18Bold.copyWith(color: AppColor.gold),
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        task?.name ?? '',
-                        style:
-                            AppFont.text12Bold.copyWith(color: AppColor.blue),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 6),
-                        child: Image.asset(AppAssets.icSurveyLocation),
-                      )
-                    ],
-                  ),
-                )
-              ],
+                  Expanded(
+                    flex: 2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          task?.name ?? '',
+                          style:
+                              AppFont.text12Bold.copyWith(color: AppColor.blue),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6),
+                          child: Image.asset(AppAssets.icSurveyLocation),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           Padding(
@@ -135,9 +150,14 @@ class SurveyHomePage extends HookWidget {
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.only(bottom: 12),
-              itemBuilder: (context, index) => _itemTask(
-                  name: tasks[index]?.name ?? '',
-                  platNumber: tasks[index]?.platNumber ?? ''),
+              itemBuilder: (context, index) => InkWell(
+                onTap: () => context.read<SurveyHomeBloc>().add(
+                      SurveyHomeEvent.onSelectedTask(task: tasks[index]),
+                    ),
+                child: _itemTask(
+                    name: tasks[index]?.name ?? '',
+                    platNumber: tasks[index]?.platNumber ?? ''),
+              ),
               itemCount: tasks.length,
               separatorBuilder: (context, index) => const SizedBox(
                 height: 15,

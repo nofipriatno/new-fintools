@@ -1,5 +1,6 @@
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
+import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
@@ -8,7 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class SurveyTaskPage extends HookWidget {
-  const SurveyTaskPage({Key? key}) : super(key: key);
+  final SurveyTask? task;
+
+  const SurveyTaskPage({Key? key, this.task}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,4 +57,36 @@ class SurveyTaskPage extends HookWidget {
       ),
     );
   }
+
+  // Widget _buildQuisioner(QuisionerAnswerModel model) {
+  //   Widget _child = Container();
+  //   Widget _optionChoice = Container();
+  //   if (model.choice != null) {
+  //     _child = _buildDropDown(model.choice);
+  //     if (model.choice.value.contains(",")) {
+  //       _optionChoice = CustomTextField(
+  //           controller: model.controller,
+  //           title: translation.getText('global_hint'));
+  //     }
+  //   } else {
+  //     _child = CustomTextField(
+  //         padding: 0.0,
+  //         controller: model.controller,
+  //         title: translation.getText('global_hint'));
+  //   }
+  //
+  //   return AdvColumn(
+  //     mainAxisSize: MainAxisSize.min,
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Text(model.question, style: TextStyle(color: Palette.navy)),
+  //       _child,
+  //       if (_optionChoice is CustomTextField) _optionChoice
+  //     ],
+  //   );
+  // }
+
+  // Widget _quisionerItem() {
+  //   return
+  // }
 }

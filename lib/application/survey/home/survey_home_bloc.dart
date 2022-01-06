@@ -24,27 +24,33 @@ class SurveyHomeBloc extends Bloc<SurveyHomeEvent, SurveyHomeState> {
       : super(const _Initial()) {
     on<SurveyHomeEvent>((event, emit) async {
       await event.map(
-          onInitialize: (e) async {
-            emit(const _FetchAllLoading());
-            final result = await _survey.getTask();
-            final box = await _storage.openBox(StorageConstants.userSurvey);
-            final credential =
-                await _storage.getJson(box, key: AppString.surveyCredentialKey);
-            UserData user = UserData.fromJson(credential['data']);
+        onInitialize: (e) async {
+          emit(const _FetchAllLoading());
+          final result = await _survey.getTask();
+          final box = await _storage.openBox(StorageConstants.userSurvey);
+          final credential =
+              await _storage.getJson(box, key: AppString.surveyCredentialKey);
+          UserData user = UserData.fromJson(credential['data']);
 
-            result.fold(
-              (fail) => emit(const _FetchAllFailed()),
-              (success) => emit(
-                _FetchAllSuccess(
-                    tasks: success.data,
-                    upcomingTask: success.data.first,
-                    user: user),
-              ),
-            );
-          },
-          onRefreshTask: (e) async {},
-          onRefreshHistory: (e) async {},
-          onSelectedTask: (e) async {});
+          result.fold(
+            (fail) => emit(const _FetchAllFailed()),
+            (success) => emit(
+              _FetchAllSuccess(
+                  tasks: success.data,
+                  upcomingTask: success.data.first,
+                  user: user),
+            ),
+          );
+        },
+        onRefreshTask: (e) async {},
+        onRefreshHistory: (e) async {},
+        onSelectedTask: (e) async {
+          emit(const _Initial());
+          emit(
+            _NavigateToSelectedTask(task: e.task),
+          );
+        },
+      );
     });
   }
 }
