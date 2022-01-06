@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
@@ -23,22 +21,24 @@ class AppPreferencesBloc
       await event.map(
         onLanguageChanged: (e) async {},
         onCheckedLogin: (e) async {
-          bool isLogin = false;
-          final _localeBox = await  _storage.openBox(StorageConstants.locale);
+          bool _isLogin = false;
+          final _localeBox = await _storage.openBox(StorageConstants.locale);
           final _product =
-           _storage.getString(_localeBox, key: AppString.appProduct);
+              _storage.getString(_localeBox, key: AppString.appProduct);
           if (_product == I10n.current.product_key_3) {
             //survey
             final _surveyBox =
-            await  _storage.openBox(StorageConstants.userSurvey);
-            isLogin = await _storage.getBool(_surveyBox, key: AppString.surveyIsLoginKey);
-            await  _storage.close(_surveyBox);
+                await _storage.openBox(StorageConstants.userSurvey);
+            _isLogin = await _storage.getBool(_surveyBox,
+                key: AppString.surveyIsLoginKey);
+            await _storage.close(_surveyBox);
           } else if (_product == I10n.current.product_key_1) {
             //iprove
           } else if (_product == I10n.current.product_key_2) {
             //collection
           }
-          await  _storage.close(_localeBox);
+          await _storage.close(_localeBox);
+          emit(_CheckSignInUser(product: _product ?? '', isLogin: _isLogin));
         },
       );
     });

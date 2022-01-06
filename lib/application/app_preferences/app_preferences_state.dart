@@ -4,7 +4,8 @@ part of 'app_preferences_bloc.dart';
 class AppPreferencesState with _$AppPreferencesState {
   const factory AppPreferencesState.initial() = _Initial;
 
-  const factory AppPreferencesState.checkSignInUserSuccess() = _CheckSignInUser;
+  const factory AppPreferencesState.checkSignInUserSuccess(
+      {required String product, required bool isLogin}) = _CheckSignInUser;
 
   const factory AppPreferencesState.changedLanguageSuccess() =
       _ChangedLanguageSuccess;

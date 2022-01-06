@@ -306,8 +306,12 @@ class _$AppPreferencesStateTearOff {
     return const _Initial();
   }
 
-  _CheckSignInUser checkSignInUserSuccess() {
-    return const _CheckSignInUser();
+  _CheckSignInUser checkSignInUserSuccess(
+      {required String product, required bool isLogin}) {
+    return _CheckSignInUser(
+      product: product,
+      isLogin: isLogin,
+    );
   }
 
   _ChangedLanguageSuccess changedLanguageSuccess() {
@@ -327,7 +331,8 @@ mixin _$AppPreferencesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() checkSignInUserSuccess,
+    required TResult Function(String product, bool isLogin)
+        checkSignInUserSuccess,
     required TResult Function() changedLanguageSuccess,
     required TResult Function() loading,
   }) =>
@@ -335,7 +340,7 @@ mixin _$AppPreferencesState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
   }) =>
@@ -343,7 +348,7 @@ mixin _$AppPreferencesState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
     required TResult orElse(),
@@ -434,7 +439,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() checkSignInUserSuccess,
+    required TResult Function(String product, bool isLogin)
+        checkSignInUserSuccess,
     required TResult Function() changedLanguageSuccess,
     required TResult Function() loading,
   }) {
@@ -445,7 +451,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
   }) {
@@ -456,7 +462,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
     required TResult orElse(),
@@ -515,6 +521,7 @@ abstract class _$CheckSignInUserCopyWith<$Res> {
   factory _$CheckSignInUserCopyWith(
           _CheckSignInUser value, $Res Function(_CheckSignInUser) then) =
       __$CheckSignInUserCopyWithImpl<$Res>;
+  $Res call({String product, bool isLogin});
 }
 
 /// @nodoc
@@ -527,60 +534,94 @@ class __$CheckSignInUserCopyWithImpl<$Res>
 
   @override
   _CheckSignInUser get _value => super._value as _CheckSignInUser;
+
+  @override
+  $Res call({
+    Object? product = freezed,
+    Object? isLogin = freezed,
+  }) {
+    return _then(_CheckSignInUser(
+      product: product == freezed
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLogin: isLogin == freezed
+          ? _value.isLogin
+          : isLogin // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_CheckSignInUser implements _CheckSignInUser {
-  const _$_CheckSignInUser();
+  const _$_CheckSignInUser({required this.product, required this.isLogin});
+
+  @override
+  final String product;
+  @override
+  final bool isLogin;
 
   @override
   String toString() {
-    return 'AppPreferencesState.checkSignInUserSuccess()';
+    return 'AppPreferencesState.checkSignInUserSuccess(product: $product, isLogin: $isLogin)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _CheckSignInUser);
+        (other.runtimeType == runtimeType &&
+            other is _CheckSignInUser &&
+            const DeepCollectionEquality().equals(other.product, product) &&
+            const DeepCollectionEquality().equals(other.isLogin, isLogin));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(product),
+      const DeepCollectionEquality().hash(isLogin));
+
+  @JsonKey(ignore: true)
+  @override
+  _$CheckSignInUserCopyWith<_CheckSignInUser> get copyWith =>
+      __$CheckSignInUserCopyWithImpl<_CheckSignInUser>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() checkSignInUserSuccess,
+    required TResult Function(String product, bool isLogin)
+        checkSignInUserSuccess,
     required TResult Function() changedLanguageSuccess,
     required TResult Function() loading,
   }) {
-    return checkSignInUserSuccess();
+    return checkSignInUserSuccess(product, isLogin);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
   }) {
-    return checkSignInUserSuccess?.call();
+    return checkSignInUserSuccess?.call(product, isLogin);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (checkSignInUserSuccess != null) {
-      return checkSignInUserSuccess();
+      return checkSignInUserSuccess(product, isLogin);
     }
     return orElse();
   }
@@ -625,7 +666,14 @@ class _$_CheckSignInUser implements _CheckSignInUser {
 }
 
 abstract class _CheckSignInUser implements AppPreferencesState {
-  const factory _CheckSignInUser() = _$_CheckSignInUser;
+  const factory _CheckSignInUser(
+      {required String product, required bool isLogin}) = _$_CheckSignInUser;
+
+  String get product;
+  bool get isLogin;
+  @JsonKey(ignore: true)
+  _$CheckSignInUserCopyWith<_CheckSignInUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -670,7 +718,8 @@ class _$_ChangedLanguageSuccess implements _ChangedLanguageSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() checkSignInUserSuccess,
+    required TResult Function(String product, bool isLogin)
+        checkSignInUserSuccess,
     required TResult Function() changedLanguageSuccess,
     required TResult Function() loading,
   }) {
@@ -681,7 +730,7 @@ class _$_ChangedLanguageSuccess implements _ChangedLanguageSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
   }) {
@@ -692,7 +741,7 @@ class _$_ChangedLanguageSuccess implements _ChangedLanguageSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
     required TResult orElse(),
@@ -786,7 +835,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() checkSignInUserSuccess,
+    required TResult Function(String product, bool isLogin)
+        checkSignInUserSuccess,
     required TResult Function() changedLanguageSuccess,
     required TResult Function() loading,
   }) {
@@ -797,7 +847,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
   }) {
@@ -808,7 +858,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? checkSignInUserSuccess,
+    TResult Function(String product, bool isLogin)? checkSignInUserSuccess,
     TResult Function()? changedLanguageSuccess,
     TResult Function()? loading,
     required TResult orElse(),
