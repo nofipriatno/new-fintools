@@ -1,9 +1,11 @@
+import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/local/survey_search_model.dart';
 import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 
 class AppUtils {
@@ -72,7 +74,8 @@ class AppUtils {
     }
   }
 
-  static QuestionAnswerModel splitQuestion(FormQuisionerData item, String taskId) {
+  static QuestionAnswerModel splitQuestion(
+      FormQuisionerData item, String taskId, IStorage storage, Box box, ) {
     var question = item.question.trim();
     var newQuestion = question;
     List<String> choices = [];
@@ -86,7 +89,7 @@ class AppUtils {
       choices = rawChoice.split('/').toList();
     }
 
-    return QuestionAnswerModel(
+    var a = QuestionAnswerModel(
         id: item.id,
         question: newQuestion,
         search: SearchModel(
@@ -94,5 +97,14 @@ class AppUtils {
             items: choices,
             title: newQuestion),
         controller: TextEditingController());
+
+    a.copyWith(
+        controller: a.controller
+          ?..addListener(() async {
+            storage.putDynamicData(box,
+                key: taskId + item.id, value: a.controller?.text);
+          }));
+
+    return a;
   }
 }
