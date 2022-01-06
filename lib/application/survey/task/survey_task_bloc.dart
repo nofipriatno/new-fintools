@@ -26,8 +26,9 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
       await event.map(onInitialize: (e) async {
         emit(const _Loading());
         final questioner = await _database.getSurveyQuisioner();
-        final question =
-            questioner.map((e) => AppUtils.splitQuestion(e)).toList();
+        final question = questioner
+            .map((q) => AppUtils.splitQuestion(q, e.taskId ?? ''))
+            .toList();
         emit(_CheckClientSuccess(questions: question));
       });
     });

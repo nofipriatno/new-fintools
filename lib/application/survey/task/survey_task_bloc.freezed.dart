@@ -17,8 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SurveyTaskEventTearOff {
   const _$SurveyTaskEventTearOff();
 
-  _OnInitialize onInitialize() {
-    return const _OnInitialize();
+  _OnInitialize onInitialize({required String? taskId}) {
+    return _OnInitialize(
+      taskId: taskId,
+    );
   }
 }
 
@@ -27,19 +29,21 @@ const $SurveyTaskEvent = _$SurveyTaskEventTearOff();
 
 /// @nodoc
 mixin _$SurveyTaskEvent {
+  String? get taskId => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onInitialize,
+    required TResult Function(String? taskId) onInitialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onInitialize,
+    TResult Function(String? taskId)? onInitialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onInitialize,
+    TResult Function(String? taskId)? onInitialize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +63,10 @@ mixin _$SurveyTaskEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SurveyTaskEventCopyWith<SurveyTaskEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -66,6 +74,7 @@ abstract class $SurveyTaskEventCopyWith<$Res> {
   factory $SurveyTaskEventCopyWith(
           SurveyTaskEvent value, $Res Function(SurveyTaskEvent) then) =
       _$SurveyTaskEventCopyWithImpl<$Res>;
+  $Res call({String? taskId});
 }
 
 /// @nodoc
@@ -76,13 +85,28 @@ class _$SurveyTaskEventCopyWithImpl<$Res>
   final SurveyTaskEvent _value;
   // ignore: unused_field
   final $Res Function(SurveyTaskEvent) _then;
+
+  @override
+  $Res call({
+    Object? taskId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      taskId: taskId == freezed
+          ? _value.taskId
+          : taskId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$OnInitializeCopyWith<$Res> {
+abstract class _$OnInitializeCopyWith<$Res>
+    implements $SurveyTaskEventCopyWith<$Res> {
   factory _$OnInitializeCopyWith(
           _OnInitialize value, $Res Function(_OnInitialize) then) =
       __$OnInitializeCopyWithImpl<$Res>;
+  @override
+  $Res call({String? taskId});
 }
 
 /// @nodoc
@@ -95,51 +119,74 @@ class __$OnInitializeCopyWithImpl<$Res>
 
   @override
   _OnInitialize get _value => super._value as _OnInitialize;
+
+  @override
+  $Res call({
+    Object? taskId = freezed,
+  }) {
+    return _then(_OnInitialize(
+      taskId: taskId == freezed
+          ? _value.taskId
+          : taskId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_OnInitialize implements _OnInitialize {
-  const _$_OnInitialize();
+  const _$_OnInitialize({required this.taskId});
+
+  @override
+  final String? taskId;
 
   @override
   String toString() {
-    return 'SurveyTaskEvent.onInitialize()';
+    return 'SurveyTaskEvent.onInitialize(taskId: $taskId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _OnInitialize);
+        (other.runtimeType == runtimeType &&
+            other is _OnInitialize &&
+            const DeepCollectionEquality().equals(other.taskId, taskId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(taskId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnInitializeCopyWith<_OnInitialize> get copyWith =>
+      __$OnInitializeCopyWithImpl<_OnInitialize>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onInitialize,
+    required TResult Function(String? taskId) onInitialize,
   }) {
-    return onInitialize();
+    return onInitialize(taskId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onInitialize,
+    TResult Function(String? taskId)? onInitialize,
   }) {
-    return onInitialize?.call();
+    return onInitialize?.call(taskId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onInitialize,
+    TResult Function(String? taskId)? onInitialize,
     required TResult orElse(),
   }) {
     if (onInitialize != null) {
-      return onInitialize();
+      return onInitialize(taskId);
     }
     return orElse();
   }
@@ -174,7 +221,14 @@ class _$_OnInitialize implements _OnInitialize {
 }
 
 abstract class _OnInitialize implements SurveyTaskEvent {
-  const factory _OnInitialize() = _$_OnInitialize;
+  const factory _OnInitialize({required String? taskId}) = _$_OnInitialize;
+
+  @override
+  String? get taskId;
+  @override
+  @JsonKey(ignore: true)
+  _$OnInitializeCopyWith<_OnInitialize> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

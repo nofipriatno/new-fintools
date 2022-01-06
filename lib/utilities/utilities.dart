@@ -72,7 +72,7 @@ class AppUtils {
     }
   }
 
-  static QuestionAnswerModel splitQuestion(FormQuisionerData item) {
+  static QuestionAnswerModel splitQuestion(FormQuisionerData item, String taskId) {
     var question = item.question.trim();
     var newQuestion = question;
     List<String> choices = [];

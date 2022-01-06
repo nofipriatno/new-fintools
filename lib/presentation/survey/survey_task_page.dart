@@ -1,3 +1,4 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
@@ -23,8 +24,10 @@ class SurveyTaskPage extends HookWidget {
     List<QuestionAnswerModel> questions = [];
 
     return BlocProvider<SurveyTaskBloc>(
-      create: (_) =>
-          getIt<SurveyTaskBloc>()..add(const SurveyTaskEvent.onInitialize()),
+      create: (_) => getIt<SurveyTaskBloc>()
+        ..add(
+          SurveyTaskEvent.onInitialize(taskId: task?.taskId),
+        ),
       child: BlocConsumer<SurveyTaskBloc, SurveyTaskState>(
         listener: (context, state) {
           state.maybeMap(
@@ -85,34 +88,6 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-// Widget _buildQuisioner(QuisionerAnswerModel model) {
-//   Widget _child = Container();
-//   Widget _optionChoice = Container();
-//   if (model.choice != null) {
-//     _child = _buildDropDown(model.choice);
-//     if (model.choice.value.contains(",")) {
-//       _optionChoice = CustomTextField(
-//           controller: model.controller,
-//           title: translation.getText('global_hint'));
-//     }
-//   } else {
-//     _child = CustomTextField(
-//         padding: 0.0,
-//         controller: model.controller,
-//         title: translation.getText('global_hint'));
-//   }
-//
-//   return AdvColumn(
-//     mainAxisSize: MainAxisSize.min,
-//     crossAxisAlignment: CrossAxisAlignment.start,
-//     children: [
-//       Text(model.question, style: TextStyle(color: Palette.navy)),
-//       _child,
-//       if (_optionChoice is CustomTextField) _optionChoice
-//     ],
-//   );
-// }
-
   Widget _quisionerItem(QuestionAnswerModel item) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +96,20 @@ class SurveyTaskPage extends HookWidget {
           item.question ?? '',
           style: AppFont.text12W300.copyWith(color: AppColor.blue),
         ),
-        TextField(controller: item.controller)
+        item.search?.items?.isEmpty == true
+            ? TextField(controller: item.controller)
+            : DropdownSearch<String>(
+                mode: Mode.MENU,
+                dropdownSearchDecoration: InputDecoration(
+                    contentPadding: EdgeInsets.zero,
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(color: AppColor.itemSurveyDivider),
+                    )),
+                items: item.search?.items,
+                onChanged: (e) {
+                  // TODO : save value here
+                },
+                selectedItem: item.search?.value),
       ],
     );
   }
