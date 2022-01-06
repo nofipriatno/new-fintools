@@ -2,6 +2,7 @@ import 'package:fintools/application/survey/home/survey_home_bloc.dart';
 import 'package:fintools/domain/core/constant/app_asset.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
+import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
@@ -19,6 +20,9 @@ class SurveyHomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     TabController controller = useTabController(initialLength: 2);
+    String? user;
+    SurveyTask? task;
+    List<SurveyTask?> tasks = [];
 
     return CustomScaffold.normal(
       context,
@@ -31,7 +35,9 @@ class SurveyHomePage extends HookWidget {
               state.maybeMap(
                   orElse: () {},
                   fetchAllSuccess: (e) {
-                    print('print => ${e.upcomingTask?.taskId}');
+                    user = e.user?.name;
+                    tasks = e.tasks;
+                    task = e.upcomingTask;
                   });
             },
             builder: (context, state) => DefaultTabController(
@@ -54,7 +60,10 @@ class SurveyHomePage extends HookWidget {
                     child: TabBarView(
                       controller: controller,
                       physics: const NeverScrollableScrollPhysics(),
-                      children: [_tabOne(), _tabTwo()],
+                      children: [
+                        _tabOne(user: user, task: task, tasks: tasks),
+                        _tabTwo()
+                      ],
                     ),
                   )
                 ],
@@ -64,7 +73,8 @@ class SurveyHomePage extends HookWidget {
     );
   }
 
-  Widget _tabOne() {
+  Widget _tabOne(
+      {String? user, SurveyTask? task, required List<SurveyTask?> tasks}) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 33),
       child: Column(
@@ -74,7 +84,7 @@ class SurveyHomePage extends HookWidget {
             padding:
                 const EdgeInsets.symmetric(vertical: 19, horizontal: 45 - 33),
             child: Text(
-              I10n.current.survey_greeting_user('Dhyanissa'),
+              I10n.current.survey_greeting_user(user ?? ''),
               style: AppFont.text18Bold.copyWith(color: AppColor.blue),
             ),
           ),
@@ -99,7 +109,7 @@ class SurveyHomePage extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'Suhartono Herman',
+                        task?.name ?? '',
                         style:
                             AppFont.text12Bold.copyWith(color: AppColor.blue),
                       ),
@@ -126,9 +136,9 @@ class SurveyHomePage extends HookWidget {
               physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.only(bottom: 12),
               itemBuilder: (context, index) => _itemTask(
-                  name: 'Name $index',
-                  platNumber: 'F $index$index$index$index XX'),
-              itemCount: 10,
+                  name: tasks[index]?.name ?? '',
+                  platNumber: tasks[index]?.platNumber ?? ''),
+              itemCount: tasks.length,
               separatorBuilder: (context, index) => const SizedBox(
                 height: 15,
               ),
