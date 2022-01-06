@@ -217,7 +217,7 @@ class _$SurveyTaskTearOff {
   const _$SurveyTaskTearOff();
 
   _SurveyTask call(
-      {required String? taskId,
+      {@JsonKey(name: 'task_id') required String? taskId,
       required String? nik,
       @JsonKey(name: 'nama') required String? name,
       @JsonKey(name: 'nopol') required String? platNumber,
@@ -247,6 +247,7 @@ const $SurveyTask = _$SurveyTaskTearOff();
 
 /// @nodoc
 mixin _$SurveyTask {
+  @JsonKey(name: 'task_id')
   String? get taskId => throw _privateConstructorUsedError;
   String? get nik => throw _privateConstructorUsedError;
   @JsonKey(name: 'nama')
@@ -272,7 +273,7 @@ abstract class $SurveyTaskCopyWith<$Res> {
           SurveyTask value, $Res Function(SurveyTask) then) =
       _$SurveyTaskCopyWithImpl<$Res>;
   $Res call(
-      {String? taskId,
+      {@JsonKey(name: 'task_id') String? taskId,
       String? nik,
       @JsonKey(name: 'nama') String? name,
       @JsonKey(name: 'nopol') String? platNumber,
@@ -345,7 +346,7 @@ abstract class _$SurveyTaskCopyWith<$Res> implements $SurveyTaskCopyWith<$Res> {
       __$SurveyTaskCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? taskId,
+      {@JsonKey(name: 'task_id') String? taskId,
       String? nik,
       @JsonKey(name: 'nama') String? name,
       @JsonKey(name: 'nopol') String? platNumber,
@@ -417,7 +418,7 @@ class __$SurveyTaskCopyWithImpl<$Res> extends _$SurveyTaskCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SurveyTask implements _SurveyTask {
   const _$_SurveyTask(
-      {required this.taskId,
+      {@JsonKey(name: 'task_id') required this.taskId,
       required this.nik,
       @JsonKey(name: 'nama') required this.name,
       @JsonKey(name: 'nopol') required this.platNumber,
@@ -430,6 +431,7 @@ class _$_SurveyTask implements _SurveyTask {
       _$$_SurveyTaskFromJson(json);
 
   @override
+  @JsonKey(name: 'task_id')
   final String? taskId;
   @override
   final String? nik;
@@ -496,7 +498,7 @@ class _$_SurveyTask implements _SurveyTask {
 
 abstract class _SurveyTask implements SurveyTask {
   const factory _SurveyTask(
-      {required String? taskId,
+      {@JsonKey(name: 'task_id') required String? taskId,
       required String? nik,
       @JsonKey(name: 'nama') required String? name,
       @JsonKey(name: 'nopol') required String? platNumber,
@@ -509,6 +511,7 @@ abstract class _SurveyTask implements SurveyTask {
       _$_SurveyTask.fromJson;
 
   @override
+  @JsonKey(name: 'task_id')
   String? get taskId;
   @override
   String? get nik;

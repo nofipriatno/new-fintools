@@ -27,7 +27,7 @@ Map<String, dynamic> _$$_SurveyTaskListResponseToJson(
 
 _$_SurveyTask _$$_SurveyTaskFromJson(Map<String, dynamic> json) =>
     _$_SurveyTask(
-      taskId: json['taskId'] as String?,
+      taskId: json['task_id'] as String?,
       nik: json['nik'] as String?,
       name: json['nama'] as String?,
       platNumber: json['nopol'] as String?,
@@ -41,7 +41,7 @@ _$_SurveyTask _$$_SurveyTaskFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_SurveyTaskToJson(_$_SurveyTask instance) =>
     <String, dynamic>{
-      'taskId': instance.taskId,
+      'task_id': instance.taskId,
       'nik': instance.nik,
       'nama': instance.name,
       'nopol': instance.platNumber,

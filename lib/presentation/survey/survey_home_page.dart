@@ -1,13 +1,15 @@
+import 'package:fintools/application/survey/home/survey_home_bloc.dart';
 import 'package:fintools/domain/core/constant/app_asset.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
+import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
-import 'package:fintools/presentation/survey/survey_task_page.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,52 +18,49 @@ class SurveyHomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    TabController controller = useTabController(initialLength: 3);
-
-    useEffect(() {
-      controller.addListener(() {
-        if (controller.indexIsChanging) {
-          if (controller.index == 2) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const SurveyTaskPage(),
-              ),
-            ).then((value) => controller.index = 0);
-          }
-        }
-      });
-    }, [controller]);
+    TabController controller = useTabController(initialLength: 2);
 
     return CustomScaffold.normal(
       context,
       appBar: CustomAppBar.surveyAppBar(context),
-      body: DefaultTabController(
-        length: controller.length,
-        child: Column(
-          children: [
-            TabBar(
-              controller: controller,
-              tabs: [
-                Tab(text: I10n.current.home),
-                Tab(text: I10n.current.history),
-                Tab(text: I10n.current.task),
-              ],
-              labelStyle: AppFont.text13Bold,
-              labelColor: AppColor.gold,
-              unselectedLabelColor: AppColor.blue,
-              indicator: CircleTabIndicator(color: AppColor.gold, radius: 3),
-            ),
-            Flexible(
-              child: TabBarView(
-                controller: controller,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [_tabOne(), _tabTwo(), _tabThree()],
+      body: BlocProvider<SurveyHomeBloc>(
+          create: (_) => getIt<SurveyHomeBloc>()
+            ..add(const SurveyHomeEvent.onInitialize()),
+          child: BlocConsumer<SurveyHomeBloc, SurveyHomeState>(
+            listener: (context, state) {
+              state.maybeMap(
+                  orElse: () {},
+                  fetchAllSuccess: (e) {
+                    print('print => ${e.upcomingTask?.taskId}');
+                  });
+            },
+            builder: (context, state) => DefaultTabController(
+              length: controller.length,
+              child: Column(
+                children: [
+                  TabBar(
+                    controller: controller,
+                    tabs: [
+                      Tab(text: I10n.current.home),
+                      Tab(text: I10n.current.history)
+                    ],
+                    labelStyle: AppFont.text13Bold,
+                    labelColor: AppColor.gold,
+                    unselectedLabelColor: AppColor.blue,
+                    indicator:
+                        CircleTabIndicator(color: AppColor.gold, radius: 3),
+                  ),
+                  Flexible(
+                    child: TabBarView(
+                      controller: controller,
+                      physics: const NeverScrollableScrollPhysics(),
+                      children: [_tabOne(), _tabTwo()],
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
+          )),
     );
   }
 
@@ -172,10 +171,6 @@ class SurveyHomePage extends HookWidget {
         ],
       ),
     );
-  }
-
-  Widget _tabThree() {
-    return Container(color: AppColor.transparent);
   }
 
   Widget _itemTask({required String name, required String platNumber}) {

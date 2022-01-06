@@ -26,7 +26,7 @@ class UserSurveyRepository implements IUserSurvey {
       SurveyLoginResponse response = SurveyLoginResponse.fromJson(apiResult);
       final box = await _storage.openBox(StorageConstants.userSurvey);
       await _storage.setJson(box,
-          key: AppString.surveyCredentialKey, object: apiResult);
+          key: AppString.surveyCredentialKey, object: response.toJson());
       await _storage.putBool(box, key: AppString.surveyIsLoginKey, value: true);
       await _storage.close(box);
       return Right(response);

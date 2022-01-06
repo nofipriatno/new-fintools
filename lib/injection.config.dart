@@ -13,21 +13,24 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:onesignal_flutter/onesignal_flutter.dart' as _i12;
 
 import 'application/app_preferences/app_preferences_bloc.dart' as _i14;
-import 'application/interceptor/interceptor_bloc.dart' as _i23;
+import 'application/interceptor/interceptor_bloc.dart' as _i26;
 import 'application/on_boarding/on_boarding_bloc.dart' as _i11;
-import 'application/survey/login/survey_login_bloc.dart' as _i20;
+import 'application/survey/home/survey_home_bloc.dart' as _i22;
+import 'application/survey/login/survey_login_bloc.dart' as _i23;
 import 'domain/core/constant/app_env.dart' as _i4;
 import 'domain/core/interface/i_database.dart' as _i6;
 import 'domain/core/interface/i_network_service.dart' as _i16;
 import 'domain/core/interface/i_storage.dart' as _i8;
-import 'domain/survey/interface/i_check_latest_survey.dart' as _i21;
-import 'domain/survey/interface/i_user_survey.dart' as _i18;
+import 'domain/survey/interface/i_check_latest_survey.dart' as _i24;
+import 'domain/survey/interface/i_survey.dart' as _i18;
+import 'domain/survey/interface/i_user_survey.dart' as _i20;
 import 'infrastructure/core/database.dart' as _i7;
 import 'infrastructure/core/network_service.dart' as _i17;
-import 'infrastructure/core/register_module.dart' as _i24;
+import 'infrastructure/core/register_module.dart' as _i27;
 import 'infrastructure/core/storage.dart' as _i9;
-import 'infrastructure/survey/check_latest_survey_facade.dart' as _i22;
-import 'infrastructure/survey/user_survey_repository.dart' as _i19;
+import 'infrastructure/survey/check_latest_survey_facade.dart' as _i25;
+import 'infrastructure/survey/survey_repository.dart' as _i19;
+import 'infrastructure/survey/user_survey_repository.dart' as _i21;
 import 'simple_bloc_observer.dart' as _i13;
 
 const String _prod = 'prod';
@@ -65,18 +68,22 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i8.IStorage>(),
       get<_i3.Connectivity>(),
       get<_i4.Env>()));
-  gh.lazySingleton<_i18.IUserSurvey>(() => _i19.UserSurveyRepository(
+  gh.lazySingleton<_i18.ISurvey>(
+      () => _i19.SurveyRepository(get<_i16.INetworkService>()));
+  gh.lazySingleton<_i20.IUserSurvey>(() => _i21.UserSurveyRepository(
       get<_i16.INetworkService>(), get<_i8.IStorage>()));
-  gh.factory<_i20.SurveyLoginBloc>(
-      () => _i20.SurveyLoginBloc(get<_i18.IUserSurvey>()));
-  gh.lazySingleton<_i21.ICheckLatestSurveyFacade>(() =>
-      _i22.CheckLatestSurveyFacade(get<_i16.INetworkService>(),
+  gh.factory<_i22.SurveyHomeBloc>(() => _i22.SurveyHomeBloc(
+      get<_i18.ISurvey>(), get<_i8.IStorage>(), get<_i6.IDatabase>()));
+  gh.factory<_i23.SurveyLoginBloc>(
+      () => _i23.SurveyLoginBloc(get<_i20.IUserSurvey>()));
+  gh.lazySingleton<_i24.ICheckLatestSurveyFacade>(() =>
+      _i25.CheckLatestSurveyFacade(get<_i16.INetworkService>(),
           get<_i8.IStorage>(), get<_i6.IDatabase>()));
-  gh.factory<_i23.InterceptorBloc>(() => _i23.InterceptorBloc(
+  gh.factory<_i26.InterceptorBloc>(() => _i26.InterceptorBloc(
       get<_i8.IStorage>(),
-      get<_i21.ICheckLatestSurveyFacade>(),
+      get<_i24.ICheckLatestSurveyFacade>(),
       get<_i6.IDatabase>()));
   return get;
 }
 
-class _$RegisterModule extends _i24.RegisterModule {}
+class _$RegisterModule extends _i27.RegisterModule {}

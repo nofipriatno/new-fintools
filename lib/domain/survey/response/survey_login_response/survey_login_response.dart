@@ -17,8 +17,7 @@ class SurveyLoginResponse with _$SurveyLoginResponse {
     required int? status,
     required String? message,
     required UserData? data,
-    required String? token,
-    required String? refreshToken,
+    required String? token
   }) = _SurveyLoginResponse;
 
   factory SurveyLoginResponse.fromJson(Map<String, dynamic> json) =>
@@ -28,8 +27,8 @@ class SurveyLoginResponse with _$SurveyLoginResponse {
 @freezed
 class UserData with _$UserData {
   const factory UserData({
-    required String? nik,
-    @JsonKey(name: 'nama') required String? name,
+    @JsonKey(name: 'Nik') required String? nik,
+    @JsonKey(name: 'Nama') required String? name,
   }) = _UserData;
 
   factory UserData.fromJson(Map<String, dynamic> json) =>

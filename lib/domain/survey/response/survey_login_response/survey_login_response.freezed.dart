@@ -25,14 +25,12 @@ class _$SurveyLoginResponseTearOff {
       {required int? status,
       required String? message,
       required UserData? data,
-      required String? token,
-      required String? refreshToken}) {
+      required String? token}) {
     return _SurveyLoginResponse(
       status: status,
       message: message,
       data: data,
       token: token,
-      refreshToken: refreshToken,
     );
   }
 
@@ -50,7 +48,6 @@ mixin _$SurveyLoginResponse {
   String? get message => throw _privateConstructorUsedError;
   UserData? get data => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
-  String? get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,12 +60,7 @@ abstract class $SurveyLoginResponseCopyWith<$Res> {
   factory $SurveyLoginResponseCopyWith(
           SurveyLoginResponse value, $Res Function(SurveyLoginResponse) then) =
       _$SurveyLoginResponseCopyWithImpl<$Res>;
-  $Res call(
-      {int? status,
-      String? message,
-      UserData? data,
-      String? token,
-      String? refreshToken});
+  $Res call({int? status, String? message, UserData? data, String? token});
 
   $UserDataCopyWith<$Res>? get data;
 }
@@ -88,7 +80,6 @@ class _$SurveyLoginResponseCopyWithImpl<$Res>
     Object? message = freezed,
     Object? data = freezed,
     Object? token = freezed,
-    Object? refreshToken = freezed,
   }) {
     return _then(_value.copyWith(
       status: status == freezed
@@ -106,10 +97,6 @@ class _$SurveyLoginResponseCopyWithImpl<$Res>
       token: token == freezed
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refreshToken: refreshToken == freezed
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -133,12 +120,7 @@ abstract class _$SurveyLoginResponseCopyWith<$Res>
           $Res Function(_SurveyLoginResponse) then) =
       __$SurveyLoginResponseCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {int? status,
-      String? message,
-      UserData? data,
-      String? token,
-      String? refreshToken});
+  $Res call({int? status, String? message, UserData? data, String? token});
 
   @override
   $UserDataCopyWith<$Res>? get data;
@@ -161,7 +143,6 @@ class __$SurveyLoginResponseCopyWithImpl<$Res>
     Object? message = freezed,
     Object? data = freezed,
     Object? token = freezed,
-    Object? refreshToken = freezed,
   }) {
     return _then(_SurveyLoginResponse(
       status: status == freezed
@@ -180,10 +161,6 @@ class __$SurveyLoginResponseCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      refreshToken: refreshToken == freezed
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -195,8 +172,7 @@ class _$_SurveyLoginResponse implements _SurveyLoginResponse {
       {required this.status,
       required this.message,
       required this.data,
-      required this.token,
-      required this.refreshToken});
+      required this.token});
 
   factory _$_SurveyLoginResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SurveyLoginResponseFromJson(json);
@@ -209,12 +185,10 @@ class _$_SurveyLoginResponse implements _SurveyLoginResponse {
   final UserData? data;
   @override
   final String? token;
-  @override
-  final String? refreshToken;
 
   @override
   String toString() {
-    return 'SurveyLoginResponse(status: $status, message: $message, data: $data, token: $token, refreshToken: $refreshToken)';
+    return 'SurveyLoginResponse(status: $status, message: $message, data: $data, token: $token)';
   }
 
   @override
@@ -225,9 +199,7 @@ class _$_SurveyLoginResponse implements _SurveyLoginResponse {
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality()
-                .equals(other.refreshToken, refreshToken));
+            const DeepCollectionEquality().equals(other.token, token));
   }
 
   @override
@@ -236,8 +208,7 @@ class _$_SurveyLoginResponse implements _SurveyLoginResponse {
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(message),
       const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(refreshToken));
+      const DeepCollectionEquality().hash(token));
 
   @JsonKey(ignore: true)
   @override
@@ -256,8 +227,7 @@ abstract class _SurveyLoginResponse implements SurveyLoginResponse {
       {required int? status,
       required String? message,
       required UserData? data,
-      required String? token,
-      required String? refreshToken}) = _$_SurveyLoginResponse;
+      required String? token}) = _$_SurveyLoginResponse;
 
   factory _SurveyLoginResponse.fromJson(Map<String, dynamic> json) =
       _$_SurveyLoginResponse.fromJson;
@@ -270,8 +240,6 @@ abstract class _SurveyLoginResponse implements SurveyLoginResponse {
   UserData? get data;
   @override
   String? get token;
-  @override
-  String? get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$SurveyLoginResponseCopyWith<_SurveyLoginResponse> get copyWith =>
@@ -287,7 +255,8 @@ class _$UserDataTearOff {
   const _$UserDataTearOff();
 
   _UserData call(
-      {required String? nik, @JsonKey(name: 'nama') required String? name}) {
+      {@JsonKey(name: 'Nik') required String? nik,
+      @JsonKey(name: 'Nama') required String? name}) {
     return _UserData(
       nik: nik,
       name: name,
@@ -304,8 +273,9 @@ const $UserData = _$UserDataTearOff();
 
 /// @nodoc
 mixin _$UserData {
+  @JsonKey(name: 'Nik')
   String? get nik => throw _privateConstructorUsedError;
-  @JsonKey(name: 'nama')
+  @JsonKey(name: 'Nama')
   String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -318,7 +288,8 @@ mixin _$UserData {
 abstract class $UserDataCopyWith<$Res> {
   factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
       _$UserDataCopyWithImpl<$Res>;
-  $Res call({String? nik, @JsonKey(name: 'nama') String? name});
+  $Res call(
+      {@JsonKey(name: 'Nik') String? nik, @JsonKey(name: 'Nama') String? name});
 }
 
 /// @nodoc
@@ -352,7 +323,8 @@ abstract class _$UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
   factory _$UserDataCopyWith(_UserData value, $Res Function(_UserData) then) =
       __$UserDataCopyWithImpl<$Res>;
   @override
-  $Res call({String? nik, @JsonKey(name: 'nama') String? name});
+  $Res call(
+      {@JsonKey(name: 'Nik') String? nik, @JsonKey(name: 'Nama') String? name});
 }
 
 /// @nodoc
@@ -386,15 +358,17 @@ class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserData implements _UserData {
   const _$_UserData(
-      {required this.nik, @JsonKey(name: 'nama') required this.name});
+      {@JsonKey(name: 'Nik') required this.nik,
+      @JsonKey(name: 'Nama') required this.name});
 
   factory _$_UserData.fromJson(Map<String, dynamic> json) =>
       _$$_UserDataFromJson(json);
 
   @override
+  @JsonKey(name: 'Nik')
   final String? nik;
   @override
-  @JsonKey(name: 'nama')
+  @JsonKey(name: 'Nama')
   final String? name;
 
   @override
@@ -430,15 +404,16 @@ class _$_UserData implements _UserData {
 
 abstract class _UserData implements UserData {
   const factory _UserData(
-      {required String? nik,
-      @JsonKey(name: 'nama') required String? name}) = _$_UserData;
+      {@JsonKey(name: 'Nik') required String? nik,
+      @JsonKey(name: 'Nama') required String? name}) = _$_UserData;
 
   factory _UserData.fromJson(Map<String, dynamic> json) = _$_UserData.fromJson;
 
   @override
+  @JsonKey(name: 'Nik')
   String? get nik;
   @override
-  @JsonKey(name: 'nama')
+  @JsonKey(name: 'Nama')
   String? get name;
   @override
   @JsonKey(ignore: true)

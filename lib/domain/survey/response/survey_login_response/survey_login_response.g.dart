@@ -15,7 +15,6 @@ _$_SurveyLoginResponse _$$_SurveyLoginResponseFromJson(
           ? null
           : UserData.fromJson(json['data'] as Map<String, dynamic>),
       token: json['token'] as String?,
-      refreshToken: json['refreshToken'] as String?,
     );
 
 Map<String, dynamic> _$$_SurveyLoginResponseToJson(
@@ -25,16 +24,15 @@ Map<String, dynamic> _$$_SurveyLoginResponseToJson(
       'message': instance.message,
       'data': instance.data,
       'token': instance.token,
-      'refreshToken': instance.refreshToken,
     };
 
 _$_UserData _$$_UserDataFromJson(Map<String, dynamic> json) => _$_UserData(
-      nik: json['nik'] as String?,
-      name: json['nama'] as String?,
+      nik: json['Nik'] as String?,
+      name: json['Nama'] as String?,
     );
 
 Map<String, dynamic> _$$_UserDataToJson(_$_UserData instance) =>
     <String, dynamic>{
-      'nik': instance.nik,
-      'nama': instance.name,
+      'Nik': instance.nik,
+      'Nama': instance.name,
     };
