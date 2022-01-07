@@ -147,6 +147,8 @@ class SurveyTaskPage extends HookWidget {
                       );
                 },
                 selectedItem: item.search?.value),
+        if (item.search?.value?.contains(',') == true)
+          TextField(controller: item.controller)
       ],
     );
   }

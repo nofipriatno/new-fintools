@@ -106,8 +106,9 @@ class AppUtils {
     a.copyWith(
         controller: a.controller
           ?..addListener(() async {
-            storage.putDynamicData(box,
-                key: taskId + item.id, value: a.controller?.text);
+            storage.putString(box,
+                key: taskId + item.id + SurveyConstant.question.name,
+                value: a.controller?.text ?? '');
           }));
 
     return a;

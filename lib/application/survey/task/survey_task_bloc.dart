@@ -37,16 +37,17 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         List<QuestionAnswerModel> question = [];
 
         for (QuestionAnswerModel element in questionDB) {
-          final key = e.taskId! + element.id!;
-          var getBox = await _storage.getDynamicData(box, key: key);
-          var getChoice = _storage.getJson(box, key: key);
-          element.controller?.text = getBox ?? '';
+          String key = e.taskId! + element.id!;
+          var getAnswer =
+              _storage.getString(box, key: key + SurveyConstant.question.name);
+          var getChoice =
+              _storage.getJson(box, key: key + SurveyConstant.choice.name);
+          element.controller?.text = getAnswer ?? '';
           if (getChoice != null) {
             element = element.copyWith(search: SearchModel.fromJson(getChoice));
           }
           question.add(element);
         }
-
 
         final document = await _database.getSurveyForm();
         final picDocument = document
@@ -69,7 +70,8 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             value: e.choice);
         final box = await _storage.openBox(StorageConstants.dataSurvey);
         _storage.setJson(box,
-            key: e.taskId + e.item.id!, object: model.toJson());
+            key: e.taskId + e.item.id! + SurveyConstant.choice.name,
+            object: model.toJson());
         emit(_SelectChoiceSuccess(item: model, choice: e.choice));
       });
     });
