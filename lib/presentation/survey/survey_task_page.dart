@@ -8,6 +8,7 @@ import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
+import 'package:fintools/presentation/component/text_field/custom_text_field.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,7 +79,7 @@ class SurveyTaskPage extends HookWidget {
                     controller: controller,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      Container(),
+                      _client(),
                       ListView.separated(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
@@ -177,32 +178,36 @@ class SurveyTaskPage extends HookWidget {
           ),
         ),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20),
               child: Row(
                 children: [
-                  Expanded(
-                    flex: 2,
+                  SizedBox(
+                    width: 50,
                     child: Text(
                       I10n.current.filename,
                       style: AppFont.text8Bold.copyWith(color: AppColor.blue),
                     ),
                   ),
-                  Expanded(
-                    flex: 1,
+                  SizedBox(
+                    width: 90,
                     child: Text(
                       I10n.current.date,
                       style: AppFont.text8Bold.copyWith(color: AppColor.blue),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Expanded(
+                  SizedBox(
+                    width: 60,
                     child: Text(
                       I10n.current.time,
                       style: AppFont.text8Bold.copyWith(color: AppColor.blue),
+                      textAlign: TextAlign.center,
+                      // textAlign: TextAlign.center,
                     ),
                   ),
-                  Expanded(child: Container())
                 ],
               ),
             ),
@@ -224,22 +229,24 @@ class SurveyTaskPage extends HookWidget {
                         height: 50,
                         width: 50,
                       ),
-                      Expanded(
-                        flex: 1,
+                      SizedBox(
+                        width: 90,
                         child: Text(
                           I10n.current.date,
                           style:
                               AppFont.text8W300.copyWith(color: AppColor.blue),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                      Expanded(
+                      SizedBox(
+                        width: 60,
                         child: Text(
                           I10n.current.time,
                           style:
                               AppFont.text8W300.copyWith(color: AppColor.blue),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                      const Icon(Icons.camera)
                     ],
                   ),
                 ),
@@ -247,6 +254,32 @@ class SurveyTaskPage extends HookWidget {
             )
           ],
         )
+      ],
+    );
+  }
+
+  Widget _client() {
+    return ListView(
+      children: [
+        CustomTextField.underline(controller: TextEditingController(), title: 'Nama'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'NIK'),
+        Row(children: [
+          Expanded(child: CustomTextField.underline(controller: TextEditingController(), title: 'Berlaku'),),
+          Expanded(child: CustomTextField.underline(controller: TextEditingController(), title: 'Hingga'),),
+        ],),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Kota Asal'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Kota Kelahiran'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Tanggal Lahir'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Alamat'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Nama Ibu Kandung'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'RT'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'RW'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Kode Area'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Kecamatan'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Kelurahan'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'No Telepon'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Nomor Handphone'),
+        CustomTextField.underline(controller: TextEditingController(), title: 'Fax'),
       ],
     );
   }
