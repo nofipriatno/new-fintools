@@ -39,6 +39,14 @@ class SurveyTaskPage extends HookWidget {
                 questions.value = e.questions;
                 documents.value = e.document;
                 assets.value = e.assets;
+              },
+              selectChoiceSuccess: (e) {
+                var item = questions.value
+                    .firstWhere((element) => element.id == e.item.id);
+                final index = questions.value.indexOf(item);
+                item = item.copyWith(search: e.item);
+                questions.value.removeAt(index);
+                questions.value.insert(index, item);
               });
         },
         builder: (context, state) => CustomScaffold.normal(
@@ -74,8 +82,9 @@ class SurveyTaskPage extends HookWidget {
                       ListView.separated(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
-                        itemBuilder: (context, index) =>
-                            _itemQuisioner(questions.value[index]),
+                        itemBuilder: (context, index) => _itemQuisioner(context,
+                            item: questions.value[index],
+                            taskId: task?.taskId ?? ''),
                         separatorBuilder: (BuildContext context, int index) =>
                             const SizedBox(height: 10),
                         itemCount: questions.value.length,
@@ -110,7 +119,8 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-  Widget _itemQuisioner(QuestionAnswerModel item) {
+  Widget _itemQuisioner(BuildContext context,
+      {required QuestionAnswerModel item, required String taskId}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -129,7 +139,12 @@ class SurveyTaskPage extends HookWidget {
                     )),
                 items: item.search?.items,
                 onChanged: (e) {
-                  // TODO : save value here
+                  context.read<SurveyTaskBloc>().add(
+                        SurveyTaskEvent.onChoiceSelect(
+                            item: item.search!,
+                            choice: e ?? '',
+                            taskId: taskId),
+                      );
                 },
                 selectedItem: item.search?.value),
       ],

@@ -75,7 +75,11 @@ class AppUtils {
   }
 
   static QuestionAnswerModel splitQuestion(
-      FormQuisionerData item, String taskId, IStorage storage, Box box, ) {
+    FormQuisionerData item,
+    String taskId,
+    IStorage storage,
+    Box box,
+  ) {
     var question = item.question.trim();
     var newQuestion = question;
     List<String> choices = [];
@@ -93,6 +97,7 @@ class AppUtils {
         id: item.id,
         question: newQuestion,
         search: SearchModel(
+            id: item.id,
             value: choices.isEmpty ? '' : choices.first,
             items: choices,
             title: newQuestion),

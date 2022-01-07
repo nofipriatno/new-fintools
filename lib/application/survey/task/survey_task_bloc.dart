@@ -3,9 +3,11 @@ import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
+import 'package:fintools/domain/survey/local/survey_search_model.dart';
 import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -28,16 +30,23 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         emit(const _Loading());
         final questioner = await _database.getSurveyQuisioner();
         final box = await _storage.openBox(StorageConstants.dataSurvey);
-        final question = questioner
+        final questionDB = questioner
             .map(
                 (q) => AppUtils.splitQuestion(q, e.taskId ?? '', _storage, box))
             .toList();
+        List<QuestionAnswerModel> question = [];
 
-        for (var element in question) {
-          var getBox =
-              await _storage.getDynamicData(box, key: e.taskId! + element.id!);
+        for (QuestionAnswerModel element in questionDB) {
+          final key = e.taskId! + element.id!;
+          var getBox = await _storage.getDynamicData(box, key: key);
+          var getChoice = _storage.getJson(box, key: key);
           element.controller?.text = getBox ?? '';
+          if (getChoice != null) {
+            element = element.copyWith(search: SearchModel.fromJson(getChoice));
+          }
+          question.add(element);
         }
+
 
         final document = await _database.getSurveyForm();
         final picDocument = document
@@ -51,6 +60,17 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
           _CheckClientSuccess(
               questions: question, document: dpkDocument, assets: picDocument),
         );
+      }, onChoiceSelect: (e) async {
+        emit(const _Initial());
+        SearchModel model = SearchModel(
+            id: e.item.id,
+            title: e.item.title,
+            items: e.item.items,
+            value: e.choice);
+        final box = await _storage.openBox(StorageConstants.dataSurvey);
+        _storage.setJson(box,
+            key: e.taskId + e.item.id!, object: model.toJson());
+        emit(_SelectChoiceSuccess(item: model, choice: e.choice));
       });
     });
   }
