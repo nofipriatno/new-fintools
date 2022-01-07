@@ -3,6 +3,7 @@ import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
+import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
@@ -21,7 +22,9 @@ class SurveyTaskPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     TabController controller = useTabController(initialLength: 5);
-    List<QuestionAnswerModel> questions = [];
+    final questions = useState<List<QuestionAnswerModel>>([]);
+    final assets = useState<List<FormUploadData>>([]);
+    final documents = useState<List<FormUploadData>>([]);
 
     return BlocProvider<SurveyTaskBloc>(
       create: (_) => getIt<SurveyTaskBloc>()
@@ -33,7 +36,9 @@ class SurveyTaskPage extends HookWidget {
           state.maybeMap(
               orElse: () {},
               checkClientSuccess: (e) {
-                questions = e.questions;
+                questions.value = e.questions;
+                documents.value = e.document;
+                assets.value = e.assets;
               });
         },
         builder: (context, state) => CustomScaffold.normal(
@@ -70,13 +75,29 @@ class SurveyTaskPage extends HookWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
                         itemBuilder: (context, index) =>
-                            _quisionerItem(questions[index]),
+                            _itemQuisioner(questions.value[index]),
                         separatorBuilder: (BuildContext context, int index) =>
                             const SizedBox(height: 10),
-                        itemCount: questions.length,
+                        itemCount: questions.value.length,
                       ),
-                      Container(),
-                      Container(),
+                      ListView.separated(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        itemBuilder: (context, index) =>
+                            _itemDocument(assets.value[index]),
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const SizedBox(height: 10),
+                        itemCount: assets.value.length,
+                      ),
+                      ListView.separated(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        itemBuilder: (context, index) =>
+                            _itemDocument(documents.value[index]),
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const SizedBox(height: 10),
+                        itemCount: assets.value.length,
+                      ),
                       Container(),
                     ],
                   ),
@@ -89,7 +110,7 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-  Widget _quisionerItem(QuestionAnswerModel item) {
+  Widget _itemQuisioner(QuestionAnswerModel item) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -111,6 +132,104 @@ class SurveyTaskPage extends HookWidget {
                   // TODO : save value here
                 },
                 selectedItem: item.search?.value),
+      ],
+    );
+  }
+
+  Widget _itemDocument(FormUploadData item) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                item.name,
+                style: AppFont.text11Bold.copyWith(color: AppColor.gold),
+              ),
+            ),
+            const Icon(Icons.arrow_drop_down_sharp)
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: Container(
+            height: 1,
+            width: double.infinity,
+            color: AppColor.itemSurveyDivider,
+          ),
+        ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      I10n.current.filename,
+                      style: AppFont.text8Bold.copyWith(color: AppColor.blue),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      I10n.current.date,
+                      style: AppFont.text8Bold.copyWith(color: AppColor.blue),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      I10n.current.time,
+                      style: AppFont.text8Bold.copyWith(color: AppColor.blue),
+                    ),
+                  ),
+                  Expanded(child: Container())
+                ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: AppColor.cardBackground,
+                  borderRadius: BorderRadius.circular(10)),
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: List.generate(
+                  item.count,
+                  (index) => Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.darkGrey,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        height: 50,
+                        width: 50,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          I10n.current.date,
+                          style:
+                              AppFont.text8W300.copyWith(color: AppColor.blue),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          I10n.current.time,
+                          style:
+                              AppFont.text8W300.copyWith(color: AppColor.blue),
+                        ),
+                      ),
+                      const Icon(Icons.camera)
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        )
       ],
     );
   }

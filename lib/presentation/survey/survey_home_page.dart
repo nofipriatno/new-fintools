@@ -21,9 +21,9 @@ class SurveyHomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     TabController controller = useTabController(initialLength: 2);
-    String? user;
-    SurveyTask? task;
-    List<SurveyTask?> tasks = [];
+    final user = useState<String?>(null);
+    final task = useState<SurveyTask?>(null);
+    final tasks = useState<List<SurveyTask?>>([]);
 
     return CustomScaffold.normal(
       context,
@@ -36,9 +36,9 @@ class SurveyHomePage extends HookWidget {
               state.maybeMap(
                   orElse: () {},
                   fetchAllSuccess: (e) {
-                    user = e.user?.name;
-                    tasks = e.tasks;
-                    task = e.upcomingTask;
+                    user.value = e.user?.name;
+                    tasks.value = e.tasks;
+                    task.value = e.upcomingTask;
                   },
                   navigateToSelectedTask: (e) {
                     Navigator.push(
@@ -70,7 +70,10 @@ class SurveyHomePage extends HookWidget {
                       controller: controller,
                       physics: const NeverScrollableScrollPhysics(),
                       children: [
-                        _tabOne(context, user: user, task: task, tasks: tasks),
+                        _tabOne(context,
+                            user: user.value,
+                            task: task.value,
+                            tasks: tasks.value),
                         _tabTwo()
                       ],
                     ),
@@ -99,8 +102,8 @@ class SurveyHomePage extends HookWidget {
           ),
           InkWell(
             onTap: () => context.read<SurveyHomeBloc>().add(
-              SurveyHomeEvent.onSelectedTask(task: task),
-            ),
+                  SurveyHomeEvent.onSelectedTask(task: task),
+                ),
             borderRadius: BorderRadius.circular(10),
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),

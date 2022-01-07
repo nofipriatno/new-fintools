@@ -36,5 +36,8 @@
   "login_greeting2": "Senang berjumpa lagi",
   "nik": "NIK",
   "password": "Kata Sandi",
-  "forget_password_mark": "Lupa Kata Sandi?"
+  "forget_password_mark": "Lupa Kata Sandi?",
+  "filename": "Nama file",
+  "date": "Tanggal",
+  "time": "Waktu"
 }

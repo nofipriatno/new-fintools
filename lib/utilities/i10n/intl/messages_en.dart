@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "button_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
         "client": MessageLookupByLibrary.simpleMessage("Client"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_prove": MessageLookupByLibrary.simpleMessage(
@@ -36,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "document": MessageLookupByLibrary.simpleMessage("Document"),
+        "filename": MessageLookupByLibrary.simpleMessage("Filename"),
         "forget_password_mark":
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
@@ -64,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "task": MessageLookupByLibrary.simpleMessage("Task"),
         "task_completed":
             MessageLookupByLibrary.simpleMessage("Task Completed"),
+        "time": MessageLookupByLibrary.simpleMessage("Time"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "upcoming_survey":
             MessageLookupByLibrary.simpleMessage("Upcoming Survey")

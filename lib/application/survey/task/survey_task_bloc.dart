@@ -3,6 +3,7 @@ import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
+import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -38,7 +39,18 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
           element.controller?.text = getBox ?? '';
         }
 
-        emit(_CheckClientSuccess(questions: question));
+        final document = await _database.getSurveyForm();
+        final picDocument = document
+            .where((element) => element.code.toUpperCase().contains('PIC'))
+            .toList();
+        final dpkDocument = document
+            .where((element) => element.code.toUpperCase().contains('DPK'))
+            .toList();
+
+        emit(
+          _CheckClientSuccess(
+              questions: question, document: dpkDocument, assets: picDocument),
+        );
       });
     });
   }

@@ -27,12 +27,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_name": MessageLookupByLibrary.simpleMessage("Fintools"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Batal"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "date": MessageLookupByLibrary.simpleMessage("Tanggal"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_prove": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+        "filename": MessageLookupByLibrary.simpleMessage("Nama file"),
         "forget_password_mark":
             MessageLookupByLibrary.simpleMessage("Lupa Kata Sandi?"),
         "history": MessageLookupByLibrary.simpleMessage("Riwayat"),
@@ -59,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "task": MessageLookupByLibrary.simpleMessage("Tugas"),
         "task_completed":
             MessageLookupByLibrary.simpleMessage("Tugas telah selasai"),
+        "time": MessageLookupByLibrary.simpleMessage("Waktu"),
         "today": MessageLookupByLibrary.simpleMessage("Hari ini"),
         "upcoming_survey":
             MessageLookupByLibrary.simpleMessage("Survey Selanjutnya")

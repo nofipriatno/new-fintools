@@ -41,5 +41,8 @@
   "process": "Processs",
   "nik": "NIK",
   "password": "Password",
-  "forget_password_mark": "Forget Password?"
+  "forget_password_mark": "Forget Password?",
+  "filename": "Filename",
+  "date": "Date",
+  "time": "Time"
 }

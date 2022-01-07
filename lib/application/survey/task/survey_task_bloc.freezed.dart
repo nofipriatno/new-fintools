@@ -244,9 +244,13 @@ class _$SurveyTaskStateTearOff {
   }
 
   _CheckClientSuccess checkClientSuccess(
-      {required List<QuestionAnswerModel> questions}) {
+      {required List<QuestionAnswerModel> questions,
+      required List<FormUploadData> assets,
+      required List<FormUploadData> document}) {
     return _CheckClientSuccess(
       questions: questions,
+      assets: assets,
+      document: document,
     );
   }
 }
@@ -260,7 +264,8 @@ mixin _$SurveyTaskState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions)
+    required TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)
         checkClientSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -268,14 +273,18 @@ mixin _$SurveyTaskState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions)? checkClientSuccess,
+    TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)?
+        checkClientSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions)? checkClientSuccess,
+    TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)?
+        checkClientSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -360,7 +369,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions)
+    required TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)
         checkClientSuccess,
   }) {
     return initial();
@@ -371,7 +381,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions)? checkClientSuccess,
+    TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)?
+        checkClientSuccess,
   }) {
     return initial?.call();
   }
@@ -381,7 +393,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions)? checkClientSuccess,
+    TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)?
+        checkClientSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -469,7 +483,8 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions)
+    required TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)
         checkClientSuccess,
   }) {
     return loading();
@@ -480,7 +495,9 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions)? checkClientSuccess,
+    TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)?
+        checkClientSuccess,
   }) {
     return loading?.call();
   }
@@ -490,7 +507,9 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions)? checkClientSuccess,
+    TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)?
+        checkClientSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -543,7 +562,10 @@ abstract class _$CheckClientSuccessCopyWith<$Res> {
   factory _$CheckClientSuccessCopyWith(
           _CheckClientSuccess value, $Res Function(_CheckClientSuccess) then) =
       __$CheckClientSuccessCopyWithImpl<$Res>;
-  $Res call({List<QuestionAnswerModel> questions});
+  $Res call(
+      {List<QuestionAnswerModel> questions,
+      List<FormUploadData> assets,
+      List<FormUploadData> document});
 }
 
 /// @nodoc
@@ -560,12 +582,22 @@ class __$CheckClientSuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? questions = freezed,
+    Object? assets = freezed,
+    Object? document = freezed,
   }) {
     return _then(_CheckClientSuccess(
       questions: questions == freezed
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<QuestionAnswerModel>,
+      assets: assets == freezed
+          ? _value.assets
+          : assets // ignore: cast_nullable_to_non_nullable
+              as List<FormUploadData>,
+      document: document == freezed
+          ? _value.document
+          : document // ignore: cast_nullable_to_non_nullable
+              as List<FormUploadData>,
     ));
   }
 }
@@ -573,14 +605,19 @@ class __$CheckClientSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CheckClientSuccess implements _CheckClientSuccess {
-  const _$_CheckClientSuccess({required this.questions});
+  const _$_CheckClientSuccess(
+      {required this.questions, required this.assets, required this.document});
 
   @override
   final List<QuestionAnswerModel> questions;
+  @override
+  final List<FormUploadData> assets;
+  @override
+  final List<FormUploadData> document;
 
   @override
   String toString() {
-    return 'SurveyTaskState.checkClientSuccess(questions: $questions)';
+    return 'SurveyTaskState.checkClientSuccess(questions: $questions, assets: $assets, document: $document)';
   }
 
   @override
@@ -588,12 +625,17 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CheckClientSuccess &&
-            const DeepCollectionEquality().equals(other.questions, questions));
+            const DeepCollectionEquality().equals(other.questions, questions) &&
+            const DeepCollectionEquality().equals(other.assets, assets) &&
+            const DeepCollectionEquality().equals(other.document, document));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(questions));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(questions),
+      const DeepCollectionEquality().hash(assets),
+      const DeepCollectionEquality().hash(document));
 
   @JsonKey(ignore: true)
   @override
@@ -605,10 +647,11 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions)
+    required TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)
         checkClientSuccess,
   }) {
-    return checkClientSuccess(questions);
+    return checkClientSuccess(questions, assets, document);
   }
 
   @override
@@ -616,9 +659,11 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions)? checkClientSuccess,
+    TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)?
+        checkClientSuccess,
   }) {
-    return checkClientSuccess?.call(questions);
+    return checkClientSuccess?.call(questions, assets, document);
   }
 
   @override
@@ -626,11 +671,13 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions)? checkClientSuccess,
+    TResult Function(List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets, List<FormUploadData> document)?
+        checkClientSuccess,
     required TResult orElse(),
   }) {
     if (checkClientSuccess != null) {
-      return checkClientSuccess(questions);
+      return checkClientSuccess(questions, assets, document);
     }
     return orElse();
   }
@@ -672,9 +719,13 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
 
 abstract class _CheckClientSuccess implements SurveyTaskState {
   const factory _CheckClientSuccess(
-      {required List<QuestionAnswerModel> questions}) = _$_CheckClientSuccess;
+      {required List<QuestionAnswerModel> questions,
+      required List<FormUploadData> assets,
+      required List<FormUploadData> document}) = _$_CheckClientSuccess;
 
   List<QuestionAnswerModel> get questions;
+  List<FormUploadData> get assets;
+  List<FormUploadData> get document;
   @JsonKey(ignore: true)
   _$CheckClientSuccessCopyWith<_CheckClientSuccess> get copyWith =>
       throw _privateConstructorUsedError;

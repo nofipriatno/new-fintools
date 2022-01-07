@@ -7,5 +7,8 @@ class SurveyTaskState with _$SurveyTaskState {
   const factory SurveyTaskState.loading() = _Loading;
 
   const factory SurveyTaskState.checkClientSuccess(
-      {required List<QuestionAnswerModel> questions}) = _CheckClientSuccess;
+      {required List<QuestionAnswerModel> questions,
+        required List<FormUploadData> assets,
+        required List<FormUploadData> document,
+      }) = _CheckClientSuccess;
 }
