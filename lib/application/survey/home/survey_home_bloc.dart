@@ -26,12 +26,11 @@ class SurveyHomeBloc extends Bloc<SurveyHomeEvent, SurveyHomeState> {
       await event.map(
         onInitialize: (e) async {
           emit(const _FetchAllLoading());
-          final result = await _survey.getTask();
           final box = await _storage.openBox(StorageConstants.userSurvey);
           final credential =
               await _storage.getJson(box, key: AppString.surveyCredentialKey);
           UserData user = UserData.fromJson(credential['data']);
-
+          final result = await _survey.getTask(nik: user.nik ?? '');
           result.fold(
             (fail) => emit(const _FetchAllFailed()),
             (success) => emit(

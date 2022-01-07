@@ -39,6 +39,7 @@ class SurveyTaskPage extends HookWidget {
         builder: (context, state) => CustomScaffold.normal(
           context,
           appBar: CustomAppBar.surveyAppBar(context, title: I10n.current.task),
+          resize: true,
           body: DefaultTabController(
             length: controller.length,
             child: Column(
