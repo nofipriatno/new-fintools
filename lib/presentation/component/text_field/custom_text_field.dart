@@ -7,7 +7,8 @@ class CustomTextField {
   static underline(
       {required TextEditingController controller,
       required String title,
-      bool obscure = false}) {
+      bool obscure = false,
+      bool readOnly = false}) {
     return _Underline(
       controller: controller,
       title: title,
@@ -20,12 +21,14 @@ class _Underline extends HookWidget {
   final TextEditingController controller;
   final String title;
   final bool obscure;
+  final bool readOnly;
 
   const _Underline(
       {Key? key,
       required this.controller,
       required this.title,
-      this.obscure = false})
+      this.obscure = false,
+      this.readOnly = false})
       : super(key: key);
 
   @override
@@ -37,6 +40,7 @@ class _Underline extends HookWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: TextField(
+          readOnly: readOnly,
           obscureText: obscure ? _obscure.value : false,
           controller: controller,
           decoration: InputDecoration(

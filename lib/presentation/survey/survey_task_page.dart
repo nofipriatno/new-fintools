@@ -79,7 +79,7 @@ class SurveyTaskPage extends HookWidget {
                     controller: controller,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      _client(),
+                      _client(assets.value),
                       ListView.separated(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
@@ -258,28 +258,68 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-  Widget _client() {
+  Widget _client(List<FormUploadData> test) {
     return ListView(
       children: [
-        CustomTextField.underline(controller: TextEditingController(), title: 'Nama'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'NIK'),
-        Row(children: [
-          Expanded(child: CustomTextField.underline(controller: TextEditingController(), title: 'Berlaku'),),
-          Expanded(child: CustomTextField.underline(controller: TextEditingController(), title: 'Hingga'),),
-        ],),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Kota Asal'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Kota Kelahiran'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Tanggal Lahir'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Alamat'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Nama Ibu Kandung'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'RT'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'RW'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Kode Area'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Kecamatan'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Kelurahan'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'No Telepon'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Nomor Handphone'),
-        CustomTextField.underline(controller: TextEditingController(), title: 'Fax'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Nama'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'NIK'),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 38),
+          child: DropdownSearch<FormUploadData>(
+            mode: Mode.BOTTOM_SHEET,
+            showSearchBox: true,
+            dropdownSearchDecoration: InputDecoration(
+                hintText: 'Kode Area',
+                hintStyle: AppFont.text14W300.copyWith(color: AppColor.blue),
+                contentPadding: EdgeInsets.zero,
+                border: UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColor.itemSurveyDivider),
+                )),
+            onFind: (data) async => await Future.value(test),
+            itemAsString: (item) => item?.name ?? '',
+            onChanged: (item) => print('print => item$item'),
+          ),
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: CustomTextField.underline(
+                  controller: TextEditingController(), title: 'Berlaku'),
+            ),
+            Expanded(
+              child: CustomTextField.underline(
+                  controller: TextEditingController(), title: 'Hingga'),
+            ),
+          ],
+        ),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Kota Asal'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Kota Kelahiran'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Tanggal Lahir'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Alamat'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Nama Ibu Kandung'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'RT'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'RW'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Kode Area'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Kecamatan'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Kelurahan'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'No Telepon'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Nomor Handphone'),
+        CustomTextField.underline(
+            controller: TextEditingController(), title: 'Fax'),
       ],
     );
   }
