@@ -423,11 +423,15 @@ class _$SurveyTaskStateTearOff {
   _CheckClientSuccess checkClientSuccess(
       {required List<QuestionAnswerModel> questions,
       required List<FormUploadData> assets,
-      required List<FormUploadData> document}) {
+      required List<FormUploadData> document,
+      required List<SurveyClientModel> client,
+      required List<ZipcodeData> zipcode}) {
     return _CheckClientSuccess(
       questions: questions,
       assets: assets,
       document: document,
+      client: client,
+      zipcode: zipcode,
     );
   }
 
@@ -449,8 +453,12 @@ mixin _$SurveyTaskState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)
+    required TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
@@ -460,8 +468,12 @@ mixin _$SurveyTaskState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
   }) =>
@@ -470,8 +482,12 @@ mixin _$SurveyTaskState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
     required TResult orElse(),
@@ -561,8 +577,12 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)
+    required TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
@@ -575,8 +595,12 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
   }) {
@@ -588,8 +612,12 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
     required TResult orElse(),
@@ -682,8 +710,12 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)
+    required TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
@@ -696,8 +728,12 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
   }) {
@@ -709,8 +745,12 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
     required TResult orElse(),
@@ -771,7 +811,9 @@ abstract class _$CheckClientSuccessCopyWith<$Res> {
   $Res call(
       {List<QuestionAnswerModel> questions,
       List<FormUploadData> assets,
-      List<FormUploadData> document});
+      List<FormUploadData> document,
+      List<SurveyClientModel> client,
+      List<ZipcodeData> zipcode});
 }
 
 /// @nodoc
@@ -790,6 +832,8 @@ class __$CheckClientSuccessCopyWithImpl<$Res>
     Object? questions = freezed,
     Object? assets = freezed,
     Object? document = freezed,
+    Object? client = freezed,
+    Object? zipcode = freezed,
   }) {
     return _then(_CheckClientSuccess(
       questions: questions == freezed
@@ -804,6 +848,14 @@ class __$CheckClientSuccessCopyWithImpl<$Res>
           ? _value.document
           : document // ignore: cast_nullable_to_non_nullable
               as List<FormUploadData>,
+      client: client == freezed
+          ? _value.client
+          : client // ignore: cast_nullable_to_non_nullable
+              as List<SurveyClientModel>,
+      zipcode: zipcode == freezed
+          ? _value.zipcode
+          : zipcode // ignore: cast_nullable_to_non_nullable
+              as List<ZipcodeData>,
     ));
   }
 }
@@ -812,7 +864,11 @@ class __$CheckClientSuccessCopyWithImpl<$Res>
 
 class _$_CheckClientSuccess implements _CheckClientSuccess {
   const _$_CheckClientSuccess(
-      {required this.questions, required this.assets, required this.document});
+      {required this.questions,
+      required this.assets,
+      required this.document,
+      required this.client,
+      required this.zipcode});
 
   @override
   final List<QuestionAnswerModel> questions;
@@ -820,10 +876,14 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
   final List<FormUploadData> assets;
   @override
   final List<FormUploadData> document;
+  @override
+  final List<SurveyClientModel> client;
+  @override
+  final List<ZipcodeData> zipcode;
 
   @override
   String toString() {
-    return 'SurveyTaskState.checkClientSuccess(questions: $questions, assets: $assets, document: $document)';
+    return 'SurveyTaskState.checkClientSuccess(questions: $questions, assets: $assets, document: $document, client: $client, zipcode: $zipcode)';
   }
 
   @override
@@ -833,7 +893,9 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
             other is _CheckClientSuccess &&
             const DeepCollectionEquality().equals(other.questions, questions) &&
             const DeepCollectionEquality().equals(other.assets, assets) &&
-            const DeepCollectionEquality().equals(other.document, document));
+            const DeepCollectionEquality().equals(other.document, document) &&
+            const DeepCollectionEquality().equals(other.client, client) &&
+            const DeepCollectionEquality().equals(other.zipcode, zipcode));
   }
 
   @override
@@ -841,7 +903,9 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
       runtimeType,
       const DeepCollectionEquality().hash(questions),
       const DeepCollectionEquality().hash(assets),
-      const DeepCollectionEquality().hash(document));
+      const DeepCollectionEquality().hash(document),
+      const DeepCollectionEquality().hash(client),
+      const DeepCollectionEquality().hash(zipcode));
 
   @JsonKey(ignore: true)
   @override
@@ -853,13 +917,17 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)
+    required TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
   }) {
-    return checkClientSuccess(questions, assets, document);
+    return checkClientSuccess(questions, assets, document, client, zipcode);
   }
 
   @override
@@ -867,12 +935,17 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
   }) {
-    return checkClientSuccess?.call(questions, assets, document);
+    return checkClientSuccess?.call(
+        questions, assets, document, client, zipcode);
   }
 
   @override
@@ -880,14 +953,18 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
     required TResult orElse(),
   }) {
     if (checkClientSuccess != null) {
-      return checkClientSuccess(questions, assets, document);
+      return checkClientSuccess(questions, assets, document, client, zipcode);
     }
     return orElse();
   }
@@ -934,11 +1011,15 @@ abstract class _CheckClientSuccess implements SurveyTaskState {
   const factory _CheckClientSuccess(
       {required List<QuestionAnswerModel> questions,
       required List<FormUploadData> assets,
-      required List<FormUploadData> document}) = _$_CheckClientSuccess;
+      required List<FormUploadData> document,
+      required List<SurveyClientModel> client,
+      required List<ZipcodeData> zipcode}) = _$_CheckClientSuccess;
 
   List<QuestionAnswerModel> get questions;
   List<FormUploadData> get assets;
   List<FormUploadData> get document;
+  List<SurveyClientModel> get client;
+  List<ZipcodeData> get zipcode;
   @JsonKey(ignore: true)
   _$CheckClientSuccessCopyWith<_CheckClientSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1031,8 +1112,12 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)
+    required TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
@@ -1045,8 +1130,12 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
   }) {
@@ -1058,8 +1147,12 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<QuestionAnswerModel> questions,
-            List<FormUploadData> assets, List<FormUploadData> document)?
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
     required TResult orElse(),

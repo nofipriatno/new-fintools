@@ -8,11 +8,16 @@ class CustomTextField {
       {required TextEditingController controller,
       required String title,
       bool obscure = false,
+      TextInputType inputType = TextInputType.name,
+      bool enable = true,
       bool readOnly = false}) {
     return _Underline(
       controller: controller,
       title: title,
       obscure: obscure,
+      enable: enable,
+      readOnly: readOnly,
+      inputType: inputType,
     );
   }
 }
@@ -22,13 +27,17 @@ class _Underline extends HookWidget {
   final String title;
   final bool obscure;
   final bool readOnly;
+  final bool enable;
+  final TextInputType inputType;
 
   const _Underline(
       {Key? key,
       required this.controller,
       required this.title,
       this.obscure = false,
-      this.readOnly = false})
+      this.enable = true,
+      this.readOnly = false,
+      this.inputType = TextInputType.name})
       : super(key: key);
 
   @override
@@ -40,6 +49,8 @@ class _Underline extends HookWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: TextField(
+          keyboardType: inputType,
+          enabled: enable,
           readOnly: readOnly,
           obscureText: obscure ? _obscure.value : false,
           controller: controller,

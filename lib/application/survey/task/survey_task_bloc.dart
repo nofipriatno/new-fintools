@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:fintools/domain/core/constant/app_model.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
+import 'package:fintools/domain/survey/local/survey_client_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/local/survey_search_model.dart';
 import 'package:fintools/infrastructure/core/database.dart';
@@ -57,9 +59,16 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             .where((element) => element.code.toUpperCase().contains('DPK'))
             .toList();
 
+        final zipcode = await _database.getSurveyZipcode();
+        final client = AppModel.clientForm;
+
         emit(
           _CheckClientSuccess(
-              questions: question, document: dpkDocument, assets: picDocument),
+              questions: question,
+              document: dpkDocument,
+              assets: picDocument,
+              client: client,
+              zipcode: zipcode),
         );
       }, onChoiceSelect: (e) async {
         emit(const _Initial());

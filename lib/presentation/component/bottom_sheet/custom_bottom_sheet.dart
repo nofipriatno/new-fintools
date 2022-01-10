@@ -1,5 +1,7 @@
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
+import 'package:fintools/domain/core/interface/i_storage.dart';
+import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/dialog/custom_dialog.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +38,7 @@ class CustomBottomSheet {
               ListTile(
                 title: Text(I10n.current.logout, style: AppFont.text14Normal),
                 trailing: const Icon(Icons.logout),
-                onTap: () => CustomDialog.info(context,
+                onTap: () => CustomDialog(getIt<IStorage>()).logout(context,
                     title: 'Confirmation', message: 'Anda Yakin ingin keluar?'),
               )
             ],

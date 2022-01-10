@@ -23,18 +23,25 @@ class SurveyRepository implements ISurvey {
           SurveyTaskListResponse.fromJson(apiResult);
       return Right(response);
     } on FailureException catch (_) {
+      print('print => another error');
       return const Left(GenericFailure.unknownError());
     } on NetworkException catch (_) {
+      print('print => network error');
       return const Left(GenericFailure.unknownError());
     } on ServerException catch (_) {
+      print('print => server error');
       return const Left(GenericFailure.serverError());
     } on AuthException catch (_) {
+      print('print => token expired');
       return const Left(GenericFailure.sessionExpired());
     } on NoInternetException catch (_) {
+      print('print => no internet');
       return const Left(GenericFailure.noInternet());
     } on TimeOutException catch (_) {
+      print('print => timeout error');
       return const Left(GenericFailure.generalError());
     } catch (e) {
+      print('print => other error');
       return const Left(GenericFailure.unknownError());
     }
   }

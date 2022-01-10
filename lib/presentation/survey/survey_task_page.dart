@@ -1,6 +1,8 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
+import 'package:fintools/domain/core/constant/app_enum.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
+import 'package:fintools/domain/survey/local/survey_client_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/infrastructure/core/database.dart';
@@ -26,6 +28,8 @@ class SurveyTaskPage extends HookWidget {
     final questions = useState<List<QuestionAnswerModel>>([]);
     final assets = useState<List<FormUploadData>>([]);
     final documents = useState<List<FormUploadData>>([]);
+    final clients = useState<List<SurveyClientModel>>([]);
+    final zipcode = useState<List<ZipcodeData>>([]);
 
     return BlocProvider<SurveyTaskBloc>(
       create: (_) => getIt<SurveyTaskBloc>()
@@ -40,6 +44,8 @@ class SurveyTaskPage extends HookWidget {
                 questions.value = e.questions;
                 documents.value = e.document;
                 assets.value = e.assets;
+                clients.value = e.client;
+                zipcode.value = e.zipcode;
               },
               selectChoiceSuccess: (e) {
                 var item = questions.value
@@ -79,7 +85,17 @@ class SurveyTaskPage extends HookWidget {
                     controller: controller,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      _client(assets.value),
+                      ListView.separated(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        itemBuilder: (context, index) => _itemClient(
+                            zipcode.value,
+                            item: clients.value[index],
+                            items: clients.value),
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const SizedBox(height: 10),
+                        itemCount: clients.value.length,
+                      ),
                       ListView.separated(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
@@ -258,69 +274,75 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-  Widget _client(List<FormUploadData> test) {
-    return ListView(
-      children: [
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Nama'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'NIK'),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 38),
-          child: DropdownSearch<FormUploadData>(
-            mode: Mode.BOTTOM_SHEET,
-            showSearchBox: true,
-            dropdownSearchDecoration: InputDecoration(
-                hintText: 'Kode Area',
-                hintStyle: AppFont.text14W300.copyWith(color: AppColor.blue),
-                contentPadding: EdgeInsets.zero,
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColor.itemSurveyDivider),
-                )),
-            onFind: (data) async => await Future.value(test),
-            itemAsString: (item) => item?.name ?? '',
-            onChanged: (item) => print('print => item$item'),
-          ),
+  Widget _itemClient(List<ZipcodeData> zipcode,
+      {required SurveyClientModel item,
+      required List<SurveyClientModel> items}) {
+    if (item.clientFormType == ClientFormType.zipcode) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 38),
+        child: DropdownSearch<ZipcodeData>(
+          mode: Mode.BOTTOM_SHEET,
+          showSearchBox: true,
+          dropdownSearchDecoration: InputDecoration(
+              hintText: item.title ?? '',
+              hintStyle: AppFont.text14W300.copyWith(color: AppColor.blue),
+              contentPadding: EdgeInsets.zero,
+              border: UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColor.itemSurveyDivider),
+              )),
+          items: zipcode,
+          onFind: (data) async => zipcode
+              .where((element) =>
+                  element.postCode.contains(data ?? '') ||
+                  element.district.contains(data ?? '') ||
+                  element.subDistrict.contains(data ?? '') ||
+                  element.city.contains(data ?? ''))
+              .toList(),
+          itemAsString: (item) =>
+              '${item?.postCode} ${item?.district} ${item?.subDistrict}',
+          onChanged: (select) {
+            item.controller?.text = select?.postCode ?? '';
+            var district = items.firstWhere((element) =>
+                element.title == 'district' &&
+                element.clientFormType == ClientFormType.subZipcode);
+            var subDistrict = items.firstWhere((element) =>
+                element.title == 'sub_district' &&
+                element.clientFormType == ClientFormType.subZipcode);
+            district.controller?.text = select?.district ?? '';
+            subDistrict.controller?.text = select?.subDistrict ?? '';
+          },
         ),
-        Row(
-          children: [
-            Expanded(
-              child: CustomTextField.underline(
-                  controller: TextEditingController(), title: 'Berlaku'),
-            ),
-            Expanded(
-              child: CustomTextField.underline(
-                  controller: TextEditingController(), title: 'Hingga'),
-            ),
-          ],
-        ),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Kota Asal'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Kota Kelahiran'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Tanggal Lahir'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Alamat'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Nama Ibu Kandung'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'RT'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'RW'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Kode Area'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Kecamatan'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Kelurahan'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'No Telepon'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Nomor Handphone'),
-        CustomTextField.underline(
-            controller: TextEditingController(), title: 'Fax'),
-      ],
-    );
+      );
+    } else {
+      return CustomTextField.underline(
+          controller: item.controller!,
+          title: item.title ?? '',
+          enable:
+              !(item.clientFormType?.index == ClientFormType.subZipcode.index),
+          readOnly:
+              item.clientFormType?.index == ClientFormType.subZipcode.index,
+          inputType: getInputType(item.clientFormType!));
+    }
+  }
+
+  TextInputType getInputType(ClientFormType type) {
+    switch (type) {
+      case ClientFormType.date:
+        return TextInputType.datetime;
+      case ClientFormType.name:
+        return TextInputType.name;
+      case ClientFormType.nik:
+        return TextInputType.number;
+      case ClientFormType.address:
+        return TextInputType.streetAddress;
+      case ClientFormType.zipcode:
+        return TextInputType.number;
+      case ClientFormType.subZipcode:
+        return TextInputType.number;
+      case ClientFormType.number:
+        return TextInputType.number;
+      case ClientFormType.phone:
+        return TextInputType.phone;
+    }
   }
 }
