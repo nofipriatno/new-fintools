@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_enum.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
+import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/survey/local/survey_client_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
@@ -263,6 +264,20 @@ class SurveyTaskPage extends HookWidget {
                           textAlign: TextAlign.center,
                         ),
                       ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Expanded(child: Container()),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              child: Icon(item.type == AppString.document
+                                  ? Icons.document_scanner
+                                  : Icons.camera),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),

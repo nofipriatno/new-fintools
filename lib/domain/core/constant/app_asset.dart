@@ -13,6 +13,9 @@ class AppAssets {
 
   /// Survey Segment
   static String icSurveyLocation = 'assets/icons/icon_survey_location.png';
+  static String icSurveyCamera = 'assets/icons/ic_camera.png';
+  static String icSurveyFile = 'assets/icons/ic_file.png';
+  static String icSurveyGallery = 'assets/icons/ic_gallery.png';
 
   /// svg
   static String svgLoginBackground =
