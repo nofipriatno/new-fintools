@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fintools/application/survey/task/survey_task_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SurveyTaskPage extends HookWidget {
   final SurveyTask? task;
@@ -270,7 +271,7 @@ class SurveyTaskPage extends HookWidget {
                           children: [
                             Expanded(child: Container()),
                             InkWell(
-                              onTap: () => CustomDialog.file(context),
+                              onTap: () => fileAction(context),
                               child: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 16),
@@ -379,6 +380,20 @@ class SurveyTaskPage extends HookWidget {
 
     if (date != null) {
       controller.text = AppUtils.formatDate(date, format: 'dd/MM/yyyy')!;
+    }
+  }
+
+  void fileAction(BuildContext context) async {
+    final _imagePicker = ImagePicker();
+    final type = await CustomDialog.file(context);
+    if (type == 1) {
+      final image = await _imagePicker.pickImage(source: ImageSource.camera);
+      print('print => ${image?.path}');
+      /// TODO : save path and id to model 
+    } else if (type == 2) {
+      print('print => 2');
+    } else if (type == 3) {
+      print('print => 3');
     }
   }
 }
