@@ -37,6 +37,7 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
                 (q) => AppUtils.splitQuestion(q, e.taskId ?? '', _storage, box))
             .toList();
         List<QuestionAnswerModel> question = [];
+        List<SurveyClientModel> client = [];
 
         for (QuestionAnswerModel element in questionDB) {
           String key = e.taskId! + element.id!;
@@ -60,7 +61,23 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             .toList();
 
         final zipcode = await _database.getSurveyZipcode();
-        final client = AppModel.clientForm;
+        final clientDB = AppModel.clientForm;
+
+        for (SurveyClientModel element in clientDB) {
+          TextEditingController controller = TextEditingController();
+          element = element.copyWith(controller: controller);
+          String key = e.taskId! + element.id!;
+          var getAnswer =
+              _storage.getString(box, key: key + SurveyConstant.client.name);
+          element.controller?.text = getAnswer ?? '';
+          element.controller?.addListener(() {
+            _storage.putString(box,
+                key: '${e.taskId}${element.id}${SurveyConstant.client.name}',
+                value: element.controller?.text ?? '');
+          });
+
+          client.add(element);
+        }
 
         emit(
           _CheckClientSuccess(

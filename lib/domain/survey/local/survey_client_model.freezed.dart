@@ -22,7 +22,7 @@ class _$SurveyClientModelTearOff {
       required String? title,
       required ClientFormType? clientFormType,
       required int? size,
-      required TextEditingController? controller}) {
+      TextEditingController? controller}) {
     return _SurveyClientModel(
       id: id,
       title: title,
@@ -171,7 +171,7 @@ class _$_SurveyClientModel implements _SurveyClientModel {
       required this.title,
       required this.clientFormType,
       required this.size,
-      required this.controller});
+      this.controller});
 
   @override
   final String? id;
@@ -224,7 +224,7 @@ abstract class _SurveyClientModel implements SurveyClientModel {
       required String? title,
       required ClientFormType? clientFormType,
       required int? size,
-      required TextEditingController? controller}) = _$_SurveyClientModel;
+      TextEditingController? controller}) = _$_SurveyClientModel;
 
   @override
   String? get id;

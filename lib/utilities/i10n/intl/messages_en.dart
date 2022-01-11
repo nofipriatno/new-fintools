@@ -24,19 +24,26 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "app_name": MessageLookupByLibrary.simpleMessage("Fintools"),
+        "area_code": MessageLookupByLibrary.simpleMessage("Area Code"),
         "asset": MessageLookupByLibrary.simpleMessage("Assets"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "city": MessageLookupByLibrary.simpleMessage("City"),
+        "city_birth": MessageLookupByLibrary.simpleMessage("Birth City"),
         "client": MessageLookupByLibrary.simpleMessage("Client"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "date_of_birth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_prove": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+        "district": MessageLookupByLibrary.simpleMessage("District"),
         "document": MessageLookupByLibrary.simpleMessage("Document"),
+        "fax": MessageLookupByLibrary.simpleMessage("Fax"),
         "filename": MessageLookupByLibrary.simpleMessage("Filename"),
         "forget_password_mark":
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
@@ -51,8 +58,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_greeting2":
             MessageLookupByLibrary.simpleMessage("Nice Too Meet You Again"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "mobile_phone": MessageLookupByLibrary.simpleMessage("Mobile Phone"),
+        "mother_name": MessageLookupByLibrary.simpleMessage("Mother Name"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nik": MessageLookupByLibrary.simpleMessage("NIK"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "process": MessageLookupByLibrary.simpleMessage("Processs"),
         "product_collect": MessageLookupByLibrary.simpleMessage("Collection"),
         "product_key_1": MessageLookupByLibrary.simpleMessage("iprove"),
@@ -61,14 +72,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_prove": MessageLookupByLibrary.simpleMessage("I-Prove"),
         "product_survey": MessageLookupByLibrary.simpleMessage("Survey"),
         "quisioner": MessageLookupByLibrary.simpleMessage("Quisioner"),
+        "rt": MessageLookupByLibrary.simpleMessage("RT"),
+        "rw": MessageLookupByLibrary.simpleMessage("RW"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "sub_district": MessageLookupByLibrary.simpleMessage("Sub District"),
         "survey_greeting_user": m0,
         "task": MessageLookupByLibrary.simpleMessage("Task"),
         "task_completed":
             MessageLookupByLibrary.simpleMessage("Task Completed"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "until": MessageLookupByLibrary.simpleMessage("Until"),
         "upcoming_survey":
-            MessageLookupByLibrary.simpleMessage("Upcoming Survey")
+            MessageLookupByLibrary.simpleMessage("Upcoming Survey"),
+        "valid": MessageLookupByLibrary.simpleMessage("Valid")
       };
 }

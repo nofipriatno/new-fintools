@@ -44,5 +44,21 @@
   "forget_password_mark": "Forget Password?",
   "filename": "Filename",
   "date": "Date",
-  "time": "Time"
+  "time": "Time",
+  "name": "Name",
+  "valid": "Valid",
+  "until": "Until",
+  "city": "City",
+  "city_birth": "Birth City",
+  "address": "Address",
+  "mother_name": "Mother Name",
+  "rt": "RT",
+  "rw": "RW",
+  "area_code": "Area Code",
+  "district": "District",
+  "sub_district": "Sub District",
+  "phone": "Phone Number",
+  "mobile_phone": "Mobile Phone",
+  "fax": "Fax",
+  "date_of_birth": "Date of Birth"
 }

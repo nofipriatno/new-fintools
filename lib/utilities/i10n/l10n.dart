@@ -419,6 +419,166 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Valid`
+  String get valid {
+    return Intl.message(
+      'Valid',
+      name: 'valid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Until`
+  String get until {
+    return Intl.message(
+      'Until',
+      name: 'until',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message(
+      'City',
+      name: 'city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birth City`
+  String get city_birth {
+    return Intl.message(
+      'Birth City',
+      name: 'city_birth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mother Name`
+  String get mother_name {
+    return Intl.message(
+      'Mother Name',
+      name: 'mother_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RT`
+  String get rt {
+    return Intl.message(
+      'RT',
+      name: 'rt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RW`
+  String get rw {
+    return Intl.message(
+      'RW',
+      name: 'rw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Area Code`
+  String get area_code {
+    return Intl.message(
+      'Area Code',
+      name: 'area_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `District`
+  String get district {
+    return Intl.message(
+      'District',
+      name: 'district',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sub District`
+  String get sub_district {
+    return Intl.message(
+      'Sub District',
+      name: 'sub_district',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phone {
+    return Intl.message(
+      'Phone Number',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile Phone`
+  String get mobile_phone {
+    return Intl.message(
+      'Mobile Phone',
+      name: 'mobile_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fax`
+  String get fax {
+    return Intl.message(
+      'Fax',
+      name: 'fax',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Birth`
+  String get date_of_birth {
+    return Intl.message(
+      'Date of Birth',
+      name: 'date_of_birth',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

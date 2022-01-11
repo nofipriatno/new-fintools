@@ -12,6 +12,7 @@ import 'package:fintools/presentation/component/indicator/circle_tab_indicator.d
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
 import 'package:fintools/presentation/component/text_field/custom_text_field.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
+import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -89,9 +90,8 @@ class SurveyTaskPage extends HookWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
                         itemBuilder: (context, index) => _itemClient(
-                            zipcode.value,
-                            item: clients.value[index],
-                            items: clients.value),
+                            context, zipcode.value,
+                            item: clients.value[index], items: clients.value),
                         separatorBuilder: (BuildContext context, int index) =>
                             const SizedBox(height: 10),
                         itemCount: clients.value.length,
@@ -274,7 +274,7 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-  Widget _itemClient(List<ZipcodeData> zipcode,
+  Widget _itemClient(BuildContext context, List<ZipcodeData> zipcode,
       {required SurveyClientModel item,
       required List<SurveyClientModel> items}) {
     if (item.clientFormType == ClientFormType.zipcode) {
@@ -303,10 +303,10 @@ class SurveyTaskPage extends HookWidget {
           onChanged: (select) {
             item.controller?.text = select?.postCode ?? '';
             var district = items.firstWhere((element) =>
-                element.title == 'district' &&
+                element.title == I10n.current.district &&
                 element.clientFormType == ClientFormType.subZipcode);
             var subDistrict = items.firstWhere((element) =>
-                element.title == 'sub_district' &&
+                element.title == I10n.current.sub_district &&
                 element.clientFormType == ClientFormType.subZipcode);
             district.controller?.text = select?.district ?? '';
             subDistrict.controller?.text = select?.subDistrict ?? '';
@@ -317,10 +317,14 @@ class SurveyTaskPage extends HookWidget {
       return CustomTextField.underline(
           controller: item.controller!,
           title: item.title ?? '',
+          onTap: item.clientFormType?.index == ClientFormType.date.index
+              ? () => showCalendar(context, controller: item.controller!)
+              : null,
           enable:
               !(item.clientFormType?.index == ClientFormType.subZipcode.index),
           readOnly:
-              item.clientFormType?.index == ClientFormType.subZipcode.index,
+              item.clientFormType?.index == ClientFormType.subZipcode.index ||
+                  item.clientFormType?.index == ClientFormType.date.index,
           inputType: getInputType(item.clientFormType!));
     }
   }
@@ -343,6 +347,19 @@ class SurveyTaskPage extends HookWidget {
         return TextInputType.number;
       case ClientFormType.phone:
         return TextInputType.phone;
+    }
+  }
+
+  void showCalendar(BuildContext context,
+      {required TextEditingController controller}) async {
+    final date = await showDatePicker(
+        context: context,
+        firstDate: DateTime(1900),
+        initialDate: DateTime.now(),
+        lastDate: DateTime.now());
+
+    if (date != null) {
+      controller.text = AppUtils.formatDate(date, format: 'dd/MM/yyyy')!;
     }
   }
 }

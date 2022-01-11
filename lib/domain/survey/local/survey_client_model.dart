@@ -11,6 +11,6 @@ class SurveyClientModel with _$SurveyClientModel {
     required String? title,
     required ClientFormType? clientFormType,
     required int? size,
-    required TextEditingController? controller,
+    TextEditingController? controller,
   }) = _SurveyClientModel;
 }

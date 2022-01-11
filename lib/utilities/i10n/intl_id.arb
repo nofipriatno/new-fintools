@@ -39,5 +39,21 @@
   "forget_password_mark": "Lupa Kata Sandi?",
   "filename": "Nama file",
   "date": "Tanggal",
-  "time": "Waktu"
+  "time": "Waktu",
+  "name": "Nama",
+  "valid": "Berlaku",
+  "until": "Hingga",
+  "city": "Kota Asal",
+  "city_birth": "Kota Kelahiran",
+  "address": "Alamat",
+  "mother_name": "Nama Ibu Kandung",
+  "rt": "RT",
+  "rw": "RW",
+  "area_code": "Kode Pos",
+  "district": "kecamatan",
+  "sub_district": "kelurahan",
+  "phone": "Nomor Telepon",
+  "mobile_phone": "Nomor Telepon",
+  "fax": "Fax",
+  "date_of_birth": "Tanggal Lahir"
 }
