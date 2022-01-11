@@ -60,5 +60,9 @@
   "phone": "Phone Number",
   "mobile_phone": "Mobile Phone",
   "fax": "Fax",
-  "date_of_birth": "Date of Birth"
+  "date_of_birth": "Date of Birth",
+  "choose": "Choose",
+  "take_picture": "Take Picture",
+  "choose_file": "Choose File",
+  "take_gallery": "Take Gallery"
 }

@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "area_code": MessageLookupByLibrary.simpleMessage("Kode Pos"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Batal"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "choose": MessageLookupByLibrary.simpleMessage("Pilih"),
+        "choose_file": MessageLookupByLibrary.simpleMessage("Pilih File"),
         "city": MessageLookupByLibrary.simpleMessage("Kota Asal"),
         "city_birth": MessageLookupByLibrary.simpleMessage("Kota Kelahiran"),
         "date": MessageLookupByLibrary.simpleMessage("Tanggal"),
@@ -72,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Simpan"),
         "sub_district": MessageLookupByLibrary.simpleMessage("kelurahan"),
         "survey_greeting_user": m0,
+        "take_gallery": MessageLookupByLibrary.simpleMessage("Ambil Galeri"),
+        "take_picture": MessageLookupByLibrary.simpleMessage("Ambil Gambar"),
         "task": MessageLookupByLibrary.simpleMessage("Tugas"),
         "task_completed":
             MessageLookupByLibrary.simpleMessage("Tugas telah selasai"),

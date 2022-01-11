@@ -38,7 +38,7 @@ class CustomBottomSheet {
               ListTile(
                 title: Text(I10n.current.logout, style: AppFont.text14Normal),
                 trailing: const Icon(Icons.logout),
-                onTap: () => CustomDialog(getIt<IStorage>()).logout(context,
+                onTap: () => CustomDialog.logout(context,
                     title: 'Confirmation', message: 'Anda Yakin ingin keluar?'),
               )
             ],

@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "asset": MessageLookupByLibrary.simpleMessage("Assets"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "choose": MessageLookupByLibrary.simpleMessage("Choose"),
+        "choose_file": MessageLookupByLibrary.simpleMessage("Choose File"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "city_birth": MessageLookupByLibrary.simpleMessage("Birth City"),
         "client": MessageLookupByLibrary.simpleMessage("Client"),
@@ -77,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "sub_district": MessageLookupByLibrary.simpleMessage("Sub District"),
         "survey_greeting_user": m0,
+        "take_gallery": MessageLookupByLibrary.simpleMessage("Take Gallery"),
+        "take_picture": MessageLookupByLibrary.simpleMessage("Take Picture"),
         "task": MessageLookupByLibrary.simpleMessage("Task"),
         "task_completed":
             MessageLookupByLibrary.simpleMessage("Task Completed"),

@@ -579,6 +579,46 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Choose`
+  String get choose {
+    return Intl.message(
+      'Choose',
+      name: 'choose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take Picture`
+  String get take_picture {
+    return Intl.message(
+      'Take Picture',
+      name: 'take_picture',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose File`
+  String get choose_file {
+    return Intl.message(
+      'Choose File',
+      name: 'choose_file',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take Gallery`
+  String get take_gallery {
+    return Intl.message(
+      'Take Gallery',
+      name: 'take_gallery',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

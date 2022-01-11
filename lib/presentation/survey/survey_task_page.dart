@@ -9,6 +9,7 @@ import 'package:fintools/domain/survey/response/survey_task_list_response/survey
 import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
+import 'package:fintools/presentation/component/dialog/custom_dialog.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
 import 'package:fintools/presentation/component/text_field/custom_text_field.dart';
@@ -111,7 +112,7 @@ class SurveyTaskPage extends HookWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
                         itemBuilder: (context, index) =>
-                            _itemDocument(assets.value[index]),
+                            _itemDocument(context, assets.value[index]),
                         separatorBuilder: (BuildContext context, int index) =>
                             const SizedBox(height: 10),
                         itemCount: assets.value.length,
@@ -120,7 +121,7 @@ class SurveyTaskPage extends HookWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
                         itemBuilder: (context, index) =>
-                            _itemDocument(documents.value[index]),
+                            _itemDocument(context, documents.value[index]),
                         separatorBuilder: (BuildContext context, int index) =>
                             const SizedBox(height: 10),
                         itemCount: assets.value.length,
@@ -171,7 +172,7 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-  Widget _itemDocument(FormUploadData item) {
+  Widget _itemDocument(BuildContext context, FormUploadData item) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -268,12 +269,15 @@ class SurveyTaskPage extends HookWidget {
                         child: Row(
                           children: [
                             Expanded(child: Container()),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
-                              child: Icon(item.type == AppString.document
-                                  ? Icons.document_scanner
-                                  : Icons.camera),
+                            InkWell(
+                              onTap: () => CustomDialog.file(context),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: Icon(item.type == AppString.document
+                                    ? Icons.document_scanner
+                                    : Icons.camera),
+                              ),
                             )
                           ],
                         ),
