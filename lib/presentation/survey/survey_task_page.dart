@@ -1,4 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_enum.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
@@ -389,11 +390,17 @@ class SurveyTaskPage extends HookWidget {
     if (type == 1) {
       final image = await _imagePicker.pickImage(source: ImageSource.camera);
       print('print => ${image?.path}');
-      /// TODO : save path and id to model 
+
+      /// TODO : save path and id to model
     } else if (type == 2) {
-      print('print => 2');
+      final test = await FilePicker.platform.pickFiles(
+          type: FileType.custom, allowedExtensions: ['pdf', 'doc', 'docx']);
+      print('print => ${test?.paths.first}');
+      print('print => ${test?.files.first.extension}');
     } else if (type == 3) {
-      print('print => 3');
+      final test = await FilePicker.platform.pickFiles(type: FileType.image);
+      print('print => ${test?.paths.first}');
+      print('print => ${test?.files.first.extension}');
     }
   }
 }
