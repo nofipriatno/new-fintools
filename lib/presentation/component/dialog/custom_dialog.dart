@@ -103,7 +103,6 @@ class CustomDialog {
 
   static file(BuildContext context) {
     return showDialog(
-      barrierDismissible: false,
       context: context,
       builder: (_) => AlertDialog(
         title: Center(

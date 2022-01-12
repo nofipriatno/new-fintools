@@ -5,6 +5,7 @@ import 'package:fintools/domain/core/constant/app_enum.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
 import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/survey/local/survey_client_model.dart';
+import 'package:fintools/domain/survey/local/survey_data_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/infrastructure/core/database.dart';
@@ -35,6 +36,7 @@ class SurveyTaskPage extends HookWidget {
     final documents = useState<List<FormUploadData>>([]);
     final clients = useState<List<SurveyClientModel>>([]);
     final zipcode = useState<List<ZipcodeData>>([]);
+    final surveyData = useState<List<SurveyDataModel>>([]);
 
     return BlocProvider<SurveyTaskBloc>(
       create: (_) => getIt<SurveyTaskBloc>()
@@ -51,6 +53,7 @@ class SurveyTaskPage extends HookWidget {
                 assets.value = e.assets;
                 clients.value = e.client;
                 zipcode.value = e.zipcode;
+                surveyData.value = e.data;
               },
               selectChoiceSuccess: (e) {
                 var item = questions.value
@@ -59,6 +62,13 @@ class SurveyTaskPage extends HookWidget {
                 item = item.copyWith(search: e.item);
                 questions.value.removeAt(index);
                 questions.value.insert(index, item);
+              },
+              selectFileSuccess: (e) {
+                final data = surveyData.value
+                    .firstWhere((element) => element.id == e.data.id);
+                if (surveyData.value.any((element) => element != data)) {
+                  surveyData.value.add(data);
+                }
               });
         },
         builder: (context, state) => CustomScaffold.normal(
@@ -272,7 +282,8 @@ class SurveyTaskPage extends HookWidget {
                           children: [
                             Expanded(child: Container()),
                             InkWell(
-                              onTap: () => fileAction(context),
+                              onTap: () =>
+                                  fileAction(context, task: task, item: item),
                               child: Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 16),
@@ -384,23 +395,33 @@ class SurveyTaskPage extends HookWidget {
     }
   }
 
-  void fileAction(BuildContext context) async {
+  void fileAction(BuildContext context,
+      {required SurveyTask? task, required FormUploadData item}) async {
     final _imagePicker = ImagePicker();
     final type = await CustomDialog.file(context);
+    if (type == null) return;
     if (type == 1) {
       final image = await _imagePicker.pickImage(source: ImageSource.camera);
-      print('print => ${image?.path}');
-
-      /// TODO : save path and id to model
+      context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
+          path: image?.path,
+          id: item,
+          extension: 'png',
+          taskId: task?.taskId ?? ''));
     } else if (type == 2) {
-      final test = await FilePicker.platform.pickFiles(
+      final file = await FilePicker.platform.pickFiles(
           type: FileType.custom, allowedExtensions: ['pdf', 'doc', 'docx']);
-      print('print => ${test?.paths.first}');
-      print('print => ${test?.files.first.extension}');
+      context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
+          path: file?.files.first.path,
+          id: item,
+          extension: file?.files.first.extension,
+          taskId: task?.taskId ?? ''));
     } else if (type == 3) {
-      final test = await FilePicker.platform.pickFiles(type: FileType.image);
-      print('print => ${test?.paths.first}');
-      print('print => ${test?.files.first.extension}');
+      final file = await FilePicker.platform.pickFiles(type: FileType.image);
+      context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
+          path: file?.files.first.path,
+          id: item,
+          extension: file?.files.first.extension,
+          taskId: task?.taskId ?? ''));
     }
   }
 }

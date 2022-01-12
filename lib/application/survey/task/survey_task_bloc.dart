@@ -4,6 +4,7 @@ import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
 import 'package:fintools/domain/survey/local/survey_client_model.dart';
+import 'package:fintools/domain/survey/local/survey_data_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/local/survey_search_model.dart';
 import 'package:fintools/infrastructure/core/database.dart';
@@ -38,6 +39,7 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             .toList();
         List<QuestionAnswerModel> question = [];
         List<SurveyClientModel> client = [];
+        List<SurveyDataModel> surveyData = [];
 
         for (QuestionAnswerModel element in questionDB) {
           String key = e.taskId! + element.id!;
@@ -53,6 +55,13 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         }
 
         final document = await _database.getSurveyForm();
+
+        for (FormUploadData element in document) {
+          String key = e.taskId! + element.type + element.id;
+          final data = _storage.getJson(box, key: key);
+          if (data != null) surveyData.add(SurveyDataModel.fromJson(data));
+        }
+
         final picDocument = document
             .where((element) => element.code.toUpperCase().contains('PIC'))
             .toList();
@@ -85,7 +94,8 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
               document: dpkDocument,
               assets: picDocument,
               client: client,
-              zipcode: zipcode),
+              zipcode: zipcode,
+              data: surveyData),
         );
       }, onChoiceSelect: (e) async {
         emit(const _Initial());
@@ -99,6 +109,17 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             key: e.taskId + e.item.id! + SurveyConstant.choice.name,
             object: model.toJson());
         emit(_SelectChoiceSuccess(item: model, choice: e.choice));
+      }, onFileSelect: (e) async {
+        emit(const _Initial());
+        final box = await _storage.openBox(StorageConstants.dataSurvey);
+        SurveyDataModel data = SurveyDataModel(
+            id: e.id.id,
+            filePath: e.path,
+            dateTime: DateTime.now(),
+            extension: e.extension);
+        await _storage.setJson(box,
+            key: e.taskId + e.id.type + e.id.id, object: data.toJson());
+        emit(_SelectFileSuccess(data: data));
       });
     });
   }

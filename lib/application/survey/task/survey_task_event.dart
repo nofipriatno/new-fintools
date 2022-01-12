@@ -10,4 +10,11 @@ class SurveyTaskEvent with _$SurveyTaskEvent {
     required String choice,
     required String taskId,
   }) = _OnChoiceSelect;
+
+  const factory SurveyTaskEvent.onFileSelect({
+    required String? path,
+    required FormUploadData id,
+    required String? extension,
+    required String taskId,
+  }) = _OnFileSelect;
 }

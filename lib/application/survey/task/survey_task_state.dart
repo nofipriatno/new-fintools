@@ -12,10 +12,14 @@ class SurveyTaskState with _$SurveyTaskState {
     required List<FormUploadData> document,
     required List<SurveyClientModel> client,
     required List<ZipcodeData> zipcode,
+    required List<SurveyDataModel> data,
   }) = _CheckClientSuccess;
 
   const factory SurveyTaskState.selectChoiceSuccess({
     required SearchModel item,
     required String choice,
   }) = _SelectChoiceSuccess;
+
+  const factory SurveyTaskState.selectFileSuccess(
+      {required SurveyDataModel data}) = _SelectFileSuccess;
 }

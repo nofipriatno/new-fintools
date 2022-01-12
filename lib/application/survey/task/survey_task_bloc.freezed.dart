@@ -33,6 +33,19 @@ class _$SurveyTaskEventTearOff {
       taskId: taskId,
     );
   }
+
+  _OnFileSelect onFileSelect(
+      {required String? path,
+      required FormUploadData id,
+      required String? extension,
+      required String taskId}) {
+    return _OnFileSelect(
+      path: path,
+      id: id,
+      extension: extension,
+      taskId: taskId,
+    );
+  }
 }
 
 /// @nodoc
@@ -45,6 +58,9 @@ mixin _$SurveyTaskEvent {
     required TResult Function(String? taskId) onInitialize,
     required TResult Function(SearchModel item, String choice, String taskId)
         onChoiceSelect,
+    required TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)
+        onFileSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +68,9 @@ mixin _$SurveyTaskEvent {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
+    TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)?
+        onFileSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +78,9 @@ mixin _$SurveyTaskEvent {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
+    TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)?
+        onFileSelect,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,18 +88,21 @@ mixin _$SurveyTaskEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_OnInitialize value) onInitialize,
     required TResult Function(_OnChoiceSelect value) onChoiceSelect,
+    required TResult Function(_OnFileSelect value) onFileSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -168,6 +193,9 @@ class _$_OnInitialize implements _OnInitialize {
     required TResult Function(String? taskId) onInitialize,
     required TResult Function(SearchModel item, String choice, String taskId)
         onChoiceSelect,
+    required TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)
+        onFileSelect,
   }) {
     return onInitialize(taskId);
   }
@@ -178,6 +206,9 @@ class _$_OnInitialize implements _OnInitialize {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
+    TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)?
+        onFileSelect,
   }) {
     return onInitialize?.call(taskId);
   }
@@ -188,6 +219,9 @@ class _$_OnInitialize implements _OnInitialize {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
+    TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)?
+        onFileSelect,
     required TResult orElse(),
   }) {
     if (onInitialize != null) {
@@ -201,6 +235,7 @@ class _$_OnInitialize implements _OnInitialize {
   TResult map<TResult extends Object?>({
     required TResult Function(_OnInitialize value) onInitialize,
     required TResult Function(_OnChoiceSelect value) onChoiceSelect,
+    required TResult Function(_OnFileSelect value) onFileSelect,
   }) {
     return onInitialize(this);
   }
@@ -210,6 +245,7 @@ class _$_OnInitialize implements _OnInitialize {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
   }) {
     return onInitialize?.call(this);
   }
@@ -219,6 +255,7 @@ class _$_OnInitialize implements _OnInitialize {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
     required TResult orElse(),
   }) {
     if (onInitialize != null) {
@@ -334,6 +371,9 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     required TResult Function(String? taskId) onInitialize,
     required TResult Function(SearchModel item, String choice, String taskId)
         onChoiceSelect,
+    required TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)
+        onFileSelect,
   }) {
     return onChoiceSelect(item, choice, taskId);
   }
@@ -344,6 +384,9 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
+    TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)?
+        onFileSelect,
   }) {
     return onChoiceSelect?.call(item, choice, taskId);
   }
@@ -354,6 +397,9 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
+    TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)?
+        onFileSelect,
     required TResult orElse(),
   }) {
     if (onChoiceSelect != null) {
@@ -367,6 +413,7 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
   TResult map<TResult extends Object?>({
     required TResult Function(_OnInitialize value) onInitialize,
     required TResult Function(_OnChoiceSelect value) onChoiceSelect,
+    required TResult Function(_OnFileSelect value) onFileSelect,
   }) {
     return onChoiceSelect(this);
   }
@@ -376,6 +423,7 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
   }) {
     return onChoiceSelect?.call(this);
   }
@@ -385,6 +433,7 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
     required TResult orElse(),
   }) {
     if (onChoiceSelect != null) {
@@ -409,6 +458,195 @@ abstract class _OnChoiceSelect implements SurveyTaskEvent {
 }
 
 /// @nodoc
+abstract class _$OnFileSelectCopyWith<$Res> {
+  factory _$OnFileSelectCopyWith(
+          _OnFileSelect value, $Res Function(_OnFileSelect) then) =
+      __$OnFileSelectCopyWithImpl<$Res>;
+  $Res call(
+      {String? path, FormUploadData id, String? extension, String taskId});
+}
+
+/// @nodoc
+class __$OnFileSelectCopyWithImpl<$Res>
+    extends _$SurveyTaskEventCopyWithImpl<$Res>
+    implements _$OnFileSelectCopyWith<$Res> {
+  __$OnFileSelectCopyWithImpl(
+      _OnFileSelect _value, $Res Function(_OnFileSelect) _then)
+      : super(_value, (v) => _then(v as _OnFileSelect));
+
+  @override
+  _OnFileSelect get _value => super._value as _OnFileSelect;
+
+  @override
+  $Res call({
+    Object? path = freezed,
+    Object? id = freezed,
+    Object? extension = freezed,
+    Object? taskId = freezed,
+  }) {
+    return _then(_OnFileSelect(
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as FormUploadData,
+      extension: extension == freezed
+          ? _value.extension
+          : extension // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taskId: taskId == freezed
+          ? _value.taskId
+          : taskId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnFileSelect implements _OnFileSelect {
+  const _$_OnFileSelect(
+      {required this.path,
+      required this.id,
+      required this.extension,
+      required this.taskId});
+
+  @override
+  final String? path;
+  @override
+  final FormUploadData id;
+  @override
+  final String? extension;
+  @override
+  final String taskId;
+
+  @override
+  String toString() {
+    return 'SurveyTaskEvent.onFileSelect(path: $path, id: $id, extension: $extension, taskId: $taskId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OnFileSelect &&
+            const DeepCollectionEquality().equals(other.path, path) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.extension, extension) &&
+            const DeepCollectionEquality().equals(other.taskId, taskId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(path),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(extension),
+      const DeepCollectionEquality().hash(taskId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnFileSelectCopyWith<_OnFileSelect> get copyWith =>
+      __$OnFileSelectCopyWithImpl<_OnFileSelect>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? taskId) onInitialize,
+    required TResult Function(SearchModel item, String choice, String taskId)
+        onChoiceSelect,
+    required TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)
+        onFileSelect,
+  }) {
+    return onFileSelect(path, id, extension, taskId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? taskId)? onInitialize,
+    TResult Function(SearchModel item, String choice, String taskId)?
+        onChoiceSelect,
+    TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)?
+        onFileSelect,
+  }) {
+    return onFileSelect?.call(path, id, extension, taskId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? taskId)? onInitialize,
+    TResult Function(SearchModel item, String choice, String taskId)?
+        onChoiceSelect,
+    TResult Function(
+            String? path, FormUploadData id, String? extension, String taskId)?
+        onFileSelect,
+    required TResult orElse(),
+  }) {
+    if (onFileSelect != null) {
+      return onFileSelect(path, id, extension, taskId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnInitialize value) onInitialize,
+    required TResult Function(_OnChoiceSelect value) onChoiceSelect,
+    required TResult Function(_OnFileSelect value) onFileSelect,
+  }) {
+    return onFileSelect(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_OnInitialize value)? onInitialize,
+    TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
+  }) {
+    return onFileSelect?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnInitialize value)? onInitialize,
+    TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
+    required TResult orElse(),
+  }) {
+    if (onFileSelect != null) {
+      return onFileSelect(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnFileSelect implements SurveyTaskEvent {
+  const factory _OnFileSelect(
+      {required String? path,
+      required FormUploadData id,
+      required String? extension,
+      required String taskId}) = _$_OnFileSelect;
+
+  String? get path;
+  FormUploadData get id;
+  String? get extension;
+  String get taskId;
+  @JsonKey(ignore: true)
+  _$OnFileSelectCopyWith<_OnFileSelect> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$SurveyTaskStateTearOff {
   const _$SurveyTaskStateTearOff();
 
@@ -425,13 +663,15 @@ class _$SurveyTaskStateTearOff {
       required List<FormUploadData> assets,
       required List<FormUploadData> document,
       required List<SurveyClientModel> client,
-      required List<ZipcodeData> zipcode}) {
+      required List<ZipcodeData> zipcode,
+      required List<SurveyDataModel> data}) {
     return _CheckClientSuccess(
       questions: questions,
       assets: assets,
       document: document,
       client: client,
       zipcode: zipcode,
+      data: data,
     );
   }
 
@@ -440,6 +680,12 @@ class _$SurveyTaskStateTearOff {
     return _SelectChoiceSuccess(
       item: item,
       choice: choice,
+    );
+  }
+
+  _SelectFileSuccess selectFileSuccess({required SurveyDataModel data}) {
+    return _SelectFileSuccess(
+      data: data,
     );
   }
 }
@@ -458,10 +704,12 @@ mixin _$SurveyTaskState {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
+    required TResult Function(SurveyDataModel data) selectFileSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -473,9 +721,11 @@ mixin _$SurveyTaskState {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -487,9 +737,11 @@ mixin _$SurveyTaskState {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -499,6 +751,7 @@ mixin _$SurveyTaskState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_CheckClientSuccess value) checkClientSuccess,
     required TResult Function(_SelectChoiceSuccess value) selectChoiceSuccess,
+    required TResult Function(_SelectFileSuccess value) selectFileSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -507,6 +760,7 @@ mixin _$SurveyTaskState {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -515,6 +769,7 @@ mixin _$SurveyTaskState {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -582,10 +837,12 @@ class _$_Initial implements _Initial {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
+    required TResult Function(SurveyDataModel data) selectFileSuccess,
   }) {
     return initial();
   }
@@ -600,9 +857,11 @@ class _$_Initial implements _Initial {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
   }) {
     return initial?.call();
   }
@@ -617,9 +876,11 @@ class _$_Initial implements _Initial {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -635,6 +896,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_CheckClientSuccess value) checkClientSuccess,
     required TResult Function(_SelectChoiceSuccess value) selectChoiceSuccess,
+    required TResult Function(_SelectFileSuccess value) selectFileSuccess,
   }) {
     return initial(this);
   }
@@ -646,6 +908,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
   }) {
     return initial?.call(this);
   }
@@ -657,6 +920,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -715,10 +979,12 @@ class _$_Loading implements _Loading {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
+    required TResult Function(SurveyDataModel data) selectFileSuccess,
   }) {
     return loading();
   }
@@ -733,9 +999,11 @@ class _$_Loading implements _Loading {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
   }) {
     return loading?.call();
   }
@@ -750,9 +1018,11 @@ class _$_Loading implements _Loading {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -768,6 +1038,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_CheckClientSuccess value) checkClientSuccess,
     required TResult Function(_SelectChoiceSuccess value) selectChoiceSuccess,
+    required TResult Function(_SelectFileSuccess value) selectFileSuccess,
   }) {
     return loading(this);
   }
@@ -779,6 +1050,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
   }) {
     return loading?.call(this);
   }
@@ -790,6 +1062,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -813,7 +1086,8 @@ abstract class _$CheckClientSuccessCopyWith<$Res> {
       List<FormUploadData> assets,
       List<FormUploadData> document,
       List<SurveyClientModel> client,
-      List<ZipcodeData> zipcode});
+      List<ZipcodeData> zipcode,
+      List<SurveyDataModel> data});
 }
 
 /// @nodoc
@@ -834,6 +1108,7 @@ class __$CheckClientSuccessCopyWithImpl<$Res>
     Object? document = freezed,
     Object? client = freezed,
     Object? zipcode = freezed,
+    Object? data = freezed,
   }) {
     return _then(_CheckClientSuccess(
       questions: questions == freezed
@@ -856,6 +1131,10 @@ class __$CheckClientSuccessCopyWithImpl<$Res>
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as List<ZipcodeData>,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<SurveyDataModel>,
     ));
   }
 }
@@ -868,7 +1147,8 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
       required this.assets,
       required this.document,
       required this.client,
-      required this.zipcode});
+      required this.zipcode,
+      required this.data});
 
   @override
   final List<QuestionAnswerModel> questions;
@@ -880,10 +1160,12 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
   final List<SurveyClientModel> client;
   @override
   final List<ZipcodeData> zipcode;
+  @override
+  final List<SurveyDataModel> data;
 
   @override
   String toString() {
-    return 'SurveyTaskState.checkClientSuccess(questions: $questions, assets: $assets, document: $document, client: $client, zipcode: $zipcode)';
+    return 'SurveyTaskState.checkClientSuccess(questions: $questions, assets: $assets, document: $document, client: $client, zipcode: $zipcode, data: $data)';
   }
 
   @override
@@ -895,7 +1177,8 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
             const DeepCollectionEquality().equals(other.assets, assets) &&
             const DeepCollectionEquality().equals(other.document, document) &&
             const DeepCollectionEquality().equals(other.client, client) &&
-            const DeepCollectionEquality().equals(other.zipcode, zipcode));
+            const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
@@ -905,7 +1188,8 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
       const DeepCollectionEquality().hash(assets),
       const DeepCollectionEquality().hash(document),
       const DeepCollectionEquality().hash(client),
-      const DeepCollectionEquality().hash(zipcode));
+      const DeepCollectionEquality().hash(zipcode),
+      const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -922,12 +1206,15 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
+    required TResult Function(SurveyDataModel data) selectFileSuccess,
   }) {
-    return checkClientSuccess(questions, assets, document, client, zipcode);
+    return checkClientSuccess(
+        questions, assets, document, client, zipcode, data);
   }
 
   @override
@@ -940,12 +1227,14 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
   }) {
     return checkClientSuccess?.call(
-        questions, assets, document, client, zipcode);
+        questions, assets, document, client, zipcode, data);
   }
 
   @override
@@ -958,13 +1247,16 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
     required TResult orElse(),
   }) {
     if (checkClientSuccess != null) {
-      return checkClientSuccess(questions, assets, document, client, zipcode);
+      return checkClientSuccess(
+          questions, assets, document, client, zipcode, data);
     }
     return orElse();
   }
@@ -976,6 +1268,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     required TResult Function(_Loading value) loading,
     required TResult Function(_CheckClientSuccess value) checkClientSuccess,
     required TResult Function(_SelectChoiceSuccess value) selectChoiceSuccess,
+    required TResult Function(_SelectFileSuccess value) selectFileSuccess,
   }) {
     return checkClientSuccess(this);
   }
@@ -987,6 +1280,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
   }) {
     return checkClientSuccess?.call(this);
   }
@@ -998,6 +1292,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
     required TResult orElse(),
   }) {
     if (checkClientSuccess != null) {
@@ -1013,13 +1308,15 @@ abstract class _CheckClientSuccess implements SurveyTaskState {
       required List<FormUploadData> assets,
       required List<FormUploadData> document,
       required List<SurveyClientModel> client,
-      required List<ZipcodeData> zipcode}) = _$_CheckClientSuccess;
+      required List<ZipcodeData> zipcode,
+      required List<SurveyDataModel> data}) = _$_CheckClientSuccess;
 
   List<QuestionAnswerModel> get questions;
   List<FormUploadData> get assets;
   List<FormUploadData> get document;
   List<SurveyClientModel> get client;
   List<ZipcodeData> get zipcode;
+  List<SurveyDataModel> get data;
   @JsonKey(ignore: true)
   _$CheckClientSuccessCopyWith<_CheckClientSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1117,10 +1414,12 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)
         checkClientSuccess,
     required TResult Function(SearchModel item, String choice)
         selectChoiceSuccess,
+    required TResult Function(SurveyDataModel data) selectFileSuccess,
   }) {
     return selectChoiceSuccess(item, choice);
   }
@@ -1135,9 +1434,11 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
   }) {
     return selectChoiceSuccess?.call(item, choice);
   }
@@ -1152,9 +1453,11 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
             List<FormUploadData> assets,
             List<FormUploadData> document,
             List<SurveyClientModel> client,
-            List<ZipcodeData> zipcode)?
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
         checkClientSuccess,
     TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
     required TResult orElse(),
   }) {
     if (selectChoiceSuccess != null) {
@@ -1170,6 +1473,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     required TResult Function(_Loading value) loading,
     required TResult Function(_CheckClientSuccess value) checkClientSuccess,
     required TResult Function(_SelectChoiceSuccess value) selectChoiceSuccess,
+    required TResult Function(_SelectFileSuccess value) selectFileSuccess,
   }) {
     return selectChoiceSuccess(this);
   }
@@ -1181,6 +1485,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
   }) {
     return selectChoiceSuccess?.call(this);
   }
@@ -1192,6 +1497,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_CheckClientSuccess value)? checkClientSuccess,
     TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
     required TResult orElse(),
   }) {
     if (selectChoiceSuccess != null) {
@@ -1210,5 +1516,189 @@ abstract class _SelectChoiceSuccess implements SurveyTaskState {
   String get choice;
   @JsonKey(ignore: true)
   _$SelectChoiceSuccessCopyWith<_SelectChoiceSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$SelectFileSuccessCopyWith<$Res> {
+  factory _$SelectFileSuccessCopyWith(
+          _SelectFileSuccess value, $Res Function(_SelectFileSuccess) then) =
+      __$SelectFileSuccessCopyWithImpl<$Res>;
+  $Res call({SurveyDataModel data});
+
+  $SurveyDataModelCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$SelectFileSuccessCopyWithImpl<$Res>
+    extends _$SurveyTaskStateCopyWithImpl<$Res>
+    implements _$SelectFileSuccessCopyWith<$Res> {
+  __$SelectFileSuccessCopyWithImpl(
+      _SelectFileSuccess _value, $Res Function(_SelectFileSuccess) _then)
+      : super(_value, (v) => _then(v as _SelectFileSuccess));
+
+  @override
+  _SelectFileSuccess get _value => super._value as _SelectFileSuccess;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_SelectFileSuccess(
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as SurveyDataModel,
+    ));
+  }
+
+  @override
+  $SurveyDataModelCopyWith<$Res> get data {
+    return $SurveyDataModelCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SelectFileSuccess implements _SelectFileSuccess {
+  const _$_SelectFileSuccess({required this.data});
+
+  @override
+  final SurveyDataModel data;
+
+  @override
+  String toString() {
+    return 'SurveyTaskState.selectFileSuccess(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SelectFileSuccess &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SelectFileSuccessCopyWith<_SelectFileSuccess> get copyWith =>
+      __$SelectFileSuccessCopyWithImpl<_SelectFileSuccess>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)
+        checkClientSuccess,
+    required TResult Function(SearchModel item, String choice)
+        selectChoiceSuccess,
+    required TResult Function(SurveyDataModel data) selectFileSuccess,
+  }) {
+    return selectFileSuccess(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
+        checkClientSuccess,
+    TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
+  }) {
+    return selectFileSuccess?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
+        checkClientSuccess,
+    TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
+    required TResult orElse(),
+  }) {
+    if (selectFileSuccess != null) {
+      return selectFileSuccess(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckClientSuccess value) checkClientSuccess,
+    required TResult Function(_SelectChoiceSuccess value) selectChoiceSuccess,
+    required TResult Function(_SelectFileSuccess value) selectFileSuccess,
+  }) {
+    return selectFileSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CheckClientSuccess value)? checkClientSuccess,
+    TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
+  }) {
+    return selectFileSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CheckClientSuccess value)? checkClientSuccess,
+    TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
+    required TResult orElse(),
+  }) {
+    if (selectFileSuccess != null) {
+      return selectFileSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectFileSuccess implements SurveyTaskState {
+  const factory _SelectFileSuccess({required SurveyDataModel data}) =
+      _$_SelectFileSuccess;
+
+  SurveyDataModel get data;
+  @JsonKey(ignore: true)
+  _$SelectFileSuccessCopyWith<_SelectFileSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
