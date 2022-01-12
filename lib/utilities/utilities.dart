@@ -113,4 +113,8 @@ class AppUtils {
 
     return a;
   }
+
+  static Map<String, dynamic> createSurveyFormData(){
+    return {};
+  }
 }

@@ -119,7 +119,7 @@ class NetworkService implements INetworkService {
       try {
         String baseUrl = await _env.getBaseUrl;
         final Map<String, dynamic> headers = {
-          'content-type': ContentType.json.mimeType,
+          'content-type': contentType ?? ContentType.json.mimeType,
           'Accept': ContentType.json.mimeType,
         };
         if (header != null) {

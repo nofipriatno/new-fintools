@@ -5,4 +5,6 @@ import 'package:fintools/domain/survey/response/survey_login_response/survey_log
 abstract class IUserSurvey {
   Future<Either<GenericFailure, SurveyLoginResponse>> surveyLogin(
       {required String username, required String password});
+
+  Future<Either<GenericFailure, bool>> postSurveyData();
 }
