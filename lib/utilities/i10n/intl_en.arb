@@ -64,5 +64,8 @@
   "choose": "Choose",
   "take_picture": "Take Picture",
   "choose_file": "Choose File",
-  "take_gallery": "Take Gallery"
+  "take_gallery": "Take Gallery",
+  "submit": "Submit",
+  "completed": "Completed",
+  "uncompleted": "Uncompleted"
 }

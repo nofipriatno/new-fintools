@@ -13,6 +13,7 @@ import 'package:fintools/domain/survey/response/survey_task_list_response/survey
 import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
+import 'package:fintools/presentation/component/button/custom_button.dart';
 import 'package:fintools/presentation/component/dialog/custom_dialog.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
@@ -23,6 +24,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fintools/application/survey/task/survey_task_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SurveyTaskPage extends HookWidget {
@@ -149,7 +151,7 @@ class SurveyTaskPage extends HookWidget {
                             const SizedBox(height: 10),
                         itemCount: assets.value.length,
                       ),
-                      Container(),
+                      _processCompleted()
                     ],
                   ),
                 )
@@ -157,6 +159,138 @@ class SurveyTaskPage extends HookWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _processCompleted() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+      child: Column(
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        I10n.current.client,
+                        style:
+                            AppFont.text13Bold.copyWith(color: AppColor.gold),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.blue,
+                          borderRadius: BorderRadius.circular(80),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          child: Text(
+                            I10n.current.completed,
+                            style: AppFont.text11W500
+                                .copyWith(color: AppColor.white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        I10n.current.quisioner,
+                        style:
+                            AppFont.text13Bold.copyWith(color: AppColor.gold),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.blue,
+                          borderRadius: BorderRadius.circular(80),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          child: Text(
+                            I10n.current.completed,
+                            style: AppFont.text11W500
+                                .copyWith(color: AppColor.white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        I10n.current.asset,
+                        style:
+                            AppFont.text13Bold.copyWith(color: AppColor.gold),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.blue,
+                          borderRadius: BorderRadius.circular(80),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          child: Text(
+                            I10n.current.completed,
+                            style: AppFont.text11W500
+                                .copyWith(color: AppColor.white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        I10n.current.document,
+                        style:
+                            AppFont.text13Bold.copyWith(color: AppColor.gold),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.blue,
+                          borderRadius: BorderRadius.circular(80),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          child: Text(
+                            I10n.current.completed,
+                            style: AppFont.text11W500
+                                .copyWith(color: AppColor.white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            child: CustomButton.normalButton(I10n.current.submit, () {}),
+            width: ScreenUtil().screenWidth,
+          )
+        ],
       ),
     );
   }
@@ -269,54 +403,63 @@ class SurveyTaskPage extends HookWidget {
                       data = local.firstWhere((element) =>
                           element.id == item.id && element.index == index);
                     }
-                    return Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppColor.darkGrey,
-                            borderRadius: BorderRadius.circular(6),
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.darkGrey,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            height: 50,
+                            width: 50,
+                            child: data != null ? _showThumbnail(data) : null,
                           ),
-                          height: 50,
-                          width: 50,
-                          child: data != null ? _showThumbnail(data) : null,
-                        ),
-                        SizedBox(
-                          width: 90,
-                          child: Text(
-                            I10n.current.date,
-                            style: AppFont.text8W300
-                                .copyWith(color: AppColor.blue),
-                            textAlign: TextAlign.center,
+                          SizedBox(
+                            width: 90,
+                            child: Text(
+                              data == null
+                                  ? I10n.current.date
+                                  : AppUtils.formatDate(data.dateTime!,
+                                      format: 'dd/MM/yyyy')!,
+                              style: AppFont.text8W300
+                                  .copyWith(color: AppColor.blue),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 60,
-                          child: Text(
-                            I10n.current.time,
-                            style: AppFont.text8W300
-                                .copyWith(color: AppColor.blue),
-                            textAlign: TextAlign.center,
+                          SizedBox(
+                            width: 60,
+                            child: Text(
+                              data == null
+                                  ? I10n.current.time
+                                  : AppUtils.formatDate(data.dateTime!,
+                                      format: 'HH.mm')!,
+                              style: AppFont.text8W300
+                                  .copyWith(color: AppColor.blue),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Expanded(child: Container()),
-                              InkWell(
-                                onTap: () => fileAction(context,
-                                    task: task, item: item, index: index),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  child: Icon(item.type == AppString.document
-                                      ? Icons.document_scanner
-                                      : Icons.camera),
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                          Expanded(
+                            child: Row(
+                              children: [
+                                Expanded(child: Container()),
+                                InkWell(
+                                  onTap: () => fileAction(context,
+                                      task: task, item: item, index: index),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    child: Icon(item.type == AppString.document
+                                        ? Icons.document_scanner
+                                        : Icons.camera),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     );
                   },
                 ),
@@ -439,10 +582,13 @@ class SurveyTaskPage extends HookWidget {
       required FormUploadData item,
       required int index}) async {
     final _imagePicker = ImagePicker();
-    final type = await CustomDialog.file(context);
+    int? type;
+    type =
+        item.type == AppString.document ? await CustomDialog.file(context) : 1;
     if (type == null) return;
     if (type == 1) {
-      final image = await _imagePicker.pickImage(source: ImageSource.camera);
+      final image = await _imagePicker.pickImage(
+          source: ImageSource.camera, imageQuality: 60);
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
           path: image?.path,
           id: item,

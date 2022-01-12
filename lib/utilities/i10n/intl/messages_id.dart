@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "choose_file": MessageLookupByLibrary.simpleMessage("Pilih File"),
         "city": MessageLookupByLibrary.simpleMessage("Kota Asal"),
         "city_birth": MessageLookupByLibrary.simpleMessage("Kota Kelahiran"),
+        "completed": MessageLookupByLibrary.simpleMessage("Lengkap"),
         "date": MessageLookupByLibrary.simpleMessage("Tanggal"),
         "date_of_birth": MessageLookupByLibrary.simpleMessage("Tanggal Lahir"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "rw": MessageLookupByLibrary.simpleMessage("RW"),
         "save": MessageLookupByLibrary.simpleMessage("Simpan"),
         "sub_district": MessageLookupByLibrary.simpleMessage("kelurahan"),
+        "submit": MessageLookupByLibrary.simpleMessage("Kirim Data"),
         "survey_greeting_user": m0,
         "take_gallery": MessageLookupByLibrary.simpleMessage("Ambil Galeri"),
         "take_picture": MessageLookupByLibrary.simpleMessage("Ambil Gambar"),
@@ -81,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tugas telah selasai"),
         "time": MessageLookupByLibrary.simpleMessage("Waktu"),
         "today": MessageLookupByLibrary.simpleMessage("Hari ini"),
+        "uncompleted": MessageLookupByLibrary.simpleMessage("Tidak Lengkap"),
         "until": MessageLookupByLibrary.simpleMessage("Hingga"),
         "upcoming_survey":
             MessageLookupByLibrary.simpleMessage("Survey Selanjutnya"),

@@ -59,5 +59,8 @@
   "choose": "Pilih",
   "take_picture": "Ambil Gambar",
   "choose_file": "Pilih File",
-  "take_gallery": "Ambil Galeri"
+  "take_gallery": "Ambil Galeri",
+  "submit": "Kirim Data",
+  "completed": "Lengkap",
+  "uncompleted": "Tidak Lengkap"
 }

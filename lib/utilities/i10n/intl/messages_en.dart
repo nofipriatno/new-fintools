@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "city_birth": MessageLookupByLibrary.simpleMessage("Birth City"),
         "client": MessageLookupByLibrary.simpleMessage("Client"),
+        "completed": MessageLookupByLibrary.simpleMessage("Completed"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "date_of_birth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
@@ -78,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "rw": MessageLookupByLibrary.simpleMessage("RW"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "sub_district": MessageLookupByLibrary.simpleMessage("Sub District"),
+        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "survey_greeting_user": m0,
         "take_gallery": MessageLookupByLibrary.simpleMessage("Take Gallery"),
         "take_picture": MessageLookupByLibrary.simpleMessage("Take Picture"),
@@ -86,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Task Completed"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "uncompleted": MessageLookupByLibrary.simpleMessage("Uncompleted"),
         "until": MessageLookupByLibrary.simpleMessage("Until"),
         "upcoming_survey":
             MessageLookupByLibrary.simpleMessage("Upcoming Survey"),
