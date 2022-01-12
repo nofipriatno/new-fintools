@@ -163,6 +163,35 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
+  Widget _itemProcessCompleted(
+      {required String title, required bool completed}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: AppFont.text13Bold.copyWith(color: AppColor.gold),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: completed ? AppColor.blue : AppColor.grey,
+              borderRadius: BorderRadius.circular(80),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Text(
+                completed ? I10n.current.completed : I10n.current.uncompleted,
+                style: AppFont.text11W500.copyWith(color: AppColor.white),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget _processCompleted() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
@@ -171,118 +200,14 @@ class SurveyTaskPage extends HookWidget {
           Expanded(
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        I10n.current.client,
-                        style:
-                            AppFont.text13Bold.copyWith(color: AppColor.gold),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.blue,
-                          borderRadius: BorderRadius.circular(80),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          child: Text(
-                            I10n.current.completed,
-                            style: AppFont.text11W500
-                                .copyWith(color: AppColor.white),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        I10n.current.quisioner,
-                        style:
-                            AppFont.text13Bold.copyWith(color: AppColor.gold),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.blue,
-                          borderRadius: BorderRadius.circular(80),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          child: Text(
-                            I10n.current.completed,
-                            style: AppFont.text11W500
-                                .copyWith(color: AppColor.white),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        I10n.current.asset,
-                        style:
-                            AppFont.text13Bold.copyWith(color: AppColor.gold),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.blue,
-                          borderRadius: BorderRadius.circular(80),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          child: Text(
-                            I10n.current.completed,
-                            style: AppFont.text11W500
-                                .copyWith(color: AppColor.white),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        I10n.current.document,
-                        style:
-                            AppFont.text13Bold.copyWith(color: AppColor.gold),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.blue,
-                          borderRadius: BorderRadius.circular(80),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          child: Text(
-                            I10n.current.completed,
-                            style: AppFont.text11W500
-                                .copyWith(color: AppColor.white),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                _itemProcessCompleted(
+                    title: I10n.current.client, completed: true),
+                _itemProcessCompleted(
+                    title: I10n.current.quisioner, completed: false),
+                _itemProcessCompleted(
+                    title: I10n.current.asset, completed: true),
+                _itemProcessCompleted(
+                    title: I10n.current.document, completed: true),
               ],
             ),
           ),
@@ -589,7 +514,7 @@ class SurveyTaskPage extends HookWidget {
     if (type == 1) {
       final image = await _imagePicker.pickImage(
           source: ImageSource.camera, imageQuality: 60);
-      if(image == null) return;
+      if (image == null) return;
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
           path: image.path,
           id: item,
@@ -599,7 +524,7 @@ class SurveyTaskPage extends HookWidget {
     } else if (type == 2) {
       final file = await FilePicker.platform.pickFiles(
           type: FileType.custom, allowedExtensions: ['pdf', 'doc', 'docx']);
-      if(file == null) return;
+      if (file == null) return;
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
           path: file.files.first.path,
           id: item,
@@ -608,7 +533,7 @@ class SurveyTaskPage extends HookWidget {
           taskId: task?.taskId ?? ''));
     } else if (type == 3) {
       final file = await FilePicker.platform.pickFiles(type: FileType.image);
-      if(file == null) return;
+      if (file == null) return;
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
           path: file.files.first.path,
           id: item,
