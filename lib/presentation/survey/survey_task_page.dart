@@ -455,11 +455,14 @@ class SurveyTaskPage extends HookWidget {
     if (data.extension?.toLowerCase() == 'png' ||
         data.extension?.toLowerCase() == 'jpg' ||
         data.extension?.toLowerCase() == 'jpeg') {
-      return Image.file(
-        File(data.filePath!),
-        height: 50,
-        width: 50,
-        fit: BoxFit.fill,
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(6),
+        child: Image.file(
+          File(data.filePath!),
+          height: 50,
+          width: 50,
+          fit: BoxFit.fill,
+        ),
       );
     } else {
       return const Center(

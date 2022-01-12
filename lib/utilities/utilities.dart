@@ -1,4 +1,6 @@
 import 'package:fintools/domain/core/interface/i_storage.dart';
+import 'package:fintools/domain/survey/local/survey_client_model.dart';
+import 'package:fintools/domain/survey/local/survey_data_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/local/survey_search_model.dart';
 import 'package:fintools/infrastructure/core/database.dart';
@@ -114,7 +116,93 @@ class AppUtils {
     return a;
   }
 
-  static Map<String, dynamic> createSurveyFormData(){
-    return {};
+  static Map<String, dynamic> createSurveyFormData(
+      {required List<SurveyClientModel> client,
+      required List<QuestionAnswerModel> question,
+      required List<SurveyDataModel> data}) {
+    Map<String, dynamic> item = {}
+      ..putIfAbsent('GELAR_DEPAN', () => '')
+      ..putIfAbsent(
+          'NAMA',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-1')
+              .controller
+              ?.text)
+      ..putIfAbsent('GELAR_BELAKANG', () => '')
+      ..putIfAbsent(
+          'NAMA_KTP',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-1')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'NO_KTP',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-2')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KTP_EXPIRE_FROM',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-3')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KTP_EXPIRE_TO',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-4')
+              .controller
+              ?.text)
+      ..putIfAbsent('AO', () => '')
+      ..putIfAbsent(
+          'TGLLAHIR',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-7')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'TEMPATLAHIR',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-6')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'NAMAIBU',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-9')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'ALAMAT',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-9')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'RT',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-10')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'RW',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-11')
+              .controller
+              ?.text)
+      ..putIfAbsent('KODEPOS', () => null)
+      ..putIfAbsent('KELURAHAN', () => null)
+      ..putIfAbsent('KECAMATAN', () => null)
+      ..putIfAbsent('HPNO', () => null)
+      ..putIfAbsent('TELPNO', () => null)
+      ..putIfAbsent('FAXNO', () => null)
+      ..putIfAbsent('NOPOL', () => null)
+      ..putIfAbsent('LAT', () => null)
+      ..putIfAbsent('LNG', () => null)
+      ..putIfAbsent('IDQUESTION', () => null)
+      ..putIfAbsent('TASKID', () => null);
+
+
+    return item;
   }
 }
