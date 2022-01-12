@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
@@ -64,10 +66,17 @@ class SurveyTaskPage extends HookWidget {
                 questions.value.insert(index, item);
               },
               selectFileSuccess: (e) {
-                final data = surveyData.value
-                    .firstWhere((element) => element.id == e.data.id);
-                if (surveyData.value.any((element) => element != data)) {
-                  surveyData.value.add(data);
+                if (surveyData.value.isEmpty) {
+                  surveyData.value.add(e.data);
+                } else {
+                  final indexData = surveyData.value.indexWhere((element) =>
+                      element.id == e.data.id && element.index == e.data.index);
+                  if (indexData == -1) {
+                    surveyData.value.add(e.data);
+                  } else {
+                    surveyData.value.removeAt(indexData);
+                    surveyData.value.insert(indexData, e.data);
+                  }
                 }
               });
         },
@@ -123,8 +132,9 @@ class SurveyTaskPage extends HookWidget {
                       ListView.separated(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
-                        itemBuilder: (context, index) =>
-                            _itemDocument(context, assets.value[index]),
+                        itemBuilder: (context, index) => _itemDocument(
+                            context, assets.value[index],
+                            local: surveyData.value),
                         separatorBuilder: (BuildContext context, int index) =>
                             const SizedBox(height: 10),
                         itemCount: assets.value.length,
@@ -132,8 +142,9 @@ class SurveyTaskPage extends HookWidget {
                       ListView.separated(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
-                        itemBuilder: (context, index) =>
-                            _itemDocument(context, documents.value[index]),
+                        itemBuilder: (context, index) => _itemDocument(
+                            context, documents.value[index],
+                            local: surveyData.value),
                         separatorBuilder: (BuildContext context, int index) =>
                             const SizedBox(height: 10),
                         itemCount: assets.value.length,
@@ -184,7 +195,8 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-  Widget _itemDocument(BuildContext context, FormUploadData item) {
+  Widget _itemDocument(BuildContext context, FormUploadData item,
+      {required List<SurveyDataModel> local}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -249,54 +261,64 @@ class SurveyTaskPage extends HookWidget {
               child: Column(
                 children: List.generate(
                   item.count,
-                  (index) => Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.darkGrey,
-                          borderRadius: BorderRadius.circular(6),
+                  (index) {
+                    SurveyDataModel? data;
+                    final haveItem = local.any((element) =>
+                        element.id == item.id && element.index == index);
+                    if (haveItem) {
+                      data = local.firstWhere((element) =>
+                          element.id == item.id && element.index == index);
+                    }
+                    return Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColor.darkGrey,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          height: 50,
+                          width: 50,
+                          child: data != null ? _showThumbnail(data) : null,
                         ),
-                        height: 50,
-                        width: 50,
-                      ),
-                      SizedBox(
-                        width: 90,
-                        child: Text(
-                          I10n.current.date,
-                          style:
-                              AppFont.text8W300.copyWith(color: AppColor.blue),
-                          textAlign: TextAlign.center,
+                        SizedBox(
+                          width: 90,
+                          child: Text(
+                            I10n.current.date,
+                            style: AppFont.text8W300
+                                .copyWith(color: AppColor.blue),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 60,
-                        child: Text(
-                          I10n.current.time,
-                          style:
-                              AppFont.text8W300.copyWith(color: AppColor.blue),
-                          textAlign: TextAlign.center,
+                        SizedBox(
+                          width: 60,
+                          child: Text(
+                            I10n.current.time,
+                            style: AppFont.text8W300
+                                .copyWith(color: AppColor.blue),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Expanded(child: Container()),
-                            InkWell(
-                              onTap: () =>
-                                  fileAction(context, task: task, item: item),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
-                                child: Icon(item.type == AppString.document
-                                    ? Icons.document_scanner
-                                    : Icons.camera),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Expanded(child: Container()),
+                              InkWell(
+                                onTap: () => fileAction(context,
+                                    task: task, item: item, index: index),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16),
+                                  child: Icon(item.type == AppString.document
+                                      ? Icons.document_scanner
+                                      : Icons.camera),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    );
+                  },
                 ),
               ),
             )
@@ -361,6 +383,23 @@ class SurveyTaskPage extends HookWidget {
     }
   }
 
+  Widget _showThumbnail(SurveyDataModel data) {
+    if (data.extension?.toLowerCase() == 'png' ||
+        data.extension?.toLowerCase() == 'jpg' ||
+        data.extension?.toLowerCase() == 'jpeg') {
+      return Image.file(
+        File(data.filePath!),
+        height: 50,
+        width: 50,
+        fit: BoxFit.fill,
+      );
+    } else {
+      return const Center(
+        child: Icon(Icons.picture_as_pdf_outlined),
+      );
+    }
+  }
+
   TextInputType getInputType(ClientFormType type) {
     switch (type) {
       case ClientFormType.date:
@@ -396,7 +435,9 @@ class SurveyTaskPage extends HookWidget {
   }
 
   void fileAction(BuildContext context,
-      {required SurveyTask? task, required FormUploadData item}) async {
+      {required SurveyTask? task,
+      required FormUploadData item,
+      required int index}) async {
     final _imagePicker = ImagePicker();
     final type = await CustomDialog.file(context);
     if (type == null) return;
@@ -405,6 +446,7 @@ class SurveyTaskPage extends HookWidget {
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
           path: image?.path,
           id: item,
+          index: index,
           extension: 'png',
           taskId: task?.taskId ?? ''));
     } else if (type == 2) {
@@ -413,6 +455,7 @@ class SurveyTaskPage extends HookWidget {
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
           path: file?.files.first.path,
           id: item,
+          index: index,
           extension: file?.files.first.extension,
           taskId: task?.taskId ?? ''));
     } else if (type == 3) {
@@ -420,6 +463,7 @@ class SurveyTaskPage extends HookWidget {
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
           path: file?.files.first.path,
           id: item,
+          index: index,
           extension: file?.files.first.extension,
           taskId: task?.taskId ?? ''));
     }

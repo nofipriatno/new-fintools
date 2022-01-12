@@ -13,6 +13,7 @@ class SurveyTaskEvent with _$SurveyTaskEvent {
 
   const factory SurveyTaskEvent.onFileSelect({
     required String? path,
+    required int? index,
     required FormUploadData id,
     required String? extension,
     required String taskId,

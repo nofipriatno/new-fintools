@@ -58,8 +58,10 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
 
         for (FormUploadData element in document) {
           String key = e.taskId! + element.type + element.id;
-          final data = _storage.getJson(box, key: key);
-          if (data != null) surveyData.add(SurveyDataModel.fromJson(data));
+          for (var i = 0; i < element.count; i++) {
+            final data = _storage.getJson(box, key: key + i.toString());
+            if (data != null) surveyData.add(SurveyDataModel.fromJson(data));
+          }
         }
 
         final picDocument = document
@@ -114,11 +116,13 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         final box = await _storage.openBox(StorageConstants.dataSurvey);
         SurveyDataModel data = SurveyDataModel(
             id: e.id.id,
+            index: e.index,
             filePath: e.path,
             dateTime: DateTime.now(),
             extension: e.extension);
         await _storage.setJson(box,
-            key: e.taskId + e.id.type + e.id.id, object: data.toJson());
+            key: e.taskId + e.id.type + e.id.id + e.index.toString(),
+            object: data.toJson());
         emit(_SelectFileSuccess(data: data));
       });
     });

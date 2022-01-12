@@ -23,11 +23,13 @@ class _$SurveyDataModelTearOff {
 
   _SurveyDataModel call(
       {required String? id,
+      required int? index,
       required String? filePath,
       required DateTime? dateTime,
       required String? extension}) {
     return _SurveyDataModel(
       id: id,
+      index: index,
       filePath: filePath,
       dateTime: dateTime,
       extension: extension,
@@ -45,6 +47,7 @@ const $SurveyDataModel = _$SurveyDataModelTearOff();
 /// @nodoc
 mixin _$SurveyDataModel {
   String? get id => throw _privateConstructorUsedError;
+  int? get index => throw _privateConstructorUsedError;
   String? get filePath => throw _privateConstructorUsedError;
   DateTime? get dateTime => throw _privateConstructorUsedError;
   String? get extension => throw _privateConstructorUsedError;
@@ -61,7 +64,11 @@ abstract class $SurveyDataModelCopyWith<$Res> {
           SurveyDataModel value, $Res Function(SurveyDataModel) then) =
       _$SurveyDataModelCopyWithImpl<$Res>;
   $Res call(
-      {String? id, String? filePath, DateTime? dateTime, String? extension});
+      {String? id,
+      int? index,
+      String? filePath,
+      DateTime? dateTime,
+      String? extension});
 }
 
 /// @nodoc
@@ -76,6 +83,7 @@ class _$SurveyDataModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? index = freezed,
     Object? filePath = freezed,
     Object? dateTime = freezed,
     Object? extension = freezed,
@@ -85,6 +93,10 @@ class _$SurveyDataModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int?,
       filePath: filePath == freezed
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
@@ -109,7 +121,11 @@ abstract class _$SurveyDataModelCopyWith<$Res>
       __$SurveyDataModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id, String? filePath, DateTime? dateTime, String? extension});
+      {String? id,
+      int? index,
+      String? filePath,
+      DateTime? dateTime,
+      String? extension});
 }
 
 /// @nodoc
@@ -126,6 +142,7 @@ class __$SurveyDataModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? index = freezed,
     Object? filePath = freezed,
     Object? dateTime = freezed,
     Object? extension = freezed,
@@ -135,6 +152,10 @@ class __$SurveyDataModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int?,
       filePath: filePath == freezed
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
@@ -156,6 +177,7 @@ class __$SurveyDataModelCopyWithImpl<$Res>
 class _$_SurveyDataModel implements _SurveyDataModel {
   const _$_SurveyDataModel(
       {required this.id,
+      required this.index,
       required this.filePath,
       required this.dateTime,
       required this.extension});
@@ -166,6 +188,8 @@ class _$_SurveyDataModel implements _SurveyDataModel {
   @override
   final String? id;
   @override
+  final int? index;
+  @override
   final String? filePath;
   @override
   final DateTime? dateTime;
@@ -174,7 +198,7 @@ class _$_SurveyDataModel implements _SurveyDataModel {
 
   @override
   String toString() {
-    return 'SurveyDataModel(id: $id, filePath: $filePath, dateTime: $dateTime, extension: $extension)';
+    return 'SurveyDataModel(id: $id, index: $index, filePath: $filePath, dateTime: $dateTime, extension: $extension)';
   }
 
   @override
@@ -183,6 +207,7 @@ class _$_SurveyDataModel implements _SurveyDataModel {
         (other.runtimeType == runtimeType &&
             other is _SurveyDataModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.index, index) &&
             const DeepCollectionEquality().equals(other.filePath, filePath) &&
             const DeepCollectionEquality().equals(other.dateTime, dateTime) &&
             const DeepCollectionEquality().equals(other.extension, extension));
@@ -192,6 +217,7 @@ class _$_SurveyDataModel implements _SurveyDataModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(index),
       const DeepCollectionEquality().hash(filePath),
       const DeepCollectionEquality().hash(dateTime),
       const DeepCollectionEquality().hash(extension));
@@ -210,6 +236,7 @@ class _$_SurveyDataModel implements _SurveyDataModel {
 abstract class _SurveyDataModel implements SurveyDataModel {
   const factory _SurveyDataModel(
       {required String? id,
+      required int? index,
       required String? filePath,
       required DateTime? dateTime,
       required String? extension}) = _$_SurveyDataModel;
@@ -219,6 +246,8 @@ abstract class _SurveyDataModel implements SurveyDataModel {
 
   @override
   String? get id;
+  @override
+  int? get index;
   @override
   String? get filePath;
   @override

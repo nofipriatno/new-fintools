@@ -36,11 +36,13 @@ class _$SurveyTaskEventTearOff {
 
   _OnFileSelect onFileSelect(
       {required String? path,
+      required int? index,
       required FormUploadData id,
       required String? extension,
       required String taskId}) {
     return _OnFileSelect(
       path: path,
+      index: index,
       id: id,
       extension: extension,
       taskId: taskId,
@@ -58,8 +60,8 @@ mixin _$SurveyTaskEvent {
     required TResult Function(String? taskId) onInitialize,
     required TResult Function(SearchModel item, String choice, String taskId)
         onChoiceSelect,
-    required TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)
+    required TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)
         onFileSelect,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,8 +70,8 @@ mixin _$SurveyTaskEvent {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
-    TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)?
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
         onFileSelect,
   }) =>
       throw _privateConstructorUsedError;
@@ -78,8 +80,8 @@ mixin _$SurveyTaskEvent {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
-    TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)?
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
         onFileSelect,
     required TResult orElse(),
   }) =>
@@ -193,8 +195,8 @@ class _$_OnInitialize implements _OnInitialize {
     required TResult Function(String? taskId) onInitialize,
     required TResult Function(SearchModel item, String choice, String taskId)
         onChoiceSelect,
-    required TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)
+    required TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)
         onFileSelect,
   }) {
     return onInitialize(taskId);
@@ -206,8 +208,8 @@ class _$_OnInitialize implements _OnInitialize {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
-    TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)?
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
         onFileSelect,
   }) {
     return onInitialize?.call(taskId);
@@ -219,8 +221,8 @@ class _$_OnInitialize implements _OnInitialize {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
-    TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)?
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
         onFileSelect,
     required TResult orElse(),
   }) {
@@ -371,8 +373,8 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     required TResult Function(String? taskId) onInitialize,
     required TResult Function(SearchModel item, String choice, String taskId)
         onChoiceSelect,
-    required TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)
+    required TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)
         onFileSelect,
   }) {
     return onChoiceSelect(item, choice, taskId);
@@ -384,8 +386,8 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
-    TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)?
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
         onFileSelect,
   }) {
     return onChoiceSelect?.call(item, choice, taskId);
@@ -397,8 +399,8 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
-    TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)?
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
         onFileSelect,
     required TResult orElse(),
   }) {
@@ -463,7 +465,11 @@ abstract class _$OnFileSelectCopyWith<$Res> {
           _OnFileSelect value, $Res Function(_OnFileSelect) then) =
       __$OnFileSelectCopyWithImpl<$Res>;
   $Res call(
-      {String? path, FormUploadData id, String? extension, String taskId});
+      {String? path,
+      int? index,
+      FormUploadData id,
+      String? extension,
+      String taskId});
 }
 
 /// @nodoc
@@ -480,6 +486,7 @@ class __$OnFileSelectCopyWithImpl<$Res>
   @override
   $Res call({
     Object? path = freezed,
+    Object? index = freezed,
     Object? id = freezed,
     Object? extension = freezed,
     Object? taskId = freezed,
@@ -489,6 +496,10 @@ class __$OnFileSelectCopyWithImpl<$Res>
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String?,
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -510,12 +521,15 @@ class __$OnFileSelectCopyWithImpl<$Res>
 class _$_OnFileSelect implements _OnFileSelect {
   const _$_OnFileSelect(
       {required this.path,
+      required this.index,
       required this.id,
       required this.extension,
       required this.taskId});
 
   @override
   final String? path;
+  @override
+  final int? index;
   @override
   final FormUploadData id;
   @override
@@ -525,7 +539,7 @@ class _$_OnFileSelect implements _OnFileSelect {
 
   @override
   String toString() {
-    return 'SurveyTaskEvent.onFileSelect(path: $path, id: $id, extension: $extension, taskId: $taskId)';
+    return 'SurveyTaskEvent.onFileSelect(path: $path, index: $index, id: $id, extension: $extension, taskId: $taskId)';
   }
 
   @override
@@ -534,6 +548,7 @@ class _$_OnFileSelect implements _OnFileSelect {
         (other.runtimeType == runtimeType &&
             other is _OnFileSelect &&
             const DeepCollectionEquality().equals(other.path, path) &&
+            const DeepCollectionEquality().equals(other.index, index) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.extension, extension) &&
             const DeepCollectionEquality().equals(other.taskId, taskId));
@@ -543,6 +558,7 @@ class _$_OnFileSelect implements _OnFileSelect {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(path),
+      const DeepCollectionEquality().hash(index),
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(extension),
       const DeepCollectionEquality().hash(taskId));
@@ -558,11 +574,11 @@ class _$_OnFileSelect implements _OnFileSelect {
     required TResult Function(String? taskId) onInitialize,
     required TResult Function(SearchModel item, String choice, String taskId)
         onChoiceSelect,
-    required TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)
+    required TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)
         onFileSelect,
   }) {
-    return onFileSelect(path, id, extension, taskId);
+    return onFileSelect(path, index, id, extension, taskId);
   }
 
   @override
@@ -571,11 +587,11 @@ class _$_OnFileSelect implements _OnFileSelect {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
-    TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)?
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
         onFileSelect,
   }) {
-    return onFileSelect?.call(path, id, extension, taskId);
+    return onFileSelect?.call(path, index, id, extension, taskId);
   }
 
   @override
@@ -584,13 +600,13 @@ class _$_OnFileSelect implements _OnFileSelect {
     TResult Function(String? taskId)? onInitialize,
     TResult Function(SearchModel item, String choice, String taskId)?
         onChoiceSelect,
-    TResult Function(
-            String? path, FormUploadData id, String? extension, String taskId)?
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
         onFileSelect,
     required TResult orElse(),
   }) {
     if (onFileSelect != null) {
-      return onFileSelect(path, id, extension, taskId);
+      return onFileSelect(path, index, id, extension, taskId);
     }
     return orElse();
   }
@@ -633,11 +649,13 @@ class _$_OnFileSelect implements _OnFileSelect {
 abstract class _OnFileSelect implements SurveyTaskEvent {
   const factory _OnFileSelect(
       {required String? path,
+      required int? index,
       required FormUploadData id,
       required String? extension,
       required String taskId}) = _$_OnFileSelect;
 
   String? get path;
+  int? get index;
   FormUploadData get id;
   String? get extension;
   String get taskId;
