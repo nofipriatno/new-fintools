@@ -589,8 +589,9 @@ class SurveyTaskPage extends HookWidget {
     if (type == 1) {
       final image = await _imagePicker.pickImage(
           source: ImageSource.camera, imageQuality: 60);
+      if(image == null) return;
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
-          path: image?.path,
+          path: image.path,
           id: item,
           index: index,
           extension: 'png',
@@ -598,19 +599,21 @@ class SurveyTaskPage extends HookWidget {
     } else if (type == 2) {
       final file = await FilePicker.platform.pickFiles(
           type: FileType.custom, allowedExtensions: ['pdf', 'doc', 'docx']);
+      if(file == null) return;
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
-          path: file?.files.first.path,
+          path: file.files.first.path,
           id: item,
           index: index,
-          extension: file?.files.first.extension,
+          extension: file.files.first.extension,
           taskId: task?.taskId ?? ''));
     } else if (type == 3) {
       final file = await FilePicker.platform.pickFiles(type: FileType.image);
+      if(file == null) return;
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
-          path: file?.files.first.path,
+          path: file.files.first.path,
           id: item,
           index: index,
-          extension: file?.files.first.extension,
+          extension: file.files.first.extension,
           taskId: task?.taskId ?? ''));
     }
   }
