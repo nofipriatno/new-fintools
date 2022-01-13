@@ -8,6 +8,8 @@ part 'survey_data_model.g.dart';
 class SurveyDataModel with _$SurveyDataModel {
   const factory SurveyDataModel(
       {required String? id,
+      required String? formId,
+      required String? formName,
       required int? index,
       required String? filePath,
       required DateTime? dateTime,

@@ -23,12 +23,16 @@ class _$SurveyDataModelTearOff {
 
   _SurveyDataModel call(
       {required String? id,
+      required String? formId,
+      required String? formName,
       required int? index,
       required String? filePath,
       required DateTime? dateTime,
       required String? extension}) {
     return _SurveyDataModel(
       id: id,
+      formId: formId,
+      formName: formName,
       index: index,
       filePath: filePath,
       dateTime: dateTime,
@@ -47,6 +51,8 @@ const $SurveyDataModel = _$SurveyDataModelTearOff();
 /// @nodoc
 mixin _$SurveyDataModel {
   String? get id => throw _privateConstructorUsedError;
+  String? get formId => throw _privateConstructorUsedError;
+  String? get formName => throw _privateConstructorUsedError;
   int? get index => throw _privateConstructorUsedError;
   String? get filePath => throw _privateConstructorUsedError;
   DateTime? get dateTime => throw _privateConstructorUsedError;
@@ -65,6 +71,8 @@ abstract class $SurveyDataModelCopyWith<$Res> {
       _$SurveyDataModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
+      String? formId,
+      String? formName,
       int? index,
       String? filePath,
       DateTime? dateTime,
@@ -83,6 +91,8 @@ class _$SurveyDataModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? formId = freezed,
+    Object? formName = freezed,
     Object? index = freezed,
     Object? filePath = freezed,
     Object? dateTime = freezed,
@@ -92,6 +102,14 @@ class _$SurveyDataModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      formId: formId == freezed
+          ? _value.formId
+          : formId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      formName: formName == freezed
+          ? _value.formName
+          : formName // ignore: cast_nullable_to_non_nullable
               as String?,
       index: index == freezed
           ? _value.index
@@ -122,6 +140,8 @@ abstract class _$SurveyDataModelCopyWith<$Res>
   @override
   $Res call(
       {String? id,
+      String? formId,
+      String? formName,
       int? index,
       String? filePath,
       DateTime? dateTime,
@@ -142,6 +162,8 @@ class __$SurveyDataModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? formId = freezed,
+    Object? formName = freezed,
     Object? index = freezed,
     Object? filePath = freezed,
     Object? dateTime = freezed,
@@ -151,6 +173,14 @@ class __$SurveyDataModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      formId: formId == freezed
+          ? _value.formId
+          : formId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      formName: formName == freezed
+          ? _value.formName
+          : formName // ignore: cast_nullable_to_non_nullable
               as String?,
       index: index == freezed
           ? _value.index
@@ -177,6 +207,8 @@ class __$SurveyDataModelCopyWithImpl<$Res>
 class _$_SurveyDataModel implements _SurveyDataModel {
   const _$_SurveyDataModel(
       {required this.id,
+      required this.formId,
+      required this.formName,
       required this.index,
       required this.filePath,
       required this.dateTime,
@@ -188,6 +220,10 @@ class _$_SurveyDataModel implements _SurveyDataModel {
   @override
   final String? id;
   @override
+  final String? formId;
+  @override
+  final String? formName;
+  @override
   final int? index;
   @override
   final String? filePath;
@@ -198,7 +234,7 @@ class _$_SurveyDataModel implements _SurveyDataModel {
 
   @override
   String toString() {
-    return 'SurveyDataModel(id: $id, index: $index, filePath: $filePath, dateTime: $dateTime, extension: $extension)';
+    return 'SurveyDataModel(id: $id, formId: $formId, formName: $formName, index: $index, filePath: $filePath, dateTime: $dateTime, extension: $extension)';
   }
 
   @override
@@ -207,6 +243,8 @@ class _$_SurveyDataModel implements _SurveyDataModel {
         (other.runtimeType == runtimeType &&
             other is _SurveyDataModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.formId, formId) &&
+            const DeepCollectionEquality().equals(other.formName, formName) &&
             const DeepCollectionEquality().equals(other.index, index) &&
             const DeepCollectionEquality().equals(other.filePath, filePath) &&
             const DeepCollectionEquality().equals(other.dateTime, dateTime) &&
@@ -217,6 +255,8 @@ class _$_SurveyDataModel implements _SurveyDataModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(formId),
+      const DeepCollectionEquality().hash(formName),
       const DeepCollectionEquality().hash(index),
       const DeepCollectionEquality().hash(filePath),
       const DeepCollectionEquality().hash(dateTime),
@@ -236,6 +276,8 @@ class _$_SurveyDataModel implements _SurveyDataModel {
 abstract class _SurveyDataModel implements SurveyDataModel {
   const factory _SurveyDataModel(
       {required String? id,
+      required String? formId,
+      required String? formName,
       required int? index,
       required String? filePath,
       required DateTime? dateTime,
@@ -246,6 +288,10 @@ abstract class _SurveyDataModel implements SurveyDataModel {
 
   @override
   String? get id;
+  @override
+  String? get formId;
+  @override
+  String? get formName;
   @override
   int? get index;
   @override

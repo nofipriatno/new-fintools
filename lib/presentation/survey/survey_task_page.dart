@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:fintools/domain/core/constant/app_asset.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_enum.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
@@ -375,9 +376,9 @@ class SurveyTaskPage extends HookWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 16),
-                                    child: Icon(item.type == AppString.document
-                                        ? Icons.document_scanner
-                                        : Icons.camera),
+                                    child: item.type == AppString.document
+                                        ? Image.asset(AppAssets.icSurveyFile)
+                                        : Image.asset(AppAssets.icSurveyCamera),
                                   ),
                                 )
                               ],

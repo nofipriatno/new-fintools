@@ -1,8 +1,12 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/local/survey_client_model.dart';
 import 'package:fintools/domain/survey/local/survey_data_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/local/survey_search_model.dart';
+import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
@@ -97,6 +101,7 @@ class AppUtils {
 
     var a = QuestionAnswerModel(
         id: item.id,
+        idQuisioner: item.idQuestion,
         question: newQuestion,
         search: SearchModel(
             id: item.id,
@@ -116,11 +121,13 @@ class AppUtils {
     return a;
   }
 
-  static Map<String, dynamic> createSurveyFormData(
-      {required List<SurveyClientModel> client,
-      required List<QuestionAnswerModel> question,
-      required List<SurveyDataModel> data}) {
-    Map<String, dynamic> item = {}
+  static Map<String, dynamic> createSurveyFormData({
+    required List<SurveyClientModel> client,
+    required List<QuestionAnswerModel> question,
+    required List<SurveyDataModel> data,
+    required SurveyTask task,
+  }) {
+    Map<String, dynamic> clientParam = {}
       ..putIfAbsent('GELAR_DEPAN', () => '')
       ..putIfAbsent(
           'NAMA',
@@ -190,19 +197,86 @@ class AppUtils {
               .firstWhere((element) => element.id == 'id-form-name-11')
               .controller
               ?.text)
-      ..putIfAbsent('KODEPOS', () => null)
-      ..putIfAbsent('KELURAHAN', () => null)
-      ..putIfAbsent('KECAMATAN', () => null)
-      ..putIfAbsent('HPNO', () => null)
-      ..putIfAbsent('TELPNO', () => null)
-      ..putIfAbsent('FAXNO', () => null)
-      ..putIfAbsent('NOPOL', () => null)
+      ..putIfAbsent(
+          'KODEPOS',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-12')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KELURAHAN',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-13')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KECAMATAN',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-14')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'HPNO',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-16')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'TELPNO',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-15')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'FAXNO',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-17')
+              .controller
+              ?.text)
+      ..putIfAbsent('NOPOL', () => task.platNumber)
       ..putIfAbsent('LAT', () => null)
       ..putIfAbsent('LNG', () => null)
-      ..putIfAbsent('IDQUESTION', () => null)
-      ..putIfAbsent('TASKID', () => null);
+      ..putIfAbsent('IDQUESTION', () => question.first.idQuisioner)
+      ..putIfAbsent('TASKID', () => task.taskId);
 
+    List<String> idFormDetails = [];
+    List<String> idQuisionerDetail = [];
+    List<String> answers = [];
 
-    return item;
+    var params = {
+      'BODYJSON': jsonEncode(clientParam),
+      'IDFORMDETAIL': idFormDetails
+    };
+
+    for (QuestionAnswerModel item in question) {
+      String? answer = '';
+      if (item.search?.items != null) {
+        answer = "${item.search?.value} ";
+      }
+
+      if (item.controller?.text.isNotEmpty == true) {
+        answer += "(${item.controller?.text})";
+      }
+      idQuisionerDetail.add(item.id ?? '');
+      answers.add(answer.isEmpty ? "Tidak Terisi" : answer);
+    }
+
+    params.putIfAbsent('IDQUISIONERDETAIL', () => idQuisionerDetail);
+    params.putIfAbsent('JAWABAN', () => answers);
+
+    for (SurveyDataModel item in data) {
+      idFormDetails.add(item.formId ?? '');
+      List<MultipartFile> files = [];
+      String formName = '';
+      final findSameId =
+          data.where((element) => element.formName == item.formName).toList();
+      for (SurveyDataModel newItem in findSameId) {
+        files.add(MultipartFile.fromFileSync(newItem.filePath!));
+        formName = newItem.formName ?? '';
+      }
+      params.putIfAbsent(formName, () => files);
+    }
+
+    return params;
   }
 }

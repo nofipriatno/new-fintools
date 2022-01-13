@@ -116,6 +116,8 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         final box = await _storage.openBox(StorageConstants.dataSurvey);
         SurveyDataModel data = SurveyDataModel(
             id: e.id.id,
+            formId: e.id.idForm,
+            formName: e.id.formName,
             index: e.index,
             filePath: e.path,
             dateTime: DateTime.now(),

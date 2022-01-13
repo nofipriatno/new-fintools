@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:fintools/domain/core/constant/app_endpoint.dart';
 import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/exceptions/exceptions.dart';
@@ -10,6 +11,7 @@ import 'package:fintools/domain/survey/local/survey_client_model.dart';
 import 'package:fintools/domain/survey/local/survey_data_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/response/survey_login_response/survey_login_response.dart';
+import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:injectable/injectable.dart';
 
@@ -52,17 +54,33 @@ class UserSurveyRepository implements IUserSurvey {
   }
 
   @override
-  Future<Either<GenericFailure, bool>> postSurveyData(
-      {required List<SurveyClientModel> client,
-      required List<QuestionAnswerModel> question,
-      required List<SurveyDataModel> data}) async {
+  Future<Either<GenericFailure, bool>> postSurveyData({
+    required List<SurveyClientModel> client,
+    required List<QuestionAnswerModel> question,
+    required List<SurveyDataModel> data,
+    required SurveyTask task,
+  }) async {
     try {
-      AppUtils.createSurveyFormData(
-          client: client, question: question, data: data);
+      final res = FormData.fromMap(
+        AppUtils.createSurveyFormData(
+          client: client,
+          question: question,
+          data: data,
+          task: task,
+        ),
+      );
+
       final apiResult = await _networkService.postHttp(
         contentType: 'multipart/form-data',
         path: 'path',
-        // content:
+        content: FormData.fromMap(
+          AppUtils.createSurveyFormData(
+            client: client,
+            question: question,
+            data: data,
+            task: task,
+          ),
+        ),
       );
       return right(true);
     } on FailureException catch (_) {

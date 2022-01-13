@@ -19,11 +19,13 @@ class _$QuestionAnswerModelTearOff {
 
   _QuestionAnswerModel call(
       {required String? id,
+      required String? idQuisioner,
       required String? question,
       required SearchModel? search,
       required TextEditingController? controller}) {
     return _QuestionAnswerModel(
       id: id,
+      idQuisioner: idQuisioner,
       question: question,
       search: search,
       controller: controller,
@@ -37,6 +39,7 @@ const $QuestionAnswerModel = _$QuestionAnswerModelTearOff();
 /// @nodoc
 mixin _$QuestionAnswerModel {
   String? get id => throw _privateConstructorUsedError;
+  String? get idQuisioner => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
   SearchModel? get search => throw _privateConstructorUsedError;
   TextEditingController? get controller => throw _privateConstructorUsedError;
@@ -53,6 +56,7 @@ abstract class $QuestionAnswerModelCopyWith<$Res> {
       _$QuestionAnswerModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
+      String? idQuisioner,
       String? question,
       SearchModel? search,
       TextEditingController? controller});
@@ -72,6 +76,7 @@ class _$QuestionAnswerModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? idQuisioner = freezed,
     Object? question = freezed,
     Object? search = freezed,
     Object? controller = freezed,
@@ -80,6 +85,10 @@ class _$QuestionAnswerModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idQuisioner: idQuisioner == freezed
+          ? _value.idQuisioner
+          : idQuisioner // ignore: cast_nullable_to_non_nullable
               as String?,
       question: question == freezed
           ? _value.question
@@ -117,6 +126,7 @@ abstract class _$QuestionAnswerModelCopyWith<$Res>
   @override
   $Res call(
       {String? id,
+      String? idQuisioner,
       String? question,
       SearchModel? search,
       TextEditingController? controller});
@@ -139,6 +149,7 @@ class __$QuestionAnswerModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? idQuisioner = freezed,
     Object? question = freezed,
     Object? search = freezed,
     Object? controller = freezed,
@@ -147,6 +158,10 @@ class __$QuestionAnswerModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idQuisioner: idQuisioner == freezed
+          ? _value.idQuisioner
+          : idQuisioner // ignore: cast_nullable_to_non_nullable
               as String?,
       question: question == freezed
           ? _value.question
@@ -169,12 +184,15 @@ class __$QuestionAnswerModelCopyWithImpl<$Res>
 class _$_QuestionAnswerModel implements _QuestionAnswerModel {
   const _$_QuestionAnswerModel(
       {required this.id,
+      required this.idQuisioner,
       required this.question,
       required this.search,
       required this.controller});
 
   @override
   final String? id;
+  @override
+  final String? idQuisioner;
   @override
   final String? question;
   @override
@@ -184,7 +202,7 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
 
   @override
   String toString() {
-    return 'QuestionAnswerModel(id: $id, question: $question, search: $search, controller: $controller)';
+    return 'QuestionAnswerModel(id: $id, idQuisioner: $idQuisioner, question: $question, search: $search, controller: $controller)';
   }
 
   @override
@@ -193,6 +211,8 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
         (other.runtimeType == runtimeType &&
             other is _QuestionAnswerModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.idQuisioner, idQuisioner) &&
             const DeepCollectionEquality().equals(other.question, question) &&
             const DeepCollectionEquality().equals(other.search, search) &&
             const DeepCollectionEquality()
@@ -203,6 +223,7 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(idQuisioner),
       const DeepCollectionEquality().hash(question),
       const DeepCollectionEquality().hash(search),
       const DeepCollectionEquality().hash(controller));
@@ -217,12 +238,15 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
 abstract class _QuestionAnswerModel implements QuestionAnswerModel {
   const factory _QuestionAnswerModel(
       {required String? id,
+      required String? idQuisioner,
       required String? question,
       required SearchModel? search,
       required TextEditingController? controller}) = _$_QuestionAnswerModel;
 
   @override
   String? get id;
+  @override
+  String? get idQuisioner;
   @override
   String? get question;
   @override

@@ -8,6 +8,7 @@ part 'survey_question_model.freezed.dart';
 class QuestionAnswerModel with _$QuestionAnswerModel {
   const factory QuestionAnswerModel({
     required String? id,
+    required String? idQuisioner,
     required String? question,
     required SearchModel? search,
     required TextEditingController? controller,

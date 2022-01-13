@@ -1,3 +1,4 @@
+import 'package:fintools/domain/core/constant/app_asset.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
 import 'package:fintools/domain/core/constant/app_string.dart';
@@ -117,7 +118,8 @@ class CustomDialog {
             InkWell(
               onTap: () => Navigator.pop(context, 1),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 23),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 26, vertical: 23),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColor.cardBackground,
@@ -127,10 +129,11 @@ class CustomDialog {
                     Expanded(
                       child: Text(
                         I10n.current.take_picture,
-                        style: AppFont.text14Bold.copyWith(color: AppColor.blue),
+                        style:
+                            AppFont.text14Bold.copyWith(color: AppColor.blue),
                       ),
                     ),
-                    const Icon(Icons.add)
+                    Image.asset(AppAssets.icSurveyCamera)
                   ],
                 ),
               ),
@@ -139,7 +142,8 @@ class CustomDialog {
             InkWell(
               onTap: () => Navigator.pop(context, 2),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 23),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 26, vertical: 23),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColor.cardBackground,
@@ -149,10 +153,11 @@ class CustomDialog {
                     Expanded(
                       child: Text(
                         I10n.current.choose_file,
-                        style: AppFont.text14Bold.copyWith(color: AppColor.blue),
+                        style:
+                            AppFont.text14Bold.copyWith(color: AppColor.blue),
                       ),
                     ),
-                    const Icon(Icons.add)
+                    Image.asset(AppAssets.icSurveyFile)
                   ],
                 ),
               ),
@@ -161,7 +166,8 @@ class CustomDialog {
             InkWell(
               onTap: () => Navigator.pop(context, 3),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 23),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 26, vertical: 23),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColor.cardBackground,
@@ -171,10 +177,11 @@ class CustomDialog {
                     Expanded(
                       child: Text(
                         I10n.current.take_gallery,
-                        style: AppFont.text14Bold.copyWith(color: AppColor.blue),
+                        style:
+                            AppFont.text14Bold.copyWith(color: AppColor.blue),
                       ),
                     ),
-                    const Icon(Icons.add)
+                    Image.asset(AppAssets.icSurveyGallery)
                   ],
                 ),
               ),
