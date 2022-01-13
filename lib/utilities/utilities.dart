@@ -277,9 +277,6 @@ class AppUtils {
       params.putIfAbsent(formName, () => files);
     }
 
-    var a = 'tes';
-    print('print => hemmmmm');
-
     return params;
   }
 }

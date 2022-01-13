@@ -137,8 +137,6 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
           data: e.data,
           task: e.task,
         );
-
-
       });
     });
   }
