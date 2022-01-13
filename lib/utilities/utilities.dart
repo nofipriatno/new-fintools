@@ -265,7 +265,7 @@ class AppUtils {
     params.putIfAbsent('JAWABAN', () => answers);
 
     for (SurveyDataModel item in data) {
-      idFormDetails.add(item.formId ?? '');
+      idFormDetails.add(item.id ?? '');
       List<MultipartFile> files = [];
       String formName = '';
       final findSameId =
@@ -276,6 +276,9 @@ class AppUtils {
       }
       params.putIfAbsent(formName, () => files);
     }
+
+    var a = 'tes';
+    print('print => hemmmmm');
 
     return params;
   }
