@@ -82,6 +82,7 @@ class UserSurveyRepository implements IUserSurvey {
           ),
         ),
       );
+
       return right(true);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());

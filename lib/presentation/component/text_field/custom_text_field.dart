@@ -1,6 +1,7 @@
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class CustomTextField {
@@ -10,6 +11,7 @@ class CustomTextField {
       bool obscure = false,
       TextInputType inputType = TextInputType.name,
       VoidCallback? onTap,
+      int? limit,
       bool enable = true,
       bool readOnly = false}) {
     return _Underline(
@@ -18,6 +20,7 @@ class CustomTextField {
       obscure: obscure,
       enable: enable,
       onTap: onTap,
+      limit: limit,
       readOnly: readOnly,
       inputType: inputType,
     );
@@ -30,6 +33,7 @@ class _Underline extends HookWidget {
   final bool obscure;
   final bool readOnly;
   final bool enable;
+  final int? limit;
   final TextInputType inputType;
   final VoidCallback? onTap;
 
@@ -40,6 +44,7 @@ class _Underline extends HookWidget {
       this.obscure = false,
       this.enable = true,
       this.readOnly = false,
+      this.limit,
       this.onTap,
       this.inputType = TextInputType.name})
       : super(key: key);
@@ -58,6 +63,7 @@ class _Underline extends HookWidget {
           readOnly: readOnly,
           obscureText: obscure ? _obscure.value : false,
           controller: controller,
+          inputFormatters: [LengthLimitingTextInputFormatter(limit ?? 999)],
           onTap: onTap,
           decoration: InputDecoration(
             suffixIcon: obscure

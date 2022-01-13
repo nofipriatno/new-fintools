@@ -9,6 +9,7 @@ class SurveyClientModel with _$SurveyClientModel {
   const factory SurveyClientModel({
     required String? id,
     required String? title,
+    required int? limit,
     required ClientFormType? clientFormType,
     required int? size,
     TextEditingController? controller,

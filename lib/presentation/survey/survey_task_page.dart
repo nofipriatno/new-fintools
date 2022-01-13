@@ -460,6 +460,7 @@ class SurveyTaskPage extends HookWidget {
     } else {
       return CustomTextField.underline(
           controller: item.controller!,
+          limit: item.limit,
           title: item.title ?? '',
           onTap: item.clientFormType?.index == ClientFormType.date.index
               ? () => showCalendar(context, controller: item.controller!)

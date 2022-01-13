@@ -20,12 +20,14 @@ class _$SurveyClientModelTearOff {
   _SurveyClientModel call(
       {required String? id,
       required String? title,
+      required int? limit,
       required ClientFormType? clientFormType,
       required int? size,
       TextEditingController? controller}) {
     return _SurveyClientModel(
       id: id,
       title: title,
+      limit: limit,
       clientFormType: clientFormType,
       size: size,
       controller: controller,
@@ -40,6 +42,7 @@ const $SurveyClientModel = _$SurveyClientModelTearOff();
 mixin _$SurveyClientModel {
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
+  int? get limit => throw _privateConstructorUsedError;
   ClientFormType? get clientFormType => throw _privateConstructorUsedError;
   int? get size => throw _privateConstructorUsedError;
   TextEditingController? get controller => throw _privateConstructorUsedError;
@@ -57,6 +60,7 @@ abstract class $SurveyClientModelCopyWith<$Res> {
   $Res call(
       {String? id,
       String? title,
+      int? limit,
       ClientFormType? clientFormType,
       int? size,
       TextEditingController? controller});
@@ -75,6 +79,7 @@ class _$SurveyClientModelCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
+    Object? limit = freezed,
     Object? clientFormType = freezed,
     Object? size = freezed,
     Object? controller = freezed,
@@ -88,6 +93,10 @@ class _$SurveyClientModelCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      limit: limit == freezed
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int?,
       clientFormType: clientFormType == freezed
           ? _value.clientFormType
           : clientFormType // ignore: cast_nullable_to_non_nullable
@@ -114,6 +123,7 @@ abstract class _$SurveyClientModelCopyWith<$Res>
   $Res call(
       {String? id,
       String? title,
+      int? limit,
       ClientFormType? clientFormType,
       int? size,
       TextEditingController? controller});
@@ -134,6 +144,7 @@ class __$SurveyClientModelCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
+    Object? limit = freezed,
     Object? clientFormType = freezed,
     Object? size = freezed,
     Object? controller = freezed,
@@ -147,6 +158,10 @@ class __$SurveyClientModelCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      limit: limit == freezed
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
+              as int?,
       clientFormType: clientFormType == freezed
           ? _value.clientFormType
           : clientFormType // ignore: cast_nullable_to_non_nullable
@@ -169,6 +184,7 @@ class _$_SurveyClientModel implements _SurveyClientModel {
   const _$_SurveyClientModel(
       {required this.id,
       required this.title,
+      required this.limit,
       required this.clientFormType,
       required this.size,
       this.controller});
@@ -178,6 +194,8 @@ class _$_SurveyClientModel implements _SurveyClientModel {
   @override
   final String? title;
   @override
+  final int? limit;
+  @override
   final ClientFormType? clientFormType;
   @override
   final int? size;
@@ -186,7 +204,7 @@ class _$_SurveyClientModel implements _SurveyClientModel {
 
   @override
   String toString() {
-    return 'SurveyClientModel(id: $id, title: $title, clientFormType: $clientFormType, size: $size, controller: $controller)';
+    return 'SurveyClientModel(id: $id, title: $title, limit: $limit, clientFormType: $clientFormType, size: $size, controller: $controller)';
   }
 
   @override
@@ -196,6 +214,7 @@ class _$_SurveyClientModel implements _SurveyClientModel {
             other is _SurveyClientModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.limit, limit) &&
             const DeepCollectionEquality()
                 .equals(other.clientFormType, clientFormType) &&
             const DeepCollectionEquality().equals(other.size, size) &&
@@ -208,6 +227,7 @@ class _$_SurveyClientModel implements _SurveyClientModel {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(limit),
       const DeepCollectionEquality().hash(clientFormType),
       const DeepCollectionEquality().hash(size),
       const DeepCollectionEquality().hash(controller));
@@ -222,6 +242,7 @@ abstract class _SurveyClientModel implements SurveyClientModel {
   const factory _SurveyClientModel(
       {required String? id,
       required String? title,
+      required int? limit,
       required ClientFormType? clientFormType,
       required int? size,
       TextEditingController? controller}) = _$_SurveyClientModel;
@@ -230,6 +251,8 @@ abstract class _SurveyClientModel implements SurveyClientModel {
   String? get id;
   @override
   String? get title;
+  @override
+  int? get limit;
   @override
   ClientFormType? get clientFormType;
   @override
