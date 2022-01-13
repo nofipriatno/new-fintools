@@ -48,6 +48,19 @@ class _$SurveyTaskEventTearOff {
       taskId: taskId,
     );
   }
+
+  _OnSubmitSurvey onSubmitSurvey(
+      {required List<SurveyClientModel> client,
+      required List<QuestionAnswerModel> question,
+      required List<SurveyDataModel> data,
+      required SurveyTask task}) {
+    return _OnSubmitSurvey(
+      client: client,
+      question: question,
+      data: data,
+      task: task,
+    );
+  }
 }
 
 /// @nodoc
@@ -63,6 +76,12 @@ mixin _$SurveyTaskEvent {
     required TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)
         onFileSelect,
+    required TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)
+        onSubmitSurvey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +92,12 @@ mixin _$SurveyTaskEvent {
     TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)?
         onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +108,12 @@ mixin _$SurveyTaskEvent {
     TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)?
         onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,6 +122,7 @@ mixin _$SurveyTaskEvent {
     required TResult Function(_OnInitialize value) onInitialize,
     required TResult Function(_OnChoiceSelect value) onChoiceSelect,
     required TResult Function(_OnFileSelect value) onFileSelect,
+    required TResult Function(_OnSubmitSurvey value) onSubmitSurvey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +130,7 @@ mixin _$SurveyTaskEvent {
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
     TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +138,7 @@ mixin _$SurveyTaskEvent {
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
     TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -198,6 +232,12 @@ class _$_OnInitialize implements _OnInitialize {
     required TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)
         onFileSelect,
+    required TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)
+        onSubmitSurvey,
   }) {
     return onInitialize(taskId);
   }
@@ -211,6 +251,12 @@ class _$_OnInitialize implements _OnInitialize {
     TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)?
         onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
   }) {
     return onInitialize?.call(taskId);
   }
@@ -224,6 +270,12 @@ class _$_OnInitialize implements _OnInitialize {
     TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)?
         onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
     required TResult orElse(),
   }) {
     if (onInitialize != null) {
@@ -238,6 +290,7 @@ class _$_OnInitialize implements _OnInitialize {
     required TResult Function(_OnInitialize value) onInitialize,
     required TResult Function(_OnChoiceSelect value) onChoiceSelect,
     required TResult Function(_OnFileSelect value) onFileSelect,
+    required TResult Function(_OnSubmitSurvey value) onSubmitSurvey,
   }) {
     return onInitialize(this);
   }
@@ -248,6 +301,7 @@ class _$_OnInitialize implements _OnInitialize {
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
     TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
   }) {
     return onInitialize?.call(this);
   }
@@ -258,6 +312,7 @@ class _$_OnInitialize implements _OnInitialize {
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
     TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
     required TResult orElse(),
   }) {
     if (onInitialize != null) {
@@ -376,6 +431,12 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     required TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)
         onFileSelect,
+    required TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)
+        onSubmitSurvey,
   }) {
     return onChoiceSelect(item, choice, taskId);
   }
@@ -389,6 +450,12 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)?
         onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
   }) {
     return onChoiceSelect?.call(item, choice, taskId);
   }
@@ -402,6 +469,12 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)?
         onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
     required TResult orElse(),
   }) {
     if (onChoiceSelect != null) {
@@ -416,6 +489,7 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     required TResult Function(_OnInitialize value) onInitialize,
     required TResult Function(_OnChoiceSelect value) onChoiceSelect,
     required TResult Function(_OnFileSelect value) onFileSelect,
+    required TResult Function(_OnSubmitSurvey value) onSubmitSurvey,
   }) {
     return onChoiceSelect(this);
   }
@@ -426,6 +500,7 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
     TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
   }) {
     return onChoiceSelect?.call(this);
   }
@@ -436,6 +511,7 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
     TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
     required TResult orElse(),
   }) {
     if (onChoiceSelect != null) {
@@ -577,6 +653,12 @@ class _$_OnFileSelect implements _OnFileSelect {
     required TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)
         onFileSelect,
+    required TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)
+        onSubmitSurvey,
   }) {
     return onFileSelect(path, index, id, extension, taskId);
   }
@@ -590,6 +672,12 @@ class _$_OnFileSelect implements _OnFileSelect {
     TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)?
         onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
   }) {
     return onFileSelect?.call(path, index, id, extension, taskId);
   }
@@ -603,6 +691,12 @@ class _$_OnFileSelect implements _OnFileSelect {
     TResult Function(String? path, int? index, FormUploadData id,
             String? extension, String taskId)?
         onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
     required TResult orElse(),
   }) {
     if (onFileSelect != null) {
@@ -617,6 +711,7 @@ class _$_OnFileSelect implements _OnFileSelect {
     required TResult Function(_OnInitialize value) onInitialize,
     required TResult Function(_OnChoiceSelect value) onChoiceSelect,
     required TResult Function(_OnFileSelect value) onFileSelect,
+    required TResult Function(_OnSubmitSurvey value) onSubmitSurvey,
   }) {
     return onFileSelect(this);
   }
@@ -627,6 +722,7 @@ class _$_OnFileSelect implements _OnFileSelect {
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
     TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
   }) {
     return onFileSelect?.call(this);
   }
@@ -637,6 +733,7 @@ class _$_OnFileSelect implements _OnFileSelect {
     TResult Function(_OnInitialize value)? onInitialize,
     TResult Function(_OnChoiceSelect value)? onChoiceSelect,
     TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
     required TResult orElse(),
   }) {
     if (onFileSelect != null) {
@@ -661,6 +758,228 @@ abstract class _OnFileSelect implements SurveyTaskEvent {
   String get taskId;
   @JsonKey(ignore: true)
   _$OnFileSelectCopyWith<_OnFileSelect> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnSubmitSurveyCopyWith<$Res> {
+  factory _$OnSubmitSurveyCopyWith(
+          _OnSubmitSurvey value, $Res Function(_OnSubmitSurvey) then) =
+      __$OnSubmitSurveyCopyWithImpl<$Res>;
+  $Res call(
+      {List<SurveyClientModel> client,
+      List<QuestionAnswerModel> question,
+      List<SurveyDataModel> data,
+      SurveyTask task});
+
+  $SurveyTaskCopyWith<$Res> get task;
+}
+
+/// @nodoc
+class __$OnSubmitSurveyCopyWithImpl<$Res>
+    extends _$SurveyTaskEventCopyWithImpl<$Res>
+    implements _$OnSubmitSurveyCopyWith<$Res> {
+  __$OnSubmitSurveyCopyWithImpl(
+      _OnSubmitSurvey _value, $Res Function(_OnSubmitSurvey) _then)
+      : super(_value, (v) => _then(v as _OnSubmitSurvey));
+
+  @override
+  _OnSubmitSurvey get _value => super._value as _OnSubmitSurvey;
+
+  @override
+  $Res call({
+    Object? client = freezed,
+    Object? question = freezed,
+    Object? data = freezed,
+    Object? task = freezed,
+  }) {
+    return _then(_OnSubmitSurvey(
+      client: client == freezed
+          ? _value.client
+          : client // ignore: cast_nullable_to_non_nullable
+              as List<SurveyClientModel>,
+      question: question == freezed
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
+              as List<QuestionAnswerModel>,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<SurveyDataModel>,
+      task: task == freezed
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as SurveyTask,
+    ));
+  }
+
+  @override
+  $SurveyTaskCopyWith<$Res> get task {
+    return $SurveyTaskCopyWith<$Res>(_value.task, (value) {
+      return _then(_value.copyWith(task: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnSubmitSurvey implements _OnSubmitSurvey {
+  const _$_OnSubmitSurvey(
+      {required this.client,
+      required this.question,
+      required this.data,
+      required this.task});
+
+  @override
+  final List<SurveyClientModel> client;
+  @override
+  final List<QuestionAnswerModel> question;
+  @override
+  final List<SurveyDataModel> data;
+  @override
+  final SurveyTask task;
+
+  @override
+  String toString() {
+    return 'SurveyTaskEvent.onSubmitSurvey(client: $client, question: $question, data: $data, task: $task)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OnSubmitSurvey &&
+            const DeepCollectionEquality().equals(other.client, client) &&
+            const DeepCollectionEquality().equals(other.question, question) &&
+            const DeepCollectionEquality().equals(other.data, data) &&
+            const DeepCollectionEquality().equals(other.task, task));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(client),
+      const DeepCollectionEquality().hash(question),
+      const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(task));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnSubmitSurveyCopyWith<_OnSubmitSurvey> get copyWith =>
+      __$OnSubmitSurveyCopyWithImpl<_OnSubmitSurvey>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? taskId) onInitialize,
+    required TResult Function(SearchModel item, String choice, String taskId)
+        onChoiceSelect,
+    required TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)
+        onFileSelect,
+    required TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)
+        onSubmitSurvey,
+  }) {
+    return onSubmitSurvey(client, question, data, task);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? taskId)? onInitialize,
+    TResult Function(SearchModel item, String choice, String taskId)?
+        onChoiceSelect,
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
+        onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
+  }) {
+    return onSubmitSurvey?.call(client, question, data, task);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? taskId)? onInitialize,
+    TResult Function(SearchModel item, String choice, String taskId)?
+        onChoiceSelect,
+    TResult Function(String? path, int? index, FormUploadData id,
+            String? extension, String taskId)?
+        onFileSelect,
+    TResult Function(
+            List<SurveyClientModel> client,
+            List<QuestionAnswerModel> question,
+            List<SurveyDataModel> data,
+            SurveyTask task)?
+        onSubmitSurvey,
+    required TResult orElse(),
+  }) {
+    if (onSubmitSurvey != null) {
+      return onSubmitSurvey(client, question, data, task);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnInitialize value) onInitialize,
+    required TResult Function(_OnChoiceSelect value) onChoiceSelect,
+    required TResult Function(_OnFileSelect value) onFileSelect,
+    required TResult Function(_OnSubmitSurvey value) onSubmitSurvey,
+  }) {
+    return onSubmitSurvey(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_OnInitialize value)? onInitialize,
+    TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
+  }) {
+    return onSubmitSurvey?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnInitialize value)? onInitialize,
+    TResult Function(_OnChoiceSelect value)? onChoiceSelect,
+    TResult Function(_OnFileSelect value)? onFileSelect,
+    TResult Function(_OnSubmitSurvey value)? onSubmitSurvey,
+    required TResult orElse(),
+  }) {
+    if (onSubmitSurvey != null) {
+      return onSubmitSurvey(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSubmitSurvey implements SurveyTaskEvent {
+  const factory _OnSubmitSurvey(
+      {required List<SurveyClientModel> client,
+      required List<QuestionAnswerModel> question,
+      required List<SurveyDataModel> data,
+      required SurveyTask task}) = _$_OnSubmitSurvey;
+
+  List<SurveyClientModel> get client;
+  List<QuestionAnswerModel> get question;
+  List<SurveyDataModel> get data;
+  SurveyTask get task;
+  @JsonKey(ignore: true)
+  _$OnSubmitSurveyCopyWith<_OnSubmitSurvey> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

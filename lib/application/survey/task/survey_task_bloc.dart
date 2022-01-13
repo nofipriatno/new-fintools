@@ -3,10 +3,12 @@ import 'package:fintools/domain/core/constant/app_model.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
+import 'package:fintools/domain/survey/interface/i_user_survey.dart';
 import 'package:fintools/domain/survey/local/survey_client_model.dart';
 import 'package:fintools/domain/survey/local/survey_data_model.dart';
 import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/local/survey_search_model.dart';
+import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,8 +27,9 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
   final ISurvey _survey;
   final IDatabase _database;
   final IStorage _storage;
+  final IUserSurvey _userSurvey;
 
-  SurveyTaskBloc(this._survey, this._database, this._storage)
+  SurveyTaskBloc(this._survey, this._database, this._storage, this._userSurvey)
       : super(const _Initial()) {
     on<SurveyTaskEvent>((event, emit) async {
       await event.map(onInitialize: (e) async {
@@ -126,6 +129,16 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             key: e.taskId + e.id.type + e.id.id + e.index.toString(),
             object: data.toJson());
         emit(_SelectFileSuccess(data: data));
+      }, onSubmitSurvey: (e) async {
+        emit(const _Loading());
+        final test = await _userSurvey.postSurveyData(
+          client: e.client,
+          question: e.question,
+          data: e.data,
+          task: e.task,
+        );
+
+
       });
     });
   }

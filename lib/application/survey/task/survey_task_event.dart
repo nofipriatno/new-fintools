@@ -18,4 +18,11 @@ class SurveyTaskEvent with _$SurveyTaskEvent {
     required String? extension,
     required String taskId,
   }) = _OnFileSelect;
+
+  const factory SurveyTaskEvent.onSubmitSurvey({
+    required List<SurveyClientModel> client,
+    required List<QuestionAnswerModel> question,
+    required List<SurveyDataModel> data,
+    required SurveyTask task,
+  }) = _OnSubmitSurvey;
 }

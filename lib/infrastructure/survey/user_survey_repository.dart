@@ -72,7 +72,7 @@ class UserSurveyRepository implements IUserSurvey {
 
       final apiResult = await _networkService.postHttp(
         contentType: 'multipart/form-data',
-        path: 'path',
+        path: AppEndpoint.surveyPost,
         content: FormData.fromMap(
           AppUtils.createSurveyFormData(
             client: client,
@@ -87,7 +87,9 @@ class UserSurveyRepository implements IUserSurvey {
       return const Left(GenericFailure.unknownError());
     } on NetworkException catch (_) {
       return const Left(GenericFailure.unknownError());
-    } on ServerException catch (_) {
+    } on ServerException catch (e) {
+      print('print => ${e.code}');
+      print('print => ${e.message}');
       return const Left(GenericFailure.serverError());
     } on AuthException catch (_) {
       return const Left(GenericFailure.sessionExpired());

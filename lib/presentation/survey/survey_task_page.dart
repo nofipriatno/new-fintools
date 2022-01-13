@@ -152,7 +152,13 @@ class SurveyTaskPage extends HookWidget {
                             const SizedBox(height: 10),
                         itemCount: assets.value.length,
                       ),
-                      _processCompleted()
+                      _processCompleted(
+                        context,
+                        client: clients.value,
+                        question: questions.value,
+                        data: surveyData.value,
+                        task: task!,
+                      )
                     ],
                   ),
                 )
@@ -193,7 +199,13 @@ class SurveyTaskPage extends HookWidget {
     );
   }
 
-  Widget _processCompleted() {
+  Widget _processCompleted(
+    BuildContext context, {
+    required List<SurveyClientModel> client,
+    required List<QuestionAnswerModel> question,
+    required List<SurveyDataModel> data,
+    required SurveyTask task,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
       child: Column(
@@ -213,7 +225,16 @@ class SurveyTaskPage extends HookWidget {
             ),
           ),
           SizedBox(
-            child: CustomButton.normalButton(I10n.current.submit, () {}),
+            child: CustomButton.normalButton(I10n.current.submit, () {
+              context.read<SurveyTaskBloc>().add(
+                    SurveyTaskEvent.onSubmitSurvey(
+                      client: client,
+                      question: question,
+                      data: data,
+                      task: task,
+                    ),
+                  );
+            }),
             width: ScreenUtil().screenWidth,
           )
         ],

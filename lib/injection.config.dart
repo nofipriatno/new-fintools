@@ -77,8 +77,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i18.ISurvey>(), get<_i8.IStorage>(), get<_i6.IDatabase>()));
   gh.factory<_i23.SurveyLoginBloc>(
       () => _i23.SurveyLoginBloc(get<_i20.IUserSurvey>()));
-  gh.factory<_i24.SurveyTaskBloc>(() => _i24.SurveyTaskBloc(
-      get<_i18.ISurvey>(), get<_i6.IDatabase>(), get<_i8.IStorage>()));
+  gh.factory<_i24.SurveyTaskBloc>(() => _i24.SurveyTaskBloc(get<_i18.ISurvey>(),
+      get<_i6.IDatabase>(), get<_i8.IStorage>(), get<_i20.IUserSurvey>()));
   gh.lazySingleton<_i25.ICheckLatestSurveyFacade>(() =>
       _i26.CheckLatestSurveyFacade(get<_i16.INetworkService>(),
           get<_i8.IStorage>(), get<_i6.IDatabase>()));
