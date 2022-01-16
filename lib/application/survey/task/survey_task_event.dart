@@ -25,4 +25,11 @@ class SurveyTaskEvent with _$SurveyTaskEvent {
     required List<SurveyDataModel> data,
     required SurveyTask task,
   }) = _OnSubmitSurvey;
+
+  const factory SurveyTaskEvent.onProcessCheck({
+    required List<SurveyClientModel> client,
+    required List<QuestionAnswerModel> question,
+    required List<FormUploadData> formData,
+    required List<SurveyDataModel> data,
+  }) = _OnProcessCheck;
 }

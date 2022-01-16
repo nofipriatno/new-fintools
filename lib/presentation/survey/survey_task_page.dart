@@ -19,6 +19,7 @@ import 'package:fintools/presentation/component/dialog/custom_dialog.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
 import 'package:fintools/presentation/component/text_field/custom_text_field.dart';
+import 'package:fintools/presentation/survey/survey_home_page.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,21 @@ class SurveyTaskPage extends HookWidget {
     final clients = useState<List<SurveyClientModel>>([]);
     final zipcode = useState<List<ZipcodeData>>([]);
     final surveyData = useState<List<SurveyDataModel>>([]);
+    final completed = useState<List<bool>>([false, false, false, false]);
+
+    useEffect(() {
+      controller.addListener(() {
+        if (controller.indexIsChanging) {
+          if (controller.index == 4) {
+            getIt<SurveyTaskBloc>().add(SurveyTaskEvent.onProcessCheck(
+                client: clients.value,
+                question: questions.value,
+                formData: assets.value..addAll(documents.value),
+                data: surveyData.value));
+          }
+        }
+      });
+    }, [controller]);
 
     return BlocProvider<SurveyTaskBloc>(
       create: (_) => getIt<SurveyTaskBloc>()
@@ -67,6 +83,30 @@ class SurveyTaskPage extends HookWidget {
                 item = item.copyWith(search: e.item);
                 questions.value.removeAt(index);
                 questions.value.insert(index, item);
+              },
+              checkCompletedData: (e) async {
+                completed.value.add(e.clientCompleted);
+                completed.value.add(e.questionCompleted);
+                completed.value.add(e.assetsCompleted);
+                completed.value.add(e.documentsCompleted);
+              },
+              submitSuccess: (e) {
+                CustomDialog.info(
+                  context,
+                  title: 'Success',
+                  message: 'Submit Survey Completed',
+                  action: () => Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (_) => const SurveyHomePage()),
+                      (route) => false),
+                );
+              },
+              submitFailed: (e) {
+                CustomDialog.info(
+                  context,
+                  title: 'Failed',
+                  message: 'Submit Survey Failed',
+                );
               },
               selectFileSuccess: (e) {
                 if (surveyData.value.isEmpty) {
@@ -152,13 +192,12 @@ class SurveyTaskPage extends HookWidget {
                             const SizedBox(height: 10),
                         itemCount: assets.value.length,
                       ),
-                      _processCompleted(
-                        context,
-                        client: clients.value,
-                        question: questions.value,
-                        data: surveyData.value,
-                        task: task!,
-                      )
+                      _processCompleted(context,
+                          client: clients.value,
+                          question: questions.value,
+                          data: surveyData.value,
+                          task: task!,
+                          completed: completed.value)
                     ],
                   ),
                 )
@@ -205,6 +244,7 @@ class SurveyTaskPage extends HookWidget {
     required List<QuestionAnswerModel> question,
     required List<SurveyDataModel> data,
     required SurveyTask task,
+    required List<bool> completed,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
@@ -214,13 +254,13 @@ class SurveyTaskPage extends HookWidget {
             child: Column(
               children: [
                 _itemProcessCompleted(
-                    title: I10n.current.client, completed: true),
+                    title: I10n.current.client, completed: completed[0]),
                 _itemProcessCompleted(
-                    title: I10n.current.quisioner, completed: false),
+                    title: I10n.current.quisioner, completed: completed[1]),
                 _itemProcessCompleted(
-                    title: I10n.current.asset, completed: true),
+                    title: I10n.current.asset, completed: completed[2]),
                 _itemProcessCompleted(
-                    title: I10n.current.document, completed: true),
+                    title: I10n.current.document, completed: completed[3]),
               ],
             ),
           ),

@@ -43,8 +43,12 @@ class CustomDialog {
     );
   }
 
-  static info(BuildContext context,
-      {required String title, required String message}) {
+  static info(
+    BuildContext context, {
+    required String title,
+    required String message,
+    VoidCallback? action,
+  }) {
     return showDialog(
       barrierDismissible: false,
       context: context,
@@ -59,7 +63,11 @@ class CustomDialog {
           SizedBox(
             width: double.infinity,
             child: CustomButton.normalButton(I10n.current.button_ok, () {
-              Navigator.pop(context);
+              if (action == null) {
+                Navigator.pop(context);
+              } else {
+                action();
+              }
             }),
           )
         ],

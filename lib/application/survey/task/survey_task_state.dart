@@ -22,4 +22,19 @@ class SurveyTaskState with _$SurveyTaskState {
 
   const factory SurveyTaskState.selectFileSuccess(
       {required SurveyDataModel data}) = _SelectFileSuccess;
+
+  const factory SurveyTaskState.submitSuccess({
+    required SurveyTask task,
+  }) = _SubmitSuccess;
+
+  const factory SurveyTaskState.submitFailed({
+    required GenericFailure failure,
+  }) = _SubmitFailed;
+
+  const factory SurveyTaskState.checkCompletedData({
+    required bool clientCompleted,
+    required bool questionCompleted,
+    required bool assetsCompleted,
+    required bool documentsCompleted,
+  }) = _CheckCompletedData;
 }

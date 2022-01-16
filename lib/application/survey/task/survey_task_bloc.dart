@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:fintools/domain/core/constant/app_model.dart';
+import 'package:fintools/domain/core/constant/app_string.dart';
+import 'package:fintools/domain/core/failure/generic_failure.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
@@ -131,11 +133,33 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         emit(_SelectFileSuccess(data: data));
       }, onSubmitSurvey: (e) async {
         emit(const _Loading());
-        final test = await _userSurvey.postSurveyData(
+        final postOrFailure = await _userSurvey.postSurveyData(
           client: e.client,
           question: e.question,
           data: e.data,
           task: e.task,
+        );
+
+        postOrFailure.fold(
+          (failure) => _SubmitFailed(failure: failure),
+          (success) => _SubmitSuccess(task: e.task),
+        );
+      }, onProcessCheck: (e) async {
+        emit(const _Initial());
+        final client = e.client.firstWhereOrNull(
+            (element) => element.controller?.text.isEmpty == true);
+        final question = e.question.firstWhereOrNull(
+          (element) =>
+              element.search?.value?.isEmpty == true ||
+              element.controller?.text.isEmpty == true,
+        );
+
+        emit(
+          _CheckCompletedData(
+              assetsCompleted: true,
+              questionCompleted: false,
+              documentsCompleted: true,
+              clientCompleted: client == null),
         );
       });
     });
