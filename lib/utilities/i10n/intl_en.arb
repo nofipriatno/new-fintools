@@ -67,5 +67,12 @@
   "take_gallery": "Take Gallery",
   "submit": "Submit",
   "completed": "Completed",
-  "uncompleted": "Uncompleted"
+  "uncompleted": "Uncompleted",
+  "success": "Success",
+  "failed": "Failed",
+  "survey_success_info": "Success Submit Survey Data",
+  "survey_failed_info": "Failed Submit Survey Data",
+  "confirmation": "Confirmation",
+  "success_change_url": "Success To Change Domain to ",
+  "are_you_sure_to_logout": "Are you sure to Logout?"
 }

@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "app_name": MessageLookupByLibrary.simpleMessage("Fintools"),
+        "are_you_sure_to_logout":
+            MessageLookupByLibrary.simpleMessage("Are you sure to Logout?"),
         "area_code": MessageLookupByLibrary.simpleMessage("Area Code"),
         "asset": MessageLookupByLibrary.simpleMessage("Assets"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -36,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "city_birth": MessageLookupByLibrary.simpleMessage("Birth City"),
         "client": MessageLookupByLibrary.simpleMessage("Client"),
         "completed": MessageLookupByLibrary.simpleMessage("Completed"),
+        "confirmation": MessageLookupByLibrary.simpleMessage("Confirmation"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "date_of_birth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
@@ -46,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "district": MessageLookupByLibrary.simpleMessage("District"),
         "document": MessageLookupByLibrary.simpleMessage("Document"),
+        "failed": MessageLookupByLibrary.simpleMessage("Failed"),
         "fax": MessageLookupByLibrary.simpleMessage("Fax"),
         "filename": MessageLookupByLibrary.simpleMessage("Filename"),
         "forget_password_mark":
@@ -80,7 +84,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "sub_district": MessageLookupByLibrary.simpleMessage("Sub District"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "success": MessageLookupByLibrary.simpleMessage("Success"),
+        "success_change_url": MessageLookupByLibrary.simpleMessage(
+            "Success To Change Domain to "),
+        "survey_failed_info":
+            MessageLookupByLibrary.simpleMessage("Failed Submit Survey Data"),
         "survey_greeting_user": m0,
+        "survey_success_info":
+            MessageLookupByLibrary.simpleMessage("Success Submit Survey Data"),
         "take_gallery": MessageLookupByLibrary.simpleMessage("Take Gallery"),
         "take_picture": MessageLookupByLibrary.simpleMessage("Take Picture"),
         "task": MessageLookupByLibrary.simpleMessage("Task"),

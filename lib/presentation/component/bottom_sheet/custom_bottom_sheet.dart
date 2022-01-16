@@ -1,7 +1,5 @@
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
-import 'package:fintools/domain/core/interface/i_storage.dart';
-import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/dialog/custom_dialog.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +37,8 @@ class CustomBottomSheet {
                 title: Text(I10n.current.logout, style: AppFont.text14Normal),
                 trailing: const Icon(Icons.logout),
                 onTap: () => CustomDialog.logout(context,
-                    title: 'Confirmation', message: 'Anda Yakin ingin keluar?'),
+                    title: I10n.current.confirmation,
+                    message: I10n.current.are_you_sure_to_logout),
               )
             ],
           );

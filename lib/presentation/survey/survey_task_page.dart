@@ -45,19 +45,19 @@ class SurveyTaskPage extends HookWidget {
     final surveyData = useState<List<SurveyDataModel>>([]);
     final completed = useState<List<bool>>([false, false, false, false]);
 
-    useEffect(() {
-      controller.addListener(() {
-        if (controller.indexIsChanging) {
-          if (controller.index == 4) {
-            getIt<SurveyTaskBloc>().add(SurveyTaskEvent.onProcessCheck(
-                client: clients.value,
-                question: questions.value,
-                formData: assets.value..addAll(documents.value),
-                data: surveyData.value));
-          }
-        }
-      });
-    }, [controller]);
+    // useEffect(() {
+    //   controller.addListener(() {
+    //     if (controller.indexIsChanging) {
+    //       if (controller.index == 4) {
+    //         getIt<SurveyTaskBloc>().add(SurveyTaskEvent.onProcessCheck(
+    //             client: clients.value,
+    //             question: questions.value,
+    //             formData: assets.value..addAll(documents.value),
+    //             data: surveyData.value));
+    //       }
+    //     }
+    //   });
+    // }, [controller]);
 
     return BlocProvider<SurveyTaskBloc>(
       create: (_) => getIt<SurveyTaskBloc>()
@@ -68,7 +68,11 @@ class SurveyTaskPage extends HookWidget {
         listener: (context, state) {
           state.maybeMap(
               orElse: () {},
+              loading: (e) {
+                AppUtils.showLoading;
+              },
               checkClientSuccess: (e) {
+                AppUtils.dismissLoading;
                 questions.value = e.questions;
                 documents.value = e.document;
                 assets.value = e.assets;
@@ -77,6 +81,7 @@ class SurveyTaskPage extends HookWidget {
                 surveyData.value = e.data;
               },
               selectChoiceSuccess: (e) {
+                AppUtils.dismissLoading;
                 var item = questions.value
                     .firstWhere((element) => element.id == e.item.id);
                 final index = questions.value.indexOf(item);
@@ -85,16 +90,18 @@ class SurveyTaskPage extends HookWidget {
                 questions.value.insert(index, item);
               },
               checkCompletedData: (e) async {
-                completed.value.add(e.clientCompleted);
+                AppUtils.dismissLoading;
+                if (e.clientCompleted) completed.value[0] = e.clientCompleted;
                 completed.value.add(e.questionCompleted);
                 completed.value.add(e.assetsCompleted);
                 completed.value.add(e.documentsCompleted);
               },
               submitSuccess: (e) {
+                AppUtils.dismissLoading;
                 CustomDialog.info(
                   context,
-                  title: 'Success',
-                  message: 'Submit Survey Completed',
+                  title: I10n.current.success,
+                  message: I10n.current.survey_success_info,
                   action: () => Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (_) => const SurveyHomePage()),
@@ -102,13 +109,15 @@ class SurveyTaskPage extends HookWidget {
                 );
               },
               submitFailed: (e) {
+                AppUtils.dismissLoading;
                 CustomDialog.info(
                   context,
-                  title: 'Failed',
-                  message: 'Submit Survey Failed',
+                  title: I10n.current.failed,
+                  message: '${I10n.current.survey_failed_info} ${e.failure}',
                 );
               },
               selectFileSuccess: (e) {
+                AppUtils.dismissLoading;
                 if (surveyData.value.isEmpty) {
                   surveyData.value.add(e.data);
                 } else {
@@ -133,6 +142,18 @@ class SurveyTaskPage extends HookWidget {
               children: [
                 TabBar(
                   controller: controller,
+                  onTap: (_) {
+                    if (controller.indexIsChanging) {
+                      if (controller.index == 4) {
+                        context.read<SurveyTaskBloc>().add(
+                            SurveyTaskEvent.onProcessCheck(
+                                client: clients.value,
+                                question: questions.value,
+                                formData: assets.value..addAll(documents.value),
+                                data: surveyData.value));
+                      }
+                    }
+                  },
                   tabs: [
                     Tab(text: I10n.current.client),
                     Tab(text: I10n.current.quisioner),

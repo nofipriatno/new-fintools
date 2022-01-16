@@ -119,7 +119,7 @@ class OnBoardingPage extends HookWidget {
               onSavedUrlSuccess: (url) {
                 CustomDialog.info(context,
                     title: I10n.current.app_name,
-                    message: 'Success To Change Domain to ${url.url}');
+                    message: '${I10n.current.success_change_url}${url.url}');
               });
         }),
       ),

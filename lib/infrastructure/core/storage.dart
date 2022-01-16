@@ -15,6 +15,7 @@ class Storage implements IStorage {
     this.hive,
   );
 
+  @override
   Future<Box> openBox(
     StorageConstants boxName,
   ) async {
@@ -27,6 +28,7 @@ class Storage implements IStorage {
     return _box;
   }
 
+  @override
   Future close(
     Box box,
   ) async {
@@ -34,6 +36,7 @@ class Storage implements IStorage {
     return;
   }
 
+  @override
   Future<void> putData(Box box, {required Map<String, dynamic> json}) async {
     try {
       await box.putAll(json);
@@ -41,11 +44,13 @@ class Storage implements IStorage {
     } catch (_) {}
   }
 
+  @override
   Future putDynamicData(Box box,
       {required String key, required dynamic value}) async {
     await box.put(key, value);
   }
 
+  @override
   Future<void> putListData(Box box, {required List dataList}) async {
     try {
       dataList.map((e) async {
@@ -56,18 +61,21 @@ class Storage implements IStorage {
     return;
   }
 
+  @override
   Future<void> putString(Box box,
       {required String key, required String value}) async {
     await box.put(key, value);
     return;
   }
 
+  @override
   Future<void> putBool(Box box,
       {required String key, required bool value}) async {
     await box.put(key, value);
     return;
   }
 
+  @override
   String? getString(Box box, {required String key}) {
     String? value = box.get(key);
     return value;
@@ -90,17 +98,20 @@ class Storage implements IStorage {
     return;
   }
 
+  @override
   Future<DateTime?> getDate(Box box, {required String key}) async {
     DateTime? date = box.get(key);
     // box.close();
     return date;
   }
 
+  @override
   Future<int?> getInt(Box box, {required String key}) async {
     int? value = box.get(key);
     return value;
   }
 
+  @override
   Future<bool> getBool(Box box, {required String key}) async {
     bool? value = box.get(key);
     value ??= false;
@@ -108,12 +119,14 @@ class Storage implements IStorage {
     return value;
   }
 
+  @override
   Future<double?> getDouble(Box box, {required String key}) async {
     double? value = box.get(key);
     // box.close();
     return value;
   }
 
+  @override
   Future<Map<String, dynamic>> getData(
     Box box,
   ) async {
@@ -121,10 +134,12 @@ class Storage implements IStorage {
     return value;
   }
 
+  @override
   Future<dynamic> getDynamicData(Box box, {required String key}) async {
     return box.get(key);
   }
 
+  @override
   Future<List?> getListData(
     Box box,
   ) async {
@@ -137,6 +152,7 @@ class Storage implements IStorage {
     return data;
   }
 
+  @override
   Future<void> deleteData(
     Box box,
   ) async {
@@ -144,6 +160,7 @@ class Storage implements IStorage {
     return;
   }
 
+  @override
   Future<void> deleteString(Box box, {required String key}) async {
     await box.delete(key);
     // box.close();

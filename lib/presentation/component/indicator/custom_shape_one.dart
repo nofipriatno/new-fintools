@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomShape extends StatelessWidget {
+  const BottomShape({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,6 +47,8 @@ class CurvePainter extends CustomPainter {
 }
 
 class DetailShape extends StatelessWidget {
+  const DetailShape({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:fintools/domain/core/constant/app_model.dart';
-import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/failure/generic_failure.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
@@ -141,8 +140,8 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         );
 
         postOrFailure.fold(
-          (failure) => _SubmitFailed(failure: failure),
-          (success) => _SubmitSuccess(task: e.task),
+          (failure) => emit(_SubmitFailed(failure: failure)),
+          (success) => emit(_SubmitSuccess(task: e.task)),
         );
       }, onProcessCheck: (e) async {
         emit(const _Initial());

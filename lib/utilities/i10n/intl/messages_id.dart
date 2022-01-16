@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "address": MessageLookupByLibrary.simpleMessage("Alamat"),
         "app_name": MessageLookupByLibrary.simpleMessage("Fintools"),
+        "are_you_sure_to_logout":
+            MessageLookupByLibrary.simpleMessage("Anda Yakin ingin keluar?"),
         "area_code": MessageLookupByLibrary.simpleMessage("Kode Pos"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Batal"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
@@ -34,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "city": MessageLookupByLibrary.simpleMessage("Kota Asal"),
         "city_birth": MessageLookupByLibrary.simpleMessage("Kota Kelahiran"),
         "completed": MessageLookupByLibrary.simpleMessage("Lengkap"),
+        "confirmation": MessageLookupByLibrary.simpleMessage("Konfirmasi"),
         "date": MessageLookupByLibrary.simpleMessage("Tanggal"),
         "date_of_birth": MessageLookupByLibrary.simpleMessage("Tanggal Lahir"),
         "description_collection": MessageLookupByLibrary.simpleMessage(
@@ -43,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "district": MessageLookupByLibrary.simpleMessage("kecamatan"),
+        "failed": MessageLookupByLibrary.simpleMessage("Gagal"),
         "fax": MessageLookupByLibrary.simpleMessage("Fax"),
         "filename": MessageLookupByLibrary.simpleMessage("Nama file"),
         "forget_password_mark":
@@ -75,7 +79,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Simpan"),
         "sub_district": MessageLookupByLibrary.simpleMessage("kelurahan"),
         "submit": MessageLookupByLibrary.simpleMessage("Kirim Data"),
+        "success": MessageLookupByLibrary.simpleMessage("Sukses"),
+        "success_change_url": MessageLookupByLibrary.simpleMessage(
+            "Berhasil mengganti domain ke "),
+        "survey_failed_info":
+            MessageLookupByLibrary.simpleMessage("Gagal Kirim Data Survei"),
         "survey_greeting_user": m0,
+        "survey_success_info":
+            MessageLookupByLibrary.simpleMessage("Kirim Data Survei Berhasil"),
         "take_gallery": MessageLookupByLibrary.simpleMessage("Ambil Galeri"),
         "take_picture": MessageLookupByLibrary.simpleMessage("Ambil Gambar"),
         "task": MessageLookupByLibrary.simpleMessage("Tugas"),

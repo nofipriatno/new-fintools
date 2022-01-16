@@ -62,5 +62,12 @@
   "take_gallery": "Ambil Galeri",
   "submit": "Kirim Data",
   "completed": "Lengkap",
-  "uncompleted": "Tidak Lengkap"
+  "uncompleted": "Tidak Lengkap",
+  "success": "Sukses",
+  "failed": "Gagal",
+  "survey_success_info": "Kirim Data Survei Berhasil",
+  "survey_failed_info": "Gagal Kirim Data Survei",
+  "confirmation": "Konfirmasi",
+  "success_change_url": "Berhasil mengganti domain ke ",
+  "are_you_sure_to_logout": "Anda Yakin ingin keluar?"
 }

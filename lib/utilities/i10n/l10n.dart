@@ -649,6 +649,76 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed`
+  String get failed {
+    return Intl.message(
+      'Failed',
+      name: 'failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success Submit Survey Data`
+  String get survey_success_info {
+    return Intl.message(
+      'Success Submit Survey Data',
+      name: 'survey_success_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed Submit Survey Data`
+  String get survey_failed_info {
+    return Intl.message(
+      'Failed Submit Survey Data',
+      name: 'survey_failed_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmation`
+  String get confirmation {
+    return Intl.message(
+      'Confirmation',
+      name: 'confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success To Change Domain to `
+  String get success_change_url {
+    return Intl.message(
+      'Success To Change Domain to ',
+      name: 'success_change_url',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to Logout?`
+  String get are_you_sure_to_logout {
+    return Intl.message(
+      'Are you sure to Logout?',
+      name: 'are_you_sure_to_logout',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

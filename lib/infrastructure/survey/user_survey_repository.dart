@@ -61,16 +61,7 @@ class UserSurveyRepository implements IUserSurvey {
     required SurveyTask task,
   }) async {
     try {
-      final res = FormData.fromMap(
-        AppUtils.createSurveyFormData(
-          client: client,
-          question: question,
-          data: data,
-          task: task,
-        ),
-      );
-
-      final apiResult = await _networkService.postHttp(
+      await _networkService.postHttp(
         contentType: 'multipart/form-data',
         path: AppEndpoint.surveyPost,
         content: FormData.fromMap(
