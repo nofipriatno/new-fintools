@@ -144,20 +144,34 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
           (success) => emit(_SubmitSuccess(task: e.task)),
         );
       }, onProcessCheck: (e) async {
-        emit(const _Initial());
+        emit(const _Loading());
         final client = e.client.firstWhereOrNull(
             (element) => element.controller?.text.isEmpty == true);
-        final question = e.question.firstWhereOrNull(
-          (element) =>
-              element.search?.value?.isEmpty == true ||
-              element.controller?.text.isEmpty == true,
-        );
+
+        final doc = e.formData
+            .where((element) => element.code.contains('DPK'))
+            .toList();
+
+        final asset = e.formData
+            .where((element) => element.code.contains('PIC'))
+            .toList();
+
+        int docItem = 0;
+        int assetItem = 0;
+        for (SurveyDataModel item in e.data) {
+          final docCheck = doc
+              .firstWhereOrNull((element) => element.formName == item.formName);
+          final assetCheck = asset
+              .firstWhereOrNull((element) => element.formName == item.formName);
+          if (docCheck != null) docItem += 1;
+          if (assetCheck != null) assetItem += 1;
+        }
 
         emit(
           _CheckCompletedData(
-              assetsCompleted: true,
+              assetsCompleted: assetItem == asset.length,
               questionCompleted: false,
-              documentsCompleted: true,
+              documentsCompleted: docItem == doc.length,
               clientCompleted: client == null),
         );
       });

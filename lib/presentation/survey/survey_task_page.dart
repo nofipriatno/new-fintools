@@ -92,9 +92,9 @@ class SurveyTaskPage extends HookWidget {
               checkCompletedData: (e) async {
                 AppUtils.dismissLoading;
                 if (e.clientCompleted) completed.value[0] = e.clientCompleted;
-                completed.value.add(e.questionCompleted);
-                completed.value.add(e.assetsCompleted);
-                completed.value.add(e.documentsCompleted);
+                if (e.questionCompleted) completed.value[1] = e.questionCompleted;
+                if (e.assetsCompleted) completed.value[2] = e.assetsCompleted;
+                if (e.documentsCompleted) completed.value[3] = e.documentsCompleted;
               },
               submitSuccess: (e) {
                 AppUtils.dismissLoading;
@@ -211,7 +211,7 @@ class SurveyTaskPage extends HookWidget {
                             local: surveyData.value),
                         separatorBuilder: (BuildContext context, int index) =>
                             const SizedBox(height: 10),
-                        itemCount: assets.value.length,
+                        itemCount: documents.value.length,
                       ),
                       _processCompleted(context,
                           client: clients.value,

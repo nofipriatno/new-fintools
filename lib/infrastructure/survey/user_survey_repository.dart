@@ -64,6 +64,7 @@ class UserSurveyRepository implements IUserSurvey {
       await _networkService.postHttp(
         contentType: 'multipart/form-data',
         path: AppEndpoint.surveyPost,
+        useMaxTimeout: true,
         content: FormData.fromMap(
           AppUtils.createSurveyFormData(
             client: client,

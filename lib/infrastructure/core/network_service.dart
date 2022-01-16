@@ -112,6 +112,7 @@ class NetworkService implements INetworkService {
     dynamic content,
     String? contentType,
     Map<String, dynamic>? header,
+    bool useMaxTimeout = false,
     bool useAuth = true,
   }) async {
     final connectivityResult = await _connectivity.checkConnectivity();
@@ -148,6 +149,13 @@ class NetworkService implements INetworkService {
             //collection
           }
           await baseStorage.close(_localeBox);
+        }
+
+        _dio.options.headers = headers;
+        if (useMaxTimeout) {
+          _dio.options.sendTimeout = Duration.millisecondsPerHour;
+          _dio.options.connectTimeout = Duration.millisecondsPerHour;
+          _dio.options.receiveTimeout = Duration.millisecondsPerHour;
         }
 
         final Response response = await _dio.post(
