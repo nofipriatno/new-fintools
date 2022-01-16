@@ -148,6 +148,13 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         final client = e.client.firstWhereOrNull(
             (element) => element.controller?.text.isEmpty == true);
 
+        final question = e.question
+            .where((element) => element.controller?.text.isEmpty == true)
+            .toList();
+
+        final finalQuestion = question.firstWhereOrNull(
+            (element) => element.search?.value?.isEmpty == true);
+
         final doc = e.formData
             .where((element) => element.code.contains('DPK'))
             .toList();
@@ -169,9 +176,9 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
 
         emit(
           _CheckCompletedData(
-              assetsCompleted: assetItem == asset.length,
-              questionCompleted: false,
-              documentsCompleted: docItem == doc.length,
+              assetsCompleted: assetItem >= asset.length,
+              questionCompleted: finalQuestion == null,
+              documentsCompleted: docItem >= doc.length,
               clientCompleted: client == null),
         );
       });
