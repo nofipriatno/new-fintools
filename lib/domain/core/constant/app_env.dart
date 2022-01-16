@@ -1,3 +1,4 @@
+import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,24 +9,31 @@ abstract class Env {
 @Injectable(as: Env)
 @Environment(Environment.prod)
 class EnvProd extends Env {
+  final IStorage _storage;
+
+  EnvProd(this._storage);
+
   @override
-  Future<String> get getBaseUrl async => 'http://202.147.193.194:5800/';
+  Future<String> get getBaseUrl async {
+    final _box = await _storage.openBox(StorageConstants.locale);
+    final url = _storage.getString(_box, key: AppString.appUrl);
+    _storage.close(_box);
+    return url ?? AppString.appDefaultUrl;
+  }
 }
 
 @Injectable(as: Env)
 @Environment(Environment.dev)
 class EnvDev extends Env {
   final IStorage _storage;
+
   EnvDev(this._storage);
+
   @override
   Future<String> get getBaseUrl async {
-    return 'http://202.147.193.194:5800/';
-    // final _box = await _storage.openBox(StorageConstants.base);
-    // String? devUrl = _storage.getString(_box, key: 'devUrl');
-    // if (devUrl == null) {
-    //   return Endpoints.baseUrl;
-    // } else {
-    //   return devUrl;
-    // }
+    final _box = await _storage.openBox(StorageConstants.locale);
+    final url = _storage.getString(_box, key: AppString.appUrl);
+    _storage.close(_box);
+    return url ?? AppString.appDefaultUrl;
   }
 }

@@ -5,6 +5,7 @@ class AppString {
   static const String appUrl = 'app_url';
   static const String appDev = 'dev';
   static const String appProduct = 'fintools_product';
+  static const String appDefaultUrl = 'http://202.147.193.194:5800/';
 
   //survey_based
   static const String surveyFormLatestKey = 'survey_form_latest_key';

@@ -5,6 +5,7 @@ import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/button/custom_button.dart';
+import 'package:fintools/presentation/component/text_field/custom_text_field.dart';
 import 'package:fintools/presentation/on_boarding/on_boarding_page.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class CustomDialog {
       {required String title, required String buttonText}) {
     TextEditingController _internalController = TextEditingController();
     return showDialog(
-      barrierDismissible: false,
+      barrierDismissible: true,
       context: context,
       builder: (_) => AlertDialog(
         title: Center(
@@ -33,9 +34,11 @@ class CustomDialog {
         ],
         content: Container(
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
             border: Border.all(color: AppColor.lightGrey),
           ),
-          child: TextField(
+          child: CustomTextField.underline(
+            title: 'url',
             controller: _internalController,
           ),
         ),

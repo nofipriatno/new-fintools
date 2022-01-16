@@ -169,7 +169,7 @@ class NetworkService implements INetworkService {
           case DioErrorType.connectTimeout:
             throw TimeOutException();
           case DioErrorType.other:
-            throw NetworkException(message: e.response!.data);
+            throw NetworkException(message: e.response?.data);
           default:
             if (e.response?.statusCode == 401) {
               throw AuthException(
