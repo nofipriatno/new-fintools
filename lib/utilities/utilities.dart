@@ -11,6 +11,7 @@ import 'package:fintools/infrastructure/core/database.dart';
 import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -71,8 +72,7 @@ class AppUtils {
       DateTime? param = normalizeDateTime(date);
       if (isSameMomentAs(now, param)) {
         result +=
-        '${I10n.current.today} ${formatDate(
-            date, format: 'dd MMM,yyyy HH:mm')!}';
+            '${I10n.current.today} ${formatDate(date, format: 'dd MMM,yyyy HH:mm')!}';
       } else {
         result += formatDate(date, format: 'EEEE dd MMM,yyyy HH:mm')!;
       }
@@ -82,10 +82,12 @@ class AppUtils {
     }
   }
 
-  static QuestionAnswerModel splitQuestion(FormQuisionerData item,
-      String taskId,
-      IStorage storage,
-      Box box,) {
+  static QuestionAnswerModel splitQuestion(
+    FormQuisionerData item,
+    String taskId,
+    IStorage storage,
+    Box box,
+  ) {
     var question = item.question.trim();
     var newQuestion = question;
     List<String> choices = [];
@@ -126,114 +128,119 @@ class AppUtils {
     required List<QuestionAnswerModel> question,
     required List<SurveyDataModel> data,
     required SurveyTask task,
+    required Position position,
   }) {
-    Map<String, dynamic> clientParam = {}..putIfAbsent(
-        'GELAR_DEPAN', () => '')..putIfAbsent(
-        'NAMA',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-1')
-            .controller
-            ?.text)..putIfAbsent('GELAR_BELAKANG', () => '')..putIfAbsent(
-        'NAMA_KTP',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-1')
-            .controller
-            ?.text)..putIfAbsent(
-        'NO_KTP',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-2')
-            .controller
-            ?.text)..putIfAbsent(
-        'KTP_EXPIRE_FROM',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-3')
-            .controller
-            ?.text)..putIfAbsent(
-        'KTP_EXPIRE_TO',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-4')
-            .controller
-            ?.text)..putIfAbsent('AO', () => '')..putIfAbsent(
-        'TGLLAHIR',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-7')
-            .controller
-            ?.text)..putIfAbsent(
-        'TEMPATLAHIR',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-6')
-            .controller
-            ?.text)..putIfAbsent(
-        'NAMAIBU',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-9')
-            .controller
-            ?.text)..putIfAbsent(
-        'ALAMAT',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-9')
-            .controller
-            ?.text)..putIfAbsent(
-        'RT',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-10')
-            .controller
-            ?.text)..putIfAbsent(
-        'RW',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-11')
-            .controller
-            ?.text)..putIfAbsent(
-        'KODEPOS',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-12')
-            .controller
-            ?.text)..putIfAbsent(
-        'KELURAHAN',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-13')
-            .controller
-            ?.text)..putIfAbsent(
-        'KECAMATAN',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-14')
-            .controller
-            ?.text)..putIfAbsent(
-        'HPNO',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-16')
-            .controller
-            ?.text)..putIfAbsent(
-        'TELPNO',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-15')
-            .controller
-            ?.text)..putIfAbsent(
-        'FAXNO',
-            () =>
-        client
-            .firstWhere((element) => element.id == 'id-form-name-17')
-            .controller
-            ?.text)..putIfAbsent('NOPOL', () => task.platNumber)..putIfAbsent(
-        'LAT', () => null)..putIfAbsent('LNG', () => null)..putIfAbsent(
-        'IDQUESTION', () => question.first.idQuisioner)..putIfAbsent(
-        'TASKID', () => task.taskId);
+    Map<String, dynamic> clientParam = {}
+      ..putIfAbsent('GELAR_DEPAN', () => '')
+      ..putIfAbsent(
+          'NAMA',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-1')
+              .controller
+              ?.text)
+      ..putIfAbsent('GELAR_BELAKANG', () => '')
+      ..putIfAbsent(
+          'NAMA_KTP',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-1')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'NO_KTP',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-2')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KTP_EXPIRE_FROM',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-3')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KTP_EXPIRE_TO',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-4')
+              .controller
+              ?.text)
+      ..putIfAbsent('AO', () => '')
+      ..putIfAbsent(
+          'TGLLAHIR',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-7')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'TEMPATLAHIR',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-6')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'NAMAIBU',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-9')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'ALAMAT',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-9')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'RT',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-10')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'RW',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-11')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KODEPOS',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-12')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KELURAHAN',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-13')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'KECAMATAN',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-14')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'HPNO',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-16')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'TELPNO',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-15')
+              .controller
+              ?.text)
+      ..putIfAbsent(
+          'FAXNO',
+          () => client
+              .firstWhere((element) => element.id == 'id-form-name-17')
+              .controller
+              ?.text)
+      ..putIfAbsent('NOPOL', () => task.platNumber)
+      ..putIfAbsent('LAT', () => position.latitude.toString())
+      ..putIfAbsent('LNG', () => position.longitude.toString())
+      ..putIfAbsent('IDQUESTION', () => question.first.idQuisioner)
+      ..putIfAbsent('TASKID', () => task.taskId);
 
     List<String> idFormDetails = [];
     List<String> idQuisionerDetail = [];
@@ -265,7 +272,7 @@ class AppUtils {
       List<MultipartFile> files = [];
       String formName = '';
       final findSameId =
-      data.where((element) => element.formName == item.formName).toList();
+          data.where((element) => element.formName == item.formName).toList();
       for (SurveyDataModel newItem in findSameId) {
         files.add(MultipartFile.fromFileSync(newItem.filePath!));
         formName = newItem.formName ?? '';
@@ -278,8 +285,9 @@ class AppUtils {
 
   static void launchUrlMap(
       {required String? lat, required String? long}) async {
+    Position location = await determinePosition();
     String mapOptions = [
-      'saddr=-6.635648,106.827958',
+      'saddr=${location.latitude},${location.longitude}',
       'daddr=$lat,$long',
       'dir_action=navigate'
     ].join('&');
@@ -290,5 +298,30 @@ class AppUtils {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  static Future<Position> determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    return await Geolocator.getCurrentPosition();
   }
 }

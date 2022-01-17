@@ -132,11 +132,13 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         emit(_SelectFileSuccess(data: data));
       }, onSubmitSurvey: (e) async {
         emit(const _Loading());
+        final location = await AppUtils.determinePosition();
         final postOrFailure = await _userSurvey.postSurveyData(
           client: e.client,
           question: e.question,
           data: e.data,
           task: e.task,
+          position: location,
         );
 
         postOrFailure.fold(

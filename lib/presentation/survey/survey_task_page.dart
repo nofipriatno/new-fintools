@@ -45,20 +45,6 @@ class SurveyTaskPage extends HookWidget {
     final surveyData = useState<List<SurveyDataModel>>([]);
     final completed = useState<List<bool>>([false, false, false, false]);
 
-    // useEffect(() {
-    //   controller.addListener(() {
-    //     if (controller.indexIsChanging) {
-    //       if (controller.index == 4) {
-    //         getIt<SurveyTaskBloc>().add(SurveyTaskEvent.onProcessCheck(
-    //             client: clients.value,
-    //             question: questions.value,
-    //             formData: assets.value..addAll(documents.value),
-    //             data: surveyData.value));
-    //       }
-    //     }
-    //   });
-    // }, [controller]);
-
     return BlocProvider<SurveyTaskBloc>(
       create: (_) => getIt<SurveyTaskBloc>()
         ..add(

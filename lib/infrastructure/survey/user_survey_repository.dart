@@ -13,6 +13,7 @@ import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/response/survey_login_response/survey_login_response.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/utilities/utilities.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IUserSurvey)
@@ -59,6 +60,7 @@ class UserSurveyRepository implements IUserSurvey {
     required List<QuestionAnswerModel> question,
     required List<SurveyDataModel> data,
     required SurveyTask task,
+    required Position position,
   }) async {
     try {
       await _networkService.postHttp(
@@ -71,6 +73,7 @@ class UserSurveyRepository implements IUserSurvey {
             question: question,
             data: data,
             task: task,
+            position: position,
           ),
         ),
       );
