@@ -35,7 +35,7 @@ android {
     defaultConfig {
         applicationId "szk.mfin.fintools.fintools"
         minSdkVersion 18
-        targetSdkVersion flutter.targetSdkVersion
+        targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true

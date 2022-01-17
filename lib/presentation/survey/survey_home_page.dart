@@ -125,10 +125,13 @@ class SurveyHomePage extends HookWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          task?.name ?? '',
-                          style:
-                              AppFont.text12Bold.copyWith(color: AppColor.blue),
+                        Expanded(
+                          child: Text(
+                            task?.name ?? '',
+                            textAlign: TextAlign.end,
+                            style: AppFont.text12Bold
+                                .copyWith(color: AppColor.blue),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 6),
@@ -136,8 +139,7 @@ class SurveyHomePage extends HookWidget {
                             onTap: () => AppUtils.launchUrlMap(
                                 lat: task?.latitude, long: task?.longitude),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
+                              padding: const EdgeInsets.symmetric(vertical: 5),
                               child: Image.asset(AppAssets.icSurveyLocation),
                             ),
                           ),

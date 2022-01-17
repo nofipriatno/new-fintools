@@ -71,7 +71,8 @@ class AppUtils {
       DateTime? param = normalizeDateTime(date);
       if (isSameMomentAs(now, param)) {
         result +=
-            '${I10n.current.today} ${formatDate(date, format: 'dd MMM,yyyy HH:mm')!}';
+        '${I10n.current.today} ${formatDate(
+            date, format: 'dd MMM,yyyy HH:mm')!}';
       } else {
         result += formatDate(date, format: 'EEEE dd MMM,yyyy HH:mm')!;
       }
@@ -81,12 +82,10 @@ class AppUtils {
     }
   }
 
-  static QuestionAnswerModel splitQuestion(
-    FormQuisionerData item,
-    String taskId,
-    IStorage storage,
-    Box box,
-  ) {
+  static QuestionAnswerModel splitQuestion(FormQuisionerData item,
+      String taskId,
+      IStorage storage,
+      Box box,) {
     var question = item.question.trim();
     var newQuestion = question;
     List<String> choices = [];
@@ -128,117 +127,113 @@ class AppUtils {
     required List<SurveyDataModel> data,
     required SurveyTask task,
   }) {
-    Map<String, dynamic> clientParam = {}
-      ..putIfAbsent('GELAR_DEPAN', () => '')
-      ..putIfAbsent(
-          'NAMA',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-1')
-              .controller
-              ?.text)
-      ..putIfAbsent('GELAR_BELAKANG', () => '')
-      ..putIfAbsent(
-          'NAMA_KTP',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-1')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'NO_KTP',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-2')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'KTP_EXPIRE_FROM',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-3')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'KTP_EXPIRE_TO',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-4')
-              .controller
-              ?.text)
-      ..putIfAbsent('AO', () => '')
-      ..putIfAbsent(
-          'TGLLAHIR',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-7')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'TEMPATLAHIR',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-6')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'NAMAIBU',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-9')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'ALAMAT',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-9')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'RT',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-10')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'RW',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-11')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'KODEPOS',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-12')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'KELURAHAN',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-13')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'KECAMATAN',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-14')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'HPNO',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-16')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'TELPNO',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-15')
-              .controller
-              ?.text)
-      ..putIfAbsent(
-          'FAXNO',
-          () => client
-              .firstWhere((element) => element.id == 'id-form-name-17')
-              .controller
-              ?.text)
-      ..putIfAbsent('NOPOL', () => task.platNumber)
-      ..putIfAbsent('LAT', () => null)
-      ..putIfAbsent('LNG', () => null)
-      ..putIfAbsent('IDQUESTION', () => question.first.idQuisioner)
-      ..putIfAbsent('TASKID', () => task.taskId);
+    Map<String, dynamic> clientParam = {}..putIfAbsent(
+        'GELAR_DEPAN', () => '')..putIfAbsent(
+        'NAMA',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-1')
+            .controller
+            ?.text)..putIfAbsent('GELAR_BELAKANG', () => '')..putIfAbsent(
+        'NAMA_KTP',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-1')
+            .controller
+            ?.text)..putIfAbsent(
+        'NO_KTP',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-2')
+            .controller
+            ?.text)..putIfAbsent(
+        'KTP_EXPIRE_FROM',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-3')
+            .controller
+            ?.text)..putIfAbsent(
+        'KTP_EXPIRE_TO',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-4')
+            .controller
+            ?.text)..putIfAbsent('AO', () => '')..putIfAbsent(
+        'TGLLAHIR',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-7')
+            .controller
+            ?.text)..putIfAbsent(
+        'TEMPATLAHIR',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-6')
+            .controller
+            ?.text)..putIfAbsent(
+        'NAMAIBU',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-9')
+            .controller
+            ?.text)..putIfAbsent(
+        'ALAMAT',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-9')
+            .controller
+            ?.text)..putIfAbsent(
+        'RT',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-10')
+            .controller
+            ?.text)..putIfAbsent(
+        'RW',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-11')
+            .controller
+            ?.text)..putIfAbsent(
+        'KODEPOS',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-12')
+            .controller
+            ?.text)..putIfAbsent(
+        'KELURAHAN',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-13')
+            .controller
+            ?.text)..putIfAbsent(
+        'KECAMATAN',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-14')
+            .controller
+            ?.text)..putIfAbsent(
+        'HPNO',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-16')
+            .controller
+            ?.text)..putIfAbsent(
+        'TELPNO',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-15')
+            .controller
+            ?.text)..putIfAbsent(
+        'FAXNO',
+            () =>
+        client
+            .firstWhere((element) => element.id == 'id-form-name-17')
+            .controller
+            ?.text)..putIfAbsent('NOPOL', () => task.platNumber)..putIfAbsent(
+        'LAT', () => null)..putIfAbsent('LNG', () => null)..putIfAbsent(
+        'IDQUESTION', () => question.first.idQuisioner)..putIfAbsent(
+        'TASKID', () => task.taskId);
 
     List<String> idFormDetails = [];
     List<String> idQuisionerDetail = [];
@@ -270,7 +265,7 @@ class AppUtils {
       List<MultipartFile> files = [];
       String formName = '';
       final findSameId =
-          data.where((element) => element.formName == item.formName).toList();
+      data.where((element) => element.formName == item.formName).toList();
       for (SurveyDataModel newItem in findSameId) {
         files.add(MultipartFile.fromFileSync(newItem.filePath!));
         formName = newItem.formName ?? '';
@@ -283,9 +278,15 @@ class AppUtils {
 
   static void launchUrlMap(
       {required String? lat, required String? long}) async {
-    const url = 'https://www.google.com/maps/search/?api=1&query=';
-    if (await canLaunch('$url$lat,$long')) {
-      await launch('$url$lat,$long');
+    String mapOptions = [
+      'saddr=-6.635648,106.827958',
+      'daddr=$lat,$long',
+      'dir_action=navigate'
+    ].join('&');
+
+    final url = 'https://www.google.com/maps?$mapOptions';
+    if (await canLaunch(url)) {
+      await launch(url);
     } else {
       throw 'Could not launch $url';
     }
