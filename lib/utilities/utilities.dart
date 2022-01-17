@@ -13,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppUtils {
   AppUtils._();
@@ -278,5 +279,15 @@ class AppUtils {
     }
 
     return params;
+  }
+
+  static void launchUrlMap(
+      {required String? lat, required String? long}) async {
+    const url = 'https://www.google.com/maps/search/?api=1&query=';
+    if (await canLaunch('$url$lat,$long')) {
+      await launch('$url$lat,$long');
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

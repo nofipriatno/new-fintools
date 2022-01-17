@@ -132,7 +132,15 @@ class SurveyHomePage extends HookWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 6),
-                          child: Image.asset(AppAssets.icSurveyLocation),
+                          child: InkWell(
+                            onTap: () => AppUtils.launchUrlMap(
+                                lat: task?.latitude, long: task?.longitude),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: Image.asset(AppAssets.icSurveyLocation),
+                            ),
+                          ),
                         )
                       ],
                     ),
@@ -157,9 +165,7 @@ class SurveyHomePage extends HookWidget {
                 onTap: () => context.read<SurveyHomeBloc>().add(
                       SurveyHomeEvent.onSelectedTask(task: tasks[index]),
                     ),
-                child: _itemTask(
-                    name: tasks[index]?.name ?? '',
-                    platNumber: tasks[index]?.platNumber ?? ''),
+                child: _itemTask(tasks[index]),
               ),
               itemCount: tasks.length,
               separatorBuilder: (context, index) => const SizedBox(
@@ -206,7 +212,7 @@ class SurveyHomePage extends HookWidget {
     );
   }
 
-  Widget _itemTask({required String name, required String platNumber}) {
+  Widget _itemTask(SurveyTask? task) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -214,19 +220,24 @@ class SurveyHomePage extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              name,
+              task?.name ?? '',
               style: AppFont.text11W500.copyWith(color: AppColor.gold),
             ),
-            Icon(
-              Icons.arrow_drop_down_sharp,
-              color: AppColor.gold,
+            InkWell(
+              onTap: () => AppUtils.launchUrlMap(
+                  lat: task?.latitude, long: task?.longitude),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: Image.asset(AppAssets.icSurveyLocation),
+              ),
             )
           ],
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 7, 0, 15),
           child: Text(
-            platNumber,
+            task?.platNumber ?? '',
             style: AppFont.text11W500.copyWith(color: AppColor.blue),
           ),
         ),
