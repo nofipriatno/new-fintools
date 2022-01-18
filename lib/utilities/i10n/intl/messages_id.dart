@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "are_you_sure_to_logout":
             MessageLookupByLibrary.simpleMessage("Anda Yakin ingin keluar?"),
         "area_code": MessageLookupByLibrary.simpleMessage("Kode Pos"),
+        "back_to_onboarding":
+            MessageLookupByLibrary.simpleMessage("Kembali Ke Halaman Awal"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Batal"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
         "choose": MessageLookupByLibrary.simpleMessage("Pilih"),
@@ -81,6 +83,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sesi Berakhir"),
         "session_expired_msg":
             MessageLookupByLibrary.simpleMessage("Anda akan otomatis logout"),
+        "still_development":
+            MessageLookupByLibrary.simpleMessage("Sedang dalam pengembangan"),
         "sub_district": MessageLookupByLibrary.simpleMessage("kelurahan"),
         "submit": MessageLookupByLibrary.simpleMessage("Kirim Data"),
         "success": MessageLookupByLibrary.simpleMessage("Sukses"),

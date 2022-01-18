@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Are you sure to Logout?"),
         "area_code": MessageLookupByLibrary.simpleMessage("Area Code"),
         "asset": MessageLookupByLibrary.simpleMessage("Assets"),
+        "back_to_onboarding":
+            MessageLookupByLibrary.simpleMessage("Back to OnBoarding"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "button_ok": MessageLookupByLibrary.simpleMessage("OK"),
         "choose": MessageLookupByLibrary.simpleMessage("Choose"),
@@ -86,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Session Expired"),
         "session_expired_msg": MessageLookupByLibrary.simpleMessage(
             "You will automatically logout"),
+        "still_development":
+            MessageLookupByLibrary.simpleMessage("Under Development"),
         "sub_district": MessageLookupByLibrary.simpleMessage("Sub District"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),

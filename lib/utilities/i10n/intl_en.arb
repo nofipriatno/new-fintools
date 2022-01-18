@@ -76,5 +76,7 @@
   "success_change_url": "Success To Change Domain to ",
   "are_you_sure_to_logout": "Are you sure to Logout?",
   "session_expired": "Session Expired",
-  "session_expired_msg": "You will automatically logout"
+  "session_expired_msg": "You will automatically logout",
+  "still_development": "Under Development",
+  "back_to_onboarding": "Back to OnBoarding"
 }

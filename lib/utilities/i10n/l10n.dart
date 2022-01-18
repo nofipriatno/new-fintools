@@ -739,6 +739,26 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Under Development`
+  String get still_development {
+    return Intl.message(
+      'Under Development',
+      name: 'still_development',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to OnBoarding`
+  String get back_to_onboarding {
+    return Intl.message(
+      'Back to OnBoarding',
+      name: 'back_to_onboarding',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

@@ -71,5 +71,7 @@
   "success_change_url": "Berhasil mengganti domain ke ",
   "are_you_sure_to_logout": "Anda Yakin ingin keluar?",
   "session_expired": "Sesi Berakhir",
-  "session_expired_msg": "Anda akan otomatis logout"
+  "session_expired_msg": "Anda akan otomatis logout",
+  "still_development": "Sedang dalam pengembangan",
+  "back_to_onboarding": "Kembali Ke Halaman Awal"
 }
