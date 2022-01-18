@@ -2,6 +2,7 @@ class AppAssets {
   AppAssets._();
 
   static String imagesLogo = 'assets/images/images_logo.png';
+  static String imagesSplashScreen = 'assets/images/images_splashscreen.png';
   static String imagesOnBoarding1 =
       'assets/images/images_on_boarding_collect.png';
   static String imagesOnBoarding2 =

@@ -2,6 +2,7 @@ import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/infrastructure/core/app_env.dart';
 import 'package:fintools/injection.dart';
+import 'package:fintools/presentation/component/splashscreen/splashscreen.dart';
 import 'package:fintools/presentation/interceptor/interceptor_page.dart';
 import 'package:fintools/presentation/on_boarding/on_boarding_page.dart';
 import 'package:fintools/simple_bloc_observer.dart';
@@ -32,7 +33,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-  Widget page = Container();
+  Widget page = const SplashScreen();
 
   @override
   Widget build(BuildContext context) {
