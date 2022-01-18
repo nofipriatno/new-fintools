@@ -86,7 +86,7 @@ class AppData {
   Future<String?> get surveyFormUpload async {
     final _box = await storage?.openBox(StorageConstants.locale);
     String? value =
-        storage?.getString(_box!, key: AppString.surveyFormDetailLatestKey);
+        storage?.getString(_box!, key: AppString.surveyFormLatestKey);
     var result = Future.value(value);
     return result;
   }
@@ -102,7 +102,7 @@ class AppData {
   Future<String?> get surveyFormDetailUpload async {
     final _box = await storage?.openBox(StorageConstants.locale);
     String? value =
-        storage?.getString(_box!, key: AppString.surveyFormLatestKey);
+        storage?.getString(_box!, key: AppString.surveyFormDetailLatestKey);
     var result = Future.value(value);
     return result;
   }

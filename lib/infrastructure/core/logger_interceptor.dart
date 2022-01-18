@@ -60,6 +60,7 @@ class LoggerInterceptor extends Interceptor {
       requestHeaders['followRedirects'] = options.followRedirects;
       requestHeaders['connectTimeout'] = options.connectTimeout;
       requestHeaders['receiveTimeout'] = options.receiveTimeout;
+      requestHeaders['sendTimeout'] = options.sendTimeout;
       _printMapAsTable(requestHeaders, header: 'Headers');
       _printMapAsTable(options.extra, header: 'Extras');
     }
