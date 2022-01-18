@@ -6,5 +6,7 @@ abstract class ISurvey {
   Future<Either<GenericFailure, SurveyTaskListResponse>> getTask(
       {required String nik});
 
-  Future<SurveyTask> upcomingTask();
+  Future<SurveyTask> upcomingTask(List<SurveyTask?> items);
+
+  Future<bool> setUpcomingTask(SurveyTask item);
 }

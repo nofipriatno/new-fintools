@@ -32,15 +32,21 @@ class SurveyHomeBloc extends Bloc<SurveyHomeEvent, SurveyHomeState> {
               await _storage.getJson(box, key: AppString.surveyCredentialKey);
           UserData user = UserData.fromJson(credential['data']);
           final result = await _survey.getTask(nik: user.nik ?? '');
+          SurveyTask? upcoming;
+          if (result.isRight()) {
+            final data = result.toOption().toNullable();
+            upcoming = await _survey.upcomingTask(data?.data ?? []);
+          }
           result.fold(
             (fail) => emit(
               _FetchAllFailed(error: fail),
             ),
             (success) => emit(
               _FetchAllSuccess(
-                  tasks: success.data,
-                  upcomingTask: success.data.first,
-                  user: user),
+                tasks: success.data,
+                upcomingTask: upcoming ?? success.data.first,
+                user: user,
+              ),
             ),
           );
         },
@@ -51,21 +57,28 @@ class SurveyHomeBloc extends Bloc<SurveyHomeEvent, SurveyHomeState> {
               await _storage.getJson(box, key: AppString.surveyCredentialKey);
           UserData user = UserData.fromJson(credential['data']);
           final result = await _survey.getTask(nik: user.nik ?? '');
+          SurveyTask? upcoming;
+          if (result.isRight()) {
+            final data = result.toOption().toNullable();
+            upcoming = await _survey.upcomingTask(data?.data ?? []);
+          }
           result.fold(
             (fail) => emit(
               _FetchAllFailed(error: fail),
             ),
             (success) => emit(
               _FetchAllSuccess(
-                  tasks: success.data,
-                  upcomingTask: success.data.first,
-                  user: user),
+                tasks: success.data,
+                upcomingTask: upcoming ?? success.data.first,
+                user: user,
+              ),
             ),
           );
         },
         onRefreshHistory: (e) async {},
         onSelectedTask: (e) async {
           emit(const _Initial());
+          await _survey.setUpcomingTask(e.task!);
           emit(
             _NavigateToSelectedTask(task: e.task),
           );

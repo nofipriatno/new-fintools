@@ -4,11 +4,13 @@ import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:fintools/domain/core/database/form_quisioner_database.dart';
 import 'package:fintools/domain/core/database/form_upload_database.dart';
+import 'package:fintools/domain/core/database/survey_task_database.dart';
 import 'package:fintools/domain/core/database/zipcode_database.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_quisioner_master_response.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_form_upload_master_response.dart';
 import 'package:fintools/domain/survey/response/master_response/survey_zipcode_master_response.dart';
+import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
@@ -16,7 +18,7 @@ import 'package:path/path.dart' as p;
 part 'database.g.dart';
 
 @LazySingleton(as: IDatabase)
-@DriftDatabase(tables: [FormUpload, FormQuisioner, Zipcode])
+@DriftDatabase(tables: [FormUpload, FormQuisioner, Zipcode, SurveyTaskQueue])
 class AppDatabase extends _$AppDatabase implements IDatabase {
   AppDatabase() : super(_openConnection());
 
@@ -132,6 +134,36 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
     } catch (e) {
       return Future.value(false);
     }
+  }
+
+  @override
+  Future<bool> saveSurveyTaskQueue(SurveyTask? item,
+      {required DateTime insertDate}) async {
+    try {
+      await into(surveyTaskQueue).insertOnConflictUpdate(
+        SurveyTaskQueueData(
+          taskId: item?.taskId ?? '',
+          nik: item?.nik ?? '',
+          name: item?.name ?? '',
+          platNumber: item?.platNumber ?? '',
+          isPush: item?.isPush ?? 0,
+          creDate: item?.creDate ?? DateTime.now(),
+          latitude: item?.latitude ?? '',
+          longitude: item?.longitude ?? '',
+          localCreate: insertDate,
+        ),
+      );
+      return Future.value(true);
+    } catch (e) {
+      return Future.value(false);
+    }
+  }
+
+  @override
+  Future<List<SurveyTaskQueueData>> getLatestSurveyTask() async {
+    return await (select(surveyTaskQueue)
+          ..orderBy([(t) => OrderingTerm(expression: t.localCreate)]))
+        .get();
   }
 }
 

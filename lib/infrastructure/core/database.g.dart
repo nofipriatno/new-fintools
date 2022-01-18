@@ -1282,14 +1282,461 @@ class $ZipcodeTable extends Zipcode with TableInfo<$ZipcodeTable, ZipcodeData> {
   }
 }
 
+class SurveyTaskQueueData extends DataClass
+    implements Insertable<SurveyTaskQueueData> {
+  final String taskId;
+  final String nik;
+  final String name;
+  final String platNumber;
+  final int isPush;
+  final DateTime creDate;
+  final String latitude;
+  final String longitude;
+  final DateTime localCreate;
+  SurveyTaskQueueData(
+      {required this.taskId,
+      required this.nik,
+      required this.name,
+      required this.platNumber,
+      required this.isPush,
+      required this.creDate,
+      required this.latitude,
+      required this.longitude,
+      required this.localCreate});
+  factory SurveyTaskQueueData.fromData(Map<String, dynamic> data,
+      {String? prefix}) {
+    final effectivePrefix = prefix ?? '';
+    return SurveyTaskQueueData(
+      taskId: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}task_id'])!,
+      nik: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}nik'])!,
+      name: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}name'])!,
+      platNumber: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}plat_number'])!,
+      isPush: const IntType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}is_push'])!,
+      creDate: const DateTimeType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}cre_date'])!,
+      latitude: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}latitude'])!,
+      longitude: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}longitude'])!,
+      localCreate: const DateTimeType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}local_create'])!,
+    );
+  }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['task_id'] = Variable<String>(taskId);
+    map['nik'] = Variable<String>(nik);
+    map['name'] = Variable<String>(name);
+    map['plat_number'] = Variable<String>(platNumber);
+    map['is_push'] = Variable<int>(isPush);
+    map['cre_date'] = Variable<DateTime>(creDate);
+    map['latitude'] = Variable<String>(latitude);
+    map['longitude'] = Variable<String>(longitude);
+    map['local_create'] = Variable<DateTime>(localCreate);
+    return map;
+  }
+
+  SurveyTaskQueueCompanion toCompanion(bool nullToAbsent) {
+    return SurveyTaskQueueCompanion(
+      taskId: Value(taskId),
+      nik: Value(nik),
+      name: Value(name),
+      platNumber: Value(platNumber),
+      isPush: Value(isPush),
+      creDate: Value(creDate),
+      latitude: Value(latitude),
+      longitude: Value(longitude),
+      localCreate: Value(localCreate),
+    );
+  }
+
+  factory SurveyTaskQueueData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SurveyTaskQueueData(
+      taskId: serializer.fromJson<String>(json['taskId']),
+      nik: serializer.fromJson<String>(json['nik']),
+      name: serializer.fromJson<String>(json['name']),
+      platNumber: serializer.fromJson<String>(json['platNumber']),
+      isPush: serializer.fromJson<int>(json['isPush']),
+      creDate: serializer.fromJson<DateTime>(json['creDate']),
+      latitude: serializer.fromJson<String>(json['latitude']),
+      longitude: serializer.fromJson<String>(json['longitude']),
+      localCreate: serializer.fromJson<DateTime>(json['localCreate']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'taskId': serializer.toJson<String>(taskId),
+      'nik': serializer.toJson<String>(nik),
+      'name': serializer.toJson<String>(name),
+      'platNumber': serializer.toJson<String>(platNumber),
+      'isPush': serializer.toJson<int>(isPush),
+      'creDate': serializer.toJson<DateTime>(creDate),
+      'latitude': serializer.toJson<String>(latitude),
+      'longitude': serializer.toJson<String>(longitude),
+      'localCreate': serializer.toJson<DateTime>(localCreate),
+    };
+  }
+
+  SurveyTaskQueueData copyWith(
+          {String? taskId,
+          String? nik,
+          String? name,
+          String? platNumber,
+          int? isPush,
+          DateTime? creDate,
+          String? latitude,
+          String? longitude,
+          DateTime? localCreate}) =>
+      SurveyTaskQueueData(
+        taskId: taskId ?? this.taskId,
+        nik: nik ?? this.nik,
+        name: name ?? this.name,
+        platNumber: platNumber ?? this.platNumber,
+        isPush: isPush ?? this.isPush,
+        creDate: creDate ?? this.creDate,
+        latitude: latitude ?? this.latitude,
+        longitude: longitude ?? this.longitude,
+        localCreate: localCreate ?? this.localCreate,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('SurveyTaskQueueData(')
+          ..write('taskId: $taskId, ')
+          ..write('nik: $nik, ')
+          ..write('name: $name, ')
+          ..write('platNumber: $platNumber, ')
+          ..write('isPush: $isPush, ')
+          ..write('creDate: $creDate, ')
+          ..write('latitude: $latitude, ')
+          ..write('longitude: $longitude, ')
+          ..write('localCreate: $localCreate')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(taskId, nik, name, platNumber, isPush,
+      creDate, latitude, longitude, localCreate);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SurveyTaskQueueData &&
+          other.taskId == this.taskId &&
+          other.nik == this.nik &&
+          other.name == this.name &&
+          other.platNumber == this.platNumber &&
+          other.isPush == this.isPush &&
+          other.creDate == this.creDate &&
+          other.latitude == this.latitude &&
+          other.longitude == this.longitude &&
+          other.localCreate == this.localCreate);
+}
+
+class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
+  final Value<String> taskId;
+  final Value<String> nik;
+  final Value<String> name;
+  final Value<String> platNumber;
+  final Value<int> isPush;
+  final Value<DateTime> creDate;
+  final Value<String> latitude;
+  final Value<String> longitude;
+  final Value<DateTime> localCreate;
+  const SurveyTaskQueueCompanion({
+    this.taskId = const Value.absent(),
+    this.nik = const Value.absent(),
+    this.name = const Value.absent(),
+    this.platNumber = const Value.absent(),
+    this.isPush = const Value.absent(),
+    this.creDate = const Value.absent(),
+    this.latitude = const Value.absent(),
+    this.longitude = const Value.absent(),
+    this.localCreate = const Value.absent(),
+  });
+  SurveyTaskQueueCompanion.insert({
+    required String taskId,
+    required String nik,
+    required String name,
+    required String platNumber,
+    required int isPush,
+    required DateTime creDate,
+    required String latitude,
+    required String longitude,
+    required DateTime localCreate,
+  })  : taskId = Value(taskId),
+        nik = Value(nik),
+        name = Value(name),
+        platNumber = Value(platNumber),
+        isPush = Value(isPush),
+        creDate = Value(creDate),
+        latitude = Value(latitude),
+        longitude = Value(longitude),
+        localCreate = Value(localCreate);
+  static Insertable<SurveyTaskQueueData> custom({
+    Expression<String>? taskId,
+    Expression<String>? nik,
+    Expression<String>? name,
+    Expression<String>? platNumber,
+    Expression<int>? isPush,
+    Expression<DateTime>? creDate,
+    Expression<String>? latitude,
+    Expression<String>? longitude,
+    Expression<DateTime>? localCreate,
+  }) {
+    return RawValuesInsertable({
+      if (taskId != null) 'task_id': taskId,
+      if (nik != null) 'nik': nik,
+      if (name != null) 'name': name,
+      if (platNumber != null) 'plat_number': platNumber,
+      if (isPush != null) 'is_push': isPush,
+      if (creDate != null) 'cre_date': creDate,
+      if (latitude != null) 'latitude': latitude,
+      if (longitude != null) 'longitude': longitude,
+      if (localCreate != null) 'local_create': localCreate,
+    });
+  }
+
+  SurveyTaskQueueCompanion copyWith(
+      {Value<String>? taskId,
+      Value<String>? nik,
+      Value<String>? name,
+      Value<String>? platNumber,
+      Value<int>? isPush,
+      Value<DateTime>? creDate,
+      Value<String>? latitude,
+      Value<String>? longitude,
+      Value<DateTime>? localCreate}) {
+    return SurveyTaskQueueCompanion(
+      taskId: taskId ?? this.taskId,
+      nik: nik ?? this.nik,
+      name: name ?? this.name,
+      platNumber: platNumber ?? this.platNumber,
+      isPush: isPush ?? this.isPush,
+      creDate: creDate ?? this.creDate,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      localCreate: localCreate ?? this.localCreate,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (taskId.present) {
+      map['task_id'] = Variable<String>(taskId.value);
+    }
+    if (nik.present) {
+      map['nik'] = Variable<String>(nik.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (platNumber.present) {
+      map['plat_number'] = Variable<String>(platNumber.value);
+    }
+    if (isPush.present) {
+      map['is_push'] = Variable<int>(isPush.value);
+    }
+    if (creDate.present) {
+      map['cre_date'] = Variable<DateTime>(creDate.value);
+    }
+    if (latitude.present) {
+      map['latitude'] = Variable<String>(latitude.value);
+    }
+    if (longitude.present) {
+      map['longitude'] = Variable<String>(longitude.value);
+    }
+    if (localCreate.present) {
+      map['local_create'] = Variable<DateTime>(localCreate.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SurveyTaskQueueCompanion(')
+          ..write('taskId: $taskId, ')
+          ..write('nik: $nik, ')
+          ..write('name: $name, ')
+          ..write('platNumber: $platNumber, ')
+          ..write('isPush: $isPush, ')
+          ..write('creDate: $creDate, ')
+          ..write('latitude: $latitude, ')
+          ..write('longitude: $longitude, ')
+          ..write('localCreate: $localCreate')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SurveyTaskQueueTable extends SurveyTaskQueue
+    with TableInfo<$SurveyTaskQueueTable, SurveyTaskQueueData> {
+  final GeneratedDatabase _db;
+  final String? _alias;
+  $SurveyTaskQueueTable(this._db, [this._alias]);
+  final VerificationMeta _taskIdMeta = const VerificationMeta('taskId');
+  @override
+  late final GeneratedColumn<String?> taskId = GeneratedColumn<String?>(
+      'task_id', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _nikMeta = const VerificationMeta('nik');
+  @override
+  late final GeneratedColumn<String?> nik = GeneratedColumn<String?>(
+      'nik', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String?> name = GeneratedColumn<String?>(
+      'name', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _platNumberMeta = const VerificationMeta('platNumber');
+  @override
+  late final GeneratedColumn<String?> platNumber = GeneratedColumn<String?>(
+      'plat_number', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _isPushMeta = const VerificationMeta('isPush');
+  @override
+  late final GeneratedColumn<int?> isPush = GeneratedColumn<int?>(
+      'is_push', aliasedName, false,
+      type: const IntType(), requiredDuringInsert: true);
+  final VerificationMeta _creDateMeta = const VerificationMeta('creDate');
+  @override
+  late final GeneratedColumn<DateTime?> creDate = GeneratedColumn<DateTime?>(
+      'cre_date', aliasedName, false,
+      type: const IntType(), requiredDuringInsert: true);
+  final VerificationMeta _latitudeMeta = const VerificationMeta('latitude');
+  @override
+  late final GeneratedColumn<String?> latitude = GeneratedColumn<String?>(
+      'latitude', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _longitudeMeta = const VerificationMeta('longitude');
+  @override
+  late final GeneratedColumn<String?> longitude = GeneratedColumn<String?>(
+      'longitude', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _localCreateMeta =
+      const VerificationMeta('localCreate');
+  @override
+  late final GeneratedColumn<DateTime?> localCreate =
+      GeneratedColumn<DateTime?>('local_create', aliasedName, false,
+          type: const IntType(), requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        taskId,
+        nik,
+        name,
+        platNumber,
+        isPush,
+        creDate,
+        latitude,
+        longitude,
+        localCreate
+      ];
+  @override
+  String get aliasedName => _alias ?? 'survey_task_queue';
+  @override
+  String get actualTableName => 'survey_task_queue';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<SurveyTaskQueueData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('task_id')) {
+      context.handle(_taskIdMeta,
+          taskId.isAcceptableOrUnknown(data['task_id']!, _taskIdMeta));
+    } else if (isInserting) {
+      context.missing(_taskIdMeta);
+    }
+    if (data.containsKey('nik')) {
+      context.handle(
+          _nikMeta, nik.isAcceptableOrUnknown(data['nik']!, _nikMeta));
+    } else if (isInserting) {
+      context.missing(_nikMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    if (data.containsKey('plat_number')) {
+      context.handle(
+          _platNumberMeta,
+          platNumber.isAcceptableOrUnknown(
+              data['plat_number']!, _platNumberMeta));
+    } else if (isInserting) {
+      context.missing(_platNumberMeta);
+    }
+    if (data.containsKey('is_push')) {
+      context.handle(_isPushMeta,
+          isPush.isAcceptableOrUnknown(data['is_push']!, _isPushMeta));
+    } else if (isInserting) {
+      context.missing(_isPushMeta);
+    }
+    if (data.containsKey('cre_date')) {
+      context.handle(_creDateMeta,
+          creDate.isAcceptableOrUnknown(data['cre_date']!, _creDateMeta));
+    } else if (isInserting) {
+      context.missing(_creDateMeta);
+    }
+    if (data.containsKey('latitude')) {
+      context.handle(_latitudeMeta,
+          latitude.isAcceptableOrUnknown(data['latitude']!, _latitudeMeta));
+    } else if (isInserting) {
+      context.missing(_latitudeMeta);
+    }
+    if (data.containsKey('longitude')) {
+      context.handle(_longitudeMeta,
+          longitude.isAcceptableOrUnknown(data['longitude']!, _longitudeMeta));
+    } else if (isInserting) {
+      context.missing(_longitudeMeta);
+    }
+    if (data.containsKey('local_create')) {
+      context.handle(
+          _localCreateMeta,
+          localCreate.isAcceptableOrUnknown(
+              data['local_create']!, _localCreateMeta));
+    } else if (isInserting) {
+      context.missing(_localCreateMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {taskId};
+  @override
+  SurveyTaskQueueData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    return SurveyTaskQueueData.fromData(data,
+        prefix: tablePrefix != null ? '$tablePrefix.' : null);
+  }
+
+  @override
+  $SurveyTaskQueueTable createAlias(String alias) {
+    return $SurveyTaskQueueTable(_db, alias);
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   late final $FormUploadTable formUpload = $FormUploadTable(this);
   late final $FormQuisionerTable formQuisioner = $FormQuisionerTable(this);
   late final $ZipcodeTable zipcode = $ZipcodeTable(this);
+  late final $SurveyTaskQueueTable surveyTaskQueue =
+      $SurveyTaskQueueTable(this);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [formUpload, formQuisioner, zipcode];
+      [formUpload, formQuisioner, zipcode, surveyTaskQueue];
 }

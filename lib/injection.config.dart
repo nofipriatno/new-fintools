@@ -68,8 +68,8 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i7.IStorage>(),
       get<_i3.Connectivity>(),
       get<_i14.Env>()));
-  gh.lazySingleton<_i17.ISurvey>(
-      () => _i18.SurveyRepository(get<_i15.INetworkService>()));
+  gh.lazySingleton<_i17.ISurvey>(() =>
+      _i18.SurveyRepository(get<_i15.INetworkService>(), get<_i5.IDatabase>()));
   gh.lazySingleton<_i19.IUserSurvey>(() => _i20.UserSurveyRepository(
       get<_i15.INetworkService>(), get<_i7.IStorage>()));
   gh.factory<_i21.SurveyHomeBloc>(() => _i21.SurveyHomeBloc(
