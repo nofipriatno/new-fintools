@@ -26,6 +26,7 @@ class NetworkService implements INetworkService {
       String? parameter,
       Map<String, dynamic>? queryParameter,
       Map<String, dynamic>? header,
+      bool useMaxTimeout = false,
       bool useAuth = true}) async {
     final connectivityResult = await _connectivity.checkConnectivity();
     if (connectivityResult != ConnectivityResult.none) {
@@ -67,6 +68,11 @@ class NetworkService implements INetworkService {
         }
 
         _dio.options.headers = headers;
+        if (useMaxTimeout) {
+          _dio.options.sendTimeout = Duration.millisecondsPerHour;
+          _dio.options.connectTimeout = Duration.millisecondsPerHour;
+          _dio.options.receiveTimeout = Duration.millisecondsPerHour;
+        }
 
         final Response response = await _dio.get(
             '$baseUrl$path${parameter ?? ""}',

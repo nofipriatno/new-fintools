@@ -14,18 +14,21 @@ class SurveyHomeState with _$SurveyHomeState {
       {required List<SurveyTask?> tasks,
       required SurveyTask? upcomingTask}) = _FetchTaskSuccess;
 
-  const factory SurveyHomeState.fetchTaskFailed() = _FetchTaskFailed;
+  const factory SurveyHomeState.fetchTaskFailed(
+      {required GenericFailure error}) = _FetchTaskFailed;
 
   const factory SurveyHomeState.fetchHistorySuccess() = _FetchHistorySuccess;
 
-  const factory SurveyHomeState.fetchHistoryFailed() = _FetchHistoryFailed;
+  const factory SurveyHomeState.fetchHistoryFailed(
+      {required GenericFailure error}) = _FetchHistoryFailed;
 
   const factory SurveyHomeState.fetchAllSuccess(
       {required SurveyTask? upcomingTask,
       required UserData? user,
       required List<SurveyTask?> tasks}) = _FetchAllSuccess;
 
-  const factory SurveyHomeState.fetchAllFailed() = _FetchAllFailed;
+  const factory SurveyHomeState.fetchAllFailed(
+      {required GenericFailure error}) = _FetchAllFailed;
 
   const factory SurveyHomeState.navigateToSelectedTask({SurveyTask? task}) =
       _NavigateToSelectedTask;

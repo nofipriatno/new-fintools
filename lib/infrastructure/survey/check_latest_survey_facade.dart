@@ -54,7 +54,8 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
       final apiResult = await _networkService.getHttp(path: apiUrl);
       SurveyFormUploadMasterResponse response =
           SurveyFormUploadMasterResponse.fromJson(apiResult);
-      await AppData(database: _database).setSurveyFormUploadToLocal(response.data);
+      await AppData(database: _database)
+          .setSurveyFormUploadToLocal(response.data);
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());
@@ -80,8 +81,9 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
       String apiUrl = AppEndpoint.surveyFormQuisioner;
       final apiResult = await _networkService.getHttp(path: apiUrl);
       SurveyFormQuisionerMasterResponse response =
-      SurveyFormQuisionerMasterResponse.fromJson(apiResult);
-      await AppData(database: _database).setSurveyFormQuisionerToLocal(response.data);
+          SurveyFormQuisionerMasterResponse.fromJson(apiResult);
+      await AppData(database: _database)
+          .setSurveyFormQuisionerToLocal(response.data);
       return Right(response);
     } on FailureException catch (_) {
       return const Left(GenericFailure.unknownError());
@@ -101,12 +103,14 @@ class CheckLatestSurveyFacade implements ICheckLatestSurveyFacade {
   }
 
   @override
-  Future<Either<GenericFailure, SurveyZipcodeMasterResponse>> getZipcode() async {
-    try{
+  Future<Either<GenericFailure, SurveyZipcodeMasterResponse>>
+      getZipcode() async {
+    try {
       String apiUrl = AppEndpoint.surveyZipcode;
-      final apiResult = await _networkService.getHttp(path: apiUrl);
+      final apiResult =
+          await _networkService.getHttp(path: apiUrl, useMaxTimeout: true);
       SurveyZipcodeMasterResponse response =
-      SurveyZipcodeMasterResponse.fromJson(apiResult);
+          SurveyZipcodeMasterResponse.fromJson(apiResult);
       await AppData(database: _database).setSurveyZipcodeToLocal(response.data);
       return Right(response);
     } on FailureException catch (_) {

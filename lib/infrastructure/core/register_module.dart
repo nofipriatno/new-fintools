@@ -7,7 +7,7 @@ import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/infrastructure/core/logger_interceptor.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
+// import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 
 @module
@@ -72,7 +72,7 @@ abstract class RegisterModule {
 
   @lazySingleton
   Connectivity get connectivity => Connectivity();
-
-  @lazySingleton
-  OneSignal get oneSignal => OneSignal.shared;
+  //
+  // @lazySingleton
+  // OneSignal get oneSignal => OneSignal.shared;
 }

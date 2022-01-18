@@ -77,6 +77,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "rt": MessageLookupByLibrary.simpleMessage("RT"),
         "rw": MessageLookupByLibrary.simpleMessage("RW"),
         "save": MessageLookupByLibrary.simpleMessage("Simpan"),
+        "session_expired":
+            MessageLookupByLibrary.simpleMessage("Sesi Berakhir"),
+        "session_expired_msg":
+            MessageLookupByLibrary.simpleMessage("Anda akan otomatis logout"),
         "sub_district": MessageLookupByLibrary.simpleMessage("kelurahan"),
         "submit": MessageLookupByLibrary.simpleMessage("Kirim Data"),
         "success": MessageLookupByLibrary.simpleMessage("Sukses"),

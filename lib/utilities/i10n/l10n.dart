@@ -719,6 +719,26 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Session Expired`
+  String get session_expired {
+    return Intl.message(
+      'Session Expired',
+      name: 'session_expired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You will automatically logout`
+  String get session_expired_msg {
+    return Intl.message(
+      'You will automatically logout',
+      name: 'session_expired_msg',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

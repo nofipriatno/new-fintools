@@ -2,9 +2,11 @@ import 'package:fintools/application/survey/home/survey_home_bloc.dart';
 import 'package:fintools/domain/core/constant/app_asset.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
+import 'package:fintools/domain/core/failure/generic_failure.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
+import 'package:fintools/presentation/component/dialog/custom_dialog.dart';
 import 'package:fintools/presentation/component/indicator/circle_tab_indicator.dart';
 import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
 import 'package:fintools/presentation/survey/survey_task_page.dart';
@@ -35,12 +37,31 @@ class SurveyHomePage extends HookWidget {
             listener: (context, state) {
               state.maybeMap(
                   orElse: () {},
+                  fetchAllLoading: (e) {
+                    AppUtils.showLoading;
+                  },
+                  fetchAllFailed: (e) {
+                    AppUtils.dismissLoading;
+                    if (e.error == const GenericFailure.sessionExpired()) {
+                      CustomDialog.logout(context,
+                          title: I10n.current.session_expired,
+                          message: I10n.current.session_expired_msg);
+                    } else {
+                      CustomDialog.info(
+                        context,
+                        title: 'Error',
+                        message: e.error.toString(),
+                      );
+                    }
+                  },
                   fetchAllSuccess: (e) {
+                    AppUtils.dismissLoading;
                     user.value = e.user?.name;
                     tasks.value = e.tasks;
                     task.value = e.upcomingTask;
                   },
                   navigateToSelectedTask: (e) {
+                    AppUtils.dismissLoading;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -160,18 +181,24 @@ class SurveyHomePage extends HookWidget {
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.only(bottom: 12),
-              itemBuilder: (context, index) => InkWell(
-                onTap: () => context.read<SurveyHomeBloc>().add(
-                      SurveyHomeEvent.onSelectedTask(task: tasks[index]),
-                    ),
-                child: _itemTask(tasks[index]),
-              ),
-              itemCount: tasks.length,
-              separatorBuilder: (context, index) => const SizedBox(
-                height: 15,
+            flex: 1,
+            child: RefreshIndicator(
+              onRefresh: () async => context
+                  .read<SurveyHomeBloc>()
+                  .add(const SurveyHomeEvent.onRefreshTask()),
+              child: ListView.separated(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.only(bottom: 12),
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () => context.read<SurveyHomeBloc>().add(
+                        SurveyHomeEvent.onSelectedTask(task: tasks[index]),
+                      ),
+                  child: _itemTask(tasks[index]),
+                ),
+                itemCount: tasks.length,
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 15,
+                ),
               ),
             ),
           )

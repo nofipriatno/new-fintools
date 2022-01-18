@@ -69,5 +69,7 @@
   "survey_failed_info": "Gagal Kirim Data Survei",
   "confirmation": "Konfirmasi",
   "success_change_url": "Berhasil mengganti domain ke ",
-  "are_you_sure_to_logout": "Anda Yakin ingin keluar?"
+  "are_you_sure_to_logout": "Anda Yakin ingin keluar?",
+  "session_expired": "Sesi Berakhir",
+  "session_expired_msg": "Anda akan otomatis logout"
 }

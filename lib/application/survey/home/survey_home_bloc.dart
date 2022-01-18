@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:fintools/domain/core/constant/app_string.dart';
+import 'package:fintools/domain/core/failure/generic_failure.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
@@ -32,7 +33,9 @@ class SurveyHomeBloc extends Bloc<SurveyHomeEvent, SurveyHomeState> {
           UserData user = UserData.fromJson(credential['data']);
           final result = await _survey.getTask(nik: user.nik ?? '');
           result.fold(
-            (fail) => emit(const _FetchAllFailed()),
+            (fail) => emit(
+              _FetchAllFailed(error: fail),
+            ),
             (success) => emit(
               _FetchAllSuccess(
                   tasks: success.data,
@@ -41,7 +44,25 @@ class SurveyHomeBloc extends Bloc<SurveyHomeEvent, SurveyHomeState> {
             ),
           );
         },
-        onRefreshTask: (e) async {},
+        onRefreshTask: (e) async {
+          emit(const _FetchAllLoading());
+          final box = await _storage.openBox(StorageConstants.userSurvey);
+          final credential =
+              await _storage.getJson(box, key: AppString.surveyCredentialKey);
+          UserData user = UserData.fromJson(credential['data']);
+          final result = await _survey.getTask(nik: user.nik ?? '');
+          result.fold(
+            (fail) => emit(
+              _FetchAllFailed(error: fail),
+            ),
+            (success) => emit(
+              _FetchAllSuccess(
+                  tasks: success.data,
+                  upcomingTask: success.data.first,
+                  user: user),
+            ),
+          );
+        },
         onRefreshHistory: (e) async {},
         onSelectedTask: (e) async {
           emit(const _Initial());

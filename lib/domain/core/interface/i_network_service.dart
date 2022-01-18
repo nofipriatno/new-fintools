@@ -4,6 +4,7 @@ abstract class INetworkService {
       String? parameter,
       Map<String, dynamic>? queryParameter,
       Map<String, dynamic>? header,
+      bool useMaxTimeout = false,
       bool useAuth = true});
 
   Future<dynamic> postHttp(
