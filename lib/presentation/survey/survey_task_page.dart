@@ -137,11 +137,15 @@ class SurveyTaskPage extends HookWidget {
                     if (controller.indexIsChanging) {
                       FocusScope.of(context).unfocus();
                       if (controller.index == 4) {
+                        List<FormUploadData> data = [
+                          ...assets.value,
+                          ...documents.value
+                        ];
                         context.read<SurveyTaskBloc>().add(
                             SurveyTaskEvent.onProcessCheck(
                                 client: clients.value,
                                 question: questions.value,
-                                formData: assets.value..addAll(documents.value),
+                                formData: data,
                                 data: surveyData.value));
                       }
                     }

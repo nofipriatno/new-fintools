@@ -202,9 +202,9 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
 
         int docItem = 0;
         int assetItem = 0;
-        String? formName;
+        List<String> forms = [];
         for (SurveyDataModel item in e.data) {
-          if (formName != item.formName) {
+          if (!forms.contains(item.formName)) {
             final docCheck = documents
                 .where((element) =>
                     element.formName == item.formName && item.mandatory == true)
@@ -213,9 +213,9 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
                 .where((element) =>
                     element.formName == item.formName && item.mandatory == true)
                 .toList();
-            if (docCheck.isNotEmpty) docItem += docCheck.length;
-            if (assetCheck.isNotEmpty) assetItem += assetCheck.length;
-            formName = item.formName!;
+            if (docCheck.isNotEmpty) docItem += docCheck.first.count;
+            if (assetCheck.isNotEmpty) assetItem += assetCheck.first.count;
+            forms.add(item.formName!);
           }
         }
 
