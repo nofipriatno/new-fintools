@@ -37,4 +37,8 @@ class SurveyTaskState with _$SurveyTaskState {
     required bool assetsCompleted,
     required bool documentsCompleted,
   }) = _CheckCompletedData;
+
+  const factory SurveyTaskState.isMandatory({
+    required String reason,
+  }) = _IsMandatory;
 }

@@ -28,6 +28,7 @@ class _$SurveyDataModelTearOff {
       required int? index,
       required String? filePath,
       required DateTime? dateTime,
+      required bool? mandatory,
       required String? extension}) {
     return _SurveyDataModel(
       id: id,
@@ -36,6 +37,7 @@ class _$SurveyDataModelTearOff {
       index: index,
       filePath: filePath,
       dateTime: dateTime,
+      mandatory: mandatory,
       extension: extension,
     );
   }
@@ -56,6 +58,7 @@ mixin _$SurveyDataModel {
   int? get index => throw _privateConstructorUsedError;
   String? get filePath => throw _privateConstructorUsedError;
   DateTime? get dateTime => throw _privateConstructorUsedError;
+  bool? get mandatory => throw _privateConstructorUsedError;
   String? get extension => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -76,6 +79,7 @@ abstract class $SurveyDataModelCopyWith<$Res> {
       int? index,
       String? filePath,
       DateTime? dateTime,
+      bool? mandatory,
       String? extension});
 }
 
@@ -96,6 +100,7 @@ class _$SurveyDataModelCopyWithImpl<$Res>
     Object? index = freezed,
     Object? filePath = freezed,
     Object? dateTime = freezed,
+    Object? mandatory = freezed,
     Object? extension = freezed,
   }) {
     return _then(_value.copyWith(
@@ -123,6 +128,10 @@ class _$SurveyDataModelCopyWithImpl<$Res>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      mandatory: mandatory == freezed
+          ? _value.mandatory
+          : mandatory // ignore: cast_nullable_to_non_nullable
+              as bool?,
       extension: extension == freezed
           ? _value.extension
           : extension // ignore: cast_nullable_to_non_nullable
@@ -145,6 +154,7 @@ abstract class _$SurveyDataModelCopyWith<$Res>
       int? index,
       String? filePath,
       DateTime? dateTime,
+      bool? mandatory,
       String? extension});
 }
 
@@ -167,6 +177,7 @@ class __$SurveyDataModelCopyWithImpl<$Res>
     Object? index = freezed,
     Object? filePath = freezed,
     Object? dateTime = freezed,
+    Object? mandatory = freezed,
     Object? extension = freezed,
   }) {
     return _then(_SurveyDataModel(
@@ -194,6 +205,10 @@ class __$SurveyDataModelCopyWithImpl<$Res>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      mandatory: mandatory == freezed
+          ? _value.mandatory
+          : mandatory // ignore: cast_nullable_to_non_nullable
+              as bool?,
       extension: extension == freezed
           ? _value.extension
           : extension // ignore: cast_nullable_to_non_nullable
@@ -212,6 +227,7 @@ class _$_SurveyDataModel implements _SurveyDataModel {
       required this.index,
       required this.filePath,
       required this.dateTime,
+      required this.mandatory,
       required this.extension});
 
   factory _$_SurveyDataModel.fromJson(Map<String, dynamic> json) =>
@@ -230,11 +246,13 @@ class _$_SurveyDataModel implements _SurveyDataModel {
   @override
   final DateTime? dateTime;
   @override
+  final bool? mandatory;
+  @override
   final String? extension;
 
   @override
   String toString() {
-    return 'SurveyDataModel(id: $id, formId: $formId, formName: $formName, index: $index, filePath: $filePath, dateTime: $dateTime, extension: $extension)';
+    return 'SurveyDataModel(id: $id, formId: $formId, formName: $formName, index: $index, filePath: $filePath, dateTime: $dateTime, mandatory: $mandatory, extension: $extension)';
   }
 
   @override
@@ -248,6 +266,7 @@ class _$_SurveyDataModel implements _SurveyDataModel {
             const DeepCollectionEquality().equals(other.index, index) &&
             const DeepCollectionEquality().equals(other.filePath, filePath) &&
             const DeepCollectionEquality().equals(other.dateTime, dateTime) &&
+            const DeepCollectionEquality().equals(other.mandatory, mandatory) &&
             const DeepCollectionEquality().equals(other.extension, extension));
   }
 
@@ -260,6 +279,7 @@ class _$_SurveyDataModel implements _SurveyDataModel {
       const DeepCollectionEquality().hash(index),
       const DeepCollectionEquality().hash(filePath),
       const DeepCollectionEquality().hash(dateTime),
+      const DeepCollectionEquality().hash(mandatory),
       const DeepCollectionEquality().hash(extension));
 
   @JsonKey(ignore: true)
@@ -281,6 +301,7 @@ abstract class _SurveyDataModel implements SurveyDataModel {
       required int? index,
       required String? filePath,
       required DateTime? dateTime,
+      required bool? mandatory,
       required String? extension}) = _$_SurveyDataModel;
 
   factory _SurveyDataModel.fromJson(Map<String, dynamic> json) =
@@ -298,6 +319,8 @@ abstract class _SurveyDataModel implements SurveyDataModel {
   String? get filePath;
   @override
   DateTime? get dateTime;
+  @override
+  bool? get mandatory;
   @override
   String? get extension;
   @override

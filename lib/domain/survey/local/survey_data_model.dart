@@ -13,6 +13,7 @@ class SurveyDataModel with _$SurveyDataModel {
       required int? index,
       required String? filePath,
       required DateTime? dateTime,
+      required bool? mandatory,
       required String? extension}) = _SurveyDataModel;
 
   factory SurveyDataModel.fromJson(Map<String, dynamic> json) =>

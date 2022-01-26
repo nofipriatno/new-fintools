@@ -57,6 +57,11 @@ class SurveyTaskPage extends HookWidget {
               loading: (e) {
                 AppUtils.showLoading;
               },
+              isMandatory: (e) {
+                AppUtils.dismissLoading;
+                CustomDialog.info(context,
+                    title: I10n.current.mandatory, message: e.reason);
+              },
               checkClientSuccess: (e) {
                 AppUtils.dismissLoading;
                 questions.value = e.questions;
@@ -77,12 +82,10 @@ class SurveyTaskPage extends HookWidget {
               },
               checkCompletedData: (e) async {
                 AppUtils.dismissLoading;
-                if (e.clientCompleted) completed.value[0] = e.clientCompleted;
-                if (e.questionCompleted)
-                  completed.value[1] = e.questionCompleted;
-                if (e.assetsCompleted) completed.value[2] = e.assetsCompleted;
-                if (e.documentsCompleted)
-                  completed.value[3] = e.documentsCompleted;
+                completed.value[0] = e.clientCompleted;
+                completed.value[1] = e.questionCompleted;
+                completed.value[2] = e.assetsCompleted;
+                completed.value[3] = e.documentsCompleted;
               },
               submitSuccess: (e) {
                 AppUtils.dismissLoading;
@@ -282,6 +285,7 @@ class SurveyTaskPage extends HookWidget {
                       question: question,
                       data: data,
                       task: task,
+                      checkedData: completed,
                     ),
                   );
             }),
@@ -589,7 +593,7 @@ class SurveyTaskPage extends HookWidget {
     if (type == null) return;
     if (type == 1) {
       final image = await _imagePicker.pickImage(
-          source: ImageSource.camera, imageQuality: 60);
+          source: ImageSource.camera, imageQuality: 40);
       if (image == null) return;
       context.read<SurveyTaskBloc>().add(SurveyTaskEvent.onFileSelect(
           path: image.path,

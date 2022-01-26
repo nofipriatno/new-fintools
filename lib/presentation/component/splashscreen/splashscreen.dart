@@ -1,4 +1,5 @@
 import 'package:fintools/domain/core/constant/app_asset.dart';
+import 'package:fintools/presentation/component/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -6,12 +7,11 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Image.asset(
-          AppAssets.imagesSplashScreen,
-          fit: BoxFit.fill,
-        ),
+    return CustomScaffold.normal(
+      context,
+      body: Image.asset(
+        AppAssets.imagesSplashScreen,
+        fit: BoxFit.fill,
       ),
     );
   }

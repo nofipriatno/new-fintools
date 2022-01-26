@@ -759,6 +759,16 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Mandatory`
+  String get mandatory {
+    return Intl.message(
+      'Mandatory',
+      name: 'mandatory',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

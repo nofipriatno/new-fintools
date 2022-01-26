@@ -53,12 +53,14 @@ class _$SurveyTaskEventTearOff {
       {required List<SurveyClientModel> client,
       required List<QuestionAnswerModel> question,
       required List<SurveyDataModel> data,
-      required SurveyTask task}) {
+      required SurveyTask task,
+      required List<bool> checkedData}) {
     return _OnSubmitSurvey(
       client: client,
       question: question,
       data: data,
       task: task,
+      checkedData: checkedData,
     );
   }
 
@@ -93,7 +95,8 @@ mixin _$SurveyTaskEvent {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)
+            SurveyTask task,
+            List<bool> checkedData)
         onSubmitSurvey,
     required TResult Function(
             List<SurveyClientModel> client,
@@ -115,7 +118,8 @@ mixin _$SurveyTaskEvent {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -137,7 +141,8 @@ mixin _$SurveyTaskEvent {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -270,7 +275,8 @@ class _$_OnInitialize implements _OnInitialize {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)
+            SurveyTask task,
+            List<bool> checkedData)
         onSubmitSurvey,
     required TResult Function(
             List<SurveyClientModel> client,
@@ -295,7 +301,8 @@ class _$_OnInitialize implements _OnInitialize {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -320,7 +327,8 @@ class _$_OnInitialize implements _OnInitialize {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -490,7 +498,8 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)
+            SurveyTask task,
+            List<bool> checkedData)
         onSubmitSurvey,
     required TResult Function(
             List<SurveyClientModel> client,
@@ -515,7 +524,8 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -540,7 +550,8 @@ class _$_OnChoiceSelect implements _OnChoiceSelect {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -733,7 +744,8 @@ class _$_OnFileSelect implements _OnFileSelect {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)
+            SurveyTask task,
+            List<bool> checkedData)
         onSubmitSurvey,
     required TResult Function(
             List<SurveyClientModel> client,
@@ -758,7 +770,8 @@ class _$_OnFileSelect implements _OnFileSelect {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -783,7 +796,8 @@ class _$_OnFileSelect implements _OnFileSelect {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -867,7 +881,8 @@ abstract class _$OnSubmitSurveyCopyWith<$Res> {
       {List<SurveyClientModel> client,
       List<QuestionAnswerModel> question,
       List<SurveyDataModel> data,
-      SurveyTask task});
+      SurveyTask task,
+      List<bool> checkedData});
 
   $SurveyTaskCopyWith<$Res> get task;
 }
@@ -889,6 +904,7 @@ class __$OnSubmitSurveyCopyWithImpl<$Res>
     Object? question = freezed,
     Object? data = freezed,
     Object? task = freezed,
+    Object? checkedData = freezed,
   }) {
     return _then(_OnSubmitSurvey(
       client: client == freezed
@@ -907,6 +923,10 @@ class __$OnSubmitSurveyCopyWithImpl<$Res>
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as SurveyTask,
+      checkedData: checkedData == freezed
+          ? _value.checkedData
+          : checkedData // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
     ));
   }
 
@@ -925,7 +945,8 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
       {required this.client,
       required this.question,
       required this.data,
-      required this.task});
+      required this.task,
+      required this.checkedData});
 
   @override
   final List<SurveyClientModel> client;
@@ -935,10 +956,12 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
   final List<SurveyDataModel> data;
   @override
   final SurveyTask task;
+  @override
+  final List<bool> checkedData;
 
   @override
   String toString() {
-    return 'SurveyTaskEvent.onSubmitSurvey(client: $client, question: $question, data: $data, task: $task)';
+    return 'SurveyTaskEvent.onSubmitSurvey(client: $client, question: $question, data: $data, task: $task, checkedData: $checkedData)';
   }
 
   @override
@@ -949,7 +972,9 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
             const DeepCollectionEquality().equals(other.client, client) &&
             const DeepCollectionEquality().equals(other.question, question) &&
             const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.task, task));
+            const DeepCollectionEquality().equals(other.task, task) &&
+            const DeepCollectionEquality()
+                .equals(other.checkedData, checkedData));
   }
 
   @override
@@ -958,7 +983,8 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
       const DeepCollectionEquality().hash(client),
       const DeepCollectionEquality().hash(question),
       const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(task));
+      const DeepCollectionEquality().hash(task),
+      const DeepCollectionEquality().hash(checkedData));
 
   @JsonKey(ignore: true)
   @override
@@ -978,7 +1004,8 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)
+            SurveyTask task,
+            List<bool> checkedData)
         onSubmitSurvey,
     required TResult Function(
             List<SurveyClientModel> client,
@@ -987,7 +1014,7 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
             List<SurveyDataModel> data)
         onProcessCheck,
   }) {
-    return onSubmitSurvey(client, question, data, task);
+    return onSubmitSurvey(client, question, data, task, checkedData);
   }
 
   @override
@@ -1003,7 +1030,8 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -1012,7 +1040,7 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
             List<SurveyDataModel> data)?
         onProcessCheck,
   }) {
-    return onSubmitSurvey?.call(client, question, data, task);
+    return onSubmitSurvey?.call(client, question, data, task, checkedData);
   }
 
   @override
@@ -1028,7 +1056,8 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -1039,7 +1068,7 @@ class _$_OnSubmitSurvey implements _OnSubmitSurvey {
     required TResult orElse(),
   }) {
     if (onSubmitSurvey != null) {
-      return onSubmitSurvey(client, question, data, task);
+      return onSubmitSurvey(client, question, data, task, checkedData);
     }
     return orElse();
   }
@@ -1090,12 +1119,14 @@ abstract class _OnSubmitSurvey implements SurveyTaskEvent {
       {required List<SurveyClientModel> client,
       required List<QuestionAnswerModel> question,
       required List<SurveyDataModel> data,
-      required SurveyTask task}) = _$_OnSubmitSurvey;
+      required SurveyTask task,
+      required List<bool> checkedData}) = _$_OnSubmitSurvey;
 
   List<SurveyClientModel> get client;
   List<QuestionAnswerModel> get question;
   List<SurveyDataModel> get data;
   SurveyTask get task;
+  List<bool> get checkedData;
   @JsonKey(ignore: true)
   _$OnSubmitSurveyCopyWith<_OnSubmitSurvey> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1212,7 +1243,8 @@ class _$_OnProcessCheck implements _OnProcessCheck {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)
+            SurveyTask task,
+            List<bool> checkedData)
         onSubmitSurvey,
     required TResult Function(
             List<SurveyClientModel> client,
@@ -1237,7 +1269,8 @@ class _$_OnProcessCheck implements _OnProcessCheck {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -1262,7 +1295,8 @@ class _$_OnProcessCheck implements _OnProcessCheck {
             List<SurveyClientModel> client,
             List<QuestionAnswerModel> question,
             List<SurveyDataModel> data,
-            SurveyTask task)?
+            SurveyTask task,
+            List<bool> checkedData)?
         onSubmitSurvey,
     TResult Function(
             List<SurveyClientModel> client,
@@ -1402,6 +1436,12 @@ class _$SurveyTaskStateTearOff {
       documentsCompleted: documentsCompleted,
     );
   }
+
+  _IsMandatory isMandatory({required String reason}) {
+    return _IsMandatory(
+      reason: reason,
+    );
+  }
 }
 
 /// @nodoc
@@ -1429,6 +1469,7 @@ mixin _$SurveyTaskState {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1450,6 +1491,7 @@ mixin _$SurveyTaskState {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1471,6 +1513,7 @@ mixin _$SurveyTaskState {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1484,6 +1527,7 @@ mixin _$SurveyTaskState {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1496,6 +1540,7 @@ mixin _$SurveyTaskState {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1508,6 +1553,7 @@ mixin _$SurveyTaskState {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1586,6 +1632,7 @@ class _$_Initial implements _Initial {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) {
     return initial();
   }
@@ -1610,6 +1657,7 @@ class _$_Initial implements _Initial {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) {
     return initial?.call();
   }
@@ -1634,6 +1682,7 @@ class _$_Initial implements _Initial {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1653,6 +1702,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) {
     return initial(this);
   }
@@ -1668,6 +1718,7 @@ class _$_Initial implements _Initial {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) {
     return initial?.call(this);
   }
@@ -1683,6 +1734,7 @@ class _$_Initial implements _Initial {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1752,6 +1804,7 @@ class _$_Loading implements _Loading {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) {
     return loading();
   }
@@ -1776,6 +1829,7 @@ class _$_Loading implements _Loading {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) {
     return loading?.call();
   }
@@ -1800,6 +1854,7 @@ class _$_Loading implements _Loading {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1819,6 +1874,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) {
     return loading(this);
   }
@@ -1834,6 +1890,7 @@ class _$_Loading implements _Loading {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) {
     return loading?.call(this);
   }
@@ -1849,6 +1906,7 @@ class _$_Loading implements _Loading {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2003,6 +2061,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) {
     return checkClientSuccess(
         questions, assets, document, client, zipcode, data);
@@ -2028,6 +2087,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) {
     return checkClientSuccess?.call(
         questions, assets, document, client, zipcode, data);
@@ -2053,6 +2113,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) {
     if (checkClientSuccess != null) {
@@ -2073,6 +2134,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) {
     return checkClientSuccess(this);
   }
@@ -2088,6 +2150,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) {
     return checkClientSuccess?.call(this);
   }
@@ -2103,6 +2166,7 @@ class _$_CheckClientSuccess implements _CheckClientSuccess {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) {
     if (checkClientSuccess != null) {
@@ -2235,6 +2299,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) {
     return selectChoiceSuccess(item, choice);
   }
@@ -2259,6 +2324,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) {
     return selectChoiceSuccess?.call(item, choice);
   }
@@ -2283,6 +2349,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) {
     if (selectChoiceSuccess != null) {
@@ -2302,6 +2369,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) {
     return selectChoiceSuccess(this);
   }
@@ -2317,6 +2385,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) {
     return selectChoiceSuccess?.call(this);
   }
@@ -2332,6 +2401,7 @@ class _$_SelectChoiceSuccess implements _SelectChoiceSuccess {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) {
     if (selectChoiceSuccess != null) {
@@ -2445,6 +2515,7 @@ class _$_SelectFileSuccess implements _SelectFileSuccess {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) {
     return selectFileSuccess(data);
   }
@@ -2469,6 +2540,7 @@ class _$_SelectFileSuccess implements _SelectFileSuccess {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) {
     return selectFileSuccess?.call(data);
   }
@@ -2493,6 +2565,7 @@ class _$_SelectFileSuccess implements _SelectFileSuccess {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) {
     if (selectFileSuccess != null) {
@@ -2512,6 +2585,7 @@ class _$_SelectFileSuccess implements _SelectFileSuccess {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) {
     return selectFileSuccess(this);
   }
@@ -2527,6 +2601,7 @@ class _$_SelectFileSuccess implements _SelectFileSuccess {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) {
     return selectFileSuccess?.call(this);
   }
@@ -2542,6 +2617,7 @@ class _$_SelectFileSuccess implements _SelectFileSuccess {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) {
     if (selectFileSuccess != null) {
@@ -2653,6 +2729,7 @@ class _$_SubmitSuccess implements _SubmitSuccess {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) {
     return submitSuccess(task);
   }
@@ -2677,6 +2754,7 @@ class _$_SubmitSuccess implements _SubmitSuccess {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) {
     return submitSuccess?.call(task);
   }
@@ -2701,6 +2779,7 @@ class _$_SubmitSuccess implements _SubmitSuccess {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) {
     if (submitSuccess != null) {
@@ -2720,6 +2799,7 @@ class _$_SubmitSuccess implements _SubmitSuccess {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) {
     return submitSuccess(this);
   }
@@ -2735,6 +2815,7 @@ class _$_SubmitSuccess implements _SubmitSuccess {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) {
     return submitSuccess?.call(this);
   }
@@ -2750,6 +2831,7 @@ class _$_SubmitSuccess implements _SubmitSuccess {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) {
     if (submitSuccess != null) {
@@ -2860,6 +2942,7 @@ class _$_SubmitFailed implements _SubmitFailed {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) {
     return submitFailed(failure);
   }
@@ -2884,6 +2967,7 @@ class _$_SubmitFailed implements _SubmitFailed {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) {
     return submitFailed?.call(failure);
   }
@@ -2908,6 +2992,7 @@ class _$_SubmitFailed implements _SubmitFailed {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) {
     if (submitFailed != null) {
@@ -2927,6 +3012,7 @@ class _$_SubmitFailed implements _SubmitFailed {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) {
     return submitFailed(this);
   }
@@ -2942,6 +3028,7 @@ class _$_SubmitFailed implements _SubmitFailed {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) {
     return submitFailed?.call(this);
   }
@@ -2957,6 +3044,7 @@ class _$_SubmitFailed implements _SubmitFailed {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) {
     if (submitFailed != null) {
@@ -3099,6 +3187,7 @@ class _$_CheckCompletedData implements _CheckCompletedData {
     required TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)
         checkCompletedData,
+    required TResult Function(String reason) isMandatory,
   }) {
     return checkCompletedData(clientCompleted, questionCompleted,
         assetsCompleted, documentsCompleted);
@@ -3124,6 +3213,7 @@ class _$_CheckCompletedData implements _CheckCompletedData {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
   }) {
     return checkCompletedData?.call(clientCompleted, questionCompleted,
         assetsCompleted, documentsCompleted);
@@ -3149,6 +3239,7 @@ class _$_CheckCompletedData implements _CheckCompletedData {
     TResult Function(bool clientCompleted, bool questionCompleted,
             bool assetsCompleted, bool documentsCompleted)?
         checkCompletedData,
+    TResult Function(String reason)? isMandatory,
     required TResult orElse(),
   }) {
     if (checkCompletedData != null) {
@@ -3169,6 +3260,7 @@ class _$_CheckCompletedData implements _CheckCompletedData {
     required TResult Function(_SubmitSuccess value) submitSuccess,
     required TResult Function(_SubmitFailed value) submitFailed,
     required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
   }) {
     return checkCompletedData(this);
   }
@@ -3184,6 +3276,7 @@ class _$_CheckCompletedData implements _CheckCompletedData {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
   }) {
     return checkCompletedData?.call(this);
   }
@@ -3199,6 +3292,7 @@ class _$_CheckCompletedData implements _CheckCompletedData {
     TResult Function(_SubmitSuccess value)? submitSuccess,
     TResult Function(_SubmitFailed value)? submitFailed,
     TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
     required TResult orElse(),
   }) {
     if (checkCompletedData != null) {
@@ -3221,5 +3315,209 @@ abstract class _CheckCompletedData implements SurveyTaskState {
   bool get documentsCompleted;
   @JsonKey(ignore: true)
   _$CheckCompletedDataCopyWith<_CheckCompletedData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$IsMandatoryCopyWith<$Res> {
+  factory _$IsMandatoryCopyWith(
+          _IsMandatory value, $Res Function(_IsMandatory) then) =
+      __$IsMandatoryCopyWithImpl<$Res>;
+  $Res call({String reason});
+}
+
+/// @nodoc
+class __$IsMandatoryCopyWithImpl<$Res>
+    extends _$SurveyTaskStateCopyWithImpl<$Res>
+    implements _$IsMandatoryCopyWith<$Res> {
+  __$IsMandatoryCopyWithImpl(
+      _IsMandatory _value, $Res Function(_IsMandatory) _then)
+      : super(_value, (v) => _then(v as _IsMandatory));
+
+  @override
+  _IsMandatory get _value => super._value as _IsMandatory;
+
+  @override
+  $Res call({
+    Object? reason = freezed,
+  }) {
+    return _then(_IsMandatory(
+      reason: reason == freezed
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_IsMandatory implements _IsMandatory {
+  const _$_IsMandatory({required this.reason});
+
+  @override
+  final String reason;
+
+  @override
+  String toString() {
+    return 'SurveyTaskState.isMandatory(reason: $reason)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IsMandatory &&
+            const DeepCollectionEquality().equals(other.reason, reason));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(reason));
+
+  @JsonKey(ignore: true)
+  @override
+  _$IsMandatoryCopyWith<_IsMandatory> get copyWith =>
+      __$IsMandatoryCopyWithImpl<_IsMandatory>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)
+        checkClientSuccess,
+    required TResult Function(SearchModel item, String choice)
+        selectChoiceSuccess,
+    required TResult Function(SurveyDataModel data) selectFileSuccess,
+    required TResult Function(SurveyTask task) submitSuccess,
+    required TResult Function(GenericFailure failure) submitFailed,
+    required TResult Function(bool clientCompleted, bool questionCompleted,
+            bool assetsCompleted, bool documentsCompleted)
+        checkCompletedData,
+    required TResult Function(String reason) isMandatory,
+  }) {
+    return isMandatory(reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
+        checkClientSuccess,
+    TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
+    TResult Function(SurveyTask task)? submitSuccess,
+    TResult Function(GenericFailure failure)? submitFailed,
+    TResult Function(bool clientCompleted, bool questionCompleted,
+            bool assetsCompleted, bool documentsCompleted)?
+        checkCompletedData,
+    TResult Function(String reason)? isMandatory,
+  }) {
+    return isMandatory?.call(reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(
+            List<QuestionAnswerModel> questions,
+            List<FormUploadData> assets,
+            List<FormUploadData> document,
+            List<SurveyClientModel> client,
+            List<ZipcodeData> zipcode,
+            List<SurveyDataModel> data)?
+        checkClientSuccess,
+    TResult Function(SearchModel item, String choice)? selectChoiceSuccess,
+    TResult Function(SurveyDataModel data)? selectFileSuccess,
+    TResult Function(SurveyTask task)? submitSuccess,
+    TResult Function(GenericFailure failure)? submitFailed,
+    TResult Function(bool clientCompleted, bool questionCompleted,
+            bool assetsCompleted, bool documentsCompleted)?
+        checkCompletedData,
+    TResult Function(String reason)? isMandatory,
+    required TResult orElse(),
+  }) {
+    if (isMandatory != null) {
+      return isMandatory(reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_CheckClientSuccess value) checkClientSuccess,
+    required TResult Function(_SelectChoiceSuccess value) selectChoiceSuccess,
+    required TResult Function(_SelectFileSuccess value) selectFileSuccess,
+    required TResult Function(_SubmitSuccess value) submitSuccess,
+    required TResult Function(_SubmitFailed value) submitFailed,
+    required TResult Function(_CheckCompletedData value) checkCompletedData,
+    required TResult Function(_IsMandatory value) isMandatory,
+  }) {
+    return isMandatory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CheckClientSuccess value)? checkClientSuccess,
+    TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
+    TResult Function(_SubmitSuccess value)? submitSuccess,
+    TResult Function(_SubmitFailed value)? submitFailed,
+    TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
+  }) {
+    return isMandatory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_CheckClientSuccess value)? checkClientSuccess,
+    TResult Function(_SelectChoiceSuccess value)? selectChoiceSuccess,
+    TResult Function(_SelectFileSuccess value)? selectFileSuccess,
+    TResult Function(_SubmitSuccess value)? submitSuccess,
+    TResult Function(_SubmitFailed value)? submitFailed,
+    TResult Function(_CheckCompletedData value)? checkCompletedData,
+    TResult Function(_IsMandatory value)? isMandatory,
+    required TResult orElse(),
+  }) {
+    if (isMandatory != null) {
+      return isMandatory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsMandatory implements SurveyTaskState {
+  const factory _IsMandatory({required String reason}) = _$_IsMandatory;
+
+  String get reason;
+  @JsonKey(ignore: true)
+  _$IsMandatoryCopyWith<_IsMandatory> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -11,6 +11,7 @@ class QuestionAnswerModel with _$QuestionAnswerModel {
     required String? idQuisioner,
     required String? question,
     required SearchModel? search,
+    required bool? mandatory,
     required TextEditingController? controller,
   }) = _QuestionAnswerModel;
 }

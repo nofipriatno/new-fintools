@@ -16,6 +16,7 @@ _$_SurveyDataModel _$$_SurveyDataModelFromJson(Map<String, dynamic> json) =>
       dateTime: json['dateTime'] == null
           ? null
           : DateTime.parse(json['dateTime'] as String),
+      mandatory: json['mandatory'] as bool?,
       extension: json['extension'] as String?,
     );
 
@@ -27,5 +28,6 @@ Map<String, dynamic> _$$_SurveyDataModelToJson(_$_SurveyDataModel instance) =>
       'index': instance.index,
       'filePath': instance.filePath,
       'dateTime': instance.dateTime?.toIso8601String(),
+      'mandatory': instance.mandatory,
       'extension': instance.extension,
     };

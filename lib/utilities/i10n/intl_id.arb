@@ -73,5 +73,6 @@
   "session_expired": "Sesi Berakhir",
   "session_expired_msg": "Anda akan otomatis logout",
   "still_development": "Sedang dalam pengembangan",
-  "back_to_onboarding": "Kembali Ke Halaman Awal"
+  "back_to_onboarding": "Kembali Ke Halaman Awal",
+  "mandatory": "Mandatori"
 }

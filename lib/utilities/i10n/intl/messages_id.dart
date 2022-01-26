@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_greeting2":
             MessageLookupByLibrary.simpleMessage("Senang berjumpa lagi"),
         "logout": MessageLookupByLibrary.simpleMessage("Keluar"),
+        "mandatory": MessageLookupByLibrary.simpleMessage("Mandatori"),
         "mobile_phone": MessageLookupByLibrary.simpleMessage("Nomor Telepon"),
         "mother_name": MessageLookupByLibrary.simpleMessage("Nama Ibu Kandung"),
         "name": MessageLookupByLibrary.simpleMessage("Nama"),

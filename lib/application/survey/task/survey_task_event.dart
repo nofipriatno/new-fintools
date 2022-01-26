@@ -24,6 +24,7 @@ class SurveyTaskEvent with _$SurveyTaskEvent {
     required List<QuestionAnswerModel> question,
     required List<SurveyDataModel> data,
     required SurveyTask task,
+    required List<bool> checkedData,
   }) = _OnSubmitSurvey;
 
   const factory SurveyTaskEvent.onProcessCheck({

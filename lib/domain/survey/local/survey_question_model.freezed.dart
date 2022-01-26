@@ -22,12 +22,14 @@ class _$QuestionAnswerModelTearOff {
       required String? idQuisioner,
       required String? question,
       required SearchModel? search,
+      required bool? mandatory,
       required TextEditingController? controller}) {
     return _QuestionAnswerModel(
       id: id,
       idQuisioner: idQuisioner,
       question: question,
       search: search,
+      mandatory: mandatory,
       controller: controller,
     );
   }
@@ -42,6 +44,7 @@ mixin _$QuestionAnswerModel {
   String? get idQuisioner => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
   SearchModel? get search => throw _privateConstructorUsedError;
+  bool? get mandatory => throw _privateConstructorUsedError;
   TextEditingController? get controller => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -59,6 +62,7 @@ abstract class $QuestionAnswerModelCopyWith<$Res> {
       String? idQuisioner,
       String? question,
       SearchModel? search,
+      bool? mandatory,
       TextEditingController? controller});
 
   $SearchModelCopyWith<$Res>? get search;
@@ -79,6 +83,7 @@ class _$QuestionAnswerModelCopyWithImpl<$Res>
     Object? idQuisioner = freezed,
     Object? question = freezed,
     Object? search = freezed,
+    Object? mandatory = freezed,
     Object? controller = freezed,
   }) {
     return _then(_value.copyWith(
@@ -98,6 +103,10 @@ class _$QuestionAnswerModelCopyWithImpl<$Res>
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
               as SearchModel?,
+      mandatory: mandatory == freezed
+          ? _value.mandatory
+          : mandatory // ignore: cast_nullable_to_non_nullable
+              as bool?,
       controller: controller == freezed
           ? _value.controller
           : controller // ignore: cast_nullable_to_non_nullable
@@ -129,6 +138,7 @@ abstract class _$QuestionAnswerModelCopyWith<$Res>
       String? idQuisioner,
       String? question,
       SearchModel? search,
+      bool? mandatory,
       TextEditingController? controller});
 
   @override
@@ -152,6 +162,7 @@ class __$QuestionAnswerModelCopyWithImpl<$Res>
     Object? idQuisioner = freezed,
     Object? question = freezed,
     Object? search = freezed,
+    Object? mandatory = freezed,
     Object? controller = freezed,
   }) {
     return _then(_QuestionAnswerModel(
@@ -171,6 +182,10 @@ class __$QuestionAnswerModelCopyWithImpl<$Res>
           ? _value.search
           : search // ignore: cast_nullable_to_non_nullable
               as SearchModel?,
+      mandatory: mandatory == freezed
+          ? _value.mandatory
+          : mandatory // ignore: cast_nullable_to_non_nullable
+              as bool?,
       controller: controller == freezed
           ? _value.controller
           : controller // ignore: cast_nullable_to_non_nullable
@@ -187,6 +202,7 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
       required this.idQuisioner,
       required this.question,
       required this.search,
+      required this.mandatory,
       required this.controller});
 
   @override
@@ -198,11 +214,13 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
   @override
   final SearchModel? search;
   @override
+  final bool? mandatory;
+  @override
   final TextEditingController? controller;
 
   @override
   String toString() {
-    return 'QuestionAnswerModel(id: $id, idQuisioner: $idQuisioner, question: $question, search: $search, controller: $controller)';
+    return 'QuestionAnswerModel(id: $id, idQuisioner: $idQuisioner, question: $question, search: $search, mandatory: $mandatory, controller: $controller)';
   }
 
   @override
@@ -215,6 +233,7 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
                 .equals(other.idQuisioner, idQuisioner) &&
             const DeepCollectionEquality().equals(other.question, question) &&
             const DeepCollectionEquality().equals(other.search, search) &&
+            const DeepCollectionEquality().equals(other.mandatory, mandatory) &&
             const DeepCollectionEquality()
                 .equals(other.controller, controller));
   }
@@ -226,6 +245,7 @@ class _$_QuestionAnswerModel implements _QuestionAnswerModel {
       const DeepCollectionEquality().hash(idQuisioner),
       const DeepCollectionEquality().hash(question),
       const DeepCollectionEquality().hash(search),
+      const DeepCollectionEquality().hash(mandatory),
       const DeepCollectionEquality().hash(controller));
 
   @JsonKey(ignore: true)
@@ -241,6 +261,7 @@ abstract class _QuestionAnswerModel implements QuestionAnswerModel {
       required String? idQuisioner,
       required String? question,
       required SearchModel? search,
+      required bool? mandatory,
       required TextEditingController? controller}) = _$_QuestionAnswerModel;
 
   @override
@@ -251,6 +272,8 @@ abstract class _QuestionAnswerModel implements QuestionAnswerModel {
   String? get question;
   @override
   SearchModel? get search;
+  @override
+  bool? get mandatory;
   @override
   TextEditingController? get controller;
   @override

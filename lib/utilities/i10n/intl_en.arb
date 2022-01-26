@@ -78,5 +78,6 @@
   "session_expired": "Session Expired",
   "session_expired_msg": "You will automatically logout",
   "still_development": "Under Development",
-  "back_to_onboarding": "Back to OnBoarding"
+  "back_to_onboarding": "Back to OnBoarding",
+  "mandatory": "Mandatory"
 }

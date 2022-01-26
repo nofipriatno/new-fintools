@@ -124,6 +124,7 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             formName: e.id.formName,
             index: e.index,
             filePath: e.path,
+            mandatory: e.id.mandatory,
             dateTime: DateTime.now(),
             extension: e.extension);
         await _storage.setJson(box,
@@ -132,6 +133,17 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         emit(_SelectFileSuccess(data: data));
       }, onSubmitSurvey: (e) async {
         emit(const _Loading());
+        if (e.checkedData.contains(false)) {
+          String reason = '';
+          for (var i = 0; i < e.checkedData.length; i++) {
+            if (!e.checkedData[i]) reason += AppUtils.checkMandatory(i);
+            if (i != e.checkedData.length - 1 && !e.checkedData[i]) {
+              reason += '\n';
+            }
+          }
+          emit(_IsMandatory(reason: reason));
+          return;
+        }
         final location = await AppUtils.determinePosition();
         final postOrFailure = await _userSurvey.postSurveyData(
           client: e.client,
@@ -156,36 +168,62 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             element.mandatory == true);
 
         final question = e.question
-            .where((element) => element.controller?.text.isEmpty == true)
+            .where((element) =>
+                element.controller?.text.isEmpty == true &&
+                element.mandatory == true)
             .toList();
 
-        final finalQuestion = question.firstWhereOrNull(
-            (element) => element.search?.value?.isEmpty == true);
+        final finalQuestion = question.firstWhereOrNull((element) =>
+            element.search?.value?.isEmpty == true &&
+            element.mandatory == true);
 
-        final doc = e.formData
-            .where((element) => element.code.contains('DPK'))
-            .toList();
+        int docMandatory = 0;
+        int assetMandatory = 0;
 
-        final asset = e.formData
-            .where((element) => element.code.contains('PIC'))
-            .toList();
+        List<FormUploadData> assets = [];
+        List<FormUploadData> documents = [];
+
+        for (FormUploadData element in e.formData) {
+          if (element.code.contains('DPK') && element.mandatory == true) {
+            documents.add(element);
+            docMandatory += 1;
+            if (element.count > 1) {
+              docMandatory += (element.count - 1);
+            }
+          } else if (element.code.contains('PIC') &&
+              element.mandatory == true) {
+            assets.add(element);
+            assetMandatory += 1;
+            if (element.count > 1) {
+              assetMandatory += (element.count - 1);
+            }
+          }
+        }
 
         int docItem = 0;
         int assetItem = 0;
+        String? formName;
         for (SurveyDataModel item in e.data) {
-          final docCheck = doc
-              .firstWhereOrNull((element) => element.formName == item.formName);
-          final assetCheck = asset
-              .firstWhereOrNull((element) => element.formName == item.formName);
-          if (docCheck != null) docItem += 1;
-          if (assetCheck != null) assetItem += 1;
+          if (formName != item.formName) {
+            final docCheck = documents
+                .where((element) =>
+                    element.formName == item.formName && item.mandatory == true)
+                .toList();
+            final assetCheck = assets
+                .where((element) =>
+                    element.formName == item.formName && item.mandatory == true)
+                .toList();
+            if (docCheck.isNotEmpty) docItem += docCheck.length;
+            if (assetCheck.isNotEmpty) assetItem += assetCheck.length;
+            formName = item.formName!;
+          }
         }
 
         emit(
           _CheckCompletedData(
-              assetsCompleted: assetItem >= asset.length,
+              assetsCompleted: assetItem == assetMandatory,
               questionCompleted: finalQuestion == null,
-              documentsCompleted: docItem >= doc.length,
+              documentsCompleted: docItem == docMandatory,
               clientCompleted: client == null),
         );
       });

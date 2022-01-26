@@ -105,6 +105,7 @@ class AppUtils {
         id: item.id,
         idQuisioner: item.idQuestion,
         question: newQuestion,
+        mandatory: item.mandatory,
         search: SearchModel(
             id: item.id,
             value: choices.isEmpty ? '' : choices.first,
@@ -323,5 +324,20 @@ class AppUtils {
     }
 
     return await Geolocator.getCurrentPosition();
+  }
+
+  static String checkMandatory(int index) {
+    switch (index) {
+      case 0:
+        return I10n.current.client;
+      case 1:
+        return I10n.current.quisioner;
+      case 2:
+        return I10n.current.asset;
+      case 3:
+        return I10n.current.document;
+      default:
+        return '';
+    }
   }
 }
