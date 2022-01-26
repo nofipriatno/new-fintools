@@ -40,6 +40,7 @@ class SurveyFormUploadMasterItem with _$SurveyFormUploadMasterItem {
     @JsonKey(name: 'creby') required String? creBy,
     @JsonKey(name: 'moddate') required DateTime? modDate,
     @JsonKey(name: 'modby') required String? modBy,
+    required bool? mandatory,
   }) = _SurveyFormUploadMasterItem;
 
   factory SurveyFormUploadMasterItem.fromJson(Map<String, dynamic> json) =>

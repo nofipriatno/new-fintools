@@ -44,6 +44,7 @@ _$_SurveyFormUploadMasterItem _$$_SurveyFormUploadMasterItemFromJson(
           ? null
           : DateTime.parse(json['moddate'] as String),
       modBy: json['modby'] as String?,
+      mandatory: json['mandatory'] as bool?,
     );
 
 Map<String, dynamic> _$$_SurveyFormUploadMasterItemToJson(
@@ -60,4 +61,5 @@ Map<String, dynamic> _$$_SurveyFormUploadMasterItemToJson(
       'creby': instance.creBy,
       'moddate': instance.modDate?.toIso8601String(),
       'modby': instance.modBy,
+      'mandatory': instance.mandatory,
     };

@@ -60,6 +60,7 @@ class _Underline extends HookWidget {
         child: TextField(
           keyboardType: inputType,
           enabled: enable,
+          textCapitalization: TextCapitalization.words,
           readOnly: readOnly,
           obscureText: obscure ? _obscure.value : false,
           controller: controller,

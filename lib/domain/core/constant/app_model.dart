@@ -11,6 +11,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.name,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-2',
@@ -18,6 +19,7 @@ class AppModel {
         limit: 16,
         clientFormType: ClientFormType.nik,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-3',
@@ -25,6 +27,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.date,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-4',
@@ -32,6 +35,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.date,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-5',
@@ -39,6 +43,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.name,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-6',
@@ -46,6 +51,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.name,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-7',
@@ -53,6 +59,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.date,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-8',
@@ -60,6 +67,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.address,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-9',
@@ -67,6 +75,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.name,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-10',
@@ -74,6 +83,7 @@ class AppModel {
         limit: 6,
         clientFormType: ClientFormType.number,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-11',
@@ -81,6 +91,7 @@ class AppModel {
         limit: 6,
         clientFormType: ClientFormType.number,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-12',
@@ -88,6 +99,7 @@ class AppModel {
         limit: 10,
         clientFormType: ClientFormType.zipcode,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-13',
@@ -95,6 +107,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.subZipcode,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-14',
@@ -102,6 +115,7 @@ class AppModel {
         limit: 999,
         clientFormType: ClientFormType.subZipcode,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-15',
@@ -109,6 +123,7 @@ class AppModel {
         limit: 16,
         clientFormType: ClientFormType.phone,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-16',
@@ -116,6 +131,7 @@ class AppModel {
         limit: 15,
         clientFormType: ClientFormType.phone,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
     SurveyClientModel(
         id: 'id-form-name-17',
@@ -123,6 +139,7 @@ class AppModel {
         limit: 30,
         clientFormType: ClientFormType.phone,
         size: 1,
+        mandatory: true,
         controller: TextEditingController()),
   ];
 }

@@ -12,6 +12,7 @@ class SurveyClientModel with _$SurveyClientModel {
     required int? limit,
     required ClientFormType? clientFormType,
     required int? size,
+    required bool? mandatory,
     TextEditingController? controller,
   }) = _SurveyClientModel;
 }

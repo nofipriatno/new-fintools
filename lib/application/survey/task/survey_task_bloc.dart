@@ -147,8 +147,9 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         );
       }, onProcessCheck: (e) async {
         emit(const _Loading());
-        final client = e.client.firstWhereOrNull(
-            (element) => element.controller?.text.isEmpty == true);
+        final client = e.client.firstWhereOrNull((element) =>
+            element.controller?.text.isEmpty == true &&
+            element.mandatory == true);
 
         final question = e.question
             .where((element) => element.controller?.text.isEmpty == true)

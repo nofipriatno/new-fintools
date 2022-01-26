@@ -23,6 +23,7 @@ class _$SurveyClientModelTearOff {
       required int? limit,
       required ClientFormType? clientFormType,
       required int? size,
+      required bool? mandatory,
       TextEditingController? controller}) {
     return _SurveyClientModel(
       id: id,
@@ -30,6 +31,7 @@ class _$SurveyClientModelTearOff {
       limit: limit,
       clientFormType: clientFormType,
       size: size,
+      mandatory: mandatory,
       controller: controller,
     );
   }
@@ -45,6 +47,7 @@ mixin _$SurveyClientModel {
   int? get limit => throw _privateConstructorUsedError;
   ClientFormType? get clientFormType => throw _privateConstructorUsedError;
   int? get size => throw _privateConstructorUsedError;
+  bool? get mandatory => throw _privateConstructorUsedError;
   TextEditingController? get controller => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -63,6 +66,7 @@ abstract class $SurveyClientModelCopyWith<$Res> {
       int? limit,
       ClientFormType? clientFormType,
       int? size,
+      bool? mandatory,
       TextEditingController? controller});
 }
 
@@ -82,6 +86,7 @@ class _$SurveyClientModelCopyWithImpl<$Res>
     Object? limit = freezed,
     Object? clientFormType = freezed,
     Object? size = freezed,
+    Object? mandatory = freezed,
     Object? controller = freezed,
   }) {
     return _then(_value.copyWith(
@@ -105,6 +110,10 @@ class _$SurveyClientModelCopyWithImpl<$Res>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int?,
+      mandatory: mandatory == freezed
+          ? _value.mandatory
+          : mandatory // ignore: cast_nullable_to_non_nullable
+              as bool?,
       controller: controller == freezed
           ? _value.controller
           : controller // ignore: cast_nullable_to_non_nullable
@@ -126,6 +135,7 @@ abstract class _$SurveyClientModelCopyWith<$Res>
       int? limit,
       ClientFormType? clientFormType,
       int? size,
+      bool? mandatory,
       TextEditingController? controller});
 }
 
@@ -147,6 +157,7 @@ class __$SurveyClientModelCopyWithImpl<$Res>
     Object? limit = freezed,
     Object? clientFormType = freezed,
     Object? size = freezed,
+    Object? mandatory = freezed,
     Object? controller = freezed,
   }) {
     return _then(_SurveyClientModel(
@@ -170,6 +181,10 @@ class __$SurveyClientModelCopyWithImpl<$Res>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int?,
+      mandatory: mandatory == freezed
+          ? _value.mandatory
+          : mandatory // ignore: cast_nullable_to_non_nullable
+              as bool?,
       controller: controller == freezed
           ? _value.controller
           : controller // ignore: cast_nullable_to_non_nullable
@@ -187,6 +202,7 @@ class _$_SurveyClientModel implements _SurveyClientModel {
       required this.limit,
       required this.clientFormType,
       required this.size,
+      required this.mandatory,
       this.controller});
 
   @override
@@ -200,11 +216,13 @@ class _$_SurveyClientModel implements _SurveyClientModel {
   @override
   final int? size;
   @override
+  final bool? mandatory;
+  @override
   final TextEditingController? controller;
 
   @override
   String toString() {
-    return 'SurveyClientModel(id: $id, title: $title, limit: $limit, clientFormType: $clientFormType, size: $size, controller: $controller)';
+    return 'SurveyClientModel(id: $id, title: $title, limit: $limit, clientFormType: $clientFormType, size: $size, mandatory: $mandatory, controller: $controller)';
   }
 
   @override
@@ -218,6 +236,7 @@ class _$_SurveyClientModel implements _SurveyClientModel {
             const DeepCollectionEquality()
                 .equals(other.clientFormType, clientFormType) &&
             const DeepCollectionEquality().equals(other.size, size) &&
+            const DeepCollectionEquality().equals(other.mandatory, mandatory) &&
             const DeepCollectionEquality()
                 .equals(other.controller, controller));
   }
@@ -230,6 +249,7 @@ class _$_SurveyClientModel implements _SurveyClientModel {
       const DeepCollectionEquality().hash(limit),
       const DeepCollectionEquality().hash(clientFormType),
       const DeepCollectionEquality().hash(size),
+      const DeepCollectionEquality().hash(mandatory),
       const DeepCollectionEquality().hash(controller));
 
   @JsonKey(ignore: true)
@@ -245,6 +265,7 @@ abstract class _SurveyClientModel implements SurveyClientModel {
       required int? limit,
       required ClientFormType? clientFormType,
       required int? size,
+      required bool? mandatory,
       TextEditingController? controller}) = _$_SurveyClientModel;
 
   @override
@@ -257,6 +278,8 @@ abstract class _SurveyClientModel implements SurveyClientModel {
   ClientFormType? get clientFormType;
   @override
   int? get size;
+  @override
+  bool? get mandatory;
   @override
   TextEditingController? get controller;
   @override

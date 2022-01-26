@@ -78,9 +78,11 @@ class SurveyTaskPage extends HookWidget {
               checkCompletedData: (e) async {
                 AppUtils.dismissLoading;
                 if (e.clientCompleted) completed.value[0] = e.clientCompleted;
-                if (e.questionCompleted) completed.value[1] = e.questionCompleted;
+                if (e.questionCompleted)
+                  completed.value[1] = e.questionCompleted;
                 if (e.assetsCompleted) completed.value[2] = e.assetsCompleted;
-                if (e.documentsCompleted) completed.value[3] = e.documentsCompleted;
+                if (e.documentsCompleted)
+                  completed.value[3] = e.documentsCompleted;
               },
               submitSuccess: (e) {
                 AppUtils.dismissLoading;
@@ -130,6 +132,7 @@ class SurveyTaskPage extends HookWidget {
                   controller: controller,
                   onTap: (_) {
                     if (controller.indexIsChanging) {
+                      FocusScope.of(context).unfocus();
                       if (controller.index == 4) {
                         context.read<SurveyTaskBloc>().add(
                             SurveyTaskEvent.onProcessCheck(

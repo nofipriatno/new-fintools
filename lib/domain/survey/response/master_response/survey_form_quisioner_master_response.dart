@@ -39,6 +39,7 @@ class SurveyFormQuisionerMasterItem with _$SurveyFormQuisionerMasterItem {
     @JsonKey(name: 'creby') required String? creBy,
     @JsonKey(name: 'moddate') required DateTime? modDate,
     @JsonKey(name: 'modby') required String? modBy,
+    required bool? mandatory,
   }) = _SurveyFormQuisionerMasterItem;
 
   factory SurveyFormQuisionerMasterItem.fromJson(Map<String, dynamic> json) =>

@@ -241,7 +241,8 @@ class _$SurveyFormQuisionerMasterItemTearOff {
       @JsonKey(name: 'credate') required DateTime? creDate,
       @JsonKey(name: 'creby') required String? creBy,
       @JsonKey(name: 'moddate') required DateTime? modDate,
-      @JsonKey(name: 'modby') required String? modBy}) {
+      @JsonKey(name: 'modby') required String? modBy,
+      required bool? mandatory}) {
     return _SurveyFormQuisionerMasterItem(
       id: id,
       idQuisioner: idQuisioner,
@@ -252,6 +253,7 @@ class _$SurveyFormQuisionerMasterItemTearOff {
       creBy: creBy,
       modDate: modDate,
       modBy: modBy,
+      mandatory: mandatory,
     );
   }
 
@@ -281,6 +283,7 @@ mixin _$SurveyFormQuisionerMasterItem {
   DateTime? get modDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'modby')
   String? get modBy => throw _privateConstructorUsedError;
+  bool? get mandatory => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -303,7 +306,8 @@ abstract class $SurveyFormQuisionerMasterItemCopyWith<$Res> {
       @JsonKey(name: 'credate') DateTime? creDate,
       @JsonKey(name: 'creby') String? creBy,
       @JsonKey(name: 'moddate') DateTime? modDate,
-      @JsonKey(name: 'modby') String? modBy});
+      @JsonKey(name: 'modby') String? modBy,
+      bool? mandatory});
 }
 
 /// @nodoc
@@ -326,6 +330,7 @@ class _$SurveyFormQuisionerMasterItemCopyWithImpl<$Res>
     Object? creBy = freezed,
     Object? modDate = freezed,
     Object? modBy = freezed,
+    Object? mandatory = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -364,6 +369,10 @@ class _$SurveyFormQuisionerMasterItemCopyWithImpl<$Res>
           ? _value.modBy
           : modBy // ignore: cast_nullable_to_non_nullable
               as String?,
+      mandatory: mandatory == freezed
+          ? _value.mandatory
+          : mandatory // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -385,7 +394,8 @@ abstract class _$SurveyFormQuisionerMasterItemCopyWith<$Res>
       @JsonKey(name: 'credate') DateTime? creDate,
       @JsonKey(name: 'creby') String? creBy,
       @JsonKey(name: 'moddate') DateTime? modDate,
-      @JsonKey(name: 'modby') String? modBy});
+      @JsonKey(name: 'modby') String? modBy,
+      bool? mandatory});
 }
 
 /// @nodoc
@@ -412,6 +422,7 @@ class __$SurveyFormQuisionerMasterItemCopyWithImpl<$Res>
     Object? creBy = freezed,
     Object? modDate = freezed,
     Object? modBy = freezed,
+    Object? mandatory = freezed,
   }) {
     return _then(_SurveyFormQuisionerMasterItem(
       id: id == freezed
@@ -450,6 +461,10 @@ class __$SurveyFormQuisionerMasterItemCopyWithImpl<$Res>
           ? _value.modBy
           : modBy // ignore: cast_nullable_to_non_nullable
               as String?,
+      mandatory: mandatory == freezed
+          ? _value.mandatory
+          : mandatory // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -467,7 +482,8 @@ class _$_SurveyFormQuisionerMasterItem
       @JsonKey(name: 'credate') required this.creDate,
       @JsonKey(name: 'creby') required this.creBy,
       @JsonKey(name: 'moddate') required this.modDate,
-      @JsonKey(name: 'modby') required this.modBy});
+      @JsonKey(name: 'modby') required this.modBy,
+      required this.mandatory});
 
   factory _$_SurveyFormQuisionerMasterItem.fromJson(
           Map<String, dynamic> json) =>
@@ -498,10 +514,12 @@ class _$_SurveyFormQuisionerMasterItem
   @override
   @JsonKey(name: 'modby')
   final String? modBy;
+  @override
+  final bool? mandatory;
 
   @override
   String toString() {
-    return 'SurveyFormQuisionerMasterItem(id: $id, idQuisioner: $idQuisioner, idQuestion: $idQuestion, question: $question, questionTypeFlag: $questionTypeFlag, creDate: $creDate, creBy: $creBy, modDate: $modDate, modBy: $modBy)';
+    return 'SurveyFormQuisionerMasterItem(id: $id, idQuisioner: $idQuisioner, idQuestion: $idQuestion, question: $question, questionTypeFlag: $questionTypeFlag, creDate: $creDate, creBy: $creBy, modDate: $modDate, modBy: $modBy, mandatory: $mandatory)';
   }
 
   @override
@@ -520,7 +538,8 @@ class _$_SurveyFormQuisionerMasterItem
             const DeepCollectionEquality().equals(other.creDate, creDate) &&
             const DeepCollectionEquality().equals(other.creBy, creBy) &&
             const DeepCollectionEquality().equals(other.modDate, modDate) &&
-            const DeepCollectionEquality().equals(other.modBy, modBy));
+            const DeepCollectionEquality().equals(other.modBy, modBy) &&
+            const DeepCollectionEquality().equals(other.mandatory, mandatory));
   }
 
   @override
@@ -534,7 +553,8 @@ class _$_SurveyFormQuisionerMasterItem
       const DeepCollectionEquality().hash(creDate),
       const DeepCollectionEquality().hash(creBy),
       const DeepCollectionEquality().hash(modDate),
-      const DeepCollectionEquality().hash(modBy));
+      const DeepCollectionEquality().hash(modBy),
+      const DeepCollectionEquality().hash(mandatory));
 
   @JsonKey(ignore: true)
   @override
@@ -551,16 +571,16 @@ class _$_SurveyFormQuisionerMasterItem
 abstract class _SurveyFormQuisionerMasterItem
     implements SurveyFormQuisionerMasterItem {
   const factory _SurveyFormQuisionerMasterItem(
-          {required String? id,
-          @JsonKey(name: 'idquisioner') required String? idQuisioner,
-          @JsonKey(name: 'idpertanyaan') required String? idQuestion,
-          @JsonKey(name: 'pertanyaan') required String? question,
-          required int? questionTypeFlag,
-          @JsonKey(name: 'credate') required DateTime? creDate,
-          @JsonKey(name: 'creby') required String? creBy,
-          @JsonKey(name: 'moddate') required DateTime? modDate,
-          @JsonKey(name: 'modby') required String? modBy}) =
-      _$_SurveyFormQuisionerMasterItem;
+      {required String? id,
+      @JsonKey(name: 'idquisioner') required String? idQuisioner,
+      @JsonKey(name: 'idpertanyaan') required String? idQuestion,
+      @JsonKey(name: 'pertanyaan') required String? question,
+      required int? questionTypeFlag,
+      @JsonKey(name: 'credate') required DateTime? creDate,
+      @JsonKey(name: 'creby') required String? creBy,
+      @JsonKey(name: 'moddate') required DateTime? modDate,
+      @JsonKey(name: 'modby') required String? modBy,
+      required bool? mandatory}) = _$_SurveyFormQuisionerMasterItem;
 
   factory _SurveyFormQuisionerMasterItem.fromJson(Map<String, dynamic> json) =
       _$_SurveyFormQuisionerMasterItem.fromJson;
@@ -590,6 +610,8 @@ abstract class _SurveyFormQuisionerMasterItem
   @override
   @JsonKey(name: 'modby')
   String? get modBy;
+  @override
+  bool? get mandatory;
   @override
   @JsonKey(ignore: true)
   _$SurveyFormQuisionerMasterItemCopyWith<_SurveyFormQuisionerMasterItem>
