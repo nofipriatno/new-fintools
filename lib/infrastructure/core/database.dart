@@ -167,6 +167,17 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
           ..orderBy([(t) => OrderingTerm(expression: t.localCreate)]))
         .get();
   }
+
+  @override
+  Future<bool> deleteCompletedTask({required SurveyTask? task}) async {
+    try {
+      (delete(surveyTaskQueue)..where((t) => t.taskId.equals(task?.taskId)))
+          .go();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
 
 LazyDatabase _openConnection() {

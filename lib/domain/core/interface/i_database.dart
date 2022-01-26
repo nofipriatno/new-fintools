@@ -27,4 +27,6 @@ abstract class IDatabase {
       {required DateTime insertDate});
 
   Future<List<SurveyTaskQueueData>> getLatestSurveyTask();
+
+  Future<bool> deleteCompletedTask({required SurveyTask? task});
 }

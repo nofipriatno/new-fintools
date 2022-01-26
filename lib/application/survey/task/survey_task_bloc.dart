@@ -141,6 +141,10 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
           position: location,
         );
 
+        if (postOrFailure.isRight()) {
+          _database.deleteCompletedTask(task: e.task);
+        }
+
         postOrFailure.fold(
           (failure) => emit(_SubmitFailed(failure: failure)),
           (success) => emit(_SubmitSuccess(task: e.task)),
