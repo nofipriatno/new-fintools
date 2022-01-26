@@ -19,6 +19,7 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
   final String creBy;
   final DateTime modDate;
   final String modBy;
+  final bool mandatory;
   FormUploadData(
       {required this.id,
       required this.idForm,
@@ -30,7 +31,8 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
       required this.creDate,
       required this.creBy,
       required this.modDate,
-      required this.modBy});
+      required this.modBy,
+      required this.mandatory});
   factory FormUploadData.fromData(Map<String, dynamic> data, {String? prefix}) {
     final effectivePrefix = prefix ?? '';
     return FormUploadData(
@@ -56,6 +58,8 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
           .mapFromDatabaseResponse(data['${effectivePrefix}mod_date'])!,
       modBy: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}mod_by'])!,
+      mandatory: const BoolType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}mandatory'])!,
     );
   }
   @override
@@ -72,6 +76,7 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
     map['cre_by'] = Variable<String>(creBy);
     map['mod_date'] = Variable<DateTime>(modDate);
     map['mod_by'] = Variable<String>(modBy);
+    map['mandatory'] = Variable<bool>(mandatory);
     return map;
   }
 
@@ -88,6 +93,7 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
       creBy: Value(creBy),
       modDate: Value(modDate),
       modBy: Value(modBy),
+      mandatory: Value(mandatory),
     );
   }
 
@@ -106,6 +112,7 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
       creBy: serializer.fromJson<String>(json['creBy']),
       modDate: serializer.fromJson<DateTime>(json['modDate']),
       modBy: serializer.fromJson<String>(json['modBy']),
+      mandatory: serializer.fromJson<bool>(json['mandatory']),
     );
   }
   @override
@@ -123,6 +130,7 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
       'creBy': serializer.toJson<String>(creBy),
       'modDate': serializer.toJson<DateTime>(modDate),
       'modBy': serializer.toJson<String>(modBy),
+      'mandatory': serializer.toJson<bool>(mandatory),
     };
   }
 
@@ -137,7 +145,8 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
           DateTime? creDate,
           String? creBy,
           DateTime? modDate,
-          String? modBy}) =>
+          String? modBy,
+          bool? mandatory}) =>
       FormUploadData(
         id: id ?? this.id,
         idForm: idForm ?? this.idForm,
@@ -150,6 +159,7 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
         creBy: creBy ?? this.creBy,
         modDate: modDate ?? this.modDate,
         modBy: modBy ?? this.modBy,
+        mandatory: mandatory ?? this.mandatory,
       );
   @override
   String toString() {
@@ -164,14 +174,15 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
           ..write('creDate: $creDate, ')
           ..write('creBy: $creBy, ')
           ..write('modDate: $modDate, ')
-          ..write('modBy: $modBy')
+          ..write('modBy: $modBy, ')
+          ..write('mandatory: $mandatory')
           ..write(')'))
         .toString();
   }
 
   @override
   int get hashCode => Object.hash(id, idForm, code, name, type, formName, count,
-      creDate, creBy, modDate, modBy);
+      creDate, creBy, modDate, modBy, mandatory);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -186,7 +197,8 @@ class FormUploadData extends DataClass implements Insertable<FormUploadData> {
           other.creDate == this.creDate &&
           other.creBy == this.creBy &&
           other.modDate == this.modDate &&
-          other.modBy == this.modBy);
+          other.modBy == this.modBy &&
+          other.mandatory == this.mandatory);
 }
 
 class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
@@ -201,6 +213,7 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
   final Value<String> creBy;
   final Value<DateTime> modDate;
   final Value<String> modBy;
+  final Value<bool> mandatory;
   const FormUploadCompanion({
     this.id = const Value.absent(),
     this.idForm = const Value.absent(),
@@ -213,6 +226,7 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
     this.creBy = const Value.absent(),
     this.modDate = const Value.absent(),
     this.modBy = const Value.absent(),
+    this.mandatory = const Value.absent(),
   });
   FormUploadCompanion.insert({
     required String id,
@@ -226,6 +240,7 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
     required String creBy,
     required DateTime modDate,
     required String modBy,
+    required bool mandatory,
   })  : id = Value(id),
         idForm = Value(idForm),
         code = Value(code),
@@ -236,7 +251,8 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
         creDate = Value(creDate),
         creBy = Value(creBy),
         modDate = Value(modDate),
-        modBy = Value(modBy);
+        modBy = Value(modBy),
+        mandatory = Value(mandatory);
   static Insertable<FormUploadData> custom({
     Expression<String>? id,
     Expression<String>? idForm,
@@ -249,6 +265,7 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
     Expression<String>? creBy,
     Expression<DateTime>? modDate,
     Expression<String>? modBy,
+    Expression<bool>? mandatory,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -262,6 +279,7 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
       if (creBy != null) 'cre_by': creBy,
       if (modDate != null) 'mod_date': modDate,
       if (modBy != null) 'mod_by': modBy,
+      if (mandatory != null) 'mandatory': mandatory,
     });
   }
 
@@ -276,7 +294,8 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
       Value<DateTime>? creDate,
       Value<String>? creBy,
       Value<DateTime>? modDate,
-      Value<String>? modBy}) {
+      Value<String>? modBy,
+      Value<bool>? mandatory}) {
     return FormUploadCompanion(
       id: id ?? this.id,
       idForm: idForm ?? this.idForm,
@@ -289,6 +308,7 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
       creBy: creBy ?? this.creBy,
       modDate: modDate ?? this.modDate,
       modBy: modBy ?? this.modBy,
+      mandatory: mandatory ?? this.mandatory,
     );
   }
 
@@ -328,6 +348,9 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
     if (modBy.present) {
       map['mod_by'] = Variable<String>(modBy.value);
     }
+    if (mandatory.present) {
+      map['mandatory'] = Variable<bool>(mandatory.value);
+    }
     return map;
   }
 
@@ -344,7 +367,8 @@ class FormUploadCompanion extends UpdateCompanion<FormUploadData> {
           ..write('creDate: $creDate, ')
           ..write('creBy: $creBy, ')
           ..write('modDate: $modDate, ')
-          ..write('modBy: $modBy')
+          ..write('modBy: $modBy, ')
+          ..write('mandatory: $mandatory')
           ..write(')'))
         .toString();
   }
@@ -410,6 +434,13 @@ class $FormUploadTable extends FormUpload
   late final GeneratedColumn<String?> modBy = GeneratedColumn<String?>(
       'mod_by', aliasedName, false,
       type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _mandatoryMeta = const VerificationMeta('mandatory');
+  @override
+  late final GeneratedColumn<bool?> mandatory = GeneratedColumn<bool?>(
+      'mandatory', aliasedName, false,
+      type: const BoolType(),
+      requiredDuringInsert: true,
+      defaultConstraints: 'CHECK (mandatory IN (0, 1))');
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -422,7 +453,8 @@ class $FormUploadTable extends FormUpload
         creDate,
         creBy,
         modDate,
-        modBy
+        modBy,
+        mandatory
       ];
   @override
   String get aliasedName => _alias ?? 'form_upload';
@@ -498,6 +530,12 @@ class $FormUploadTable extends FormUpload
     } else if (isInserting) {
       context.missing(_modByMeta);
     }
+    if (data.containsKey('mandatory')) {
+      context.handle(_mandatoryMeta,
+          mandatory.isAcceptableOrUnknown(data['mandatory']!, _mandatoryMeta));
+    } else if (isInserting) {
+      context.missing(_mandatoryMeta);
+    }
     return context;
   }
 
@@ -526,6 +564,7 @@ class FormQuisionerData extends DataClass
   final String creBy;
   final DateTime modDate;
   final String modBy;
+  final bool mandatory;
   FormQuisionerData(
       {required this.id,
       required this.idQuisioner,
@@ -535,7 +574,8 @@ class FormQuisionerData extends DataClass
       required this.creDate,
       required this.creBy,
       required this.modDate,
-      required this.modBy});
+      required this.modBy,
+      required this.mandatory});
   factory FormQuisionerData.fromData(Map<String, dynamic> data,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
@@ -558,6 +598,8 @@ class FormQuisionerData extends DataClass
           .mapFromDatabaseResponse(data['${effectivePrefix}mod_date'])!,
       modBy: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}mod_by'])!,
+      mandatory: const BoolType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}mandatory'])!,
     );
   }
   @override
@@ -572,6 +614,7 @@ class FormQuisionerData extends DataClass
     map['cre_by'] = Variable<String>(creBy);
     map['mod_date'] = Variable<DateTime>(modDate);
     map['mod_by'] = Variable<String>(modBy);
+    map['mandatory'] = Variable<bool>(mandatory);
     return map;
   }
 
@@ -586,6 +629,7 @@ class FormQuisionerData extends DataClass
       creBy: Value(creBy),
       modDate: Value(modDate),
       modBy: Value(modBy),
+      mandatory: Value(mandatory),
     );
   }
 
@@ -602,6 +646,7 @@ class FormQuisionerData extends DataClass
       creBy: serializer.fromJson<String>(json['creBy']),
       modDate: serializer.fromJson<DateTime>(json['modDate']),
       modBy: serializer.fromJson<String>(json['modBy']),
+      mandatory: serializer.fromJson<bool>(json['mandatory']),
     );
   }
   @override
@@ -617,6 +662,7 @@ class FormQuisionerData extends DataClass
       'creBy': serializer.toJson<String>(creBy),
       'modDate': serializer.toJson<DateTime>(modDate),
       'modBy': serializer.toJson<String>(modBy),
+      'mandatory': serializer.toJson<bool>(mandatory),
     };
   }
 
@@ -629,7 +675,8 @@ class FormQuisionerData extends DataClass
           DateTime? creDate,
           String? creBy,
           DateTime? modDate,
-          String? modBy}) =>
+          String? modBy,
+          bool? mandatory}) =>
       FormQuisionerData(
         id: id ?? this.id,
         idQuisioner: idQuisioner ?? this.idQuisioner,
@@ -640,6 +687,7 @@ class FormQuisionerData extends DataClass
         creBy: creBy ?? this.creBy,
         modDate: modDate ?? this.modDate,
         modBy: modBy ?? this.modBy,
+        mandatory: mandatory ?? this.mandatory,
       );
   @override
   String toString() {
@@ -652,14 +700,15 @@ class FormQuisionerData extends DataClass
           ..write('creDate: $creDate, ')
           ..write('creBy: $creBy, ')
           ..write('modDate: $modDate, ')
-          ..write('modBy: $modBy')
+          ..write('modBy: $modBy, ')
+          ..write('mandatory: $mandatory')
           ..write(')'))
         .toString();
   }
 
   @override
   int get hashCode => Object.hash(id, idQuisioner, idQuestion, question,
-      questionTypeFlag, creDate, creBy, modDate, modBy);
+      questionTypeFlag, creDate, creBy, modDate, modBy, mandatory);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -672,7 +721,8 @@ class FormQuisionerData extends DataClass
           other.creDate == this.creDate &&
           other.creBy == this.creBy &&
           other.modDate == this.modDate &&
-          other.modBy == this.modBy);
+          other.modBy == this.modBy &&
+          other.mandatory == this.mandatory);
 }
 
 class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
@@ -685,6 +735,7 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
   final Value<String> creBy;
   final Value<DateTime> modDate;
   final Value<String> modBy;
+  final Value<bool> mandatory;
   const FormQuisionerCompanion({
     this.id = const Value.absent(),
     this.idQuisioner = const Value.absent(),
@@ -695,6 +746,7 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
     this.creBy = const Value.absent(),
     this.modDate = const Value.absent(),
     this.modBy = const Value.absent(),
+    this.mandatory = const Value.absent(),
   });
   FormQuisionerCompanion.insert({
     required String id,
@@ -706,6 +758,7 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
     required String creBy,
     required DateTime modDate,
     required String modBy,
+    required bool mandatory,
   })  : id = Value(id),
         idQuisioner = Value(idQuisioner),
         idQuestion = Value(idQuestion),
@@ -714,7 +767,8 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
         creDate = Value(creDate),
         creBy = Value(creBy),
         modDate = Value(modDate),
-        modBy = Value(modBy);
+        modBy = Value(modBy),
+        mandatory = Value(mandatory);
   static Insertable<FormQuisionerData> custom({
     Expression<String>? id,
     Expression<String>? idQuisioner,
@@ -725,6 +779,7 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
     Expression<String>? creBy,
     Expression<DateTime>? modDate,
     Expression<String>? modBy,
+    Expression<bool>? mandatory,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -736,6 +791,7 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
       if (creBy != null) 'cre_by': creBy,
       if (modDate != null) 'mod_date': modDate,
       if (modBy != null) 'mod_by': modBy,
+      if (mandatory != null) 'mandatory': mandatory,
     });
   }
 
@@ -748,7 +804,8 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
       Value<DateTime>? creDate,
       Value<String>? creBy,
       Value<DateTime>? modDate,
-      Value<String>? modBy}) {
+      Value<String>? modBy,
+      Value<bool>? mandatory}) {
     return FormQuisionerCompanion(
       id: id ?? this.id,
       idQuisioner: idQuisioner ?? this.idQuisioner,
@@ -759,6 +816,7 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
       creBy: creBy ?? this.creBy,
       modDate: modDate ?? this.modDate,
       modBy: modBy ?? this.modBy,
+      mandatory: mandatory ?? this.mandatory,
     );
   }
 
@@ -792,6 +850,9 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
     if (modBy.present) {
       map['mod_by'] = Variable<String>(modBy.value);
     }
+    if (mandatory.present) {
+      map['mandatory'] = Variable<bool>(mandatory.value);
+    }
     return map;
   }
 
@@ -806,7 +867,8 @@ class FormQuisionerCompanion extends UpdateCompanion<FormQuisionerData> {
           ..write('creDate: $creDate, ')
           ..write('creBy: $creBy, ')
           ..write('modDate: $modDate, ')
-          ..write('modBy: $modBy')
+          ..write('modBy: $modBy, ')
+          ..write('mandatory: $mandatory')
           ..write(')'))
         .toString();
   }
@@ -864,6 +926,13 @@ class $FormQuisionerTable extends FormQuisioner
   late final GeneratedColumn<String?> modBy = GeneratedColumn<String?>(
       'mod_by', aliasedName, false,
       type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _mandatoryMeta = const VerificationMeta('mandatory');
+  @override
+  late final GeneratedColumn<bool?> mandatory = GeneratedColumn<bool?>(
+      'mandatory', aliasedName, false,
+      type: const BoolType(),
+      requiredDuringInsert: true,
+      defaultConstraints: 'CHECK (mandatory IN (0, 1))');
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -874,7 +943,8 @@ class $FormQuisionerTable extends FormQuisioner
         creDate,
         creBy,
         modDate,
-        modBy
+        modBy,
+        mandatory
       ];
   @override
   String get aliasedName => _alias ?? 'form_quisioner';
@@ -943,6 +1013,12 @@ class $FormQuisionerTable extends FormQuisioner
           _modByMeta, modBy.isAcceptableOrUnknown(data['mod_by']!, _modByMeta));
     } else if (isInserting) {
       context.missing(_modByMeta);
+    }
+    if (data.containsKey('mandatory')) {
+      context.handle(_mandatoryMeta,
+          mandatory.isAcceptableOrUnknown(data['mandatory']!, _mandatoryMeta));
+    } else if (isInserting) {
+      context.missing(_mandatoryMeta);
     }
     return context;
   }

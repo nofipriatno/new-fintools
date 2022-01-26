@@ -40,6 +40,7 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
               creDate: item?.creDate ?? DateTime.now(),
               creBy: item?.creBy ?? 'Error',
               modDate: item?.modDate ?? DateTime.now(),
+              mandatory: item?.mandatory ?? false,
               modBy: item?.modBy ?? 'Error'))
           .toList();
       await batch((batch) => batch.insertAll(formUpload, data));
@@ -93,6 +94,7 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
               creDate: item?.creDate ?? DateTime.now(),
               creBy: item?.creBy ?? '',
               modDate: item?.modDate ?? DateTime.now(),
+              mandatory: item?.mandatory ?? false,
               modBy: item?.modBy ?? ''))
           .toList();
       await batch((batch) => batch.insertAll(formQuisioner, data));

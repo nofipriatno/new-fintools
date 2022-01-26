@@ -25,4 +25,6 @@ class FormUpload extends Table {
   DateTimeColumn get modDate => dateTime()();
 
   TextColumn get modBy => text()();
+
+  BoolColumn get mandatory => boolean()();
 }
