@@ -153,6 +153,7 @@ class AppDatabase extends _$AppDatabase implements IDatabase {
           latitude: item?.latitude ?? '',
           longitude: item?.longitude ?? '',
           localCreate: insertDate,
+          address: item?.address ?? '',
         ),
       );
       return Future.value(true);

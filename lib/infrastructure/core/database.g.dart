@@ -1369,6 +1369,7 @@ class SurveyTaskQueueData extends DataClass
   final String latitude;
   final String longitude;
   final DateTime localCreate;
+  final String address;
   SurveyTaskQueueData(
       {required this.taskId,
       required this.nik,
@@ -1378,7 +1379,8 @@ class SurveyTaskQueueData extends DataClass
       required this.creDate,
       required this.latitude,
       required this.longitude,
-      required this.localCreate});
+      required this.localCreate,
+      required this.address});
   factory SurveyTaskQueueData.fromData(Map<String, dynamic> data,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
@@ -1401,6 +1403,8 @@ class SurveyTaskQueueData extends DataClass
           .mapFromDatabaseResponse(data['${effectivePrefix}longitude'])!,
       localCreate: const DateTimeType()
           .mapFromDatabaseResponse(data['${effectivePrefix}local_create'])!,
+      address: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}address'])!,
     );
   }
   @override
@@ -1415,6 +1419,7 @@ class SurveyTaskQueueData extends DataClass
     map['latitude'] = Variable<String>(latitude);
     map['longitude'] = Variable<String>(longitude);
     map['local_create'] = Variable<DateTime>(localCreate);
+    map['address'] = Variable<String>(address);
     return map;
   }
 
@@ -1429,6 +1434,7 @@ class SurveyTaskQueueData extends DataClass
       latitude: Value(latitude),
       longitude: Value(longitude),
       localCreate: Value(localCreate),
+      address: Value(address),
     );
   }
 
@@ -1445,6 +1451,7 @@ class SurveyTaskQueueData extends DataClass
       latitude: serializer.fromJson<String>(json['latitude']),
       longitude: serializer.fromJson<String>(json['longitude']),
       localCreate: serializer.fromJson<DateTime>(json['localCreate']),
+      address: serializer.fromJson<String>(json['address']),
     );
   }
   @override
@@ -1460,6 +1467,7 @@ class SurveyTaskQueueData extends DataClass
       'latitude': serializer.toJson<String>(latitude),
       'longitude': serializer.toJson<String>(longitude),
       'localCreate': serializer.toJson<DateTime>(localCreate),
+      'address': serializer.toJson<String>(address),
     };
   }
 
@@ -1472,7 +1480,8 @@ class SurveyTaskQueueData extends DataClass
           DateTime? creDate,
           String? latitude,
           String? longitude,
-          DateTime? localCreate}) =>
+          DateTime? localCreate,
+          String? address}) =>
       SurveyTaskQueueData(
         taskId: taskId ?? this.taskId,
         nik: nik ?? this.nik,
@@ -1483,6 +1492,7 @@ class SurveyTaskQueueData extends DataClass
         latitude: latitude ?? this.latitude,
         longitude: longitude ?? this.longitude,
         localCreate: localCreate ?? this.localCreate,
+        address: address ?? this.address,
       );
   @override
   String toString() {
@@ -1495,14 +1505,15 @@ class SurveyTaskQueueData extends DataClass
           ..write('creDate: $creDate, ')
           ..write('latitude: $latitude, ')
           ..write('longitude: $longitude, ')
-          ..write('localCreate: $localCreate')
+          ..write('localCreate: $localCreate, ')
+          ..write('address: $address')
           ..write(')'))
         .toString();
   }
 
   @override
   int get hashCode => Object.hash(taskId, nik, name, platNumber, isPush,
-      creDate, latitude, longitude, localCreate);
+      creDate, latitude, longitude, localCreate, address);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -1515,7 +1526,8 @@ class SurveyTaskQueueData extends DataClass
           other.creDate == this.creDate &&
           other.latitude == this.latitude &&
           other.longitude == this.longitude &&
-          other.localCreate == this.localCreate);
+          other.localCreate == this.localCreate &&
+          other.address == this.address);
 }
 
 class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
@@ -1528,6 +1540,7 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
   final Value<String> latitude;
   final Value<String> longitude;
   final Value<DateTime> localCreate;
+  final Value<String> address;
   const SurveyTaskQueueCompanion({
     this.taskId = const Value.absent(),
     this.nik = const Value.absent(),
@@ -1538,6 +1551,7 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
     this.latitude = const Value.absent(),
     this.longitude = const Value.absent(),
     this.localCreate = const Value.absent(),
+    this.address = const Value.absent(),
   });
   SurveyTaskQueueCompanion.insert({
     required String taskId,
@@ -1549,6 +1563,7 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
     required String latitude,
     required String longitude,
     required DateTime localCreate,
+    required String address,
   })  : taskId = Value(taskId),
         nik = Value(nik),
         name = Value(name),
@@ -1557,7 +1572,8 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
         creDate = Value(creDate),
         latitude = Value(latitude),
         longitude = Value(longitude),
-        localCreate = Value(localCreate);
+        localCreate = Value(localCreate),
+        address = Value(address);
   static Insertable<SurveyTaskQueueData> custom({
     Expression<String>? taskId,
     Expression<String>? nik,
@@ -1568,6 +1584,7 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
     Expression<String>? latitude,
     Expression<String>? longitude,
     Expression<DateTime>? localCreate,
+    Expression<String>? address,
   }) {
     return RawValuesInsertable({
       if (taskId != null) 'task_id': taskId,
@@ -1579,6 +1596,7 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
       if (latitude != null) 'latitude': latitude,
       if (longitude != null) 'longitude': longitude,
       if (localCreate != null) 'local_create': localCreate,
+      if (address != null) 'address': address,
     });
   }
 
@@ -1591,7 +1609,8 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
       Value<DateTime>? creDate,
       Value<String>? latitude,
       Value<String>? longitude,
-      Value<DateTime>? localCreate}) {
+      Value<DateTime>? localCreate,
+      Value<String>? address}) {
     return SurveyTaskQueueCompanion(
       taskId: taskId ?? this.taskId,
       nik: nik ?? this.nik,
@@ -1602,6 +1621,7 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       localCreate: localCreate ?? this.localCreate,
+      address: address ?? this.address,
     );
   }
 
@@ -1635,6 +1655,9 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
     if (localCreate.present) {
       map['local_create'] = Variable<DateTime>(localCreate.value);
     }
+    if (address.present) {
+      map['address'] = Variable<String>(address.value);
+    }
     return map;
   }
 
@@ -1649,7 +1672,8 @@ class SurveyTaskQueueCompanion extends UpdateCompanion<SurveyTaskQueueData> {
           ..write('creDate: $creDate, ')
           ..write('latitude: $latitude, ')
           ..write('longitude: $longitude, ')
-          ..write('localCreate: $localCreate')
+          ..write('localCreate: $localCreate, ')
+          ..write('address: $address')
           ..write(')'))
         .toString();
   }
@@ -1706,6 +1730,11 @@ class $SurveyTaskQueueTable extends SurveyTaskQueue
   late final GeneratedColumn<DateTime?> localCreate =
       GeneratedColumn<DateTime?>('local_create', aliasedName, false,
           type: const IntType(), requiredDuringInsert: true);
+  final VerificationMeta _addressMeta = const VerificationMeta('address');
+  @override
+  late final GeneratedColumn<String?> address = GeneratedColumn<String?>(
+      'address', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns => [
         taskId,
@@ -1716,7 +1745,8 @@ class $SurveyTaskQueueTable extends SurveyTaskQueue
         creDate,
         latitude,
         longitude,
-        localCreate
+        localCreate,
+        address
       ];
   @override
   String get aliasedName => _alias ?? 'survey_task_queue';
@@ -1785,6 +1815,12 @@ class $SurveyTaskQueueTable extends SurveyTaskQueue
               data['local_create']!, _localCreateMeta));
     } else if (isInserting) {
       context.missing(_localCreateMeta);
+    }
+    if (data.containsKey('address')) {
+      context.handle(_addressMeta,
+          address.isAcceptableOrUnknown(data['address']!, _addressMeta));
+    } else if (isInserting) {
+      context.missing(_addressMeta);
     }
     return context;
   }

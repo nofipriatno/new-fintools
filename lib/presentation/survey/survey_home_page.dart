@@ -264,7 +264,14 @@ class SurveyHomePage extends HookWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(0, 7, 0, 15),
+          padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
+          child: Text(
+            task?.address ?? '',
+            style: AppFont.text11W500.copyWith(color: AppColor.blue),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 15),
           child: Text(
             task?.platNumber ?? '',
             style: AppFont.text11W500.copyWith(color: AppColor.blue),

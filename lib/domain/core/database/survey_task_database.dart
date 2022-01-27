@@ -21,4 +21,6 @@ class SurveyTaskQueue extends Table {
   TextColumn get longitude => text()();
 
   DateTimeColumn get localCreate => dateTime()();
+
+  TextColumn get address => text()();
 }

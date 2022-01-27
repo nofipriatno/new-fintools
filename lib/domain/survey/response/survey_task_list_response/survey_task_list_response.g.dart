@@ -35,6 +35,7 @@ _$_SurveyTask _$$_SurveyTaskFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['credate'] as String),
       isPush: json['ispush'] as int?,
+      address: json['alamat'] as String?,
       latitude: json['latitude'] as String?,
       longitude: json['longitude'] as String?,
     );
@@ -47,6 +48,7 @@ Map<String, dynamic> _$$_SurveyTaskToJson(_$_SurveyTask instance) =>
       'nopol': instance.platNumber,
       'credate': instance.creDate?.toIso8601String(),
       'ispush': instance.isPush,
+      'alamat': instance.address,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
     };

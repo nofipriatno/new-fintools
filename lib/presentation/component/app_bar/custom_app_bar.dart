@@ -19,8 +19,9 @@ class CustomAppBar {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () => CustomBottomSheet.logout(context),
+            borderRadius: BorderRadius.circular(30),
             child: CircleAvatar(
-              child: const Text('AH'),
+              child: const Icon(Icons.account_circle_rounded),
               backgroundColor: AppColor.gold,
               radius: 30,
             ),

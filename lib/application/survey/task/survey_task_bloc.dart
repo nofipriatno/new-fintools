@@ -167,15 +167,30 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
             element.controller?.text.isEmpty == true &&
             element.mandatory == true);
 
-        final question = e.question
-            .where((element) =>
-                element.controller?.text.isEmpty == true &&
-                element.mandatory == true)
-            .toList();
+        List<QuestionAnswerModel> question = [];
+        for (var element in e.question) {
+          if (element.search?.value?.isEmpty == false &&
+              element.search!.value!.contains(',')) {
+            if (element.controller?.text.isNotEmpty != true) {
+              question.add(element);
+            }
+            //maka => element.controller?.text.isNotEmpty == true;
+          } else if (element.search?.value?.isEmpty == false &&
+              !element.search!.value!.contains(',')) {
+            if (element.controller?.text.isNotEmpty != false) {
+              question.add(element);
+            }
+            //maka boleh => element.controller?.text.isNotEmpty == false;
+          } else {
+            if (element.controller?.text.isNotEmpty != true) {
+              question.add(element);
+            }
+            // wajib element.controller?.text.isNotEmpty == true;
+          }
+        }
 
-        final finalQuestion = question.firstWhereOrNull((element) =>
-            element.search?.value?.isEmpty == true &&
-            element.mandatory == true);
+        final finalQuestion =
+            question.where((element) => element.mandatory == true).toList();
 
         int docMandatory = 0;
         int assetMandatory = 0;
@@ -222,7 +237,7 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
         emit(
           _CheckCompletedData(
               assetsCompleted: assetItem == assetMandatory,
-              questionCompleted: finalQuestion == null,
+              questionCompleted: finalQuestion.isEmpty,
               documentsCompleted: docItem == docMandatory,
               clientCompleted: client == null),
         );

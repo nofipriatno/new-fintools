@@ -223,6 +223,7 @@ class _$SurveyTaskTearOff {
       @JsonKey(name: 'nopol') required String? platNumber,
       @JsonKey(name: 'credate') required DateTime? creDate,
       @JsonKey(name: 'ispush') required int? isPush,
+      @JsonKey(name: 'alamat') required String? address,
       required String? latitude,
       required String? longitude}) {
     return _SurveyTask(
@@ -232,6 +233,7 @@ class _$SurveyTaskTearOff {
       platNumber: platNumber,
       creDate: creDate,
       isPush: isPush,
+      address: address,
       latitude: latitude,
       longitude: longitude,
     );
@@ -258,6 +260,8 @@ mixin _$SurveyTask {
   DateTime? get creDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'ispush')
   int? get isPush => throw _privateConstructorUsedError;
+  @JsonKey(name: 'alamat')
+  String? get address => throw _privateConstructorUsedError;
   String? get latitude => throw _privateConstructorUsedError;
   String? get longitude => throw _privateConstructorUsedError;
 
@@ -279,6 +283,7 @@ abstract class $SurveyTaskCopyWith<$Res> {
       @JsonKey(name: 'nopol') String? platNumber,
       @JsonKey(name: 'credate') DateTime? creDate,
       @JsonKey(name: 'ispush') int? isPush,
+      @JsonKey(name: 'alamat') String? address,
       String? latitude,
       String? longitude});
 }
@@ -299,6 +304,7 @@ class _$SurveyTaskCopyWithImpl<$Res> implements $SurveyTaskCopyWith<$Res> {
     Object? platNumber = freezed,
     Object? creDate = freezed,
     Object? isPush = freezed,
+    Object? address = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
@@ -327,6 +333,10 @@ class _$SurveyTaskCopyWithImpl<$Res> implements $SurveyTaskCopyWith<$Res> {
           ? _value.isPush
           : isPush // ignore: cast_nullable_to_non_nullable
               as int?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -352,6 +362,7 @@ abstract class _$SurveyTaskCopyWith<$Res> implements $SurveyTaskCopyWith<$Res> {
       @JsonKey(name: 'nopol') String? platNumber,
       @JsonKey(name: 'credate') DateTime? creDate,
       @JsonKey(name: 'ispush') int? isPush,
+      @JsonKey(name: 'alamat') String? address,
       String? latitude,
       String? longitude});
 }
@@ -374,6 +385,7 @@ class __$SurveyTaskCopyWithImpl<$Res> extends _$SurveyTaskCopyWithImpl<$Res>
     Object? platNumber = freezed,
     Object? creDate = freezed,
     Object? isPush = freezed,
+    Object? address = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
@@ -402,6 +414,10 @@ class __$SurveyTaskCopyWithImpl<$Res> extends _$SurveyTaskCopyWithImpl<$Res>
           ? _value.isPush
           : isPush // ignore: cast_nullable_to_non_nullable
               as int?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -424,6 +440,7 @@ class _$_SurveyTask implements _SurveyTask {
       @JsonKey(name: 'nopol') required this.platNumber,
       @JsonKey(name: 'credate') required this.creDate,
       @JsonKey(name: 'ispush') required this.isPush,
+      @JsonKey(name: 'alamat') required this.address,
       required this.latitude,
       required this.longitude});
 
@@ -448,13 +465,16 @@ class _$_SurveyTask implements _SurveyTask {
   @JsonKey(name: 'ispush')
   final int? isPush;
   @override
+  @JsonKey(name: 'alamat')
+  final String? address;
+  @override
   final String? latitude;
   @override
   final String? longitude;
 
   @override
   String toString() {
-    return 'SurveyTask(taskId: $taskId, nik: $nik, name: $name, platNumber: $platNumber, creDate: $creDate, isPush: $isPush, latitude: $latitude, longitude: $longitude)';
+    return 'SurveyTask(taskId: $taskId, nik: $nik, name: $name, platNumber: $platNumber, creDate: $creDate, isPush: $isPush, address: $address, latitude: $latitude, longitude: $longitude)';
   }
 
   @override
@@ -469,6 +489,7 @@ class _$_SurveyTask implements _SurveyTask {
                 .equals(other.platNumber, platNumber) &&
             const DeepCollectionEquality().equals(other.creDate, creDate) &&
             const DeepCollectionEquality().equals(other.isPush, isPush) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.latitude, latitude) &&
             const DeepCollectionEquality().equals(other.longitude, longitude));
   }
@@ -482,6 +503,7 @@ class _$_SurveyTask implements _SurveyTask {
       const DeepCollectionEquality().hash(platNumber),
       const DeepCollectionEquality().hash(creDate),
       const DeepCollectionEquality().hash(isPush),
+      const DeepCollectionEquality().hash(address),
       const DeepCollectionEquality().hash(latitude),
       const DeepCollectionEquality().hash(longitude));
 
@@ -504,6 +526,7 @@ abstract class _SurveyTask implements SurveyTask {
       @JsonKey(name: 'nopol') required String? platNumber,
       @JsonKey(name: 'credate') required DateTime? creDate,
       @JsonKey(name: 'ispush') required int? isPush,
+      @JsonKey(name: 'alamat') required String? address,
       required String? latitude,
       required String? longitude}) = _$_SurveyTask;
 
@@ -527,6 +550,9 @@ abstract class _SurveyTask implements SurveyTask {
   @override
   @JsonKey(name: 'ispush')
   int? get isPush;
+  @override
+  @JsonKey(name: 'alamat')
+  String? get address;
   @override
   String? get latitude;
   @override

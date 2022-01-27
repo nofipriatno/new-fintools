@@ -26,12 +26,13 @@ class SurveyTaskListResponse with _$SurveyTaskListResponse {
 @freezed
 class SurveyTask with _$SurveyTask {
   const factory SurveyTask({
-    @JsonKey(name:'task_id') required String? taskId,
+    @JsonKey(name: 'task_id') required String? taskId,
     required String? nik,
     @JsonKey(name: 'nama') required String? name,
     @JsonKey(name: 'nopol') required String? platNumber,
     @JsonKey(name: 'credate') required DateTime? creDate,
     @JsonKey(name: 'ispush') required int? isPush,
+    @JsonKey(name: 'alamat') required String? address,
     required String? latitude,
     required String? longitude,
   }) = _SurveyTask;

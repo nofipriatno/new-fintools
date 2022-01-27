@@ -63,6 +63,7 @@ class SurveyRepository implements ISurvey {
           isPush: item.isPush,
           latitude: item.latitude,
           longitude: item.longitude,
+          address: item.address,
         ),
       );
     } catch (e) {
