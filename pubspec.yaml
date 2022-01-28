@@ -13,6 +13,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  alice: ^0.2.5
   bloc: ^8.0.1
   carousel_slider: ^4.0.0
   connectivity_plus: ^2.1.0

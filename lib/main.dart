@@ -1,40 +1,26 @@
-import 'package:fintools/domain/core/constant/app_color.dart';
-import 'package:fintools/domain/core/constant/app_string.dart';
 import 'package:fintools/infrastructure/core/app_env.dart';
 import 'package:fintools/injection.dart';
-import 'package:fintools/presentation/component/splashscreen/splashscreen.dart';
-import 'package:fintools/presentation/interceptor/interceptor_page.dart';
-import 'package:fintools/presentation/on_boarding/on_boarding_page.dart';
+import 'package:fintools/my_app.dart';
 import 'package:fintools/simple_bloc_observer.dart';
-import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'application/app_preferences/app_preferences_bloc.dart';
 
 Future<void> mainProgram() async {
-  await Hive.initFlutter();
+  WidgetsFlutterBinding.ensureInitialized();
   await configureInjection(AppEnvironment.env);
+  await getIt<HiveInterface>().initFlutter();
   BlocOverrides.runZoned(
     () {
-      runApp(MyApp());
+      runApp(FintoolsApp());
     },
     blocObserver: getIt<SimpleBlocObserver>(),
   );
 }
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-  Widget page = const SplashScreen();
-
+class FintoolsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AppPreferencesBloc>(
@@ -42,52 +28,8 @@ class MyApp extends StatelessWidget {
           ..add(
             const AppPreferencesEvent.onCheckedLogin(),
           ),
-        child: BlocConsumer<AppPreferencesBloc, AppPreferencesState>(
-          listener: (context, state) {
-            state.map(
-                initial: (e) {},
-                checkSignInUserSuccess: (e) {
-                  if (e.isLogin) {
-                    page = const InterceptorPage(isLogin: true);
-                  } else {
-                    page = OnBoardingPage();
-                  }
-                },
-                changedLanguageSuccess: (e) {},
-                loading: (e) {});
-          },
-          builder: (context, state) {
-            return ScreenUtilInit(
-              designSize: const Size(360, 645),
-              builder: () => MaterialApp(
-                debugShowCheckedModeBanner:
-                    AppEnvironment.env == AppString.appDev,
-                localizationsDelegates: const [
-                  I10n.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: const [
-                  Locale('en', ''),
-                  Locale('id', ''),
-                ],
-                theme: ThemeData(
-                  primaryColor: AppColor.white,
-                  backgroundColor: AppColor.white,
-                  scaffoldBackgroundColor: AppColor.white,
-                  primaryIconTheme:
-                      IconTheme.of(context).copyWith(color: AppColor.gold),
-                  iconTheme:
-                      IconTheme.of(context).copyWith(color: AppColor.gold),
-                  appBarTheme: AppBarTheme.of(context)
-                      .copyWith(color: AppColor.white, elevation: 0),
-                ),
-                home: page,
-                builder: EasyLoading.init(),
-              ),
-            );
-          },
+        child: BlocBuilder<AppPreferencesBloc, AppPreferencesState>(
+          builder: (context, state) => getIt<MyApp>(),
         ));
   }
 }
