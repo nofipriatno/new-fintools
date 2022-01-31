@@ -655,13 +655,10 @@ class _$SurveyHomeStateTearOff {
     );
   }
 
-  _FetchHistorySuccess fetchHistorySuccess() {
-    return const _FetchHistorySuccess();
-  }
-
-  _FetchHistoryFailed fetchHistoryFailed({required GenericFailure error}) {
-    return _FetchHistoryFailed(
-      error: error,
+  _FetchHistorySuccess fetchHistorySuccess(
+      {required SurveyHistoryResponse history}) {
+    return _FetchHistorySuccess(
+      history: history,
     );
   }
 
@@ -703,8 +700,8 @@ mixin _$SurveyHomeState {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -721,8 +718,7 @@ mixin _$SurveyHomeState {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -739,8 +735,7 @@ mixin _$SurveyHomeState {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -758,7 +753,6 @@ mixin _$SurveyHomeState {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -774,7 +768,6 @@ mixin _$SurveyHomeState {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -789,7 +782,6 @@ mixin _$SurveyHomeState {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -860,8 +852,8 @@ class _$_Initial implements _Initial {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -881,8 +873,7 @@ class _$_Initial implements _Initial {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -902,8 +893,7 @@ class _$_Initial implements _Initial {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -927,7 +917,6 @@ class _$_Initial implements _Initial {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -946,7 +935,6 @@ class _$_Initial implements _Initial {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -964,7 +952,6 @@ class _$_Initial implements _Initial {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1029,8 +1016,8 @@ class _$_FetchTaskLoading implements _FetchTaskLoading {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -1050,8 +1037,7 @@ class _$_FetchTaskLoading implements _FetchTaskLoading {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1071,8 +1057,7 @@ class _$_FetchTaskLoading implements _FetchTaskLoading {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1096,7 +1081,6 @@ class _$_FetchTaskLoading implements _FetchTaskLoading {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -1115,7 +1099,6 @@ class _$_FetchTaskLoading implements _FetchTaskLoading {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1133,7 +1116,6 @@ class _$_FetchTaskLoading implements _FetchTaskLoading {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1198,8 +1180,8 @@ class _$_FetchHistoryLoading implements _FetchHistoryLoading {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -1219,8 +1201,7 @@ class _$_FetchHistoryLoading implements _FetchHistoryLoading {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1240,8 +1221,7 @@ class _$_FetchHistoryLoading implements _FetchHistoryLoading {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1265,7 +1245,6 @@ class _$_FetchHistoryLoading implements _FetchHistoryLoading {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -1284,7 +1263,6 @@ class _$_FetchHistoryLoading implements _FetchHistoryLoading {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1302,7 +1280,6 @@ class _$_FetchHistoryLoading implements _FetchHistoryLoading {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1367,8 +1344,8 @@ class _$_FetchAllLoading implements _FetchAllLoading {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -1388,8 +1365,7 @@ class _$_FetchAllLoading implements _FetchAllLoading {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1409,8 +1385,7 @@ class _$_FetchAllLoading implements _FetchAllLoading {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1434,7 +1409,6 @@ class _$_FetchAllLoading implements _FetchAllLoading {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -1453,7 +1427,6 @@ class _$_FetchAllLoading implements _FetchAllLoading {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1471,7 +1444,6 @@ class _$_FetchAllLoading implements _FetchAllLoading {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1584,8 +1556,8 @@ class _$_FetchTaskSuccess implements _FetchTaskSuccess {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -1605,8 +1577,7 @@ class _$_FetchTaskSuccess implements _FetchTaskSuccess {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1626,8 +1597,7 @@ class _$_FetchTaskSuccess implements _FetchTaskSuccess {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1651,7 +1621,6 @@ class _$_FetchTaskSuccess implements _FetchTaskSuccess {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -1670,7 +1639,6 @@ class _$_FetchTaskSuccess implements _FetchTaskSuccess {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1688,7 +1656,6 @@ class _$_FetchTaskSuccess implements _FetchTaskSuccess {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1794,8 +1761,8 @@ class _$_FetchTaskFailed implements _FetchTaskFailed {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -1815,8 +1782,7 @@ class _$_FetchTaskFailed implements _FetchTaskFailed {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1836,8 +1802,7 @@ class _$_FetchTaskFailed implements _FetchTaskFailed {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -1861,7 +1826,6 @@ class _$_FetchTaskFailed implements _FetchTaskFailed {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -1880,7 +1844,6 @@ class _$_FetchTaskFailed implements _FetchTaskFailed {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1898,7 +1861,6 @@ class _$_FetchTaskFailed implements _FetchTaskFailed {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -1926,6 +1888,9 @@ abstract class _$FetchHistorySuccessCopyWith<$Res> {
   factory _$FetchHistorySuccessCopyWith(_FetchHistorySuccess value,
           $Res Function(_FetchHistorySuccess) then) =
       __$FetchHistorySuccessCopyWithImpl<$Res>;
+  $Res call({SurveyHistoryResponse history});
+
+  $SurveyHistoryResponseCopyWith<$Res> get history;
 }
 
 /// @nodoc
@@ -1938,26 +1903,57 @@ class __$FetchHistorySuccessCopyWithImpl<$Res>
 
   @override
   _FetchHistorySuccess get _value => super._value as _FetchHistorySuccess;
+
+  @override
+  $Res call({
+    Object? history = freezed,
+  }) {
+    return _then(_FetchHistorySuccess(
+      history: history == freezed
+          ? _value.history
+          : history // ignore: cast_nullable_to_non_nullable
+              as SurveyHistoryResponse,
+    ));
+  }
+
+  @override
+  $SurveyHistoryResponseCopyWith<$Res> get history {
+    return $SurveyHistoryResponseCopyWith<$Res>(_value.history, (value) {
+      return _then(_value.copyWith(history: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_FetchHistorySuccess implements _FetchHistorySuccess {
-  const _$_FetchHistorySuccess();
+  const _$_FetchHistorySuccess({required this.history});
+
+  @override
+  final SurveyHistoryResponse history;
 
   @override
   String toString() {
-    return 'SurveyHomeState.fetchHistorySuccess()';
+    return 'SurveyHomeState.fetchHistorySuccess(history: $history)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _FetchHistorySuccess);
+        (other.runtimeType == runtimeType &&
+            other is _FetchHistorySuccess &&
+            const DeepCollectionEquality().equals(other.history, history));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(history));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FetchHistorySuccessCopyWith<_FetchHistorySuccess> get copyWith =>
+      __$FetchHistorySuccessCopyWithImpl<_FetchHistorySuccess>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1969,15 +1965,15 @@ class _$_FetchHistorySuccess implements _FetchHistorySuccess {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
     required TResult Function(GenericFailure error) fetchAllFailed,
     required TResult Function(SurveyTask? task) navigateToSelectedTask,
   }) {
-    return fetchHistorySuccess();
+    return fetchHistorySuccess(history);
   }
 
   @override
@@ -1990,15 +1986,14 @@ class _$_FetchHistorySuccess implements _FetchHistorySuccess {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
     TResult Function(GenericFailure error)? fetchAllFailed,
     TResult Function(SurveyTask? task)? navigateToSelectedTask,
   }) {
-    return fetchHistorySuccess?.call();
+    return fetchHistorySuccess?.call(history);
   }
 
   @override
@@ -2011,8 +2006,7 @@ class _$_FetchHistorySuccess implements _FetchHistorySuccess {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -2021,7 +2015,7 @@ class _$_FetchHistorySuccess implements _FetchHistorySuccess {
     required TResult orElse(),
   }) {
     if (fetchHistorySuccess != null) {
-      return fetchHistorySuccess();
+      return fetchHistorySuccess(history);
     }
     return orElse();
   }
@@ -2036,7 +2030,6 @@ class _$_FetchHistorySuccess implements _FetchHistorySuccess {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -2055,7 +2048,6 @@ class _$_FetchHistorySuccess implements _FetchHistorySuccess {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -2073,7 +2065,6 @@ class _$_FetchHistorySuccess implements _FetchHistorySuccess {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -2087,214 +2078,12 @@ class _$_FetchHistorySuccess implements _FetchHistorySuccess {
 }
 
 abstract class _FetchHistorySuccess implements SurveyHomeState {
-  const factory _FetchHistorySuccess() = _$_FetchHistorySuccess;
-}
+  const factory _FetchHistorySuccess({required SurveyHistoryResponse history}) =
+      _$_FetchHistorySuccess;
 
-/// @nodoc
-abstract class _$FetchHistoryFailedCopyWith<$Res> {
-  factory _$FetchHistoryFailedCopyWith(
-          _FetchHistoryFailed value, $Res Function(_FetchHistoryFailed) then) =
-      __$FetchHistoryFailedCopyWithImpl<$Res>;
-  $Res call({GenericFailure error});
-
-  $GenericFailureCopyWith<$Res> get error;
-}
-
-/// @nodoc
-class __$FetchHistoryFailedCopyWithImpl<$Res>
-    extends _$SurveyHomeStateCopyWithImpl<$Res>
-    implements _$FetchHistoryFailedCopyWith<$Res> {
-  __$FetchHistoryFailedCopyWithImpl(
-      _FetchHistoryFailed _value, $Res Function(_FetchHistoryFailed) _then)
-      : super(_value, (v) => _then(v as _FetchHistoryFailed));
-
-  @override
-  _FetchHistoryFailed get _value => super._value as _FetchHistoryFailed;
-
-  @override
-  $Res call({
-    Object? error = freezed,
-  }) {
-    return _then(_FetchHistoryFailed(
-      error: error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as GenericFailure,
-    ));
-  }
-
-  @override
-  $GenericFailureCopyWith<$Res> get error {
-    return $GenericFailureCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_FetchHistoryFailed implements _FetchHistoryFailed {
-  const _$_FetchHistoryFailed({required this.error});
-
-  @override
-  final GenericFailure error;
-
-  @override
-  String toString() {
-    return 'SurveyHomeState.fetchHistoryFailed(error: $error)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FetchHistoryFailed &&
-            const DeepCollectionEquality().equals(other.error, error));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
-
+  SurveyHistoryResponse get history;
   @JsonKey(ignore: true)
-  @override
-  _$FetchHistoryFailedCopyWith<_FetchHistoryFailed> get copyWith =>
-      __$FetchHistoryFailedCopyWithImpl<_FetchHistoryFailed>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() fetchTaskLoading,
-    required TResult Function() fetchHistoryLoading,
-    required TResult Function() fetchAllLoading,
-    required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
-        fetchTaskSuccess,
-    required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
-    required TResult Function(
-            SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
-        fetchAllSuccess,
-    required TResult Function(GenericFailure error) fetchAllFailed,
-    required TResult Function(SurveyTask? task) navigateToSelectedTask,
-  }) {
-    return fetchHistoryFailed(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? fetchTaskLoading,
-    TResult Function()? fetchHistoryLoading,
-    TResult Function()? fetchAllLoading,
-    TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
-        fetchTaskSuccess,
-    TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
-    TResult Function(
-            SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
-        fetchAllSuccess,
-    TResult Function(GenericFailure error)? fetchAllFailed,
-    TResult Function(SurveyTask? task)? navigateToSelectedTask,
-  }) {
-    return fetchHistoryFailed?.call(error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? fetchTaskLoading,
-    TResult Function()? fetchHistoryLoading,
-    TResult Function()? fetchAllLoading,
-    TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
-        fetchTaskSuccess,
-    TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
-    TResult Function(
-            SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
-        fetchAllSuccess,
-    TResult Function(GenericFailure error)? fetchAllFailed,
-    TResult Function(SurveyTask? task)? navigateToSelectedTask,
-    required TResult orElse(),
-  }) {
-    if (fetchHistoryFailed != null) {
-      return fetchHistoryFailed(error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_FetchTaskLoading value) fetchTaskLoading,
-    required TResult Function(_FetchHistoryLoading value) fetchHistoryLoading,
-    required TResult Function(_FetchAllLoading value) fetchAllLoading,
-    required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
-    required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
-    required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
-    required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
-    required TResult Function(_FetchAllFailed value) fetchAllFailed,
-    required TResult Function(_NavigateToSelectedTask value)
-        navigateToSelectedTask,
-  }) {
-    return fetchHistoryFailed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_FetchTaskLoading value)? fetchTaskLoading,
-    TResult Function(_FetchHistoryLoading value)? fetchHistoryLoading,
-    TResult Function(_FetchAllLoading value)? fetchAllLoading,
-    TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
-    TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
-    TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
-    TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
-    TResult Function(_FetchAllFailed value)? fetchAllFailed,
-    TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
-  }) {
-    return fetchHistoryFailed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_FetchTaskLoading value)? fetchTaskLoading,
-    TResult Function(_FetchHistoryLoading value)? fetchHistoryLoading,
-    TResult Function(_FetchAllLoading value)? fetchAllLoading,
-    TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
-    TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
-    TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
-    TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
-    TResult Function(_FetchAllFailed value)? fetchAllFailed,
-    TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
-    required TResult orElse(),
-  }) {
-    if (fetchHistoryFailed != null) {
-      return fetchHistoryFailed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FetchHistoryFailed implements SurveyHomeState {
-  const factory _FetchHistoryFailed({required GenericFailure error}) =
-      _$_FetchHistoryFailed;
-
-  GenericFailure get error;
-  @JsonKey(ignore: true)
-  _$FetchHistoryFailedCopyWith<_FetchHistoryFailed> get copyWith =>
+  _$FetchHistorySuccessCopyWith<_FetchHistorySuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2417,8 +2206,8 @@ class _$_FetchAllSuccess implements _FetchAllSuccess {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -2438,8 +2227,7 @@ class _$_FetchAllSuccess implements _FetchAllSuccess {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -2459,8 +2247,7 @@ class _$_FetchAllSuccess implements _FetchAllSuccess {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -2484,7 +2271,6 @@ class _$_FetchAllSuccess implements _FetchAllSuccess {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -2503,7 +2289,6 @@ class _$_FetchAllSuccess implements _FetchAllSuccess {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -2521,7 +2306,6 @@ class _$_FetchAllSuccess implements _FetchAllSuccess {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -2629,8 +2413,8 @@ class _$_FetchAllFailed implements _FetchAllFailed {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -2650,8 +2434,7 @@ class _$_FetchAllFailed implements _FetchAllFailed {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -2671,8 +2454,7 @@ class _$_FetchAllFailed implements _FetchAllFailed {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -2696,7 +2478,6 @@ class _$_FetchAllFailed implements _FetchAllFailed {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -2715,7 +2496,6 @@ class _$_FetchAllFailed implements _FetchAllFailed {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -2733,7 +2513,6 @@ class _$_FetchAllFailed implements _FetchAllFailed {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -2842,8 +2621,8 @@ class _$_NavigateToSelectedTask implements _NavigateToSelectedTask {
     required TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)
         fetchTaskSuccess,
     required TResult Function(GenericFailure error) fetchTaskFailed,
-    required TResult Function() fetchHistorySuccess,
-    required TResult Function(GenericFailure error) fetchHistoryFailed,
+    required TResult Function(SurveyHistoryResponse history)
+        fetchHistorySuccess,
     required TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)
         fetchAllSuccess,
@@ -2863,8 +2642,7 @@ class _$_NavigateToSelectedTask implements _NavigateToSelectedTask {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -2884,8 +2662,7 @@ class _$_NavigateToSelectedTask implements _NavigateToSelectedTask {
     TResult Function(List<SurveyTask?> tasks, SurveyTask? upcomingTask)?
         fetchTaskSuccess,
     TResult Function(GenericFailure error)? fetchTaskFailed,
-    TResult Function()? fetchHistorySuccess,
-    TResult Function(GenericFailure error)? fetchHistoryFailed,
+    TResult Function(SurveyHistoryResponse history)? fetchHistorySuccess,
     TResult Function(
             SurveyTask? upcomingTask, UserData? user, List<SurveyTask?> tasks)?
         fetchAllSuccess,
@@ -2909,7 +2686,6 @@ class _$_NavigateToSelectedTask implements _NavigateToSelectedTask {
     required TResult Function(_FetchTaskSuccess value) fetchTaskSuccess,
     required TResult Function(_FetchTaskFailed value) fetchTaskFailed,
     required TResult Function(_FetchHistorySuccess value) fetchHistorySuccess,
-    required TResult Function(_FetchHistoryFailed value) fetchHistoryFailed,
     required TResult Function(_FetchAllSuccess value) fetchAllSuccess,
     required TResult Function(_FetchAllFailed value) fetchAllFailed,
     required TResult Function(_NavigateToSelectedTask value)
@@ -2928,7 +2704,6 @@ class _$_NavigateToSelectedTask implements _NavigateToSelectedTask {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,
@@ -2946,7 +2721,6 @@ class _$_NavigateToSelectedTask implements _NavigateToSelectedTask {
     TResult Function(_FetchTaskSuccess value)? fetchTaskSuccess,
     TResult Function(_FetchTaskFailed value)? fetchTaskFailed,
     TResult Function(_FetchHistorySuccess value)? fetchHistorySuccess,
-    TResult Function(_FetchHistoryFailed value)? fetchHistoryFailed,
     TResult Function(_FetchAllSuccess value)? fetchAllSuccess,
     TResult Function(_FetchAllFailed value)? fetchAllFailed,
     TResult Function(_NavigateToSelectedTask value)? navigateToSelectedTask,

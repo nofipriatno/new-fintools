@@ -3,6 +3,7 @@ import 'package:fintools/domain/core/constant/app_asset.dart';
 import 'package:fintools/domain/core/constant/app_color.dart';
 import 'package:fintools/domain/core/constant/app_font.dart';
 import 'package:fintools/domain/core/failure/generic_failure.dart';
+import 'package:fintools/domain/survey/response/survey_history_response/survey_history_response.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/injection.dart';
 import 'package:fintools/presentation/component/app_bar/custom_app_bar.dart';
@@ -26,6 +27,7 @@ class SurveyHomePage extends HookWidget {
     final user = useState<String?>(null);
     final task = useState<SurveyTask?>(null);
     final tasks = useState<List<SurveyTask?>>([]);
+    final history = useState<SurveyHistoryResponse?>(null);
 
     return CustomScaffold.normal(
       context,
@@ -54,6 +56,10 @@ class SurveyHomePage extends HookWidget {
                       );
                     }
                   },
+                  fetchHistorySuccess: (e) {
+                    AppUtils.dismissLoading;
+                    history.value = e.history;
+                  },
                   fetchAllSuccess: (e) {
                     AppUtils.dismissLoading;
                     user.value = e.user?.name;
@@ -80,6 +86,20 @@ class SurveyHomePage extends HookWidget {
                       Tab(text: I10n.current.home),
                       Tab(text: I10n.current.history)
                     ],
+                    onTap: (index) {
+                      if (controller.indexIsChanging) {
+                        FocusScope.of(context).unfocus();
+                        if (controller.index == 0) {
+                          context.read<SurveyHomeBloc>().add(
+                                const SurveyHomeEvent.onInitialize(),
+                              );
+                        } else if (controller.index == 1) {
+                          context.read<SurveyHomeBloc>().add(
+                                const SurveyHomeEvent.onRefreshHistory(),
+                              );
+                        }
+                      }
+                    },
                     labelStyle: AppFont.text13Bold,
                     labelColor: AppColor.gold,
                     unselectedLabelColor: AppColor.blue,
@@ -95,7 +115,7 @@ class SurveyHomePage extends HookWidget {
                             user: user.value,
                             task: task.value,
                             tasks: tasks.value),
-                        _tabTwo()
+                        _tabTwo(context, history: history.value)
                       ],
                     ),
                   )
@@ -207,7 +227,8 @@ class SurveyHomePage extends HookWidget {
     );
   }
 
-  Widget _tabTwo() {
+  Widget _tabTwo(BuildContext context,
+      {required SurveyHistoryResponse? history}) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 45),
       child: Column(
@@ -224,17 +245,12 @@ class SurveyHomePage extends HookWidget {
             child: ListView.separated(
                 padding: const EdgeInsets.only(bottom: 20),
                 physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => _itemHistory(
-                      name: 'Name $index',
-                      platNumber: 'F $index$index$index$index XX',
-                      taskCompleted: DateTime.now().subtract(
-                        Duration(days: index),
-                      ),
-                    ),
+                itemBuilder: (context, index) =>
+                    _itemHistory(item: history?.data[index]),
                 separatorBuilder: (context, index) => const SizedBox(
                       height: 15,
                     ),
-                itemCount: 10),
+                itemCount: history?.data.length ?? 0),
           )
         ],
       ),
@@ -286,10 +302,7 @@ class SurveyHomePage extends HookWidget {
     );
   }
 
-  Widget _itemHistory(
-      {required String name,
-      required String platNumber,
-      required DateTime taskCompleted}) {
+  Widget _itemHistory({required HistoryItem? item}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -297,7 +310,7 @@ class SurveyHomePage extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              name,
+              item?.name ?? '',
               style: AppFont.text11W500.copyWith(color: AppColor.gold),
             ),
             Icon(
@@ -309,14 +322,14 @@ class SurveyHomePage extends HookWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 7, 0, 7),
           child: Text(
-            platNumber,
+            item?.platNumber ?? '',
             style: AppFont.text11W500.copyWith(color: AppColor.blue),
           ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 7),
           child: Text(
-            AppUtils.convertToToday(date: taskCompleted),
+            AppUtils.convertToToday(date: item?.creDate ?? DateTime.now()),
             style: AppFont.text10Normal.copyWith(color: AppColor.grey),
           ),
         ),

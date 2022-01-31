@@ -4,6 +4,7 @@ import 'package:fintools/domain/core/failure/generic_failure.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_storage.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
+import 'package:fintools/domain/survey/response/survey_history_response/survey_history_response.dart';
 import 'package:fintools/domain/survey/response/survey_login_response/survey_login_response.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -75,7 +76,22 @@ class SurveyHomeBloc extends Bloc<SurveyHomeEvent, SurveyHomeState> {
             ),
           );
         },
-        onRefreshHistory: (e) async {},
+        onRefreshHistory: (e) async {
+          emit(const _FetchAllLoading());
+          final box = await _storage.openBox(StorageConstants.userSurvey);
+          final credential =
+              await _storage.getJson(box, key: AppString.surveyCredentialKey);
+          UserData user = UserData.fromJson(credential['data']);
+          final result = await _survey.getHistory(nik: user.nik ?? '');
+          result.fold(
+            (fail) => emit(
+              _FetchAllFailed(error: fail),
+            ),
+            (success) => emit(
+              _FetchHistorySuccess(history: success),
+            ),
+          );
+        },
         onSelectedTask: (e) async {
           emit(const _Initial());
           await _survey.setUpcomingTask(e.task!);

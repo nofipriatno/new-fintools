@@ -17,4 +17,5 @@ class AppEndpoint {
   static const String surveyLogin = '$_subdomain/$_auth/login';
   static const String surveyTask = '$_subdomain/$_task/gettasklistsurveyor';
   static const String surveyPost = '$_subdomain/$_task/addsurvey';
+  static const String surveyHistory = '$_subdomain/$_task/gethistorysurveylist';
 }

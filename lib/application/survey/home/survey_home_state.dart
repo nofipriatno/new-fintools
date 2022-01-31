@@ -17,10 +17,9 @@ class SurveyHomeState with _$SurveyHomeState {
   const factory SurveyHomeState.fetchTaskFailed(
       {required GenericFailure error}) = _FetchTaskFailed;
 
-  const factory SurveyHomeState.fetchHistorySuccess() = _FetchHistorySuccess;
-
-  const factory SurveyHomeState.fetchHistoryFailed(
-      {required GenericFailure error}) = _FetchHistoryFailed;
+  const factory SurveyHomeState.fetchHistorySuccess({
+    required SurveyHistoryResponse history,
+  }) = _FetchHistorySuccess;
 
   const factory SurveyHomeState.fetchAllSuccess(
       {required SurveyTask? upcomingTask,

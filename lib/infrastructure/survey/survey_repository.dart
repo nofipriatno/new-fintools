@@ -5,6 +5,7 @@ import 'package:fintools/domain/core/failure/generic_failure.dart';
 import 'package:fintools/domain/core/interface/i_database.dart';
 import 'package:fintools/domain/core/interface/i_network_service.dart';
 import 'package:fintools/domain/survey/interface/i_survey.dart';
+import 'package:fintools/domain/survey/response/survey_history_response/survey_history_response.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:injectable/injectable.dart';
 
@@ -81,6 +82,32 @@ class SurveyRepository implements ISurvey {
       return Future.value(true);
     } catch (e) {
       return Future.value(false);
+    }
+  }
+
+  @override
+  Future<Either<GenericFailure, SurveyHistoryResponse>> getHistory(
+      {required String nik}) async {
+    try {
+      final apiResult = await _service.getHttp(
+          path: AppEndpoint.surveyHistory, queryParameter: {"nik": nik});
+      SurveyHistoryResponse response =
+          SurveyHistoryResponse.fromJson(apiResult);
+      return Right(response);
+    } on FailureException catch (_) {
+      return const Left(GenericFailure.unknownError());
+    } on NetworkException catch (_) {
+      return const Left(GenericFailure.unknownError());
+    } on ServerException catch (_) {
+      return const Left(GenericFailure.serverError());
+    } on AuthException catch (_) {
+      return const Left(GenericFailure.sessionExpired());
+    } on NoInternetException catch (_) {
+      return const Left(GenericFailure.noInternet());
+    } on TimeOutException catch (_) {
+      return const Left(GenericFailure.generalError());
+    } catch (e) {
+      return const Left(GenericFailure.unknownError());
     }
   }
 }
