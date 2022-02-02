@@ -11,6 +11,7 @@ import 'package:fintools/domain/survey/local/survey_question_model.dart';
 import 'package:fintools/domain/survey/local/survey_search_model.dart';
 import 'package:fintools/domain/survey/response/survey_task_list_response/survey_task_list_response.dart';
 import 'package:fintools/infrastructure/core/database.dart';
+import 'package:fintools/utilities/i10n/l10n.dart';
 import 'package:fintools/utilities/utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -134,7 +135,7 @@ class SurveyTaskBloc extends Bloc<SurveyTaskEvent, SurveyTaskState> {
       }, onSubmitSurvey: (e) async {
         emit(const _Loading());
         if (e.checkedData.contains(false)) {
-          String reason = '';
+          String reason = '${I10n.current.uncompleted} :\n';
           for (var i = 0; i < e.checkedData.length; i++) {
             if (!e.checkedData[i]) reason += AppUtils.checkMandatory(i);
             if (i != e.checkedData.length - 1 && !e.checkedData[i]) {

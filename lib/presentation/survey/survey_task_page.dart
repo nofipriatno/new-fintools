@@ -306,7 +306,7 @@ class SurveyTaskPage extends HookWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          item.question ?? '',
+          '${item.question} ${item.mandatory == true ? '*' : ''}',
           style: AppFont.text12W300.copyWith(color: AppColor.blue),
         ),
         item.search?.items?.isEmpty == true
@@ -343,7 +343,7 @@ class SurveyTaskPage extends HookWidget {
           children: [
             Expanded(
               child: Text(
-                item.name,
+                '${item.name} ${item.mandatory == true ? '*' : ''}',
                 style: AppFont.text11Bold.copyWith(color: AppColor.gold),
               ),
             ),
@@ -486,7 +486,7 @@ class SurveyTaskPage extends HookWidget {
           mode: Mode.BOTTOM_SHEET,
           showSearchBox: true,
           dropdownSearchDecoration: InputDecoration(
-              hintText: item.title ?? '',
+              hintText: '${item.title} ${item.mandatory == true ? '*' : ''}',
               hintStyle: AppFont.text14W300.copyWith(color: AppColor.blue),
               contentPadding: EdgeInsets.zero,
               border: UnderlineInputBorder(
@@ -519,7 +519,7 @@ class SurveyTaskPage extends HookWidget {
       return CustomTextField.underline(
           controller: item.controller!,
           limit: item.limit,
-          title: item.title ?? '',
+          title: '${item.title} ${item.mandatory == true ? '*' : ''}',
           onTap: item.clientFormType?.index == ClientFormType.date.index
               ? () => showCalendar(context, controller: item.controller!)
               : null,

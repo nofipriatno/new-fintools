@@ -330,10 +330,10 @@ class I10n {
     );
   }
 
-  /// `Assets`
+  /// `Photo`
   String get asset {
     return Intl.message(
-      'Assets',
+      'Photo',
       name: 'asset',
       desc: '',
       args: [],
@@ -640,10 +640,10 @@ class I10n {
     );
   }
 
-  /// `Uncompleted`
+  /// `Not Completed`
   String get uncompleted {
     return Intl.message(
-      'Uncompleted',
+      'Not Completed',
       name: 'uncompleted',
       desc: '',
       args: [],

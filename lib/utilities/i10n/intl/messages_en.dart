@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "are_you_sure_to_logout":
             MessageLookupByLibrary.simpleMessage("Are you sure to Logout?"),
         "area_code": MessageLookupByLibrary.simpleMessage("Area Code"),
-        "asset": MessageLookupByLibrary.simpleMessage("Assets"),
+        "asset": MessageLookupByLibrary.simpleMessage("Photo"),
         "back_to_onboarding":
             MessageLookupByLibrary.simpleMessage("Back to OnBoarding"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -108,7 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Task Completed"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
-        "uncompleted": MessageLookupByLibrary.simpleMessage("Uncompleted"),
+        "uncompleted": MessageLookupByLibrary.simpleMessage("Not Completed"),
         "until": MessageLookupByLibrary.simpleMessage("Until"),
         "upcoming_survey":
             MessageLookupByLibrary.simpleMessage("Upcoming Survey"),

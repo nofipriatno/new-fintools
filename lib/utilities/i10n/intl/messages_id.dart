@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "are_you_sure_to_logout":
             MessageLookupByLibrary.simpleMessage("Anda Yakin ingin keluar?"),
         "area_code": MessageLookupByLibrary.simpleMessage("Kode Pos"),
+        "asset": MessageLookupByLibrary.simpleMessage("Foto"),
         "back_to_onboarding":
             MessageLookupByLibrary.simpleMessage("Kembali Ke Halaman Awal"),
         "button_cancel": MessageLookupByLibrary.simpleMessage("Batal"),
@@ -37,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "choose_file": MessageLookupByLibrary.simpleMessage("Pilih File"),
         "city": MessageLookupByLibrary.simpleMessage("Kota Asal"),
         "city_birth": MessageLookupByLibrary.simpleMessage("Kota Kelahiran"),
+        "client": MessageLookupByLibrary.simpleMessage("Klien"),
         "completed": MessageLookupByLibrary.simpleMessage("Lengkap"),
         "confirmation": MessageLookupByLibrary.simpleMessage("Konfirmasi"),
         "date": MessageLookupByLibrary.simpleMessage("Tanggal"),
@@ -48,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "description_survey": MessageLookupByLibrary.simpleMessage(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
         "district": MessageLookupByLibrary.simpleMessage("kecamatan"),
+        "document": MessageLookupByLibrary.simpleMessage("Dokumen"),
         "failed": MessageLookupByLibrary.simpleMessage("Gagal"),
         "fax": MessageLookupByLibrary.simpleMessage("Fax"),
         "filename": MessageLookupByLibrary.simpleMessage("Nama file"),
@@ -77,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_key_3": MessageLookupByLibrary.simpleMessage("survey"),
         "product_prove": MessageLookupByLibrary.simpleMessage("I-Prove"),
         "product_survey": MessageLookupByLibrary.simpleMessage("Survey"),
+        "quisioner": MessageLookupByLibrary.simpleMessage("Kuisioner"),
         "rt": MessageLookupByLibrary.simpleMessage("RT"),
         "rw": MessageLookupByLibrary.simpleMessage("RW"),
         "save": MessageLookupByLibrary.simpleMessage("Simpan"),

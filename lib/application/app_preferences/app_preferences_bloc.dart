@@ -31,13 +31,11 @@ class AppPreferencesBloc
                 await _storage.openBox(StorageConstants.userSurvey);
             _isLogin = await _storage.getBool(_surveyBox,
                 key: AppString.surveyIsLoginKey);
-            await _storage.close(_surveyBox);
           } else if (_product == I10n.current.product_key_1) {
             //iprove
           } else if (_product == I10n.current.product_key_2) {
             //collection
           }
-          await _storage.close(_localeBox);
           emit(_CheckSignInUser(product: _product ?? '', isLogin: _isLogin));
         },
       );
