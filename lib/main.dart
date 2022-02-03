@@ -1,66 +1,35 @@
+import 'package:fintools/infrastructure/core/app_env.dart';
+import 'package:fintools/injection.dart';
+import 'package:fintools/my_app.dart';
+import 'package:fintools/simple_bloc_observer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'application/app_preferences/app_preferences_bloc.dart';
+
+Future<void> mainProgram() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureInjection(AppEnvironment.env);
+  await getIt<HiveInterface>().initFlutter();
+  BlocOverrides.runZoned(
+    () {
+      runApp(FintoolsApp());
+    },
+    blocObserver: getIt<SimpleBlocObserver>(),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+class FintoolsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    return BlocProvider<AppPreferencesBloc>(
+        create: (_) => getIt<AppPreferencesBloc>()
+          ..add(
+            const AppPreferencesEvent.onCheckedLogin(),
+          ),
+        child: BlocBuilder<AppPreferencesBloc, AppPreferencesState>(
+          builder: (context, state) => getIt<MyApp>(),
+        ));
   }
 }
